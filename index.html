@@ -2,4 +2,132 @@
 
 <title>Deck DOM</title>
 
-<script src="index.js" type="module"></script>
+<style>
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #999;
+}
+
+
+.stack, .card {
+  --card-back-bg: #222;
+  --card-back-bg2: #555;
+  --card-back-border: #333;
+
+  --stack-depth: 1;
+
+  position: absolute;
+  border: calc(min(1.0em, 0.2em * var(--stack-depth))) solid var(--card-back-border);
+  border-radius: 0.5em;
+  padding: 0.5em;
+
+  width: 8em;
+  height: 13em;
+
+  cursor: grab;
+  /* cursor: grabbing; */
+}
+
+.back {
+  /* cribbed from https://www.cssportal.com/css-pattern-generator/
+   * TODO ensure rotational symmetry */
+  --scale: 1.5em;
+
+  background-color: var(--card-back-bg);
+	background:
+    conic-gradient(#0000 75%, var(--card-back-bg) 0) 
+		calc(3*var(--scale)/4) calc(3*var(--scale)/4)/var(--scale) var(--scale),
+    linear-gradient( 45deg,#0000 calc(125%/3),var(--card-back-bg2) 0 calc(175%/3),#0000 0) 0 0/calc(2*var(--scale)) calc(2*var(--scale)),
+    linear-gradient(-45deg,#0000 calc(125%/3),var(--card-back-bg2) 0 calc(175%/3),#0000 0) 0 0/calc(2*var(--scale)) calc(2*var(--scale)) var(--card-back-bg);
+}
+
+</style>
+
+<script language="application/json" id="book">{
+  "🜀0": { "name": "The Fool" },
+  "🜀1": { "name": "The Magician" },
+  "🜀2": { "name": "The High Priestess" },
+  "🜀3": { "name": "The Empress" },
+  "🜀4": { "name": "The Emperor" },
+  "🜀5": { "name": "The Hierophant" },
+  "🜀6": { "name": "The Lovers" },
+  "🜀7": { "name": "The Chariot" },
+  "🜀8": { "name": "Strength" },
+  "🜀9": { "name": "The Hermit" },
+  "🜀10": { "name": "Wheel of Fortune" },
+  "🜀11": { "name": "Justice" },
+  "🜀12": { "name": "The Hanged Man" },
+  "🜀13": { "name": "Death" },
+  "🜀14": { "name": "Temperance" },
+  "🜀15": { "name": "The Devil" },
+  "🜀16": { "name": "The Tower" },
+  "🜀17": { "name": "The Star" },
+  "🜀18": { "name": "The Moon" },
+  "🜀19": { "name": "The Sun" },
+  "🜀20": { "name": "Judgement" },
+  "🜀21": { "name": "The World" },
+  "🜂1": { "name": "Ace of Wands" },
+  "🜂2": { "name": "Two of Wands" },
+  "🜂3": { "name": "Three of Wands" },
+  "🜂4": { "name": "Four of Wands" },
+  "🜂5": { "name": "Five of Wands" },
+  "🜂6": { "name": "Six of Wands" },
+  "🜂7": { "name": "Seven of Wands" },
+  "🜂8": { "name": "Eight of Wands" },
+  "🜂9": { "name": "Nine of Wands" },
+  "🜂10": { "name": "Ten of Wands" },
+  "🜂11": { "name": "Page of Wands" },
+  "🜂12": { "name": "Knight of Wands" },
+  "🜂13": { "name": "Queen of Wands" },
+  "🜂14": { "name": "King of Wands" },
+  "🜄1": { "name": "Ace of Cups" },
+  "🜄2": { "name": "Two of Cups" },
+  "🜄3": { "name": "Three of Cups" },
+  "🜄4": { "name": "Four of Cups" },
+  "🜄5": { "name": "Five of Cups" },
+  "🜄6": { "name": "Six of Cups" },
+  "🜄7": { "name": "Seven of Cups" },
+  "🜄8": { "name": "Eight of Cups" },
+  "🜄9": { "name": "Nine of Cups" },
+  "🜄10": { "name": "Ten of Cups" },
+  "🜄11": { "name": "Page of Cups" },
+  "🜄12": { "name": "Knight of Cups" },
+  "🜄13": { "name": "Queen of Cups" },
+  "🜄14": { "name": "King of Cups" },
+  "🜁1": { "name": "Ace of Swords" },
+  "🜁2": { "name": "Two of Swords" },
+  "🜁3": { "name": "Three of Swords" },
+  "🜁4": { "name": "Four of Swords" },
+  "🜁5": { "name": "Five of Swords" },
+  "🜁6": { "name": "Six of Swords" },
+  "🜁7": { "name": "Seven of Swords" },
+  "🜁8": { "name": "Eight of Swords" },
+  "🜁9": { "name": "Nine of Swords" },
+  "🜁10": { "name": "Ten of Swords" },
+  "🜁11": { "name": "Page of Swords" },
+  "🜁12": { "name": "Knight of Swords" },
+  "🜁13": { "name": "Queen of Swords" },
+  "🜁14": { "name": "King of Swords" },
+  "🜃1": { "name": "Ace of Coins" },
+  "🜃2": { "name": "Two of Coins" },
+  "🜃3": { "name": "Three of Coins" },
+  "🜃4": { "name": "Four of Coins" },
+  "🜃5": { "name": "Five of Coins" },
+  "🜃6": { "name": "Six of Coins" },
+  "🜃7": { "name": "Seven of Coins" },
+  "🜃8": { "name": "Eight of Coins" },
+  "🜃9": { "name": "Nine of Coins" },
+  "🜃10": { "name": "Ten of Coins" },
+  "🜃11": { "name": "Page of Coins" },
+  "🜃12": { "name": "Knight of Coins" },
+  "🜃13": { "name": "Queen of Coins" },
+  "🜃14": { "name": "King of Coins" }
+}</script>
+
+<script type="module">
+  import init from './index.js'
+  init(document.querySelector('#book'))
+</script>
