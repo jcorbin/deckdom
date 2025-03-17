@@ -1,0 +1,10 @@
+{
+  "name": "deckdom",
+  "version": "0.1.0",
+  "description": "Deck Mongering Wobpage",
+  "main": "index.js",
+  "repository": "https://github.com/jcorbin/deckdom",
+  "author": "Joshua T Corbin <jcorbin@wunjo.org>",
+  "license": "MIT",
+  "private": false
+}
