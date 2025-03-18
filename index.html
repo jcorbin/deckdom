@@ -16,19 +16,28 @@ html, body {
   --card-back-bg: #222;
   --card-back-bg2: #555;
   --card-back-border: #333;
-
-  --stack-depth: 1;
+  --card-border-unit: 0.2em;
 
   position: absolute;
-  border: calc(min(1.0em, 0.2em * var(--stack-depth))) solid var(--card-back-border);
-  border-radius: 0.5em;
-  padding: 0.5em;
-
   width: 8em;
   height: 13em;
 
+  border-radius: 0.5em;
+  padding: 0.5em;
+
+  border-style: solid;
+  border-color: var(--card-back-border);
+  border-width: var(--card-border-unit);
+
   cursor: grab;
   /* cursor: grabbing; */
+}
+
+.stack {
+  --stack-depth: 1;
+
+  border-bottom-width: calc(min(1.0em, var(--card-border-unit) * var(--stack-depth)));
+  border-right-width: calc(min(1.0em, var(--card-border-unit) * var(--stack-depth)));
 }
 
 .back {

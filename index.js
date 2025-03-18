@@ -81,18 +81,6 @@ const isFaceUp = flags => flags.indexOf('F') != -1;
 /** @param {string} flags */
 const isReversed = flags => flags.indexOf('R') != -1;
 
-/**
- * @param {string|undefined} id
- * @param {string} flags
- * @param {HTMLElement} el
- */
-const addCardClassNames = (id, flags, el) => {
-  if (!isFaceUp(flags)) el.classList.add('back');
-  else if (id) el.classList.add('face', id);
-  else el.classList.add('face');
-  if (isReversed(flags)) el.classList.add('reversed');
-};
-
 /** @param {Spec} spec */
 function makeWorld(spec) {
 
@@ -111,17 +99,20 @@ function makeWorld(spec) {
 
     /** @param {HTMLElement} el */
     render(el) {
-
       const numCards = countCards(el);
-      let baseClassName = el.classList.item(0);
-      if (!baseClassName) {
-        baseClassName = numCards > 1 ? 'stack' : 'card';
-      }
+
+      const baseClassName = el.classList.item(0) || (numCards > 1 ? 'stack' : 'card');
+      el.className = baseClassName;
 
       const { id, flags } = parseCard(el);
-      if (!id) return; // TODO dev throw?
-      el.className = baseClassName;
-      addCardClassNames(id, flags, el);
+      if (!isFaceUp(flags)) {
+        el.classList.add('back');
+      } else {
+        el.classList.add('face');
+        if (id) el.classList.add(id);
+      }
+
+      if (isReversed(flags)) el.classList.add('reversed');
 
       el.style.setProperty('--stack-depth', `${numCards}`);
     },
@@ -130,23 +121,45 @@ function makeWorld(spec) {
     hookupDomain(domain) {
 
       domain.addEventListener('contextmenu', ev => ev.preventDefault());
-
-      // domain.addEventListener('mousedown', this);
-      // domain.addEventListener('mouseup', this);
-      // domain.addEventListener('mousemove', this);
+      domain.addEventListener('mousedown', this);
+      domain.addEventListener('mouseup', this);
+      domain.addEventListener('mousemove', this);
 
       // TODO key event handling
-      // TODO mouse event handling
       // TODO touch event handling
     },
 
     /** @param {Event} ev */
     handleEvent(ev) {
-      // TODO left drag move
-      // TODO right drag take
-      // TODO how to cut?
-      // if (ev instanceof MouseEvent)
-      // const { type, target } = ev;
+
+      if (ev instanceof MouseEvent) {
+        const { type, target, button, buttons, x, y } = ev;
+
+        if (type === 'mousedown') {
+          if (button === 0) {
+            if (target instanceof HTMLElement) {
+              target.dataset['dragStart'] = `mouse:${buttons},${x},${y}`;
+            }
+            console.log('start drag', target);
+          }
+          return;
+        }
+
+        if (type === 'mousemove') {
+          // if (target instanceof HTMLElement)
+          // target.dataset['dragStart'] = `mouse:${buttons},${x},${y}`;
+          // console.log('start drag', target);
+        }
+
+        // TODO left drag move
+        // TODO right drag take
+        // TODO dwell menu
+        // TODO scroll for cut?
+        // TODO how to cut?
+        // if (ev instanceof MouseEvent)
+        // const { type, target } = ev;
+
+      }
 
       // if (ev instanceof MouseEvent) {
       //   // ev.preventDefault();
