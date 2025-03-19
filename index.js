@@ -89,7 +89,7 @@ function makeWorld(spec) {
   return {
     /** @param {Element} domain */
     init(domain) {
-      this.hookupDomain(domain);
+      this.makeDomain(domain);
 
       const stack = document.createElement('div');
       stack.dataset['card'] = Object.keys(spec).map(id => `#${id}`).join(',');
@@ -117,63 +117,86 @@ function makeWorld(spec) {
       el.style.setProperty('--stack-depth', `${numCards}`);
     },
 
-    /** @param {Element} domain */
-    hookupDomain(domain) {
+    /** @param {HTMLElement} domain */
+    makeDomain(domain) {
+
+      /** @param {HTMLElement} el */
+      const dragInfo = el => {
+        const match = /mouse:(\d+),(-?\d+),(-?\d+)/.exec(el.dataset['dragStart'] || '');
+        if (match) {
+          const buttons = parseInt(match[1] || '');
+          const x = parseInt(match[2] || '');
+          const y = parseInt(match[3] || '');
+          return { mouse: { buttons, x, y } };
+        }
+        return null;
+      };
+
+      const ctl = {
+
+        /** @param {Event} ev */
+        handleEvent(ev) {
+
+          if (ev instanceof MouseEvent) {
+            const { type, target, button, buttons, x, y } = ev;
+
+            if (type === 'mousedown') {
+              if (button === 0) {
+                if (target instanceof HTMLElement) {
+                  target.classList.add('dragon');
+                  target.dataset['dragStart'] = `mouse:${buttons},${x},${y}`;
+                }
+                console.log('start drag', target);
+              }
+              return;
+            }
+
+            const drags = domain.querySelectorAll('.dragon');
+            for (const drag of drags) {
+              const info = drag instanceof HTMLElement ? dragInfo(drag) : null;
+              if (!info) continue;
+              console.log('???', type, info.mouse.buttons, buttons);
+            }
+
+            // if (type === 'mouseup') { }
+            // if (type === 'mousemove') { }
+
+            // TODO left drag move
+            // TODO right drag take
+            // TODO dwell menu
+            // TODO scroll for cut?
+            // TODO how to cut?
+            // if (ev instanceof MouseEvent)
+            // const { type, target } = ev;
+
+          }
+
+          // if (ev instanceof MouseEvent) {
+          //   // ev.preventDefault();
+          //   // ev.stopPropagation();
+          //   // ev.cancelBubble
+          //   const { type, cancelable, button, buttons, x, y } = ev;
+          //   console.log({ type, cancelable, button, buttons, x, y });
+          // }
+
+          // console.log(type, target);
+          // if (target instanceof HTMLElement) {
+          //   this.render(target);
+          // }
+
+        },
+
+      };
 
       domain.addEventListener('contextmenu', ev => ev.preventDefault());
-      domain.addEventListener('mousedown', this);
-      domain.addEventListener('mouseup', this);
-      domain.addEventListener('mousemove', this);
+      domain.addEventListener('mousedown', ctl);
+      domain.addEventListener('mouseup', ctl);
+      domain.addEventListener('mousemove', ctl);
 
       // TODO key event handling
       // TODO touch event handling
-    },
 
-    /** @param {Event} ev */
-    handleEvent(ev) {
-
-      if (ev instanceof MouseEvent) {
-        const { type, target, button, buttons, x, y } = ev;
-
-        if (type === 'mousedown') {
-          if (button === 0) {
-            if (target instanceof HTMLElement) {
-              target.dataset['dragStart'] = `mouse:${buttons},${x},${y}`;
-            }
-            console.log('start drag', target);
-          }
-          return;
-        }
-
-        if (type === 'mousemove') {
-          // if (target instanceof HTMLElement)
-          // target.dataset['dragStart'] = `mouse:${buttons},${x},${y}`;
-          // console.log('start drag', target);
-        }
-
-        // TODO left drag move
-        // TODO right drag take
-        // TODO dwell menu
-        // TODO scroll for cut?
-        // TODO how to cut?
-        // if (ev instanceof MouseEvent)
-        // const { type, target } = ev;
-
-      }
-
-      // if (ev instanceof MouseEvent) {
-      //   // ev.preventDefault();
-      //   // ev.stopPropagation();
-      //   // ev.cancelBubble
-      //   const { type, cancelable, button, buttons, x, y } = ev;
-      //   console.log({ type, cancelable, button, buttons, x, y });
-      // }
-
-      // console.log(type, target);
-      // if (target instanceof HTMLElement) {
-      //   this.render(target);
-      // }
-
+      return ctl;
     },
 
   }
