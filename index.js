@@ -87,7 +87,7 @@ function makeWorld(spec) {
   // TODO save/restore state
 
   return {
-    /** @param {Element} domain */
+    /** @param {HTMLElement} domain */
     init(domain) {
       this.makeDomain(domain);
 
