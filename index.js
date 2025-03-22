@@ -161,7 +161,7 @@ const parseCards = dat => dat ? toCards(JSON.parse(dat)) : [];
 const smudgeCard = card => {
   if ('id' in card) {
     const keys = Object.keys(card);
-    if (keys.length === 1 && keys[0] === 'id') return card.id;
+    if (keys.length === 1 && keys[0] === 'id') return `#${card.id}`;
   }
   return card;
 };
@@ -187,10 +187,13 @@ const getElCards = el => {
 /** @param {Event} ev */
 const getEvCards = ev => {
   const { target } = ev;
-  if (target instanceof HTMLElement)
-    return { el: target, cards: getElCards(target) };
-  // TODO support drag event data transfer
-  return null;
+  const el = target instanceof HTMLElement ? target : null;
+  const elCards = el && getElCards(el) || [];
+  const dt = ev instanceof DragEvent ? ev.dataTransfer : null;
+  const rawData = dt?.getData(dragDataType);
+  const dragData = rawData ? JSON.parse(rawData) : null;
+  const cards = dragData ? toCards(dragData.cards) : [];
+  return { el, elCards, dt, cards, dragData };
 };
 
 /** @param {any} spec */
@@ -326,21 +329,12 @@ function makeWorld(spec) {
       // container.addEventListener('contextmenu', ev => ev.preventDefault());
 
       container.addEventListener('dragstart', ev => {
-        const { dataTransfer: dt, offsetY } = ev;
-
-        const r = getEvCards(ev);
-        if (!dt || !r) {
+        const { dt, el, elCards } = getEvCards(ev);
+        if (!dt || !el || !elCards.length) {
           ev.preventDefault();
           return;
         }
 
-        const { el, cards } = r;
-        if (!cards || !cards.length) {
-          ev.preventDefault();
-          return;
-        }
-
-        const { offsetHeight } = el;
 
         /** @type {Vec2} */
         const dragBands = [
@@ -351,13 +345,16 @@ function makeWorld(spec) {
           /* ... take all */
         ];
 
+        const { offsetHeight } = el;
+        const { offsetY } = ev;
         const dragBandLo = offsetHeight * dragBands[0];
         const dragBandHi = offsetHeight * dragBands[1];
 
-        const ci = clamp(1, cards.length, Math.round(remap(dragBandLo, dragBandHi, offsetY, 0, cards.length)));
-        const take = cards.slice(0, ci);
+
+        const ci = clamp(1, elCards.length, Math.round(remap(dragBandLo, dragBandHi, offsetY, 0, elCards.length)));
+        const take = elCards.slice(0, ci);
         const orient = elOrient(el);
-        const rest = cards.slice(ci);
+        const rest = elCards.slice(ci);
 
         // TODO update target, re-render, hide if empty
         // TODO sanify cards' particular orientations ; apply orient
@@ -379,6 +376,25 @@ function makeWorld(spec) {
         // TODO dt.setDragImage(img, x, y), use canvas to provide stack depth feedback ; also probably less gap to cursor
 
         world.render(el, rest);
+      });
+
+      container.addEventListener('dragend', ev => {
+        const { dt, el, elCards, cards } = getEvCards(ev);
+        if (!dt || !el) return;
+
+        const { dropEffect } = dt;
+
+        if (dropEffect === 'none') {
+          world.render(el, cards.concat(elCards));
+          console.log('cancel drag', el);
+          return;
+        }
+
+        if (!elCards.length) {
+          console.log('post drag prune', el);
+          el.parentNode?.removeChild(el);
+        }
+
       });
 
       container.addEventListener('dragenter', ev => {
