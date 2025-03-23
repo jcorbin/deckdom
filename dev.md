@@ -1,15 +1,13 @@
-# 2025-03-20
+# 2025-03-22
 
 ## TODO
 
 - actions that should be possible:
-  - [ ] take card
-  - [ ] move card
+  - [~] take card(s)
+  - [~] move card(s)
   - [ ] flip card
   - [ ] rotate card sideways ; also odd angles?
-  - [ ] take stack
-  - [ ] place card
-  - [ ] place stack
+  - [ ] place card(s)
   - [ ] place part of stack
   - [ ] cut stack ... short cut for take / place?
   - [ ] rotate held stack ; nominal reverse
@@ -56,12 +54,59 @@
   - main hand / off hand is ( the only? an? ) initial place?
   - ... mh is bound to mouse events ; first touch point
   - ... oh responds to second touch point ; maybe mouse events initiated by secondary button? modifier key?
-  - mouse/touch start picks 1, shows nearby "...N...all" widget
-    - ... use a slider that we drag/swipe over on purpose
-    - ... primary click or tap picks up (start, trivial or no move, end on same)
-    - ... secondary click or dwell touch places
-  - secondary click or dwell touch with an empty hand show action prompt
-    - ... also have subtle affordance that can be clicked-or-tapped for action prompt
-    - ... clever card back or border art might integrate such callouts
+
+  - drag start picks N based on card-offset cursor Y value, within a 60% inner active band
+    - ... drag progression can then adjust N, finalizing amount when drag exits source element
+
+  - drop on domain seems straight forward
+  - drop on extant stack, probably presents interaction zones
+    - top: stack over
+    - main: riffle with by swiping?
+    - main: cut into by dwell (to settle/cancel riffle) then release?
+    - bottom: stack under
+  - QN: RMB while dragging seems to just cancel the drag, is that preventable?
+    - ... can we use RMB for alternate interaction intent while dragging?
+    - ... at least we can try out the old conceit of modifiers like Ctrl / Shift / Alt
+  - display left/right hand, make them drop zones?
+    - for mouse interaction, clicking a hand could select it as the mouse hand?
+    - for touch, tapping a hand could toggle primacy?
+  - how does drag start evolve when hand not empty?
+    - hand starts empty
+    - ... pickup 3 cards: hand now holds a 3-stack, oriented however was
+    - ... pickup 2 cards: hand now holds a 2-stack and a 3-stack, rendered as a slight radial fan
+    - ... pickup 1 card: hand now holds a car and a 5-stack, rendered as a slight 2-element fan ; the prior 2/3 fan was auto collapsed
+    - i.e. force user to fan out hand if that's what they want, but auto collapse on subsequent pickup
+  - how to tie in click events? ... touch events?
 
 ## Done
+
+- mostly an offline day musing on where to go next
+- post hoc wrote below notes from yesterday, then continued here
+- realized may be able to create a card element immediately on drag start
+  - use it to draw the drag image, same way the dropped stack/card will look
+  - not sure if can get away with orphaned node, or if will need to be in-document, but invisible? display-none?
+  - at any rate, should try to avoid bespoke canvas drawing, offscreen or otherwise
+- realized that drag Y remapping has interesting next steps:
+  - do a similar for click zones, drop zones, etc, which probably evolves to XY vec2 remapping
+  - visualize with canvas-drawn overlay, starting on hover-dwell, evolving on `dragstart`
+  - can also participate in touch events like `touchstart` / etc
+  - the "dead" end zones may nicely afford corner or edge action zones, esp for hover/click interactions
+    - might end up feeling like a card-natural analog of a pie menu
+    - may adapt well to tap-for-actions modality
+
+# 2025-03-21
+
+- pivoted prototype mouse handling code to drag event handling;
+  unsure how far this will work, but it seems promising:
+  - `dragstart` picks up 1 or more cards
+  - amount picked varies based on Y location the drag starts on card 
+  - plan to vary amount being picked based on subsequent `dragover` events
+  - plan to base `click` events to quickly pickup 1 / arbitrary N / all on same Y mapping
+  - plan to add some kind of overlay to show these zones, at least during drag, maybe also in help screen, maybe just proactively on hover-dwell
+- just got the drag behavior done, no dropping yet
+- also plan to further elaborate the drag image for feedback on how much is being picked
+- immediately moving card data from target element dataset to drag event data transfer is neat
+
+# 2025-03-20
+
+- started dev log, musing on (inter)action space
