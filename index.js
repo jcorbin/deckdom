@@ -244,17 +244,18 @@ const smudgeCard = card => {
 
 const dragDataType = 'application/x-webdeck+json';
 const cardDataKey = 'cards';
-const dragDataKey = 'cards-drag';
+const stateDataKey = 'cardsState';
 
 /** @type {[string, string, string]} */
 const orientStyleVars = ['--card-z-flips', '--card-y-flips', '--card-x-flips'];
 
 /**
  * @param {HTMLElement} el
- * @param {Array<string|Card>} cards
+ * @param {Array<string|Card>|null} cards
  */
 const setElCards = (el, cards) => {
-  el.dataset[cardDataKey] = JSON.stringify(
+  if (!cards) delete el.dataset[cardDataKey];
+  else el.dataset[cardDataKey] = JSON.stringify(
     cards.map(c => typeof c === 'string' ? c : smudgeCard(c)));
 };
 
@@ -262,6 +263,55 @@ const setElCards = (el, cards) => {
 const getElCards = el => {
   const data = el.dataset[cardDataKey];
   return data ? parseCards(data) : null;
+};
+
+/** @param {Event} ev */
+const evContext = ev => {
+  const { target } = ev;
+  const ctx = {
+    get el() { return target instanceof HTMLElement ? target : null },
+
+    // TODO get domain()
+    // TODO seek state up parent chain
+    // TODO move state up parent chain
+
+    get state() { return ctx.el?.dataset[stateDataKey] || '' },
+    set state(st) {
+      const { el } = ctx;
+      if (!el) throw new Error('no event element available');
+      el.dataset[stateDataKey] = st;
+    },
+
+    /** @param {string} key */
+    getStateData(key) {
+      const { el } = ctx;
+      if (!el) return '';
+      const dataKey = `${stateDataKey}${key.slice(0, 1).toUpperCase()}${key.slice(1)}`;
+      return el.dataset[dataKey] || '';
+    },
+
+    /** @param {string} key @param {string} val */
+    setStateData(key, val) {
+      const { el } = ctx;
+      if (!el) throw new Error('no event element available');
+      const dataKey = `${stateDataKey}${key.slice(0, 1).toUpperCase()}${key.slice(1)}`;
+      if (val)
+        el.dataset[dataKey] = val;
+      else
+        delete el.dataset[dataKey];
+    },
+
+    get cards() {
+      const { el } = ctx;
+      return el && getElCards(el);
+    },
+    set cards(cards) {
+      const { el } = ctx;
+      if (!el) throw new Error('no event element available');
+      setElCards(el, cards);
+    },
+  };
+  return ctx;
 };
 
 /** @param {Event} ev */
@@ -288,6 +338,8 @@ const getEvCards = ev => {
   const cev = {
     el,
     dt,
+
+    // TODO get dragEl()
 
     get elCards() {
       return el && getElCards(el) || [];
@@ -484,8 +536,16 @@ function makeWorld(spec) {
         st.removeProperty(key);
 
     st.setProperty('--stack-depth', `${cards.length}`);
-    el.draggable = cards.length > 0;
   };
+
+  /** @type {Vec2} */
+  const takeBands = [
+    /* take 1 ... */
+    0.2,
+    /* ... take N ... */
+    0.8,
+    /* ... take all */
+  ];
 
   const world = {
     get spec() {
@@ -501,137 +561,179 @@ function makeWorld(spec) {
     /** @param {HTMLElement} container */
     makeController(container) {
       // TODO customize context menu for stack / card actions
-      // container.addEventListener('contextmenu', ev => ev.preventDefault());
 
-      /** @type {Vec2} */
-      const dragBands = [
-        /* take 1 ... */
-        0.2,
-        /* ... take N ... */
-        0.8,
-        /* ... take all */
-      ];
+      container.addEventListener('mousedown', ev => {
+        const ctx = evContext(ev);
 
-      container.addEventListener('dragstart', ev => {
-        // TODO allow drag to start on domain when holding card(s)?
-
-        // TODO how does card/stack drag start change when holding cards?
-        const cev = getEvCards(ev);
-        const { dt, el, elCards } = cev;
-        if (!dt || !el || !elCards.length) {
-          ev.preventDefault();
+        const { button, buttons } = ev;
+        console.log('down?', ctx.state, button, buttons);
+        if (ctx.state === 'down') {
+          console.log('down??', button, buttons, ctx.getStateData('buttons'));
           return;
         }
 
-        // TODO gesture to pull & flip?
-        const ci = scal.clamp(
-          Math.round(scal.remap2(
-            ev.offsetY,
-            vec2.scale(el.offsetHeight, dragBands),
-            0, elCards.length)
-          ), 1, elCards.length);
-        const take = elCards.slice(0, ci);
-        const ot = orient.fromStyle(orientStyleVars, el.style);
-        const rest = elCards.slice(ci);
-        console.log('drag take', take);
+        ctx.state = 'down';
+        ctx.setStateData('buttons', `${buttons}`);
+        console.log('down.', button, buttons, ctx.el);
 
-        const { id: startElId, added: startElIdOwn } = ensureId(el, 'cardDragStart');
+        // const cards = target instanceof HTMLElement && getElCards(target);
+        // if (!cards) {
+        //   // TODO if avatar hand isn't empty, also allow interaction start
+        //   return;
+        // }
 
-        /** @type {string[]} */
-        const tmpIds = [];
-
-        if (startElIdOwn)
-          tmpIds.push(startElId);
-
-        const dragData = {
-          orient: ot,
-          cards: take.map(smudgeCard),
-          startElId,
-          tmpIds,
-        };
-
-        const names = take
-          .map(card => 'name' in card ? card.name : spec[card.id]?.name)
-          .filter(/** @returns {x is string} */ x => !!x);
-
-        dt.setData('text/plain',
-          names.length > 1 ? names.map(n => `- ${n}\n`).join('\n') : (names[0] || ''));
-        dt.setData(dragDataType, JSON.stringify(dragData));
-        // TODO limit ? dt.effectAllowed = 'move';
-        // TODO attach face image(s)
-        // TODO dt.setDragImage(img, x, y), use canvas to provide stack depth feedback ; also probably less gap to cursor
-
-        world.render(el, rest);
-        // TODO hide if empty? or does .void suffice?
+        // console.log('down', ctx.state, ctx.cards, ctx.el);
+        ev.preventDefault();
       });
 
-      container.addEventListener('dragend', ev => {
-        const cev = getEvCards(ev);
-        const { dt, el, elCards, cards, } = cev;
-        if (!dt || !el) return;
+      container.addEventListener('mouseup', ev => {
+        const ctx = evContext(ev);
 
-        const { dropEffect } = dt;
-
-        cev.cleanup();
-
-        if (dropEffect === 'none') {
-          world.render(el, cards.concat(elCards));
-          console.log('cancel drag', el);
+        if (ctx.state === 'down') {
+          const { button, buttons } = ev;
+          console.log('up', button, buttons, ctx.getStateData('buttons'));
           return;
         }
 
-        if (!elCards.length) {
-          console.log('post drag prune', el);
-          el.parentNode?.removeChild(el);
-        }
-
       });
 
-      container.addEventListener('dragenter', ev => {
-        const cev = getEvCards(ev);
-        const { dt, el, cards } = cev;
-        if (!dt || !cards.length) return;
-
-        if (el === cev.startEl) {
-          // TODO present overlay ; TODO differ when re-enter as if other stack?
-          // TODO re-enter self should interact as if foreign stack? e.g. present actions like (stack under, ... cut into ..., stack over)
-          ev.preventDefault();
-          dt.dropEffect = 'none';
-          console.log('dragging over self');
-          cev.overEl = el;
-          return;
-        }
-
-        console.log('drag enter?', el);
-        // TODO wen cev.overEl = el;
-
-        // TODO ev.preventDefault();
+      container.addEventListener('contextmenu', ev => {
+        // TODO only if ev cards
+        console.log('ctx', ev.target);
+        ev.preventDefault();
       });
 
-      container.addEventListener('dragleave', ev => {
-        const cev = getEvCards(ev);
-        const { dt, el, cards } = cev;
-        if (!dt || !cards.length) return;
+      // container.addEventListener('click', ev => console.log('click', ev.target));
+      // container.addEventListener('mouseover', ev => console.log('over', ev.target));
+      // container.addEventListener('mouseout', ev => console.log('out', ev.target));
 
-        if (el === cev.startEl) {
-          // TODO hide any overlay?
-          return;
-        }
+      // container.addEventListener('mousemove', ev => console.log('move', ev.target, ev.buttons));
 
-        console.log('drag leave', el);
+      // "mouseenter": MouseEvent;
+      // "mouseleave": MouseEvent;
+      // "mousemove": MouseEvent;
+      // "mouseout": MouseEvent;
+      // "mouseover": MouseEvent;
 
-      });
+      // container.addEventListener('dragstart', ev => {
+      //   // TODO allow drag to start on domain when holding card(s)?
+      //
+      //   // TODO how does card/stack drag start change when holding cards?
+      //   const cev = getEvCards(ev);
+      //   const { dt, el, elCards } = cev;
+      //   if (!dt || !el || !elCards.length) {
+      //     ev.preventDefault();
+      //     return;
+      //   }
+      //
+      //   // TODO gesture to pull & flip?
+      //   const takeI = scal.clamp(
+      //     Math.round(scal.remap2(
+      //       ev.offsetY,
+      //       vec2.scale(el.offsetHeight, takeBands),
+      //       0, elCards.length)
+      //     ), 1, elCards.length);
+      //   const take = elCards.slice(0, takeI);
+      //   const ot = orient.fromStyle(orientStyleVars, el.style);
+      //   const rest = elCards.slice(takeI);
+      //   console.log('drag take', take);
+      //
+      //   const { id: startElId, added: startElIdOwn } = ensureId(el, 'cardDragStart');
+      //
+      //   /** @type {string[]} */
+      //   const tmpIds = [];
+      //
+      //   if (startElIdOwn)
+      //     tmpIds.push(startElId);
+      //
+      //   const dragData = {
+      //     orient: ot,
+      //     cards: take.map(smudgeCard),
+      //     startElId,
+      //     tmpIds,
+      //   };
+      //
+      //   const names = take
+      //     .map(card => 'name' in card ? card.name : spec[card.id]?.name)
+      //     .filter(/** @returns {x is string} */ x => !!x);
+      //
+      //   dt.setData('text/plain',
+      //     names.length > 1 ? names.map(n => `- ${n}\n`).join('\n') : (names[0] || ''));
+      //   dt.setData(dragDataType, JSON.stringify(dragData));
+      //   // TODO limit ? dt.effectAllowed = 'move';
+      //   // TODO attach face image(s)
+      //   // TODO dt.setDragImage(img, x, y), use canvas to provide stack depth feedback ; also probably less gap to cursor
+      //
+      //   world.render(el, rest);
+      //   // TODO hide if empty? or does .void suffice?
+      // });
 
-      container.addEventListener('dragover', ev => {
-        // TODO update take when over self
+      // container.addEventListener('dragend', ev => {
+      //   const cev = getEvCards(ev);
+      //   const { dt, el, elCards, cards, } = cev;
+      //   if (!dt || !el) return;
+      //
+      //   const { dropEffect } = dt;
+      //
+      //   cev.cleanup();
+      //
+      //   if (dropEffect === 'none') {
+      //     world.render(el, cards.concat(elCards));
+      //     console.log('cancel drag', el);
+      //     return;
+      //   }
+      //
+      //   if (!elCards.length) {
+      //     console.log('post drag prune', el);
+      //     el.parentNode?.removeChild(el);
+      //   }
+      //
+      // });
 
-        // const cev = getEvCards(ev);
-        // const { dt, el, cards } = cev;
-        // if (!dt || !cards.length) return;
+      // container.addEventListener('dragenter', ev => {
+      //   const cev = getEvCards(ev);
+      //   const { dt, el, cards } = cev;
+      //   if (!dt || !cards.length) return;
+      //
+      //   if (el === cev.startEl) {
+      //     // TODO present overlay ; TODO differ when re-enter as if other stack?
+      //     // TODO re-enter self should interact as if foreign stack? e.g. present actions like (stack under, ... cut into ..., stack over)
+      //     ev.preventDefault();
+      //     dt.dropEffect = 'none';
+      //     console.log('dragging over self');
+      //     cev.overEl = el;
+      //     return;
+      //   }
+      //
+      //   console.log('drag enter?', el);
+      //   // TODO wen cev.overEl = el;
+      //
+      //   // TODO ev.preventDefault();
+      // });
 
-        // TODO ev.preventDefault();
-      });
+      // container.addEventListener('dragleave', ev => {
+      //   const cev = getEvCards(ev);
+      //   const { dt, el, cards } = cev;
+      //   if (!dt || !cards.length) return;
+      //
+      //   if (el === cev.startEl) {
+      //     // TODO hide any overlay?
+      //     return;
+      //   }
+      //
+      //   console.log('drag leave', el);
+      //
+      // });
 
+      // container.addEventListener('dragover', ev => {
+      //   // TODO update take when over self
+      //
+      //   // const cev = getEvCards(ev);
+      //   // const { dt, el, cards } = cev;
+      //   // if (!dt || !cards.length) return;
+      //
+      //   // TODO ev.preventDefault();
+      // });
 
       // console.log(type, target);
       // if (target instanceof HTMLElement) {
