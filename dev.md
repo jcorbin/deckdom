@@ -1,4 +1,4 @@
-# 2025-03-22
+# 2025-03-23
 
 ## TODO
 
@@ -54,10 +54,8 @@
   - main hand / off hand is ( the only? an? ) initial place?
   - ... mh is bound to mouse events ; first touch point
   - ... oh responds to second touch point ; maybe mouse events initiated by secondary button? modifier key?
-
   - drag start picks N based on card-offset cursor Y value, within a 60% inner active band
     - ... drag progression can then adjust N, finalizing amount when drag exits source element
-
   - drop on domain seems straight forward
   - drop on extant stack, probably presents interaction zones
     - top: stack over
@@ -77,8 +75,16 @@
     - ... pickup 1 card: hand now holds a car and a 5-stack, rendered as a slight 2-element fan ; the prior 2/3 fan was auto collapsed
     - i.e. force user to fan out hand if that's what they want, but auto collapse on subsequent pickup
   - how to tie in click events? ... touch events?
+  - maybe drag should mostly move all by default, require drag on edge/border to cut stack?
 
 ## Done
+
+- continued developing drag start/enter/update logic
+  - found out that drag data transfer cannot be updated during enter event
+  - probably only valid during start event
+- so need to lower back to mouse events after all
+
+# 2025-03-22
 
 - mostly an offline day musing on where to go next
 - post hoc wrote below notes from yesterday, then continued here

@@ -1,22 +1,174 @@
+//// TODO break out into some kinda maths module
+// structure inspired by gl-matrix, but based instead around modern array destructuring,
+// and the supposition that result array re-use is less important in modern runtimes
+//
+// also gl-matrix doesn't ship invLerp / remap / clamp functions anyhow
+
+const scal = Object.freeze({
+  /** @param {number} v @param {number} a @param {number} b */
+  clamp(v, a, b) { return Math.max(a, Math.min(b, v)) },
+
+  /** @param {number} v @param {Vec2} ab */
+  clamp2(v, [a, b]) { return Math.max(a, Math.min(b, v)) },
+
+  /** @param {number} p @param {number} a @param {number} b */
+  lerp(p, a, b) { return a + p * (b - a) },
+
+  /** @param {number} p @param {Vec2} ab
+   */
+  lerp2(p, [a, b]) { return a + p * (b - a) },
+
+  /** @param {number} v @param {number} a @param {number} b */
+  invLerp(v, a, b) { return (v - a) / (b - a) },
+
+  /** @param {number} v @param {Vec2} ab */
+  invLerp2(v, [a, b]) { return (v - a) / (b - a) },
+
+  /** @param {number} v @param {number} a @param {number} b @param {number} c @param {number} d */
+  remap(v, a, b, c, d) { return scal.lerp(scal.invLerp(v, a, b), c, d) },
+
+  /** @param {number} v @param {Vec2} ab @param {number} c @param {number} d */
+  remap2(v, ab, c, d) { return scal.lerp(scal.invLerp2(v, ab), c, d) },
+
+  /** @param {number} v @param {number} a @param {number} b @param {Vec2} cd */
+  remap4(v, a, b, cd) { return scal.lerp2(scal.invLerp(v, a, b), cd) },
+
+  /** @param {number} v @param {Vec2} ab @param {Vec2} cd */
+  remap6(v, ab, cd) { return scal.lerp2(scal.invLerp2(v, ab), cd) },
+});
+
 /** @typedef {[x: number, y: number]} Vec2 */
+
+const vec2 = Object.freeze({
+  /** @param {number} s @param {Vec2} v @returns {Vec2} */
+  scale(s, [x, y]) { return [s * x, s * y] },
+
+  // TODO neg / add / sub / mul / dot / cross / clamp / lerp / invLerp / remap
+});
+
 /** @typedef {[x: number, y: number, z: number]} Vec3 */
+
 /** @typedef {[x: number, y: number, z: number, w: number]} Vec4 */
 
-/** @param {number} a @param {number} b @param {number} p */
-const lerp = (a, b, p) => a + p * (b - a);
+/**
+ * Orientation is represented as ZYX "flip units".
+ * A flip unit is simply a count, or partial factor of, half-turns around a given axis.
+ * In other words 1 flip is π radians.
+ *
+ * @typedef {(
+ * | number      // Orientation degenerates to "just regular 2d rotation, in flip units"
+ * | [z: number] // programming convenience, used mostly as a temporary type lift
+ * | Vec2        // ZY flips vector
+ * | Vec3        // ZYX flips vector
+ * )} Orient
+ */
 
-/** @param {number} a @param {number} b @param {number} v */
-const invLerp = (a, b, v) => (v - a) / (b - a);
+const orient = Object.freeze({
 
-/** @param {number} a @param {number} b @param {number} v */
-const clamp = (a, b, v) => Math.max(a, Math.min(b, v));
+  /** @param {any} val @returns {val is Orient} */
+  isInstance(val) {
+    if (typeof val === 'number') return true;
+    if (!Array.isArray(val)) return false;
+    if (!val.every(x => typeof x === 'number')) return false;
+    return val.length > 1;
+  },
+
+  /** @param {Orient} o @returns {Vec3} */
+  unpack(o) {
+    const [z, y = 0, x = 0] = (typeof o === 'number') ? [o] : o;
+    return [z, y, x];
+  },
+
+  /** @param {Orient} o */
+  zInversions(o) {
+    const [_z, y = 0, x = 0] = orient.unpack(o);
+    return x + y;
+  },
+
+
+  /** @param {Orient} o */
+  yInversions(o) {
+    const [z, _y = 0, x = 0] = orient.unpack(o);
+    return x + z;
+  },
+
+
+  /** @param {Orient} o */
+  xInversions(o) {
+    const [z, y = 0, _x = 0] = orient.unpack(o);
+    return y + z;
+  },
+
+  /** @typedef {[string, string, string]} OrientStyleVars */
+
+  /**
+   * @param {Orient} o
+   * @param {OrientStyleVars} vars
+   * @param {CSSStyleDeclaration} style
+   */
+  toStyle(vars, style, o) {
+    const [z, y = 0, x = 0] = typeof o === 'number' ? [o] : o;
+    const [zVar, yVar, xVar] = vars;
+    style.setProperty(zVar, `${z}`);
+    style.setProperty(yVar, `${y}`);
+    style.setProperty(xVar, `${x}`);
+  },
+
+  /**
+   * @param {OrientStyleVars} vars
+   * @param {CSSStyleDeclaration} style
+   * @returns {Orient}
+   */
+  fromStyle(vars, style) {
+    const [zVar, yVar, xVar] = vars;
+    const z = parseFloat(style.getPropertyValue(zVar));
+    const y = parseFloat(style.getPropertyValue(yVar));
+    const x = parseFloat(style.getPropertyValue(xVar));
+    if (x !== 0 && !isNaN(x)) return [z, y, x];
+    if (y !== 0 && !isNaN(y)) return [z, y];
+    return z;
+  },
+
+  // TODO convert to quaternion
+
+});
+
+//// END maths module
+
+// NOTE For card orientations zero is face down, and the Y and X components are usually integers in practice:
+// - cards on a flat surface may only have integer values, having been either flipped face up or down
+// - conversely, a held card may be freely rotated in space
+// - beyond that, animation should be the only other time when partial X or Y flip values are seen
+//
+// Examples:
+// - `0` is a face down card 
+// - `1` is a face down card, reversed
+// - `0.5` is a face down card turnt sideways
+// - `[0,1]` is a face up card, upright
+// - `[1,1]` is a face up card, reversed
+// - `[0.5,1]` is a face up card, sideways (e.g. to form a cross)
+// - `[0,1,1]` is also face down reversed; `x flip * y flip = z flip`
+
+/** @param {string} nom */
+function* generateMonotonicIds(nom) {
+  for (let n = 1; ; n++)
+    yield `${nom}${n}`;
+}
 
 /**
- * @param {number} a @param {number} b
- * @param {number} v
- * @param {number} c @param {number} d
+ * @param {HTMLElement} el
+ * @param {string|Iterable<string>} genId
+ * @returns {{id: string, added: boolean}} -- non-empty
  */
-const remap = (a, b, v, c, d) => lerp(c, d, invLerp(a, b, v));
+function ensureId(el, genId) {
+  if (el.id) return { id: el.id, added: false };
+  for (const id of typeof genId === 'string' ? generateMonotonicIds(genId) : genId)
+    if (!el.ownerDocument.getElementById(id)) {
+      el.id = id;
+      return { id, added: true };
+    }
+  throw new Error('must generate element id');
+}
 
 /** @typedef {{ [name: string]: CardDef}} Spec */
 
@@ -59,91 +211,15 @@ const toCardRef = raw => {
 
 /** @typedef {(CardRef|CardDef) & ParticularCard} Card */
 
-/**
- * Card orientation is represented as a ZYX ordered quaternion (i.e. KJI order if you're being classical about it).
- * However component values are in flip units, not radians.
- * Flip units are basically half-turns about a particular axis; i.e. they're equivalent to π radians.
- * Zero orientation is face down.
- *
- * The Y and X components are usually integers in practice:
- * - cards on a flat surface may only have integer values, having been either flipped face up or down
- * - conversely, a held card may be freely rotated in space
- * - beyond that, animation should be the only other time when partial X or Y flip values are seen
- *
- * Examples:
- * - `0` is a face down card 
- * - `1` is a face down card, reversed
- * - `0.5` is a face down card turnt sideways
- * - `[0,1]` is a face up card, upright
- * - `[1,1]` is a face up card, reversed
- * - `[0.5,1]` is a face up card, sideways (e.g. to form a cross)
- * - `[0,1,1]` is also face down reversed; `x flip * y flip = z flip`
- *
- * @typedef {(
- * | number // just Z
- * | [z: number]                         // singleton 'vector' type system / programming convenience ; shouldn't be used in practice
- * | [z: number, y: number]              // vec2 turn-unit quaternion, x=0
- * | [z: number, y: number, x: number]   // vec3 turn-unit quaternion
- * )} Orientation
- */
-
-/** @param {any} raw @returns {raw is Orientation} */
-function isOrientation(raw) {
-  if (typeof raw === 'number') return true;
-  if (!Array.isArray(raw)) return false;
-  if (!raw.every(x => typeof x === 'number')) return false;
-  return raw.length > 1;
-}
-
-const orientVars = ['--z-flips', '--y-flips', '--x-flips'];
-
-/**
- * @param {HTMLElement} el
- * @param {Orientation} [orient]
- */
-function orientEl(el, orient = 0) {
-  const [z, y = 0, x = 0] = typeof orient === 'number' ? [orient] : orient;
-  el.style.setProperty('--z-flips', `${z}`);
-  el.style.setProperty('--y-flips', `${y}`);
-  el.style.setProperty('--x-flips', `${x}`);
-}
-
-/**
- * @param {HTMLElement} el
- * @returns Orientation
- */
-function elOrient(el) {
-  const z = parseFloat(el.style.getPropertyValue('--z-flips'));
-  const y = parseFloat(el.style.getPropertyValue('--y-flips'));
-  const x = parseFloat(el.style.getPropertyValue('--x-flips'));
-  if (x !== 0) return [z, y, x];
-  if (y !== 0) return [z, y];
-  return z;
-}
-
-/** @param {Orientation|undefined} orient */
-const isFaceUp = orient => {
-  if (!orient) return false;
-  const [_z, y = 0, x = 0] = (typeof orient === 'number') ? [orient] : orient;
-  return (x + y) % 2 == 1; // every x and y flip changes face
-};
-
-/** @param {Orientation|undefined} orient */
-const isReversed = orient => {
-  if (!orient) return false;
-  const [z, _y = 0, x = 0] = (typeof orient === 'number') ? [orient] : orient;
-  return (x + z) % 2 == 1; // only x and z flips will invert the face top-wrt-bottom
-};
-
 // τurn and fliπ
 /** @typedef {object} ParticularCard
- * @property {Orientation} [orient] -- default to 0, aka face down
+ * @property {Orient} [orient] -- default to 0, aka face down
  */
 
 /** @param {any} raw @returns {Card} */
 const toCard = raw => {
   const card = isCardDef(raw) ? raw : toCardRef(raw);
-  if ('orient' in card && card['orient'] !== undefined && !isOrientation(card['orient']))
+  if ('orient' in card && card['orient'] !== undefined && !orient.isInstance(card['orient']))
     throw new Error('invalid card orientation');
   return card;
 }
@@ -167,33 +243,132 @@ const smudgeCard = card => {
 };
 
 const dragDataType = 'application/x-webdeck+json';
-const datasetKey = 'cards';
+const cardDataKey = 'cards';
+const dragDataKey = 'cards-drag';
+
+/** @type {[string, string, string]} */
+const orientStyleVars = ['--card-z-flips', '--card-y-flips', '--card-x-flips'];
 
 /**
  * @param {HTMLElement} el
  * @param {Array<string|Card>} cards
  */
 const setElCards = (el, cards) => {
-  el.dataset[datasetKey] = JSON.stringify(
+  el.dataset[cardDataKey] = JSON.stringify(
     cards.map(c => typeof c === 'string' ? c : smudgeCard(c)));
 };
 
 /** @param {HTMLElement} el */
 const getElCards = el => {
-  const data = el.dataset[datasetKey];
+  const data = el.dataset[cardDataKey];
   return data ? parseCards(data) : null;
 };
 
 /** @param {Event} ev */
 const getEvCards = ev => {
   const { target } = ev;
+
   const el = target instanceof HTMLElement ? target : null;
-  const elCards = el && getElCards(el) || [];
+
+  // TODO dataset[dragDataKey] instead of DragEvent
   const dt = ev instanceof DragEvent ? ev.dataTransfer : null;
-  const rawData = dt?.getData(dragDataType);
-  const dragData = rawData ? JSON.parse(rawData) : null;
-  const cards = dragData ? toCards(dragData.cards) : [];
-  return { el, elCards, dt, cards, dragData };
+
+  /** @type {{[prop: string]: any} | null | undefined } */
+  let _dragData = undefined;
+
+  /** @param {{[prop: string]: any}} data */
+  const updateDragData = data => {
+    const { dragData } = cev;
+    const newData = { ...dragData, ...data };
+    // FIXME rip cannot update data
+    dt?.setData(dragDataType, JSON.stringify(newData));
+    _dragData = newData;
+  };
+
+  const cev = {
+    el,
+    dt,
+
+    get elCards() {
+      return el && getElCards(el) || [];
+    },
+
+    get dragData() {
+      if (_dragData === undefined) _dragData = (() => {
+        const rawData = dt?.getData(dragDataType);
+        if (!rawData) return null;
+
+        const data = JSON.parse(rawData);
+        if (typeof data !== 'object' || !data) return null;
+
+        return /** @type {{[prop: string]: any}} */ (data);
+      })();
+      return _dragData;
+    },
+
+    /** @returns {Card[]} */
+    get cards() {
+      const { dragData } = cev;
+      return dragData ? toCards(dragData['cards']) : [];
+    },
+
+    /** @returns {HTMLElement|null} */
+    get startEl() {
+      const { dragData } = cev;
+      if (!dragData) return null;
+      const document = el?.ownerDocument;
+      if (!document) return null;
+      const startElId = dragData['startElId'];
+      if (typeof startElId !== 'string') return null;
+      return document.getElementById(startElId);
+    },
+
+    /** @returns {HTMLElement|null} */
+    get overEl() {
+      const { dragData } = cev;
+      if (!dragData) return null;
+      const document = el?.ownerDocument;
+      if (!document) return null;
+      const overElId = dragData['overElId'];
+      if (typeof overElId !== 'string') return null;
+      return document.getElementById(overElId);
+    },
+
+    set overEl(el) {
+      if (!el) {
+        updateDragData({ overElId: null });
+        return;
+      }
+      const { id: overElId, added: overElIdOwn } = ensureId(el, 'cardDragOver');
+      if (overElIdOwn) {
+        const tmpIds = [...cev.tmpIds, overElId];
+        updateDragData({ overElId, tmpIds });
+      } else {
+        updateDragData({ overElId });
+      }
+    },
+
+    /** @returns {Array<string>} */
+    get tmpIds() {
+      const { dragData } = cev;
+      const raw = dragData && dragData['tmpIds'];
+      return Array.isArray(raw)
+        ? raw.filter(x => typeof x === 'string')
+        : [];
+    },
+
+    cleanup() {
+      const document = el?.ownerDocument;
+      if (document) {
+        for (const tmpId of cev.tmpIds) {
+          const tmpEl = document.getElementById(tmpId);
+          if (tmpEl?.id === tmpId)
+            tmpEl.removeAttribute('id');
+        }
+      }
+    },
+  };
+  return cev;
 };
 
 /** @param {any} spec */
@@ -240,7 +415,7 @@ export default function init(spec) {
   table.appendChild(h('', el => {
     el.style.top = '20vh';
     el.style.left = '10vw';
-    world.render(el, world.allCardIDs());
+    world.render(el, world.allCardIds());
   }));
 }
 
@@ -280,8 +455,8 @@ function makeWorld(spec) {
     } else {
       el.className = cards.length > 1 ? 'stack' : 'card';
 
-      const { orient } = top;
-      if (!isFaceUp(orient)) {
+      const { orient: ot = 0 } = top;
+      if (orient.zInversions(ot) % 2 == 0) {
         el.classList.add('back');
       } else {
         el.classList.add('face');
@@ -289,9 +464,9 @@ function makeWorld(spec) {
         // const card = 'id' in top ? spec[top.id] : top;
         // if (card) TODO actually render face
       }
-      if (isReversed(orient)) el.classList.add('reversed');
-      orientEl(el, orient);
-      for (const v of orientVars)
+      if (orient.xInversions(ot) % 2 == 1) el.classList.add('reversed');
+      orient.toStyle(orientStyleVars, el.style, ot);
+      for (const v of orientStyleVars)
         updatedVars.add(v);
 
       const def = 'id' in top ? spec[top.id] : top;
@@ -317,7 +492,7 @@ function makeWorld(spec) {
       return spec
     },
 
-    allCardIDs() {
+    allCardIds() {
       return Array.from(Object.keys(spec).map(id => `#${id}`));
     },
 
@@ -328,40 +503,51 @@ function makeWorld(spec) {
       // TODO customize context menu for stack / card actions
       // container.addEventListener('contextmenu', ev => ev.preventDefault());
 
+      /** @type {Vec2} */
+      const dragBands = [
+        /* take 1 ... */
+        0.2,
+        /* ... take N ... */
+        0.8,
+        /* ... take all */
+      ];
+
       container.addEventListener('dragstart', ev => {
-        const { dt, el, elCards } = getEvCards(ev);
+        // TODO allow drag to start on domain when holding card(s)?
+
+        // TODO how does card/stack drag start change when holding cards?
+        const cev = getEvCards(ev);
+        const { dt, el, elCards } = cev;
         if (!dt || !el || !elCards.length) {
           ev.preventDefault();
           return;
         }
 
-
-        /** @type {Vec2} */
-        const dragBands = [
-          /* take 1 ... */
-          0.2,
-          /* ... take N ... */
-          0.8,
-          /* ... take all */
-        ];
-
-        const { offsetHeight } = el;
-        const { offsetY } = ev;
-        const dragBandLo = offsetHeight * dragBands[0];
-        const dragBandHi = offsetHeight * dragBands[1];
-
-
-        const ci = clamp(1, elCards.length, Math.round(remap(dragBandLo, dragBandHi, offsetY, 0, elCards.length)));
+        // TODO gesture to pull & flip?
+        const ci = scal.clamp(
+          Math.round(scal.remap2(
+            ev.offsetY,
+            vec2.scale(el.offsetHeight, dragBands),
+            0, elCards.length)
+          ), 1, elCards.length);
         const take = elCards.slice(0, ci);
-        const orient = elOrient(el);
+        const ot = orient.fromStyle(orientStyleVars, el.style);
         const rest = elCards.slice(ci);
+        console.log('drag take', take);
 
-        // TODO update target, re-render, hide if empty
-        // TODO sanify cards' particular orientations ; apply orient
+        const { id: startElId, added: startElIdOwn } = ensureId(el, 'cardDragStart');
+
+        /** @type {string[]} */
+        const tmpIds = [];
+
+        if (startElIdOwn)
+          tmpIds.push(startElId);
 
         const dragData = {
-          orient,
+          orient: ot,
           cards: take.map(smudgeCard),
+          startElId,
+          tmpIds,
         };
 
         const names = take
@@ -371,18 +557,22 @@ function makeWorld(spec) {
         dt.setData('text/plain',
           names.length > 1 ? names.map(n => `- ${n}\n`).join('\n') : (names[0] || ''));
         dt.setData(dragDataType, JSON.stringify(dragData));
-        dt.effectAllowed = 'move';
+        // TODO limit ? dt.effectAllowed = 'move';
         // TODO attach face image(s)
         // TODO dt.setDragImage(img, x, y), use canvas to provide stack depth feedback ; also probably less gap to cursor
 
         world.render(el, rest);
+        // TODO hide if empty? or does .void suffice?
       });
 
       container.addEventListener('dragend', ev => {
-        const { dt, el, elCards, cards } = getEvCards(ev);
+        const cev = getEvCards(ev);
+        const { dt, el, elCards, cards, } = cev;
         if (!dt || !el) return;
 
         const { dropEffect } = dt;
+
+        cev.cleanup();
 
         if (dropEffect === 'none') {
           world.render(el, cards.concat(elCards));
@@ -398,14 +588,50 @@ function makeWorld(spec) {
       });
 
       container.addEventListener('dragenter', ev => {
+        const cev = getEvCards(ev);
+        const { dt, el, cards } = cev;
+        if (!dt || !cards.length) return;
+
+        if (el === cev.startEl) {
+          // TODO present overlay ; TODO differ when re-enter as if other stack?
+          // TODO re-enter self should interact as if foreign stack? e.g. present actions like (stack under, ... cut into ..., stack over)
+          ev.preventDefault();
+          dt.dropEffect = 'none';
+          console.log('dragging over self');
+          cev.overEl = el;
+          return;
+        }
+
+        console.log('drag enter?', el);
+        // TODO wen cev.overEl = el;
+
         // TODO ev.preventDefault();
+      });
+
+      container.addEventListener('dragleave', ev => {
+        const cev = getEvCards(ev);
+        const { dt, el, cards } = cev;
+        if (!dt || !cards.length) return;
+
+        if (el === cev.startEl) {
+          // TODO hide any overlay?
+          return;
+        }
+
+        console.log('drag leave', el);
+
       });
 
       container.addEventListener('dragover', ev => {
+        // TODO update take when over self
+
+        // const cev = getEvCards(ev);
+        // const { dt, el, cards } = cev;
+        // if (!dt || !cards.length) return;
+
         // TODO ev.preventDefault();
       });
 
-      // TODO dragexit?
 
       // console.log(type, target);
       // if (target instanceof HTMLElement) {
