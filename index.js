@@ -339,7 +339,6 @@ const elState = ref => {
 
   const ctx = {
     get el() { return ref },
-
     // TODO set el(el: HTMLElement)
 
     get domain() {
@@ -449,115 +448,6 @@ const elState = ref => {
 };
 
 /** @typedef {ReturnType<typeof elState>} ElState */
-
-/** @param {Event} ev */
-const getEvCards = ev => {
-  const { target } = ev;
-
-  const el = target instanceof HTMLElement ? target : null;
-
-  // TODO dataset[dragDataKey] instead of DragEvent
-  const dt = ev instanceof DragEvent ? ev.dataTransfer : null;
-
-  /** @type {{[prop: string]: any} | null | undefined } */
-  let _dragData = undefined;
-
-  /** @param {{[prop: string]: any}} data */
-  const updateDragData = data => {
-    const { dragData } = cev;
-    const newData = { ...dragData, ...data };
-    // FIXME rip cannot update data
-    dt?.setData(dragDataType, JSON.stringify(newData));
-    _dragData = newData;
-  };
-
-  const cev = {
-    el,
-    dt,
-
-    // TODO get dragEl()
-
-    get elCards() {
-      return el && getElCards(el) || [];
-    },
-
-    get dragData() {
-      if (_dragData === undefined) _dragData = (() => {
-        const rawData = dt?.getData(dragDataType);
-        if (!rawData) return null;
-
-        const data = JSON.parse(rawData);
-        if (typeof data !== 'object' || !data) return null;
-
-        return /** @type {{[prop: string]: any}} */ (data);
-      })();
-      return _dragData;
-    },
-
-    /** @returns {Card[]} */
-    get cards() {
-      const { dragData } = cev;
-      return dragData ? toCards(dragData['cards']) : [];
-    },
-
-    /** @returns {HTMLElement|null} */
-    get startEl() {
-      const { dragData } = cev;
-      if (!dragData) return null;
-      const document = el?.ownerDocument;
-      if (!document) return null;
-      const startElId = dragData['startElId'];
-      if (typeof startElId !== 'string') return null;
-      return document.getElementById(startElId);
-    },
-
-    /** @returns {HTMLElement|null} */
-    get overEl() {
-      const { dragData } = cev;
-      if (!dragData) return null;
-      const document = el?.ownerDocument;
-      if (!document) return null;
-      const overElId = dragData['overElId'];
-      if (typeof overElId !== 'string') return null;
-      return document.getElementById(overElId);
-    },
-
-    set overEl(el) {
-      if (!el) {
-        updateDragData({ overElId: null });
-        return;
-      }
-      const { id: overElId, added: overElIdOwn } = ensureId(el, 'cardDragOver');
-      if (overElIdOwn) {
-        const tmpIds = [...cev.tmpIds, overElId];
-        updateDragData({ overElId, tmpIds });
-      } else {
-        updateDragData({ overElId });
-      }
-    },
-
-    /** @returns {Array<string>} */
-    get tmpIds() {
-      const { dragData } = cev;
-      const raw = dragData && dragData['tmpIds'];
-      return Array.isArray(raw)
-        ? raw.filter(x => typeof x === 'string')
-        : [];
-    },
-
-    cleanup() {
-      const document = el?.ownerDocument;
-      if (document) {
-        for (const tmpId of cev.tmpIds) {
-          const tmpEl = document.getElementById(tmpId);
-          if (tmpEl?.id === tmpId)
-            tmpEl.removeAttribute('id');
-        }
-      }
-    },
-  };
-  return cev;
-};
 
 /** @param {any} spec */
 export default function init(spec) {
@@ -733,6 +623,7 @@ function makeWorld(spec) {
         world.render(takeEl, takeCards);
         orient.toStyle(orientStyleVars, takeEl.style,
           orient.fromStyle(orientStyleVars, startEl.style));
+        takeEl.style.position = 'absolute';
         ctx.setDomData('dragTakeId', ctx.track(takeEl));
 
         // TODO gesture to pull & flip? based on overlay action regions?
@@ -762,12 +653,15 @@ function makeWorld(spec) {
 
       /** @param {ElState} ctx */
       const handleDragOver = ctx => {
-
         const takeId = ctx.getData('dragTakeId');
         const takeEl = takeId ? ctx.el.ownerDocument.getElementById(takeId) : null;
         if (takeEl) {
-          const at = vec2.fromString(ctx.getData('moveAt'));
-          // TODO add offset to domain from ctx.el
+          const at = vec2.fromString(ctx.getData('moveAtAbs'));
+          for (
+            let op = takeEl.offsetParent;
+            op && op instanceof HTMLElement;
+            op = op.offsetParent
+          ) at[0] -= op.offsetLeft, at[1] -= op.offsetTop;
           vec2.toStyleTopLeft(vec2.add(at, dragImageOffset), takeEl.style);
         }
 
@@ -806,6 +700,8 @@ function makeWorld(spec) {
             takeEl.parentNode?.removeChild(takeEl);
           }
         } else {
+          // TODO finalize take position, relativize into dropped parent
+          // TODO prime that data during dragenter/over proposition
 
           console.log('dragend', {
             start: startEl,
@@ -871,8 +767,9 @@ function makeWorld(spec) {
         const st = ctx.getData('state');
         if (!st.startsWith('mouse')) return;
 
-        const { offsetX, offsetY } = ev;
+        const { offsetX, offsetY, pageX, pageY } = ev;
         ctx.setData('moveAt', `${offsetX},${offsetY}`);
+        ctx.setData('moveAtAbs', `${pageX},${pageY}`);
 
         const buttons = ctx.getData('buttons');
 

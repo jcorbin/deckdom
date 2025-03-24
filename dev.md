@@ -1,4 +1,4 @@
-# 2025-03-23
+# 2025-03-24
 
 ## TODO
 
@@ -50,34 +50,35 @@
 
 ## WIP
 
-- interaction
-  - main hand / off hand is ( the only? an? ) initial place?
-  - ... mh is bound to mouse events ; first touch point
-  - ... oh responds to second touch point ; maybe mouse events initiated by secondary button? modifier key?
-  - drag start picks N based on card-offset cursor Y value, within a 60% inner active band
+- basic interaction
+  - [x] drag start picks N based on card-offset cursor Y value, within a 60% inner active band
     - ... drag progression can then adjust N, finalizing amount when drag exits source element
-  - drop on domain seems straight forward
-  - drop on extant stack, probably presents interaction zones
+  - [x] drop on domain seems straight forward
+  - [ ] drop on extant stack, probably presents interaction zones
     - top: stack over
     - main: riffle with by swiping?
     - main: cut into by dwell (to settle/cancel riffle) then release?
     - bottom: stack under
-  - QN: RMB while dragging seems to just cancel the drag, is that preventable?
-    - ... can we use RMB for alternate interaction intent while dragging?
-    - ... at least we can try out the old conceit of modifiers like Ctrl / Shift / Alt
-  - display left/right hand, make them drop zones?
+  - [ ] play with secondary buttons clicks while dragging
+  - [~] main hand / off hand is ( the only? an? ) initial place?
+  - ... mh is bound to mouse events ; first touch point
+  - ... oh responds to second touch point ; maybe mouse events initiated by secondary button? modifier key?
+  - [ ] display left/right hand, make them drop zones?
     - for mouse interaction, clicking a hand could select it as the mouse hand?
     - for touch, tapping a hand could toggle primacy?
-  - how does drag start evolve when hand not empty?
+  - [ ] how does drag start evolve when hand not empty?
     - hand starts empty
     - ... pickup 3 cards: hand now holds a 3-stack, oriented however was
     - ... pickup 2 cards: hand now holds a 2-stack and a 3-stack, rendered as a slight radial fan
     - ... pickup 1 card: hand now holds a car and a 5-stack, rendered as a slight 2-element fan ; the prior 2/3 fan was auto collapsed
     - i.e. force user to fan out hand if that's what they want, but auto collapse on subsequent pickup
-  - how to tie in click events? ... touch events?
-  - maybe drag should mostly move all by default, require drag on edge/border to cut stack?
+  - [ ] basic click events
+  - [ ] touch events ; pointer events
+- maybe drag should mostly move all by default, require drag on edge/border to cut stack?
 
 ## Done
+
+# 2025-03-23
 
 - continued developing drag start/enter/update logic
   - found out that drag data transfer cannot be updated during enter event
