@@ -40,10 +40,53 @@ const scal = Object.freeze({
 /** @typedef {[x: number, y: number]} Vec2 */
 
 const vec2 = Object.freeze({
+  /** @param {Vec2} v */
+  toString([x, y]) { return `${x},${y}` },
+
+  /** @param {string} s @returns {Vec2} */
+  fromString(s) {
+    const match = /^(.+?),(.+?)(?:$|,.*)/.exec(s);
+    const [_, sx = '', sy = ''] = match || [];
+    return [parseFloat(sx), parseFloat(sy)];
+  },
+
+  /**
+   * @param {Vec2} xy
+   * @param {HTMLElement|CSSStyleDeclaration} elOrStyle
+   */
+  toStyleTopLeft([x, y], elOrStyle) {
+    const style = elOrStyle instanceof CSSStyleDeclaration ? elOrStyle : elOrStyle.style;
+    style.left = `${x}px`;
+    style.top = `${y}px`;
+  },
+
   /** @param {number} s @param {Vec2} v @returns {Vec2} */
   scale(s, [x, y]) { return [s * x, s * y] },
 
-  // TODO neg / add / sub / mul / dot / cross / clamp / lerp / invLerp / remap
+  /** @param {Vec2} a @returns {Vec2} */
+  neg([ax, ay]) { return [-ax, -ay] },
+
+  /** @param {Vec2} a @param {Vec2} b @returns {Vec2} */
+  add([ax, ay], [bx, by]) { return [ax + bx, ay + by] },
+
+  /** @param {Vec2} a @param {Vec2} b @returns {Vec2} */
+  sub([ax, ay], [bx, by]) { return [ax - bx, ay - by] },
+
+  /** @param {Vec2} a @param {Vec2} b @returns {Vec2} */
+  mul([ax, ay], [bx, by]) { return [ax * bx, ay * by] },
+
+  // TODO dot / cross / norm
+
+  /** @param {Vec2} a @param {Vec2} b @returns {Vec2} */
+  min([ax, ay], [bx, by]) { return [Math.min(ax, bx), Math.min(ay, by)] },
+
+  /** @param {Vec2} a @param {Vec2} b @returns {Vec2} */
+  max([ax, ay], [bx, by]) { return [Math.max(ax, bx), Math.max(ay, by)] },
+
+  /** @param {Vec2} v @param {Vec2} a @param {Vec2} b @returns {Vec2} */
+  clamp(v, a, b) { return vec2.max(a, vec2.min(b, v)) },
+
+  // TODO lerp / invLerp / remap
 });
 
 /** @typedef {[x: number, y: number, z: number]} Vec3 */
@@ -244,7 +287,13 @@ const smudgeCard = card => {
 
 const dragDataType = 'application/x-webdeck+json';
 const cardDataKey = 'cards';
-const stateDataKey = 'cardsState';
+const stateDataKey = 'cardsUi';
+
+/** @param {HTMLElement} el @param {string} key */
+const getElData = (el, key) => {
+  const dataKey = `${stateDataKey}${key.slice(0, 1).toUpperCase()}${key.slice(1)}`;
+  return dataKey in el.dataset && el.dataset[dataKey] || '';
+};
 
 /** @type {[string, string, string]} */
 const orientStyleVars = ['--card-z-flips', '--card-y-flips', '--card-x-flips'];
@@ -268,51 +317,138 @@ const getElCards = el => {
 /** @param {Event} ev */
 const evContext = ev => {
   const { target } = ev;
+  if (!(target instanceof HTMLElement)) return null;
+  return elState(target);
+};
+
+/** @param {HTMLElement} ref */
+const elState = ref => {
+  function* walk() {
+    let el = ref;
+    do {
+      yield el;
+      if (el.classList.contains('domain')) break;
+      if (el === el.ownerDocument.body) return;
+      const { parentNode } = el;
+      if (!parentNode) break;
+      if (!(parentNode instanceof HTMLElement)) return;
+      el = parentNode;
+    } while (el);
+    // TODO keep going to root .domain?
+  }
+
   const ctx = {
-    get el() { return target instanceof HTMLElement ? target : null },
+    get el() { return ref },
 
-    // TODO get domain()
-    // TODO seek state up parent chain
-    // TODO move state up parent chain
+    // TODO set el(el: HTMLElement)
 
-    get state() { return ctx.el?.dataset[stateDataKey] || '' },
-    set state(st) {
-      const { el } = ctx;
-      if (!el) throw new Error('no event element available');
-      el.dataset[stateDataKey] = st;
+    get domain() {
+      let el = ref;
+      for (el of walk()) { }
+      return el;
+    },
+
+    close() {
+      ctx.cleanup();
+      for (const el of walk())
+        for (const key of Object.keys(el.dataset))
+          if (key.startsWith(stateDataKey))
+            delete el.dataset[key];
     },
 
     /** @param {string} key */
-    getStateData(key) {
-      const { el } = ctx;
-      if (!el) return '';
+    getData(key) {
       const dataKey = `${stateDataKey}${key.slice(0, 1).toUpperCase()}${key.slice(1)}`;
-      return el.dataset[dataKey] || '';
+      for (const el of walk())
+        if (dataKey in el.dataset)
+          return el.dataset[dataKey] || '';
+      return '';
     },
 
     /** @param {string} key @param {string} val */
-    setStateData(key, val) {
-      const { el } = ctx;
-      if (!el) throw new Error('no event element available');
+    setData(key, val) {
       const dataKey = `${stateDataKey}${key.slice(0, 1).toUpperCase()}${key.slice(1)}`;
       if (val)
-        el.dataset[dataKey] = val;
+        ref.dataset[dataKey] = val;
+      else if (Array.from(walk()).some(el => el !== ref && dataKey in el))
+        ref.dataset[dataKey] = '';
       else
-        delete el.dataset[dataKey];
+        delete ref.dataset[dataKey];
     },
 
-    get cards() {
-      const { el } = ctx;
-      return el && getElCards(el);
+    /** @param {string} key @param {string} val */
+    setDomData(key, val) {
+      const dataKey = `${stateDataKey}${key.slice(0, 1).toUpperCase()}${key.slice(1)}`;
+      const dom = ctx.domain;
+      if (val)
+        dom.dataset[dataKey] = val;
+      else
+        delete ref.dataset[dataKey];
     },
-    set cards(cards) {
-      const { el } = ctx;
-      if (!el) throw new Error('no event element available');
-      setElCards(el, cards);
+
+    /** @param {HTMLElement} el @param {string} kind */
+    track(el, kind = 'eventInvolved') {
+      const [cls = kind] = el.classList;
+      const { id, added } = ensureId(el, cls);
+      if (added) ctx.appendDomData('tmpIds', id);
+      return id;
     },
+
+    /** @param {string} key @param {string} val */
+    appendData(key, val) {
+      const dataKey = `${stateDataKey}${key.slice(0, 1).toUpperCase()}${key.slice(1)}`;
+      if (val) {
+        const prior = ref.dataset[dataKey];
+        const raw = prior ? JSON.parse(prior) : null;
+        ref.dataset[dataKey] = JSON.stringify(Array.isArray(raw) ? [...raw, val] : [val]);
+      }
+    },
+
+    /** @param {string} key @param {string} val */
+    appendDomData(key, val) {
+      const dataKey = `${stateDataKey}${key.slice(0, 1).toUpperCase()}${key.slice(1)}`;
+      if (val) {
+        const dom = ctx.domain;
+        const prior = dom.dataset[dataKey];
+        const raw = prior ? JSON.parse(prior) : null;
+        dom.dataset[dataKey] = JSON.stringify(Array.isArray(raw) ? [...raw, val] : [val]);
+      }
+    },
+
+    /** @param {string} key */
+    *iterData(key) {
+      const dataKey = `${stateDataKey}${key.slice(0, 1).toUpperCase()}${key.slice(1)}`;
+      for (const el of walk()) {
+        if (dataKey in el.dataset) {
+          const val = el.dataset[dataKey];
+          if (!val) continue;
+          const raw = JSON.parse(val);
+          if (Array.isArray(raw)) yield* raw;
+          else yield raw;
+        }
+      }
+    },
+
+    cleanup() {
+      const document = ctx.el.ownerDocument;
+      const tmpIds = Array.from(ctx.iterData('tmpIds'));
+      for (const id of tmpIds) {
+        if (typeof id !== 'string') continue;
+        const el = document.getElementById(id);
+        if (!el) continue;
+        for (const key of Object.keys(el.dataset))
+          if (key.startsWith(stateDataKey))
+            delete el.dataset[key];
+        if (el.id === id)
+          el.removeAttribute('id');
+      }
+    },
+
   };
   return ctx;
 };
+
+/** @typedef {ReturnType<typeof elState>} ElState */
 
 /** @param {Event} ev */
 const getEvCards = ev => {
@@ -560,185 +696,232 @@ function makeWorld(spec) {
 
     /** @param {HTMLElement} container */
     makeController(container) {
-      // TODO customize context menu for stack / card actions
+      // TODO better drag image positioning
+      /** @type {Vec2} */
+      const dragImageOffset = [5, 5];
 
-      container.addEventListener('mousedown', ev => {
-        const ctx = evContext(ev);
-
-        const { button, buttons } = ev;
-        console.log('down?', ctx.state, button, buttons);
-        if (ctx.state === 'down') {
-          console.log('down??', button, buttons, ctx.getStateData('buttons'));
-          return;
+      /** @param {ElState} ctx @param {MouseEvent} ev */
+      const handleClick = (ctx, ev) => {
+        if (ev.buttons) {
+          console.log('in situ click', ev.button);
+          // TODO handle secondary clicks while other held
+        } else {
+          console.log('fin click', ev.button);
         }
+      };
 
-        ctx.state = 'down';
-        ctx.setStateData('buttons', `${buttons}`);
-        console.log('down.', button, buttons, ctx.el);
+      /** @param {ElState} ctx */
+      const handleDragTake = ctx => {
+        const startId = ctx.getData('dragStartId');
+        const startEl = startId ? ctx.el.ownerDocument.getElementById(startId) : null;
+        if (!startEl) return;
 
-        // const cards = target instanceof HTMLElement && getElCards(target);
-        // if (!cards) {
-        //   // TODO if avatar hand isn't empty, also allow interaction start
+        const startCards = startEl && getElCards(startEl) || [];
+
+        const [_offsetX, offsetY] = vec2.fromString(getElData(startEl, 'moveAt'));
+
+        const takeEl = ctx.domain.appendChild(ctx.el.ownerDocument.createElement('div'));
+        const takeI = scal.clamp(
+          Math.round(scal.remap2(
+            offsetY,
+            vec2.scale(startEl.offsetHeight, takeBands),
+            0, startCards.length)
+          ), 1, startCards.length);
+        const takeCards = startCards.slice(0, takeI);
+        const restCards = startCards.slice(takeI);
+        world.render(startEl, restCards); // TODO hide if empty? or does .void suffice?
+        world.render(takeEl, takeCards);
+        orient.toStyle(orientStyleVars, takeEl.style,
+          orient.fromStyle(orientStyleVars, startEl.style));
+        ctx.setDomData('dragTakeId', ctx.track(takeEl));
+
+        // TODO gesture to pull & flip? based on overlay action regions?
+      };
+
+      /** @param {ElState} ctx */
+      const handleDragEnter = ctx => {
+        const id = ctx.track(ctx.el);
+        // const overId = ctx.getData('dragOverId');
+        // const takeId = ctx.getData('dragTakeId');
+        // const startId = ctx.getData('dragStartId');
+
+        console.log('dragenter', id);
+        // TODO show overlay
+        // TODO update effect indicator
+        // if (el === cev.startEl) {
+        //   // TODO present overlay ; TODO differ when re-enter as if other stack?
+        //   // TODO re-enter self should interact as if foreign stack? e.g. present actions like (stack under, ... cut into ..., stack over)
+        //   ev.preventDefault();
+        //   dt.dropEffect = 'none';
+        //   console.log('dragging over self');
+        //   cev.overEl = el;
         //   return;
         // }
 
-        // console.log('down', ctx.state, ctx.cards, ctx.el);
+      };
+
+      /** @param {ElState} ctx */
+      const handleDragOver = ctx => {
+
+        const takeId = ctx.getData('dragTakeId');
+        const takeEl = takeId ? ctx.el.ownerDocument.getElementById(takeId) : null;
+        if (takeEl) {
+          const at = vec2.fromString(ctx.getData('moveAt'));
+          // TODO add offset to domain from ctx.el
+          vec2.toStyleTopLeft(vec2.add(at, dragImageOffset), takeEl.style);
+        }
+
+        // TODO update overlay
+        // TODO update effect indicator based on overlay
+      };
+
+      /** @param {ElState} ctx */
+      const handleDragLeave = ctx => {
+        const overId = ctx.getData('dragOverId');
+        const overEl = overId ? ctx.el.ownerDocument.getElementById(overId) : null;
+        console.log('dragleave', overEl);
+        // TODO hide any overlay
+      };
+
+      /** @param {ElState} ctx */
+      const handleDragEnd = (ctx, cancel = false) => {
+        const takeId = ctx.getData('dragTakeId');
+        const startId = ctx.getData('dragStartId');
+        const takeEl = takeId ? ctx.el.ownerDocument.getElementById(takeId) : null;
+        const startEl = ctx.el.ownerDocument.getElementById(startId);
+
+        const startCards = startEl && getElCards(startEl) || [];
+        const takeCards = takeEl && getElCards(takeEl) || [];
+        // TODO cancel ||= dropEffect === 'none'
+
+        if (cancel) {
+
+          console.log('dragcancel', {
+            start: startEl,
+            take: takeEl,
+          });
+
+          if (startEl && takeEl) {
+            world.render(startEl, startCards.concat(takeCards));
+            takeEl.parentNode?.removeChild(takeEl);
+          }
+        } else {
+
+          console.log('dragend', {
+            start: startEl,
+            take: takeEl,
+            drop: ctx.el,
+            went: startEl !== ctx.el,
+          });
+
+          if (startEl && !startCards.length)
+            startEl.parentNode?.removeChild(startEl);
+        }
+      };
+
+      container.addEventListener('mousedown', ev => {
+        const ctx = evContext(ev);
+        if (!ctx) return;
         ev.preventDefault();
+
+        const { button, buttons, offsetX, offsetY } = ev;
+        if (!ctx.getData('state')) {
+          ctx.setData('state', 'mousedown');
+          ctx.setData('downButton', `${button}`);
+          ctx.setData('downAt', `${offsetX},${offsetY}`);
+        }
+        ctx.setData('buttons', `${buttons}`);
+        // TODO present action feedback based on cards and hand ; hand choice from button
+        // const cards = getElCards(ctx.el);
       });
 
+      // TODO other ways to cancel a drag? <Esc> key? loose focus?
       container.addEventListener('mouseup', ev => {
         const ctx = evContext(ev);
+        if (!ctx) return;
+        ev.preventDefault();
 
-        if (ctx.state === 'down') {
+        const st = ctx.getData('state');
+        if (st.startsWith('mouse')) {
           const { button, buttons } = ev;
-          console.log('up', button, buttons, ctx.getStateData('buttons'));
+          if (buttons) {
+            ctx.setData('buttons', `${buttons}`);
+            handleClick(ctx, ev);
+          } else {
+            if (st === 'mousedown') {
+              handleClick(ctx, ev);
+            } else if (st === 'mousedrag') {
+              handleDragEnd(ctx);
+            } else {
+
+              console.log('fin ???', st, button);
+            }
+            ctx.close();
+          }
+        }
+      });
+
+      container.addEventListener('mousemove', ev => {
+        const ctx = evContext(ev);
+        if (!ctx) return;
+        ev.preventDefault();
+
+        // TODO hover/dwell tracking
+
+        const st = ctx.getData('state');
+        if (!st.startsWith('mouse')) return;
+
+        const { offsetX, offsetY } = ev;
+        ctx.setData('moveAt', `${offsetX},${offsetY}`);
+
+        const buttons = ctx.getData('buttons');
+
+        if (st === 'mousedown' && `${ev.buttons}` === buttons) {
+          const { el } = ctx;
+          const cards = getElCards(el);
+          if (!cards?.length) return;
+          const id = ctx.track(ctx.el);
+          ctx.setData('state', '');
+          ctx.setData('buttons', '');
+          ctx.setDomData('state', 'mousedrag');
+          ctx.setDomData('dragStartId', id);
+          ctx.setDomData('dragOverId', id);
+          ctx.setDomData('buttons', `${ev.buttons}`);
           return;
         }
 
+        if (st === 'mousedrag') {
+          if (!ev.buttons) {
+            handleDragEnd(ctx, true);
+            ctx.close();
+            return;
+          }
+
+          const id = ctx.track(ctx.el);
+          const overId = ctx.getData('dragOverId');
+          const takeId = ctx.getData('dragTakeId');
+          const startId = ctx.getData('dragStartId');
+          if (overId !== id) {
+            if (!takeId && overId == startId) {
+              handleDragTake(ctx);
+            } else {
+              handleDragLeave(ctx);
+            }
+            ctx.setDomData('dragOverId', id);
+            handleDragEnter(ctx);
+          }
+          handleDragOver(ctx);
+        }
       });
 
       container.addEventListener('contextmenu', ev => {
-        // TODO only if ev cards
-        console.log('ctx', ev.target);
+        const ctx = evContext(ev);
+        if (!ctx) return;
+        const st = ctx.getData('state');
+        console.log('ctx?', st);
+        // TODO display own based on cards / hand? only if not dragging?
         ev.preventDefault();
       });
-
-      // container.addEventListener('click', ev => console.log('click', ev.target));
-      // container.addEventListener('mouseover', ev => console.log('over', ev.target));
-      // container.addEventListener('mouseout', ev => console.log('out', ev.target));
-
-      // container.addEventListener('mousemove', ev => console.log('move', ev.target, ev.buttons));
-
-      // "mouseenter": MouseEvent;
-      // "mouseleave": MouseEvent;
-      // "mousemove": MouseEvent;
-      // "mouseout": MouseEvent;
-      // "mouseover": MouseEvent;
-
-      // container.addEventListener('dragstart', ev => {
-      //   // TODO allow drag to start on domain when holding card(s)?
-      //
-      //   // TODO how does card/stack drag start change when holding cards?
-      //   const cev = getEvCards(ev);
-      //   const { dt, el, elCards } = cev;
-      //   if (!dt || !el || !elCards.length) {
-      //     ev.preventDefault();
-      //     return;
-      //   }
-      //
-      //   // TODO gesture to pull & flip?
-      //   const takeI = scal.clamp(
-      //     Math.round(scal.remap2(
-      //       ev.offsetY,
-      //       vec2.scale(el.offsetHeight, takeBands),
-      //       0, elCards.length)
-      //     ), 1, elCards.length);
-      //   const take = elCards.slice(0, takeI);
-      //   const ot = orient.fromStyle(orientStyleVars, el.style);
-      //   const rest = elCards.slice(takeI);
-      //   console.log('drag take', take);
-      //
-      //   const { id: startElId, added: startElIdOwn } = ensureId(el, 'cardDragStart');
-      //
-      //   /** @type {string[]} */
-      //   const tmpIds = [];
-      //
-      //   if (startElIdOwn)
-      //     tmpIds.push(startElId);
-      //
-      //   const dragData = {
-      //     orient: ot,
-      //     cards: take.map(smudgeCard),
-      //     startElId,
-      //     tmpIds,
-      //   };
-      //
-      //   const names = take
-      //     .map(card => 'name' in card ? card.name : spec[card.id]?.name)
-      //     .filter(/** @returns {x is string} */ x => !!x);
-      //
-      //   dt.setData('text/plain',
-      //     names.length > 1 ? names.map(n => `- ${n}\n`).join('\n') : (names[0] || ''));
-      //   dt.setData(dragDataType, JSON.stringify(dragData));
-      //   // TODO limit ? dt.effectAllowed = 'move';
-      //   // TODO attach face image(s)
-      //   // TODO dt.setDragImage(img, x, y), use canvas to provide stack depth feedback ; also probably less gap to cursor
-      //
-      //   world.render(el, rest);
-      //   // TODO hide if empty? or does .void suffice?
-      // });
-
-      // container.addEventListener('dragend', ev => {
-      //   const cev = getEvCards(ev);
-      //   const { dt, el, elCards, cards, } = cev;
-      //   if (!dt || !el) return;
-      //
-      //   const { dropEffect } = dt;
-      //
-      //   cev.cleanup();
-      //
-      //   if (dropEffect === 'none') {
-      //     world.render(el, cards.concat(elCards));
-      //     console.log('cancel drag', el);
-      //     return;
-      //   }
-      //
-      //   if (!elCards.length) {
-      //     console.log('post drag prune', el);
-      //     el.parentNode?.removeChild(el);
-      //   }
-      //
-      // });
-
-      // container.addEventListener('dragenter', ev => {
-      //   const cev = getEvCards(ev);
-      //   const { dt, el, cards } = cev;
-      //   if (!dt || !cards.length) return;
-      //
-      //   if (el === cev.startEl) {
-      //     // TODO present overlay ; TODO differ when re-enter as if other stack?
-      //     // TODO re-enter self should interact as if foreign stack? e.g. present actions like (stack under, ... cut into ..., stack over)
-      //     ev.preventDefault();
-      //     dt.dropEffect = 'none';
-      //     console.log('dragging over self');
-      //     cev.overEl = el;
-      //     return;
-      //   }
-      //
-      //   console.log('drag enter?', el);
-      //   // TODO wen cev.overEl = el;
-      //
-      //   // TODO ev.preventDefault();
-      // });
-
-      // container.addEventListener('dragleave', ev => {
-      //   const cev = getEvCards(ev);
-      //   const { dt, el, cards } = cev;
-      //   if (!dt || !cards.length) return;
-      //
-      //   if (el === cev.startEl) {
-      //     // TODO hide any overlay?
-      //     return;
-      //   }
-      //
-      //   console.log('drag leave', el);
-      //
-      // });
-
-      // container.addEventListener('dragover', ev => {
-      //   // TODO update take when over self
-      //
-      //   // const cev = getEvCards(ev);
-      //   // const { dt, el, cards } = cev;
-      //   // if (!dt || !cards.length) return;
-      //
-      //   // TODO ev.preventDefault();
-      // });
-
-      // console.log(type, target);
-      // if (target instanceof HTMLElement) {
-      //   this.render(target);
-      // }
 
       // TODO touch event handling
 

@@ -3,8 +3,8 @@
 ## TODO
 
 - actions that should be possible:
+  - [x] move card(s)
   - [~] take card(s)
-  - [~] move card(s)
   - [ ] flip card
   - [ ] rotate card sideways ; also odd angles?
   - [ ] place card(s)
@@ -83,6 +83,7 @@
   - found out that drag data transfer cannot be updated during enter event
   - probably only valid during start event
 - so need to lower back to mouse events after all
+- got minimal stack cutting drag/drop operation working
 
 # 2025-03-22
 
