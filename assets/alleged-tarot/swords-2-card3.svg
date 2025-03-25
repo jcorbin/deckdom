@@ -1,0 +1,433 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 400 580"
+	width="400" height="580">
+    <title>The Two of Swords (Alleged Tarot 2002)</title>
+    <defs>
+ 	<font id="font-1" horiz-adv-x="12">
+	    <font-face
+		    font-family="Even" 
+		    font-weight="normal"
+		    font-style="normal"
+		    units-per-em="18"
+		    horiz-origin-x="1.5"
+	    	horiz-adv-x="10"
+		    cap-height="12"
+		    x-height="9"
+		    ascent="12"
+		    descent="0"
+		    alphabetic="0" mathematical="6"
+		    ideographic="6" hanging="6">
+	    </font-face>
+	    <missing-glyph horiz-adv-x="11"
+	    	    d="M1,0  v12  h9  v-12  z 
+	    	    M1.75,0.75  h7.5  v10.5  h-7.5 z"/>
+	    <glyph unicode=" " horiz-adv-x="6" d=""/>
+	    <glyph unicode="!" horiz-adv-x="3.5"
+	    	    d="M1,0  v1.5  h1.5  v-1.5  z 
+	    	    M1,3  v9  h1.5  v-9  z"/>
+	    <glyph unicode=":" horiz-adv-x="4"
+	            d="M1,0 h2 v2  h-2  z
+	            M1,6  h2 v2  h-2  z"/>
+	    <glyph unicode=";" horiz-adv-x="4"
+	            d="M1,2  h2  v-2  q0,-2 -2,-2  v1
+	            q1,0 1,0.5  0,0.5 -1,0.5  z
+	            M1,6  h2 v2  h-2  z"/>
+	    <glyph unicode="0" horiz-adv-x="11"
+	            d="M5.5,-0.25  Q10,-0.25 10,5.825
+	            Q10,12.25 5.5,12.25  Q1,12.25 1,5.825
+	            Q1,-0.25 5.5,-0.25  z
+	            M5.5,1.25  Q2.5,1.25 2.5,5.825
+	            Q2.5,10.75 5.5,10.75  Q8.5,10.75 8.5,5.825
+	            Q8.5,1.25 5.5,1.25  z
+	            "/>
+	    <glyph unicode="." horiz-adv-x="4"
+	            d="M1,0 h2 v2  h-2  z"/>
+	    <glyph unicode="," horiz-adv-x="4"
+	            d="M1,2  h2  v-2  q0,-2 -2,-2  v1
+	            q1,0 1,0.5  0,0.5 -1,0.5  z"/>
+	    <glyph unicode="a" horiz-adv-x="11"
+	            d="M5.5,8  q-4.5,0 -4.5,-4  t4.5,-4.25
+	            q3,0 3,1.75  v-1.5  h1.5  v7
+	            q0,5.25 -4.5,5.25
+	            q-2.5,0 -3.5,-1.5  v-1.5  q1,1.5 3.5,1.5
+	            q3,0  3,-3  z
+	            M8.5,6.25  v-3.25  q0,-1.75 -3,-1.75
+	            t-3,2.75 3,2.5 z"/>
+	    <glyph unicode="c" horiz-adv-x="12"
+	            d="M1,5.825
+	            Q1,12 6.5,12.25
+	            q3.5,0 4.5,-1.5  v-1.5  q-2,1.5 -4.5,1.5
+	            Q2.5,10.75 2.5,5.825  2.5,1.25 6.5,1.25
+	            q2.5,0 4.5,1.5  v-1.5   q-1,-1.5 -4.5,-1.5
+	            Q1,-0.25 1,5.825  z"/>
+	    <glyph unicode="d" horiz-adv-x="11.5"
+	            d="M1,0  H4.5
+	            Q11,0 11,5.825  11,12 4.5,12
+	            H1  z
+	            M2.5,1.5  V10.5  H4.5
+	            Q9.5,10.5  9.5,5.825  9.5,1.5 4.5,1.5
+	            z"/>
+	    <glyph unicode="e" horiz-adv-x="13"
+	            d="M12,5  q0,7 -5.5,7.25  t-5.5,-6.25 5.5,-6.25
+	            q3.5,0 4.5,1.5  v1.5  q-2,-1.5 -4.5,-1.5
+	    		q-4,0 -4,3.75  z
+	    		M2.5,6.5  q0,4.25 4,4.25 t4,-4.25  z"/>
+	    <glyph unicode="f" horiz-adv-x="8"
+	            d="M1,0  h1.5  v5  h4  v1.5  h-4  v4  h5  v1.5  h-6.5  z"/>
+	    <glyph unicode="g" horiz-adv-x="12"
+	            d="M1,5.825
+	            Q1,12 6.5,12.25
+	            q3.5,0 4.5,-1.5  v-1.5  q-2,1.5 -4.5,1.5
+	            Q2.5,10.75 2.5,5.825  2.5,1.25 6.5,1.25
+	            9,1.25 9.5,2.75
+	            V5  h-3  V6.5  h4.5  V1.25
+	            q-1,-1.5 -4.5,-1.5
+	            Q1,-0.25 1,5.825  z"/>	            
+	    <glyph unicode="h" horiz-adv-x="11"
+	    		d="M1,0  v12  h1.5  v-5.25  h6  v5.25  h1.5  v-12
+	    		h-1.5  v5.25  h-6  v-5.25  z"/>
+	    <glyph unicode="i" horiz-adv-x="4.5"
+	            d="M1.5,0  h1.5  v12  h-1.5  z"/>
+	    <glyph unicode="l" horiz-adv-x="8"
+	    		d="M1,0  v12  h1.5  v-10.5  h5.5  v-1.5  z"/>
+	    <glyph unicode="m" horiz-adv-x="18"
+	            d="M1,0  V12  h1.5  v-2
+	            Q3,12.25 5.325,12.25  9.75,12.25 9,6.75
+	            8.25,12.25 12.625,12.25   17,12.25 17,5.825
+	            V0  h-1.5  V5.85
+	            Q15.5,10.75 12.625,10.75  9.75,10.75 9.75,5.85
+	            V0  h-1.5  V5.85
+	            Q8.25,10.75 5.325,10.75  3,10.75 2.5,8
+	            V0  z"/>
+	    <glyph unicode="n" horiz-adv-x="11"
+	            d="M1,0  V12  h1.5  v-2
+	            Q3,12.25 5.5,12.25  10,12.25 10,5.825
+	            V0  h-1.5  V5.85
+	            Q8.5,10.75 5.5,10.75  3,10.75 2.5,8
+	            V0  z"/>
+	    <glyph unicode="o" horiz-adv-x="13"
+	            d="M6.5,-0.25  Q12,-0.25 12,5.825
+	            Q12,12.25 6.5,12.25  Q1,12.25 1,5.825
+	            Q1,-0.25 6.5,-0.25  z
+	            M6.5,1.25  Q2.5,1.25 2.5,5.825
+	            Q2.5,10.75 6.5,10.75  Q10.5,10.75 10.5,5.825
+	            Q10.5,1.25 6.5,1.25  z"/>
+	    <glyph unicode="p" horiz-adv-x="10.5"
+	            d="M1,0  H2.5  V4.5  H4.5
+	            Q10,4.5 10,8.25  10,12 4.5,12
+	            H1  z
+	            M2.5,6  V10.5  H4.5
+	            Q8.5,10.5  8.5,8.25  8.5,6 4.5,6
+	            z"/>
+	    <glyph unicode="r" horiz-adv-x="10"
+	            d="M1,0  V12  H2.5  V9.5
+	            Q4,12.25 9,12.25  V10.75
+	            Q4,10.75 2.5,7.5
+	            V0  z"/>
+        <glyph unicode="s" horiz-adv-x="11"
+        		d=" M9.27632,10.75 Q7.77632,12.25 5.25,12.25
+        		 Q0.75,12.25 0.75,8.9 Q0.75,5.55 5.25,5.55
+        		 Q8.5,5.55 8.5,3.4 Q8.5,1.25 5.25,1.25
+        		 Q2.5,1.25 1,2.75 V1.25 Q2.5,-0.25 5.25,-0.25
+        		 Q10,-0.25 10,3.4 Q10,7.05 5.25,7.05
+        		 Q2.25,7.05 2.25,8.9 Q2.25,10.75 5.25,10.75
+        		 Q7.77632,10.75 9.27632,9.25z"/>      
+	    <glyph unicode="t" horiz-adv-x="11"
+	            d="M6.25,0  V10.5  H10  V12  H1  V10.5  H4.75  V0  z"/>
+	    <glyph unicode="u" horiz-adv-x="12"
+	            d="M11,12  V0  h-1.5  v+1
+	            Q8,-0.25 5.5,-0.25  1,-0.25 1,5.825
+	            V12  h1.5  V5.85
+	            Q2.5,1.25 5.5,1.25  8,1.25 9.5,3
+	            V12  z"/>
+	            
+       	<glyph unicode="v" horiz-adv-x="12"
+       	        d=" M0.5,12 L5.5,0 H6.5 L11.5,12
+       	        H10.1154 L6,2.12308 L1.88462,12z"/>	            
+
+        <!-- slope = 0.375 -->
+        <!-- stroke horiz thickness = 1.6 -->
+        <!-- stroke thickness = 1.49813 -->
+        <!-- top vertex wd = 1.2 -->
+        <glyph unicode="w" horiz-adv-x="18"
+        		d="M0,12
+        		L4.5,0
+        		L5.5,0
+        		L9,9.33333
+        		L12.5,0
+        		L13.5,0
+        		L18,12
+        		L16.4,12
+        		L13,2.93333
+        		L9.6,12
+        		L8.4,12
+        		L5,2.93333
+        		L1.6,12
+        		z"/>
+# t = 1.33233979136
+# u = 1.6182885906
+# v = 6.24981371088
+<glyph unicode="x" horiz-adv-x="12"
+	d=" M0.5,0 L5.19086,6.24981 L0.875,12
+	 H2.49329 L6,7.32787 L9.50671,12
+	 H11.125 L6.80914,6.24981 L11.5,0
+	 H9.88171 L6,5.17176 L2.11829,0z"/>
+
+        <glyph unicode="O" horiz-adv-x="13"
+	            d="M5.5,-0.25  Q11,-0.25 11,5.825
+	            Q11,12.25 5.5,12.25  Q0,12.25 0,5.825
+	            Q0,-0.25 5.5,-0.25  z
+	            M5.5,1.25  Q1.5,1.25 1.5,5.825
+	            Q1.5,10.75 5.5,10.75  Q9.5,10.75 9.5,5.825
+	            Q9.5,1.25 5.5,1.25  z"/>
+	</font>
+    </defs>
+    <rect x="1" y="1" width="398" height="578" stroke-width="2" rx="20" ry="20"
+        fill="#F8F8F0" stroke="#666600"
+    />
+
+    <svg
+	viewBox="22.3 0 577 792"
+	width="360" height="500" x="20" y="40">
+<g id="scene">
+        <set attributeName="opacity" to="1" 
+		        fill="freeze" begin="btn1.click"/>
+        <set attributeName="opacity" to="0" 
+		        fill="freeze" begin="btn2.click"/>
+        <set attributeName="opacity" to="0" 
+		        fill="freeze" begin="scene.load"/>
+
+<g>
+<path fill="#C0E8F1" stroke="none" d="M 599.32 792L 599.32 0L 22.3201 0L 22.3201 792L 599.32 792z"/>
+</g>
+
+<g>
+<path fill="#FCC0C3" stroke="none" d="M 93.8201 373C 93.8201 373 96.8201 346 120.82 337C 144.82 328 164.32 329.5 188.32 340C 212.32 350.5 215.32 371.5 212.32 389.5C 209.32 407.5 218.32 418 200.32 436C 182.32 454 177.82 461.5 150.82 458.5C 123.82 455.5 119.32 458.5 105.82 443.5C 92.3201 428.5 93.8201 373 93.8201 373z"/>
+<path fill="#FA818F" stroke="none" d="M 212.32 389.5L 198.82 412L 180.82 427L 158.32 445L 119.32 448L 150.82 458.5C 150.82 458.5 183.82 460 194.32 448C 204.82 436 212.32 416.5 212.32 416.5L 212.32 389.5z"/>
+<path fill="#819CC9" stroke="none" d="M 423.32 707.333L 434.653 711.333L 411.987 718.667L 385.987 722.667L 325.32 720.667L 396.653 714L 423.32 707.333z"/>
+<path fill="#FD4027" stroke="none" d="M 252.653 660.667C 252.653 660.667 227.32 657.333 211.32 662C 195.32 666.667 181.32 667.333 177.32 672C 173.32 676.667 169.32 678.667 181.32 683.333C 193.32 688 203.987 695.333 223.32 698C 242.653 700.667 263.987 703.333 263.987 703.333L 308.653 674.667C 308.653 674.667 313.32 669.333 289.32 664.667C 265.32 660 252.653 660.667 252.653 660.667z"/>
+<path fill="#FFFFFF" stroke="none" d="M 59.3201 632.5C 59.3201 632.5 44.3201 643 45.8201 656.5C 47.3201 670 57.8201 671.5 51.8201 689.5C 45.8201 707.5 32.3201 715 32.3201 715L 63.8201 745C 63.8201 745 81.8201 728.5 78.8201 709C 75.8201 689.5 81.8201 679 81.8201 679L 59.3201 632.5z"/>
+<path fill="#FFFFFF" stroke="none" d="M 170.32 422.5C 170.32 422.5 174.82 412 186.82 419.5C 198.82 427 200.32 421 192.82 437.5C 185.32 454 176.32 452.5 176.32 452.5L 158.32 445L 170.32 422.5z"/>
+<path fill="#FEA033" stroke="none" d="M 101.32 422.5C 101.32 422.5 102.82 427 116.32 418C 129.82 409 134.32 403 140.32 407.5C 146.32 412 144.82 422.5 144.82 422.5C 144.82 422.5 137.32 422.5 126.82 428.5C 116.32 434.5 105.82 443.5 105.82 443.5L 101.32 422.5z"/>
+<path fill="#F84163" stroke="none" d="M 137.32 301L 110.32 328L 92.3201 392.5L 93.8201 407.5L 104.32 385L 116.32 395.5L 122.32 362.5L 147.82 353.5L 177.82 349L 200.32 347.5L 188.32 340L 201.82 326.5L 174.82 331L 168.82 319L 183.82 314.5L 158.32 311.5L 138.82 317.5L 144.82 307L 144.82 295L 137.32 301z"/>
+<path fill="#FCC0C3" stroke="none" d="M 182.32 610L 197.32 608.5L 197.32 637L 179.32 634L 182.32 610z"/>
+<path fill="#FFFF80" stroke="none" d="M 495.82 278.5C 495.82 278.5 458.32 314.5 462.82 341.5C 467.32 368.5 476.684 399.432 498.32 406C 526.32 414.5 556.82 417.5 571.32 404C 585.554 390.747 593.32 367 591.82 344.5C 590.32 322 588.82 293.5 567.82 284.5C 546.82 275.5 504.82 278 504.82 278L 495.82 278.5z"/>
+<path fill="#9E3999" stroke="none" d="M 471.82 313L 492.82 302.5L 485.32 320.5L 518.32 301L 517.82 322.5L 549.82 303L 557.32 301L 540.82 325L 569.32 307L 566.82 322.5L 582.32 326.5L 570.82 356.5L 591.82 343C 591.82 343 593.078 309.115 581.32 296C 568.32 281.5 563.32 277.5 533.32 277.5C 504.663 277.5 492.82 275.5 482.32 292C 471.82 308.5 471.82 313 471.82 313z"/>
+<path fill="#40AA54" stroke="none" d="M 242.32 680C 242.32 680 266.32 690 286.32 674C 306.32 658 314.653 646 310.653 632C 306.653 618 341.32 628.667 370.32 637C 396.571 644.543 424.32 674 431.32 686C 438.32 698 437.32 701 437.32 701C 437.32 701 405.32 718 359.32 719C 313.32 720 289.32 716 268.32 703C 247.32 690 242.32 680 242.32 680z"/>
+<path fill="#008837" stroke="none" d="M 306.32 656C 306.32 656 313.32 651 346.32 664C 379.32 677 393.32 690 393.32 690C 393.32 690 402.32 703 370.32 703C 338.32 703 291.32 693 291.32 693L 276.32 682L 296.32 669L 306.32 656z"/>
+<path fill="#FEA033" stroke="none" d="M 267.32 660C 267.32 660 261.32 657.333 254.653 661.333C 247.746 665.478 245.32 670.667 253.32 673.333C 261.32 676 270.653 676.667 276.653 673.333C 282.653 670 285.987 666.667 279.32 663.333C 272.653 660 267.32 660 267.32 660z"/>
+<path fill="#FEE0B3" stroke="none" d="M 263.32 661.333L 259.987 668.667L 252.653 667.333L 254.653 661.333L 263.32 661.333z"/>
+<path fill="#CC013A" stroke="none" d="M 238.653 682.667L 226.653 679.333L 233.987 690L 237.987 694.667L 207.32 686L 176.653 678L 191.987 688.667L 227.32 698.667L 263.987 703.333L 249.32 690.667L 238.653 682.667z"/>
+<path fill="#F5D534" stroke="none" d="M 590.32 349C 590.32 349 586.32 389 571.32 404C 556.32 419 524.32 412 524.32 412L 498.32 406C 498.32 406 531.82 404.5 545.32 400C 558.82 395.5 564.82 392.5 569.32 377.5C 573.82 362.5 578.32 355 578.32 355L 590.32 349z"/>
+</g>
+<g>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 188.07 312.688C 176.07 312.688 164.07 310.688 152.07 314.688C 116.07 326.688 98.0701 354.021 96.0701 362.688C 90.0701 394.688 86.0701 432.688 118.07 448.688C 138.07 458.688 164.07 464.688 182.07 456.688C 218.07 438.688 214.07 392.688 214.07 356.688C 186.07 332.688 160.07 328.688 132.07 334.688"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 133.32 438C 125.32 446 122.271 458.198 119.32 470C 107.081 518.955 97.8996 570.966 97.1191 622.026"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 93.3201 608C 83.3201 624 85.4451 700 79.4451 718C 67.4451 752 79.3201 740 77.3201 774L 47.3201 774"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 125.32 476C 137.32 498 153.32 498 169.314 517.682C 193.32 552 209.32 594 199.32 634C 199.32 636 187.32 634 179.32 634C 181.32 626 173.32 614 179.32 610C 181.32 606 195.32 606 195.32 608C 201.32 626 199.32 634 199.32 654"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 99.3201 616C 127.32 614 147.32 670 163.32 690C 181.32 714 191.32 744 205.32 772C 205.32 774 213.32 772 217.32 772"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 513.32 412.5C 528.804 414.565 547.32 416 563.32 410C 579.32 404 585.32 382 589.32 364C 595.32 338 589.32 325 583.32 301C 573.32 271 527.32 279 497.32 279C 467.32 305 458.426 330.199 467.32 368C 473.32 393.5 490.82 409.5 513.32 412.5z"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 521.32 414C 533.32 454 535.32 498 537.32 538C 537.32 550 543.32 560 545.32 572C 549.32 632 557.32 692 551.32 752"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 539.32 576C 539.32 594 529.32 608 519.32 622C 515.32 630 509.32 636 507.32 644C 489.32 684 469.32 720 445.32 756C 437.32 768 415.32 756 407.32 744"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 524.32 454C 522.32 454 521.32 460 519.32 460C 503.32 478 481.82 514.5 471.82 536.5C 515.32 542.5 545.32 514 581.32 522C 581.32 522 581.32 534 581.32 540"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 535.32 466C 545.32 480 573.508 521.392 573.82 539.5C 574.32 568.5 558.32 539.5 537.32 538C 522.127 536.915 516.32 498.5 500.32 500.5C 494.32 484.5 489.32 496 471.32 488C 475.407 489.816 481.32 478 487.32 480C 493.32 484 499.32 496 493.32 504"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 491.32 387C 518.615 387 542.32 384 565.32 389"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 493.32 324C 515.32 336 541.32 334 565.32 332C 567.32 330 573.32 330 573.32 326"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 505.32 340L 508.32 354"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 541.32 346L 543.32 360"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 551.32 758C 557.32 758 565.32 758 571.32 758"/>
+<path fill="none" stroke-width="4" stroke="#808080" d="M 391.32 720C 403.32 720 413.32 724 425.32 726C 425.32 730 425.32 732 427.32 734"/>
+<path fill="none" stroke-width="4" stroke="#808080" d="M 422.32 715C 424.32 717 440.32 716 440.32 720"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 527.32 232C 525.32 230 521.32 230 519.32 228C 511.32 180 515.32 134 515.32 86"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 138.883 377.125C 154.883 377.125 172.883 381.125 186.883 375.125C 192.883 373.125 199.32 358 209.32 358"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 159.32 384C 163.32 384 159.32 390 163.32 390"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 190.32 383C 190.32 385 190.32 390 192.32 390"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 160.32 446C 155.07 428.75 173.32 417 192.57 419.25C 192.57 419.25 199.32 426 194.32 436C 189.32 446 184.32 455 173.32 451C 162.32 447 160.32 446 160.32 446z"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 43.4451 606C 49.4451 576 85.3201 504 109.32 488"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 31.4451 584C 51.4451 608 64.8201 646.5 78.8201 674.5"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 75.8201 679C 75.8201 689 75.4451 690 77.4451 696C 83.4451 712 77.4451 734 63.4451 746C 51.4451 738 43.4451 728 35.4451 716C 35.4451 714 32.3201 717 32.3201 715C 46.3201 707 57.4451 690 49.4451 676C 45.4451 668 43.4451 658 47.4451 650C 47.4451 646 51.8201 631 57.8201 631"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 96.0701 362.688C 98.3201 347.5 104.32 332.5 114.82 320.5C 122.32 310 131.32 301 143.32 296.5"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 167.32 332.5C 180.82 334 191.32 326.5 204.82 328"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 467.82 317.5C 473.82 314.5 480.82 309 488.32 307.5C 486.82 313.5 480.82 322 480.82 328C 491.32 319 505.32 306.5 518.82 303.5C 518.82 308 516.32 318 516.32 322.5C 528.32 321 540.82 305.5 551.82 302.5C 547.32 310 545.32 317.5 540.82 325C 549.82 317.5 558.82 307 570.82 307C 570.82 310 563.32 322 564.82 323.5C 567.82 325 579.32 321.5 579.32 323C 585.32 336.5 572.82 345 571.32 360C 572.82 355.5 584.32 349 588.82 347.5"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 141.82 254.5C 144.82 241 129.82 235 128.32 223C 128.32 217 137.32 217 138.82 211C 140.32 203.5 134.32 199 129.82 194.5C 128.32 193 128.32 188.5 129.82 187C 140.32 178 156.82 176.5 164.32 166C 171.82 154 144.82 158.5 138.82 148C 134.32 139 147.82 134.5 147.82 125.5"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 282.82 772C 291.82 767.5 300.82 763 311.32 761.5C 351.82 758.5 386.32 740.5 427.32 734C 432.82 731.5 438.82 725.5 446.32 724C 449.262 723.412 452.32 722.5 455.32 722.5"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 303.82 751C 305.32 755.5 312.82 755.5 311.32 761.5C 326.32 760 339.82 776.5 351.82 767.5C 354.82 766 347.32 761.5 344.32 761.5C 327.82 757 314.32 749.5 297.82 751"/>
+<path fill="none" stroke-width="4" stroke="#808080" d="M 417.82 668.5C 399.82 652 398.32 650.5 378.82 641.5C 359.32 632.5 330.82 625 309.82 625C 311.32 638.5 308.32 659.5 297.82 668.5C 278.32 682 250.162 691.438 233.32 676C 251.32 692.5 260.32 703 293.32 713.5C 348.827 731.162 437.32 701.5 437.32 701.5C 437.32 701.5 422.765 673.033 417.82 668.5z"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 302.32 673C 305.32 673 306.82 676 309.82 676"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 143.32 724C 143.32 725.5 143.32 727 143.32 728.5C 153.82 734.5 164.32 734.5 174.82 739"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 194.32 740.5C 197.32 740.5 203.32 740.5 203.32 742C 203.32 746.5 207.82 746.5 209.32 746.5C 230.32 752.5 246.82 766 267.82 767.5"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 233.32 769C 243.82 766 252.82 758.5 264.82 757"/>
+<path fill="none" stroke-width="4" stroke="#808080" d="M 266.653 703.333C 233.987 701.333 223.987 700 189.32 686.667C 172.853 680.333 172.844 679.523 175.32 673.333C 176.653 670 191.086 666.224 210.653 662.667C 232.469 658.7 242.017 659.278 265.32 660.667C 290.651 662.176 293.32 667.333 299.32 667.333"/>
+<path fill="none" stroke-width="4" stroke="#808080" d="M 269.362 659.729C 263.362 658.229 253.362 659.729 249.862 665.729C 249.106 667.025 249.862 671.729 249.862 671.729C 258.862 676.229 271.862 678.729 279.362 672.729C 285.362 669.729 275.362 661.229 269.362 659.729z"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 99.8201 425.5C 110.32 419.5 120.82 413.5 131.32 409C 135.82 407.5 141.82 407.5 143.32 410.5C 146.32 412 146.32 421 144.82 422.5C 132.82 427 120.82 430 113.32 440.5"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 108.82 422.5C 113.32 419.5 116.32 415 120.82 418C 128.32 425.5 122.32 439 113.32 440.5C 110.32 439 108.82 433 105.82 428.5"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 465.82 362.5C 473.32 362.5 479.32 359.5 485.32 358"/>
+<path fill="none" stroke-width="6" stroke="#808080" d="M 473.32 371.5C 477.82 370 480.82 368.5 485.32 368.5"/>
+</g>
+</g>
+<g>
+ <g>
+  <path fill="#9F352A" stroke-width="6" stroke="#404040" d="M 179.388 487.935L 143.633 530.349L 161.174 545.136L 196.928 502.721"/>
+  <path fill="#FFFFFF" stroke-width="6" stroke="#404040" d="M 209.763 487.496L 411.456 248.235L 427.79 211.774L 393.915 233.448L 192.452 472.437"/>
+  <path fill="#FC815F" stroke-width="6" stroke="#404040" d="M 230.151 504.948L 171.433 455.45L 158.86 470.365L 217.578 519.863L 230.151 504.948z"/>
+ </g>
+ <g>
+  <path fill="#9F352A" stroke-width="6" stroke="#404040" d="M 424.384 487.935L 460.138 530.349L 442.597 545.136L 406.843 502.721"/>
+  <path fill="#FFFFFF" stroke-width="6" stroke="#404040" d="M 394.008 487.496L 192.315 248.235L 175.981 211.774L 209.856 233.448L 411.319 472.437"/>
+  <path fill="#FC815F" stroke-width="6" stroke="#404040" d="M 373.62 504.948L 432.338 455.45L 444.911 470.365L 386.193 519.863L 373.62 504.948z"/>
+ </g>
+</g>
+</svg>
+
+
+    <g id="interp">       
+<!--
+    	<path fill="white" stroke="none" opacity="0.5"
+    		d="M380,40 H354 V310 q0,20 20,20  H380  z"/>
+    	<text x="0" y="0" transform="rotate(-90) translate(-310,375)"
+    		fill="black" stroke="none"
+    		font-family="Even" font-size="24"
+    		width="500">
+    	    the two of swords
+    	</text>
+-->
+    	<text x="0" y="0" transform="rotate(-90) translate(-540,20)"
+    		fill="black" stroke="none"
+    		font-family="Even" font-size="24"
+    		width="500">
+    	    the two of swords
+    	</text>
+    	<text x="20" y="36" fill="black" stroke="none"
+    		font-family="arial, helvetica, sans-serif" font-size="16">
+    	    balance, peace restored, truce
+    	</text>
+    	<text transform="rotate(180) translate(-380,-544)"
+    		fill="black" stroke="none"
+    		font-family="arial, helvetica, sans-serif" font-size="16">
+    	    conflict, difference of opinion
+    	</text>
+        <animate attributeName="opacity" to="1" 
+		        fill="freeze" begin="btn1.click" dur="1"/>
+        <animate attributeName="opacity" to="0" 
+		        fill="freeze" begin="btn2.click" dur="1"/>
+        <set attributeName="opacity" to="0" 
+		        fill="freeze" begin="interp.load"/>
+    </g>
+
+    <!--  User interface!  -->
+    
+    <rect id="btn1" x="190" y="565" width="20" height="8" rx="4" ry="4"
+            fill="#6699CC" stroke="#003399" stroke-width="1"/>
+    <rect id="btn2" x="190" y="565" width="20" height="8" rx="4" ry="4"
+            fill="none" stroke="none">   
+        <set attributeName="fill" to="#99CCFF" 
+		        fill="freeze" begin="btn1.click"/>
+        <set attributeName="fill" to="none" 
+		        fill="freeze" begin="btn2.click"/>
+    </rect>
+    <g id="btn1Hint" opacity="0"> 
+        <rect x="17" y="550" width="170" height="12" rx="2" ry="2"
+		        fill="#FFFFCC" stroke="#CCCC99" stroke-width="0.5"/>
+        <text x="20" y="560" fill="#003399"
+		        font-family="arial, helvetica, sans-serif" font-size="12">
+    	    click to show the interpretation.
+    	</text>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="btn1.mouseover" to="1"/>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="btn1.mouseout" to="0"/>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="btn1.click" to="0"/>
+    </g>
+    <g id="btn2Hint" opacity="0"> 
+        <rect x="17" y="550" width="165" height="12" rx="2" ry="2"
+	        fill="#FFFFCC" stroke="#CCCC99" stroke-width="0.5"/>
+        <text x="20" y="560" fill="#003399"
+	        font-family="arial, helvetica, sans-serif" font-size="12">
+    	    click to hide the interpretation.
+    	</text>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="btn2.mouseover" to="1"/>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="btn2.mouseout" to="0"/>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="btn2.click" to="0"/>
+    </g>
+
+
+<g transform="scale(2)">
+    <g id="text" opacity="0">
+	<rect x="5" y="5" width="190" height="240" rx="5" ty="5"
+		fill="#FFF" stroke="#000" opacity="0.75"/>
+	<g>
+	    <text font-size="10" font-family="garamond, baskerville, serif" 
+		   fill="#000" stroke="none">
+
+		<tspan x="10" y="25">Swords represent military matters:</tspan>
+		<tspan x="10" y="39">strife, judicial matters, strategy</tspan>
+		<tspan x="10" y="53">and abstract thought. Twos represent</tspan>
+		<tspan x="10" y="67">combination of or balance between</tspan>
+		<tspan x="10" y="81">two forces. So the Two of Swords</tspan>
+		<tspan x="10" y="95">often represents opposing forces</tspan>
+		<tspan x="10" y="109">that have met in a (temporary)</tspan>
+		<tspan x="10" y="123">stalemate, truce, or impass. These</tspan>
+		<tspan x="10" y="137">can be internal states, like the</tspan>
+		<tspan x="10" y="151">knowledge that something must be</tspan>
+		<tspan x="10" y="165">done, versus reluctance to actually</tspan>
+		<tspan x="10" y="179">do it. It can also mean two forces</tspan>
+		<tspan x="10" y="193">or people in conflict that could</tspan>
+		<tspan x="250" y="25">work together given the right</tspan>
+		<tspan x="250" y="39">insight.</tspan>
+	    </text>
+	    <path id="prev1" d="M265,225 l-15,7.5 15,7.5z"  stroke="#900" stroke-width="2" fill="#F90"/>
+	    <animateTransform attributeName="transform"  type="translate"  values="-240,0; 0,0"  fill="freeze" begin="prev1.click" dur="0.5s"/>
+	    <path id="next0"  d="M175,225 l15,7.5 -15,7.5z"  stroke="#900" stroke-width="2" fill="#F90"/>
+	    <animateTransform attributeName="transform"  type="translate"  values="0,0; -240,0"  fill="freeze" begin="next0.click" dur="0.5s"/>
+	</g>
+        <g id="hideTextBtn" transform="translate(180,2.5)"
+ 		  fill="#F90" stroke="#900" stroke-width="1">
+	    <rect x="0" y="0" width="7" height="7" />
+            <path d="M1.5,1.5 L5.5,5.5 M1.5,5.5 L5.5,1.5" 
+                    stroke="#C60">
+                <set attributeName="stroke" to="#600" 
+                        begin="hideTextBtn.mouseover"/>
+                <set attributeName="stroke" to="#C60"
+                        begin="hideTextBtn.mouseout"/>
+            </path>
+        </g>
+	<animate attributeName="opacity" values="0;1" 
+		begin="showTextBtn.click" dur="0.5" fill="freeze"/>
+	<animateTransform attributeName="transform" type="scale"
+		values="0.05;1"  additive="sum"
+		begin="showTextBtn.click" dur="0.5"/>
+	<animate attributeName="opacity" values="1;0" 
+		begin="hideTextBtn.click" dur="0.5" fill="freeze"/>
+	<animateTransform attributeName="transform" type="scale" 
+		values="1;0.05" additive="sum"
+		begin="hideTextBtn.click" dur="0.5"/>
+    </g>
+</g>
+    <rect id="showTextBtn" x="10" y="10" rx="1.5" ry="1.5" width="9" height="11"
+	    stroke="#900" stroke-width="1.5" fill="#F90">
+	<set attributeName="opacity" to="0" begin="showTextBtn.click"/>
+	<animate attributeName="opacity" to="1" fill="freeze"
+                begin="hideTextBtn.click" dur="0.75"/>
+    </rect>
+    <g id="showTextBtnHint" opacity="0"> 
+        <rect x="17" y="17" width="150" height="13" rx="1" ry="1"
+	        fill="#F8F8F0" stroke="#000" stroke-width="0.5"/>
+        <text x="20" y="26" fill="#009" stroke="none"
+	        font-family="arial, helvetica, sans-serif" font-size="12">
+    	    Click to show commentary
+    	</text>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="showTextBtn.mouseover" to="1"/>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="showTextBtn.mouseout" to="0"/>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="showTextBtn.click" to="0"/>
+    </g>
+
+</svg>
+

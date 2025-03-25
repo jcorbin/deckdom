@@ -1,0 +1,350 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 400 580"
+	    width="400" height="580">
+    <title>The Ace of Swords (Alleged Tarot 2002)</title>
+    <defs>
+ 	<font id="font-1" horiz-adv-x="12">
+	    <font-face
+		    font-family="Even" 
+		    font-weight="normal"
+		    font-style="normal"
+		    units-per-em="18"
+		    horiz-origin-x="1.5"
+	    	horiz-adv-x="10"
+		    cap-height="12"
+		    x-height="9"
+		    ascent="12"
+		    descent="0"
+		    alphabetic="0" mathematical="6"
+		    ideographic="6" hanging="6">
+	    </font-face>
+	    <missing-glyph horiz-adv-x="11"
+	    	    d="M1,0  v12  h9  v-12  z 
+	    	    M1.75,0.75  h7.5  v10.5  h-7.5 z"/>
+	    <glyph unicode=" " horiz-adv-x="6" d=""/>
+	    <glyph unicode="!" horiz-adv-x="3.5"
+	    	    d="M1,0  v1.5  h1.5  v-1.5  z 
+	    	    M1,3  v9  h1.5  v-9  z"/>
+	    <glyph unicode=":" horiz-adv-x="4"
+	            d="M1,0 h2 v2  h-2  z
+	            M1,6  h2 v2  h-2  z"/>
+	    <glyph unicode=";" horiz-adv-x="4"
+	            d="M1,2  h2  v-2  q0,-2 -2,-2  v1
+	            q1,0 1,0.5  0,0.5 -1,0.5  z
+	            M1,6  h2 v2  h-2  z"/>
+	    <glyph unicode="0" horiz-adv-x="11"
+	            d="M5.5,-0.25  Q10,-0.25 10,5.825
+	            Q10,12.25 5.5,12.25  Q1,12.25 1,5.825
+	            Q1,-0.25 5.5,-0.25  z
+	            M5.5,1.25  Q2.5,1.25 2.5,5.825
+	            Q2.5,10.75 5.5,10.75  Q8.5,10.75 8.5,5.825
+	            Q8.5,1.25 5.5,1.25  z
+	            "/>
+	    <glyph unicode="." horiz-adv-x="4"
+	            d="M1,0 h2 v2  h-2  z"/>
+	    <glyph unicode="," horiz-adv-x="4"
+	            d="M1,2  h2  v-2  q0,-2 -2,-2  v1
+	            q1,0 1,0.5  0,0.5 -1,0.5  z"/>
+	    <glyph unicode="a" horiz-adv-x="11"
+	            d="M5.5,8  q-4.5,0 -4.5,-4  t4.5,-4.25
+	            q3,0 3,1.75  v-1.5  h1.5  v7
+	            q0,5.25 -4.5,5.25
+	            q-2.5,0 -3.5,-1.5  v-1.5  q1,1.5 3.5,1.5
+	            q3,0  3,-3  z
+	            M8.5,6.25  v-3.25  q0,-1.75 -3,-1.75
+	            t-3,2.75 3,2.5 z"/>
+	    <glyph unicode="c" horiz-adv-x="12"
+	            d="M1,5.825
+	            Q1,12 6.5,12.25
+	            q3.5,0 4.5,-1.5  v-1.5  q-2,1.5 -4.5,1.5
+	            Q2.5,10.75 2.5,5.825  2.5,1.25 6.5,1.25
+	            q2.5,0 4.5,1.5  v-1.5   q-1,-1.5 -4.5,-1.5
+	            Q1,-0.25 1,5.825  z"/>
+	    <glyph unicode="d" horiz-adv-x="11.5"
+	            d="M1,0  H4.5
+	            Q11,0 11,5.825  11,12 4.5,12
+	            H1  z
+	            M2.5,1.5  V10.5  H4.5
+	            Q9.5,10.5  9.5,5.825  9.5,1.5 4.5,1.5
+	            z"/>
+	    <glyph unicode="e" horiz-adv-x="13"
+	            d="M12,5  q0,7 -5.5,7.25  t-5.5,-6.25 5.5,-6.25
+	            q3.5,0 4.5,1.5  v1.5  q-2,-1.5 -4.5,-1.5
+	    		q-4,0 -4,3.75  z
+	    		M2.5,6.5  q0,4.25 4,4.25 t4,-4.25  z"/>
+	    <glyph unicode="f" horiz-adv-x="8"
+	            d="M1,0  h1.5  v5  h4  v1.5  h-4  v4  h5  v1.5  h-6.5  z"/>
+	    <glyph unicode="g" horiz-adv-x="12"
+	            d="M1,5.825
+	            Q1,12 6.5,12.25
+	            q3.5,0 4.5,-1.5  v-1.5  q-2,1.5 -4.5,1.5
+	            Q2.5,10.75 2.5,5.825  2.5,1.25 6.5,1.25
+	            9,1.25 9.5,2.75
+	            V5  h-3  V6.5  h4.5  V1.25
+	            q-1,-1.5 -4.5,-1.5
+	            Q1,-0.25 1,5.825  z"/>	            
+	    <glyph unicode="h" horiz-adv-x="11"
+	    		d="M1,0  v12  h1.5  v-5.25  h6  v5.25  h1.5  v-12
+	    		h-1.5  v5.25  h-6  v-5.25  z"/>
+	    <glyph unicode="i" horiz-adv-x="4.5"
+	            d="M1.5,0  h1.5  v12  h-1.5  z"/>
+    	    <glyph unicode="j" horiz-adv-x="8"
+    	            d="M0,1  Q1,-0.25 3,-0.25
+    	            Q7,-0.25 7,5.75  V12  h-1.5  V5.75
+    	            Q5.5,1.25 3,1.25  Q1,1.25 0,2.5  Z"/>
+	    <glyph unicode="k" horiz-adv-x="11"
+                    d="M1,0 L1,12 L2.5,12 L2.5,6.75 L8.5,12 L10.5,12
+		     L4.175,6.5 L11,0 L9,0 L2.5,6.25 L2.5,0 z"/>
+	    <glyph unicode="l" horiz-adv-x="8"
+	    		d="M1,0  v12  h1.5  v-10.5  h5.5  v-1.5  z"/>
+	    <glyph unicode="m" horiz-adv-x="18"
+	            d="M1,0  V12  h1.5  v-2
+	            Q3,12.25 5.325,12.25  9.75,12.25 9,6.75
+	            8.25,12.25 12.625,12.25   17,12.25 17,5.825
+	            V0  h-1.5  V5.85
+	            Q15.5,10.75 12.625,10.75  9.75,10.75 9.75,5.85
+	            V0  h-1.5  V5.85
+	            Q8.25,10.75 5.325,10.75  3,10.75 2.5,8
+	            V0  z"/>
+	    <glyph unicode="n" horiz-adv-x="11"
+	            d="M1,0  V12  h1.5  v-2
+	            Q3,12.25 5.5,12.25  10,12.25 10,5.825
+	            V0  h-1.5  V5.85
+	            Q8.5,10.75 5.5,10.75  3,10.75 2.5,8
+	            V0  z"/>
+	    <glyph unicode="o" horiz-adv-x="13"
+	            d="M6.5,-0.25  Q12,-0.25 12,5.825
+	            Q12,12.25 6.5,12.25  Q1,12.25 1,5.825
+	            Q1,-0.25 6.5,-0.25  z
+	            M6.5,1.25  Q2.5,1.25 2.5,5.825
+	            Q2.5,10.75 6.5,10.75  Q10.5,10.75 10.5,5.825
+	            Q10.5,1.25 6.5,1.25  z"/>
+    	    <glyph unicode="q" horiz-adv-x="13"
+    	            d="M6.5,-0.25
+                    Q8,-0.25 9.5,0.5  11,-0.25 12.5,-0.25
+                    V1.25  Q11,1.25 10.75,1.7  Q12,3 12,5.825
+    	            Q12,12.25 6.5,12.25  Q1,12.25 1,5.825
+    	            Q1,-0.25 6.5,-0.25  z
+    	            M6.5,1.25  Q2.5,1.25 2.5,5.825
+    	            Q2.5,10.75 6.5,10.75
+    	            Q10.5,10.75 10.5,5.825
+
+    	            Q10.5,4 9.75,3  Q8.5,5 5.25,5
+    	            V3.5  Q8,3.5 8.5,1.75
+    	            Q8,1.25 6.5,1.25  z"/>
+	    <glyph unicode="p" horiz-adv-x="10.5"
+	            d="M1,0  H2.5  V4.5  H4.5
+	            Q10,4.5 10,8.25  10,12 4.5,12
+	            H1  z
+	            M2.5,6  V10.5  H4.5
+	            Q8.5,10.5  8.5,8.25  8.5,6 4.5,6
+	            z"/>
+	    <glyph unicode="r" horiz-adv-x="10"
+	            d="M1,0  V12  H2.5  V9.5
+	            Q4,12.25 9,12.25  V10.75
+	            Q4,10.75 2.5,7.5
+	            V0  z"/>
+            <glyph unicode="s" horiz-adv-x="11"
+        		d=" M9.27632,10.75 Q7.77632,12.25 5.25,12.25
+        		 Q0.75,12.25 0.75,8.9 Q0.75,5.55 5.25,5.55
+        		 Q8.5,5.55 8.5,3.4 Q8.5,1.25 5.25,1.25
+        		 Q2.5,1.25 1,2.75 V1.25 Q2.5,-0.25 5.25,-0.25
+        		 Q10,-0.25 10,3.4 Q10,7.05 5.25,7.05
+        		 Q2.25,7.05 2.25,8.9 Q2.25,10.75 5.25,10.75
+        		 Q7.77632,10.75 9.27632,9.25z"/>      
+	    <glyph unicode="t" horiz-adv-x="11"
+	            d="M6.25,0  V10.5  H10  V12  H1  V10.5  H4.75  V0  z"/>
+	    <glyph unicode="u" horiz-adv-x="12"
+	            d="M11,12  V0  h-1.5  v+1
+	            Q8,-0.25 5.5,-0.25  1,-0.25 1,5.825
+	            V12  h1.5  V5.85
+	            Q2.5,1.25 5.5,1.25  8,1.25 9.5,3
+	            V12  z"/>
+	    <glyph unicode="v" horiz-adv-x="12"
+		    d=" M0.5,12 L5.5,0 H6.5 L11.5,12
+		    H10.1154 L6,2.12308 L1.88462,12z"/>	            
+	            
+        <!-- slope = 0.375 -->
+        <!-- stroke horiz thickness = 1.6 -->
+        <!-- stroke thickness = 1.49813 -->
+        <!-- top vertex wd = 1.2 -->
+        <glyph unicode="w" horiz-adv-x="18"
+        		d="M0,12
+        		L4.5,0
+        		L5.5,0
+        		L9,9.33333
+        		L12.5,0
+        		L13.5,0
+        		L18,12
+        		L16.4,12
+        		L13,2.93333
+        		L9.6,12
+        		L8.4,12
+        		L5,2.93333
+        		L1.6,12
+        		z"/>
+
+        <glyph unicode="O" horiz-adv-x="13"
+	            d="M5.5,-0.25  Q11,-0.25 11,5.825
+	            Q11,12.25 5.5,12.25  Q0,12.25 0,5.825
+	            Q0,-0.25 5.5,-0.25  z
+	            M5.5,1.25  Q1.5,1.25 1.5,5.825
+	            Q1.5,10.75 5.5,10.75  Q9.5,10.75 9.5,5.825
+	            Q9.5,1.25 5.5,1.25  z"/>
+	</font>
+    </defs>
+    <rect x="1" y="1" width="398" height="578" stroke-width="2" rx="20" ry="20"
+        fill="white" stroke="#666600"
+    />
+
+    <svg
+	viewBox="5.8 0 577 792"
+	width="360" height="500" x="20" y="40" preserveAspectRatio="none">
+<g>
+<path style="stroke:none; fill:#C0E8F1" d="
+M 581.006 790.13
+L 582.839 0
+L 5.83908 0.166687
+L 5.83908 792.333
+L 581.006 790.13z"/>
+<path style="stroke:#80D0E3; stroke-width:6; fill:#ffffff" d="M 394.527 90.7292C 364.527 90.7292 332.527 74.7292 302.527 86.7292C 284.527 92.7292 268.527 114.729 276.527 134.729C 278.527 142.729 284.527 154.729 296.527 156.729C 274.527 156.729 252.527 158.729 230.527 158.729C 212.527 160.729 196.527 174.729 184.527 188.729C 174.527 202.729 175.786 218.667 182.839 236.167C 201.152 281.604 230.067 301.487 274.839 280.167C 259.72 334.595 330.907 380.098 374.839 336.167C 380.839 378.167 448.545 369.335 458.839 366.167C 545.152 339.604 510.839 266.167 504.839 204.167C 500.839 168.167 472.839 148.167 442.839 132.167C 462.839 134.167 440.527 108.729 450.527 92.7292C 452.527 88.7292 452.527 84.7292 450.527 80.7292C 440.527 68.7292 422.527 72.7292 408.527 72.7292C 398.527 74.7292 400.527 90.7292 394.527 90.7292z"/>
+<path style="stroke:#80D0E3; stroke-width:6; fill:#ffffff" d="M 225.839 372.167C 201.756 372.167 179.839 362.167 153.839 366.167C 145.839 368.167 137.839 372.167 133.839 378.167C 131.839 386.167 135.839 398.167 131.839 406.167C 131.839 408.167 123.839 404.167 119.839 406.167C 95.8391 420.167 67.8391 434.167 61.8391 462.167C 57.8391 480.167 55.8391 500.167 63.8391 518.167C 69.8391 532.167 87.8391 530.167 101.839 530.167C 101.839 534.167 101.839 540.167 101.839 544.167C 109.839 570.167 131.839 580.167 149.839 598.167C 161.839 606.167 173.839 612.167 187.839 614.167C 231.839 616.167 279.839 616.167 313.839 584.167C 315.839 582.167 315.839 576.167 313.839 574.167C 311.839 574.167 307.839 574.167 305.839 574.167C 303.839 588.167 303.839 602.167 317.839 612.167C 339.839 628.167 365.839 628.167 389.839 622.167C 425.839 614.167 431.839 568.167 429.839 534.167C 405.839 514.167 385.839 490.167 357.839 476.167C 371.839 470.167 367.839 450.167 361.839 440.167C 345.839 416.167 317.839 414.167 291.839 418.167C 285.839 420.167 283.839 424.167 283.839 430.167C 287.839 400.167 255.839 388.167 231.839 380.167C 231.839 378.167 231.839 374.167 231.839 372.167C 229.839 372.167 227.839 372.167 225.839 372.167z"/>
+<path style="stroke:#80D0E3; stroke-width:6; fill:#ffffff" d="M 40.8391 124.167C 96.8391 124.167 152.839 124.167 206.839 108.167C 216.839 104.167 222.839 92.1667 218.839 82.1667C 212.839 68.1667 194.839 58.1667 178.839 62.1667C 178.839 62.1667 178.839 66.1667 178.839 68.1667C 182.839 28.1667 130.839 32.1667 104.839 38.1667C 90.8391 42.1667 92.8391 64.1667 96.8391 78.1667C 90.8391 78.1667 86.8391 78.1667 80.8391 78.1667C 76.8391 80.1667 76.8391 86.1667 76.8391 90.1667C 52.8391 84.1667 24.8391 96.1667 32.8391 124.167C 32.8391 124.167 36.8391 124.167 40.8391 124.167z"/>
+<path style="stroke:#80D0E3; stroke-width:6; fill:#ffffff" d="M 486.839 654.167C 470.839 642.167 450.839 638.167 432.839 644.167C 422.839 646.167 432.839 660.167 426.839 662.167C 412.839 668.167 390.839 672.167 386.839 688.167C 382.839 704.167 388.839 718.167 402.839 726.167C 426.839 740.167 450.839 738.167 476.839 736.167C 492.839 734.167 494.839 718.167 492.839 704.167C 488.839 706.167 488.839 698.167 484.839 700.167C 498.839 700.167 512.839 704.167 522.839 692.167C 530.839 684.167 530.839 672.167 526.839 662.167C 520.839 648.167 500.839 658.167 486.839 652.167L 486.839 654.167z"/>
+<path style="stroke:#80D0E3; stroke-width:6; fill:#ffffff" d="M 486.839 156.167C 488.839 148.167 482.839 136.167 488.839 132.167C 500.839 124.167 516.839 126.167 528.839 130.167C 542.839 134.167 538.839 156.167 534.839 168.167C 530.839 178.167 512.839 176.167 500.839 172.167C 496.839 172.167 494.839 162.167 494.839 156.167C 492.839 156.167 488.839 156.167 486.839 156.167z"/>
+</g>
+<g>
+<path style="stroke:none; fill:#bfdfff" d="M 184.839 472.167L 476.839 220.167L 530.839 206.167L 512.839 256.167L 218.839 516.167L 184.839 472.167z"/>
+<path style="stroke:none; fill:#ddf7ff" d="M 217.527 492.667L 499.527 240.667L 527.527 232.667L 451.527 306.667L 217.527 512.667L 217.527 492.667z"/>
+<path style="stroke:none; fill:#ddf7ff" d="M 476.839 220.167L 530.839 206.167L 468.839 244.167L 476.839 220.167z"/>
+<path style="stroke:none; fill:#bfdfff" d="M 190.839 480.167L 246.839 456.167L 217.527 512.667L 190.839 480.167z"/>
+<path style="stroke:none; fill:#ff7f00" d="M 122.839 458.167L 142.839 438.167C 142.839 438.167 182.839 476.167 204.839 504.167C 226.839 532.167 254.839 574.167 254.839 574.167L 234.839 592.167L 182.839 544.167L 154.839 516.167L 122.839 458.167z"/>
+<path style="stroke:none; fill:#9f9f3f" d="M 86.8391 576.167L 158.568 512.583L 186.568 540.583L 108.839 608.167L 86.8391 576.167z"/>
+<path style="stroke:none; fill:#ff7f00" d="M 58.8391 580.167L 72.6724 564.188L 118.672 620.188L 106.839 627.5L 58.8391 580.167z"/>
+<path style="stroke:#bfdfff; stroke-width:6; fill:#7fbfff" d="M 346.527 340.167C 374.277 346.542 406.277 350.042 406.277 350.042L 454.777 309.542L 391.527 299.167L 346.527 340.167z"/>
+<path style="stroke:#7fbfff; stroke-width:6; fill:none" d="M 306.839 368.167L 368.839 384.167L 342.839 412.167L 278.839 398.167L 306.839 368.167z"/>
+<path style="stroke:#ffffff; stroke-width:6; fill:#ff007f" d="M 252.172 453.333L 490.172 241.333"/>
+</g>
+<g>
+<path style="stroke:#000000; stroke-width:6; fill:none" d="M 220.339 518.167C 302.934 450.912 371.77 379.504 444.494 318.464C 470.124 297.623 512.792 257.574 512.792 257.574L 534.012 202.483C 534.012 202.483 497.402 211.008 477.855 218.386C 380.839 306.854 288.814 387.48 185.339 477.667L 220.339 518.167z"/>
+<path style="stroke:#000000; stroke-width:6; fill:none" d="M 155.876 514.637C 128.815 481.097 119.827 459.207 119.827 459.207L 143.293 438.286C 143.293 438.286 166.784 455.525 203.596 499.07C 240.408 542.614 259.839 573.52 259.839 573.52L 236.373 594.441C 236.373 594.441 217.546 582.725 180.815 543.154"/>
+<path style="stroke:#000000; stroke-width:6; fill:none" d="M 153.796 517.595C 131.375 537.584 109.01 557.523 86.6172 577.487C 94.6028 586.444 103.587 596.521 111.572 605.478C 135.206 582.398 161.713 564.795 182.353 538.356C 178.297 528.547 174.693 525.507 160.392 513.724C 158.153 515.72 156.035 515.598 153.796 517.595z"/>
+<path style="stroke:#000000; stroke-width:6; fill:none" d="M 62.5756 577.569L 72.2589 569.271C 72.2589 569.271 87.6443 579.39 97.9312 590.929C 98.9294 592.048 117.786 616.768 117.786 616.768L 106.131 625.484L 62.5756 577.569z"/>
+<path style="stroke:#000000; stroke-width:6; fill:none" d="M 129.646 462.957C 132.254 466.884 154.37 484.678 156.978 488.605C 161.804 495.02 176.163 508.121 181.486 514.092C 186.265 519.452 203.051 540.816 209.274 548.266C 222.529 564.136 221.252 561.702 236.792 587.146"/>
+<path style="stroke:#000000; stroke-width:6; fill:none" d="M 108.839 578.167C 112.839 582.167 114.839 586.167 118.839 588.167"/>
+<path style="stroke:#000000; stroke-width:6; fill:none" d="M 120.839 570.167C 124.839 568.167 132.839 572.167 130.839 578.167"/>
+<path style="stroke:#000000; stroke-width:6; fill:none" d="M 136.839 562.167C 138.839 564.167 138.839 568.167 142.839 570.167"/>
+<path style="stroke:#ffffff; stroke-width:4; fill:none" d="M 235.298 483.723C 235.298 483.723 230.043 489.33 239.836 492.077C 244.339 493.34 246.47 489.475 250.823 482.921C 257.51 472.851 260.138 454.083 260.138 454.083C 260.138 454.083 241.03 454.54 227.893 460.72C 218.191 465.285 216.657 465.375 217.145 472.164C 217.508 477.204 227.057 476.856 227.057 476.856L 214.04 485.897L 223.594 496.626"/>
+<path style="stroke:#7fbfff; stroke-width:4; fill:none" d="M 232.538 482.194C 232.538 482.194 227.284 487.802 237.076 490.549C 241.58 491.812 243.711 487.947 248.063 481.393C 254.751 471.323 257.378 452.555 257.378 452.555C 257.378 452.555 238.271 453.012 225.134 459.192C 215.431 463.757 213.897 463.847 214.386 470.636C 214.749 475.676 224.298 475.328 224.298 475.328L 211.281 484.369L 220.835 495.098"/>
+</g>
+</svg>
+
+       
+<!--
+    <path fill="black" stroke="none" opacity="0.5"
+            d="M374,40 h26 V230 q0,20 -20,20  h-6  z"/>
+    <text x="0" y="0" transform="rotate(-90) translate(-235,396)"
+            fill="white" stroke="none"
+            font-family="Even" font-size="24"
+            width="500">
+        ace of swords
+    </text>
+-->
+    <text x="0" y="0" transform="rotate(-90) translate(-540,20)"
+            fill="maroon" stroke="none"
+            font-family="Even" font-size="24">
+        ace of swords
+    </text>
+    <text x="20" y="36" fill="black" stroke="none"
+            font-family="arial, helvetica, sans-serif" font-size="16">
+	intellect, reason, justice
+    </text>
+    <text transform="rotate(180) translate(-380,-544)"
+            fill="black" stroke="none"
+            font-family="arial, helvetica, sans-serif" font-size="16">
+        cruelty, injustice
+    </text>
+	
+
+
+<g transform="scale(2)">
+    <g id="text" opacity="0">
+	<rect x="5" y="5" width="190" height="240" rx="5" ty="5"
+		fill="#FFF" stroke="#000" opacity="0.75"/>
+	<g>
+	    <text font-size="10" font-family="garamond, baskerville, serif" 
+		   fill="#000" stroke="none">
+
+		<tspan x="10" y="25">Nowadays the literally martial</tspan>
+		<tspan x="10" y="39">aspect of our lives is, happily,</tspan>
+		<tspan x="10" y="53">less important for many of us than</tspan>
+		<tspan x="10" y="67">it was in mediaeval times, so the</tspan>
+		<tspan x="10" y="81">meaning of the suit of Swords is</tspan>
+		<tspan x="10" y="95">interpreted more broadly. Swords</tspan>
+		<tspan x="10" y="109">straightforwardly represent strife,</tspan>
+		<tspan x="10" y="123">conflict and destruction. Justice</tspan>
+		<tspan x="10" y="137">and the courts were functions of the</tspan>
+		<tspan x="10" y="151">milita, so Swords represents justice</tspan>
+		<tspan x="10" y="165">and judicial proceedings. Warfare</tspan>
+		<tspan x="10" y="179">required strategy and analysis, so</tspan>
+		<tspan x="10" y="193">Swords also represents abstract</tspan>
+		<tspan x="250" y="25">thought and rationality, especially</tspan>
+		<tspan x="250" y="39">in a reductionist sense.</tspan>
+		<tspan x="250" y="67">The background reminds us that the</tspan>
+		<tspan x="250" y="81">suit of Swords is associated with</tspan>
+		<tspan x="250" y="95">the element of Air. I have shown the</tspan>
+		<tspan x="250" y="109">symbol of the modern suit of Spades</tspan>
+		<tspan x="250" y="123">engraved on the blade.</tspan>
+	    </text>
+	    <path id="prev1" d="M265,225 l-15,7.5 15,7.5z"  stroke="#900" stroke-width="2" fill="#F90"/>
+	    <animateTransform attributeName="transform"  type="translate"  values="-240,0; 0,0"  fill="freeze" begin="prev1.click" dur="0.5s"/>
+	    <path id="next0"  d="M175,225 l15,7.5 -15,7.5z"  stroke="#900" stroke-width="2" fill="#F90"/>
+	    <animateTransform attributeName="transform"  type="translate"  values="0,0; -240,0"  fill="freeze" begin="next0.click" dur="0.5s"/>
+	</g>
+        <g id="hideTextBtn" transform="translate(180,2.5)"
+ 		  fill="#F90" stroke="#900" stroke-width="1">
+	    <rect x="0" y="0" width="7" height="7" />
+            <path d="M1.5,1.5 L5.5,5.5 M1.5,5.5 L5.5,1.5" 
+                    stroke="#C60">
+                <set attributeName="stroke" to="#600" 
+                        begin="hideTextBtn.mouseover"/>
+                <set attributeName="stroke" to="#C60"
+                        begin="hideTextBtn.mouseout"/>
+            </path>
+        </g>
+	<animate attributeName="opacity" values="0;1" 
+		begin="showTextBtn.click" dur="0.5" fill="freeze"/>
+	<animateTransform attributeName="transform" type="scale"
+		values="0.05;1"  additive="sum"
+		begin="showTextBtn.click" dur="0.5"/>
+	<animate attributeName="opacity" values="1;0" 
+		begin="hideTextBtn.click" dur="0.5" fill="freeze"/>
+	<animateTransform attributeName="transform" type="scale" 
+		values="1;0.05" additive="sum"
+		begin="hideTextBtn.click" dur="0.5"/>
+    </g>
+</g>
+    <rect id="showTextBtn" x="10" y="10" rx="1.5" ry="1.5" width="9" height="11"
+	    stroke="#900" stroke-width="1.5" fill="#F90">
+	<set attributeName="opacity" to="0" begin="showTextBtn.click"/>
+	<animate attributeName="opacity" to="1" fill="freeze"
+                begin="hideTextBtn.click" dur="0.75"/>
+    </rect>
+    <g id="showTextBtnHint" opacity="0"> 
+        <rect x="17" y="17" width="150" height="13" rx="1" ry="1"
+	        fill="#F8F8F0" stroke="#000" stroke-width="0.5"/>
+        <text x="20" y="26" fill="#009" stroke="none"
+	        font-family="arial, helvetica, sans-serif" font-size="12">
+    	    Click to show commentary
+    	</text>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="showTextBtn.mouseover" to="1"/>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="showTextBtn.mouseout" to="0"/>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="showTextBtn.click" to="0"/>
+    </g>
+
+</svg>
+

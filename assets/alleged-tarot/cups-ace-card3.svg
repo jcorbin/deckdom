@@ -1,0 +1,343 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 400 580"
+	    width="400" height="580">
+    <title>The Ace of Cups (Alleged Tarot 2002)</title>
+    <defs>
+ 	<font id="font-1" horiz-adv-x="12">
+	    <font-face
+		    font-family="Even" 
+		    font-weight="normal"
+		    font-style="normal"
+		    units-per-em="18"
+		    horiz-origin-x="1.5"
+	    	horiz-adv-x="10"
+		    cap-height="12"
+		    x-height="9"
+		    ascent="12"
+		    descent="0"
+		    alphabetic="0" mathematical="6"
+		    ideographic="6" hanging="6">
+	    </font-face>
+	    <missing-glyph horiz-adv-x="11"
+	    	    d="M1,0  v12  h9  v-12  z 
+	    	    M1.75,0.75  h7.5  v10.5  h-7.5 z"/>
+	    <glyph unicode=" " horiz-adv-x="6" d=""/>
+	    <glyph unicode="!" horiz-adv-x="3.5"
+	    	    d="M1,0  v1.5  h1.5  v-1.5  z 
+	    	    M1,3  v9  h1.5  v-9  z"/>
+	    <glyph unicode=":" horiz-adv-x="4"
+	            d="M1,0 h2 v2  h-2  z
+	            M1,6  h2 v2  h-2  z"/>
+	    <glyph unicode=";" horiz-adv-x="4"
+	            d="M1,2  h2  v-2  q0,-2 -2,-2  v1
+	            q1,0 1,0.5  0,0.5 -1,0.5  z
+	            M1,6  h2 v2  h-2  z"/>
+	    <glyph unicode="0" horiz-adv-x="11"
+	            d="M5.5,-0.25  Q10,-0.25 10,5.825
+	            Q10,12.25 5.5,12.25  Q1,12.25 1,5.825
+	            Q1,-0.25 5.5,-0.25  z
+	            M5.5,1.25  Q2.5,1.25 2.5,5.825
+	            Q2.5,10.75 5.5,10.75  Q8.5,10.75 8.5,5.825
+	            Q8.5,1.25 5.5,1.25  z
+	            "/>
+	    <glyph unicode="." horiz-adv-x="4"
+	            d="M1,0 h2 v2  h-2  z"/>
+	    <glyph unicode="," horiz-adv-x="4"
+	            d="M1,2  h2  v-2  q0,-2 -2,-2  v1
+	            q1,0 1,0.5  0,0.5 -1,0.5  z"/>
+	    <glyph unicode="a" horiz-adv-x="11"
+	            d="M5.5,8  q-4.5,0 -4.5,-4  t4.5,-4.25
+	            q3,0 3,1.75  v-1.5  h1.5  v7
+	            q0,5.25 -4.5,5.25
+	            q-2.5,0 -3.5,-1.5  v-1.5  q1,1.5 3.5,1.5
+	            q3,0  3,-3  z
+	            M8.5,6.25  v-3.25  q0,-1.75 -3,-1.75
+	            t-3,2.75 3,2.5 z"/>
+	    <glyph unicode="c" horiz-adv-x="12"
+	            d="M1,5.825
+	            Q1,12 6.5,12.25
+	            q3.5,0 4.5,-1.5  v-1.5  q-2,1.5 -4.5,1.5
+	            Q2.5,10.75 2.5,5.825  2.5,1.25 6.5,1.25
+	            q2.5,0 4.5,1.5  v-1.5   q-1,-1.5 -4.5,-1.5
+	            Q1,-0.25 1,5.825  z"/>
+	    <glyph unicode="d" horiz-adv-x="11.5"
+	            d="M1,0  H4.5
+	            Q11,0 11,5.825  11,12 4.5,12
+	            H1  z
+	            M2.5,1.5  V10.5  H4.5
+	            Q9.5,10.5  9.5,5.825  9.5,1.5 4.5,1.5
+	            z"/>
+	    <glyph unicode="e" horiz-adv-x="13"
+	            d="M12,5  q0,7 -5.5,7.25  t-5.5,-6.25 5.5,-6.25
+	            q3.5,0 4.5,1.5  v1.5  q-2,-1.5 -4.5,-1.5
+	    		q-4,0 -4,3.75  z
+	    		M2.5,6.5  q0,4.25 4,4.25 t4,-4.25  z"/>
+	    <glyph unicode="f" horiz-adv-x="8"
+	            d="M1,0  h1.5  v5  h4  v1.5  h-4  v4  h5  v1.5  h-6.5  z"/>
+	    <glyph unicode="g" horiz-adv-x="12"
+	            d="M1,5.825
+	            Q1,12 6.5,12.25
+	            q3.5,0 4.5,-1.5  v-1.5  q-2,1.5 -4.5,1.5
+	            Q2.5,10.75 2.5,5.825  2.5,1.25 6.5,1.25
+	            9,1.25 9.5,2.75
+	            V5  h-3  V6.5  h4.5  V1.25
+	            q-1,-1.5 -4.5,-1.5
+	            Q1,-0.25 1,5.825  z"/>	            
+	    <glyph unicode="h" horiz-adv-x="11"
+	    		d="M1,0  v12  h1.5  v-5.25  h6  v5.25  h1.5  v-12
+	    		h-1.5  v5.25  h-6  v-5.25  z"/>
+	    <glyph unicode="i" horiz-adv-x="4.5"
+	            d="M1.5,0  h1.5  v12  h-1.5  z"/>
+    	    <glyph unicode="j" horiz-adv-x="8"
+    	            d="M0,1  Q1,-0.25 3,-0.25
+    	            Q7,-0.25 7,5.75  V12  h-1.5  V5.75
+    	            Q5.5,1.25 3,1.25  Q1,1.25 0,2.5  Z"/>
+	    <glyph unicode="k" horiz-adv-x="11"
+                    d="M1,0 L1,12 L2.5,12 L2.5,6.75 L8.5,12 L10.5,12
+		     L4.175,6.5 L11,0 L9,0 L2.5,6.25 L2.5,0 z"/>
+	    <glyph unicode="l" horiz-adv-x="8"
+	    		d="M1,0  v12  h1.5  v-10.5  h5.5  v-1.5  z"/>
+	    <glyph unicode="m" horiz-adv-x="18"
+	            d="M1,0  V12  h1.5  v-2
+	            Q3,12.25 5.325,12.25  9.75,12.25 9,6.75
+	            8.25,12.25 12.625,12.25   17,12.25 17,5.825
+	            V0  h-1.5  V5.85
+	            Q15.5,10.75 12.625,10.75  9.75,10.75 9.75,5.85
+	            V0  h-1.5  V5.85
+	            Q8.25,10.75 5.325,10.75  3,10.75 2.5,8
+	            V0  z"/>
+	    <glyph unicode="n" horiz-adv-x="11"
+	            d="M1,0  V12  h1.5  v-2
+	            Q3,12.25 5.5,12.25  10,12.25 10,5.825
+	            V0  h-1.5  V5.85
+	            Q8.5,10.75 5.5,10.75  3,10.75 2.5,8
+	            V0  z"/>
+	    <glyph unicode="o" horiz-adv-x="13"
+	            d="M6.5,-0.25  Q12,-0.25 12,5.825
+	            Q12,12.25 6.5,12.25  Q1,12.25 1,5.825
+	            Q1,-0.25 6.5,-0.25  z
+	            M6.5,1.25  Q2.5,1.25 2.5,5.825
+	            Q2.5,10.75 6.5,10.75  Q10.5,10.75 10.5,5.825
+	            Q10.5,1.25 6.5,1.25  z"/>
+    	    <glyph unicode="q" horiz-adv-x="13"
+    	            d="M6.5,-0.25
+                    Q8,-0.25 9.5,0.5  11,-0.25 12.5,-0.25
+                    V1.25  Q11,1.25 10.75,1.7  Q12,3 12,5.825
+    	            Q12,12.25 6.5,12.25  Q1,12.25 1,5.825
+    	            Q1,-0.25 6.5,-0.25  z
+    	            M6.5,1.25  Q2.5,1.25 2.5,5.825
+    	            Q2.5,10.75 6.5,10.75
+    	            Q10.5,10.75 10.5,5.825
+
+    	            Q10.5,4 9.75,3  Q8.5,5 5.25,5
+    	            V3.5  Q8,3.5 8.5,1.75
+    	            Q8,1.25 6.5,1.25  z"/>
+	    <glyph unicode="p" horiz-adv-x="10.5"
+	            d="M1,0  H2.5  V4.5  H4.5
+	            Q10,4.5 10,8.25  10,12 4.5,12
+	            H1  z
+	            M2.5,6  V10.5  H4.5
+	            Q8.5,10.5  8.5,8.25  8.5,6 4.5,6
+	            z"/>
+	    <glyph unicode="r" horiz-adv-x="10"
+	            d="M1,0  V12  H2.5  V9.5
+	            Q4,12.25 9,12.25  V10.75
+	            Q4,10.75 2.5,7.5
+	            V0  z"/>
+            <glyph unicode="s" horiz-adv-x="11"
+        		d=" M9.27632,10.75 Q7.77632,12.25 5.25,12.25
+        		 Q0.75,12.25 0.75,8.9 Q0.75,5.55 5.25,5.55
+        		 Q8.5,5.55 8.5,3.4 Q8.5,1.25 5.25,1.25
+        		 Q2.5,1.25 1,2.75 V1.25 Q2.5,-0.25 5.25,-0.25
+        		 Q10,-0.25 10,3.4 Q10,7.05 5.25,7.05
+        		 Q2.25,7.05 2.25,8.9 Q2.25,10.75 5.25,10.75
+        		 Q7.77632,10.75 9.27632,9.25z"/>      
+	    <glyph unicode="t" horiz-adv-x="11"
+	            d="M6.25,0  V10.5  H10  V12  H1  V10.5  H4.75  V0  z"/>
+	    <glyph unicode="u" horiz-adv-x="12"
+	            d="M11,12  V0  h-1.5  v+1
+	            Q8,-0.25 5.5,-0.25  1,-0.25 1,5.825
+	            V12  h1.5  V5.85
+	            Q2.5,1.25 5.5,1.25  8,1.25 9.5,3
+	            V12  z"/>
+	    <glyph unicode="v" horiz-adv-x="12"
+		    d=" M0.5,12 L5.5,0 H6.5 L11.5,12
+		    H10.1154 L6,2.12308 L1.88462,12z"/>	            
+	            
+        <!-- slope = 0.375 -->
+        <!-- stroke horiz thickness = 1.6 -->
+        <!-- stroke thickness = 1.49813 -->
+        <!-- top vertex wd = 1.2 -->
+        <glyph unicode="w" horiz-adv-x="18"
+        		d="M0,12
+        		L4.5,0
+        		L5.5,0
+        		L9,9.33333
+        		L12.5,0
+        		L13.5,0
+        		L18,12
+        		L16.4,12
+        		L13,2.93333
+        		L9.6,12
+        		L8.4,12
+        		L5,2.93333
+        		L1.6,12
+        		z"/>
+
+        <glyph unicode="O" horiz-adv-x="13"
+	            d="M5.5,-0.25  Q11,-0.25 11,5.825
+	            Q11,12.25 5.5,12.25  Q0,12.25 0,5.825
+	            Q0,-0.25 5.5,-0.25  z
+	            M5.5,1.25  Q1.5,1.25 1.5,5.825
+	            Q1.5,10.75 5.5,10.75  Q9.5,10.75 9.5,5.825
+	            Q9.5,1.25 5.5,1.25  z"/>
+	</font>
+    </defs>
+    <rect x="1" y="1" width="398" height="578" stroke-width="2" rx="20" ry="20"
+        fill="white" stroke="#666600"
+    />
+
+    <svg
+	viewBox="26.4 5.2 577 792"
+	width="360" height="500" x="20" y="40" preserveAspectRatio="none">
+<g>
+<path style="stroke:#819CC9; stroke-width:1; fill:#4473B4" d="
+M 603.445 797.241
+L 603.445 5.24084
+L 26.4451 5.24084
+L 26.4451 797.241
+L 603.445 797.241
+z"/>
+</g>
+<g>
+<path style="stroke:#819CC9; stroke-width:6; fill:#BFCBE3" d="M 75.4451 197.241C 95.4451 191.241 107.445 211.241 121.445 219.241C 149.445 233.241 177.445 239.241 211.445 231.241C 245.445 223.241 247.445 201.241 305.445 205.241C 363.445 209.241 411.445 233.241 479.445 229.241C 501.445 229.241 553.445 197.241 575.445 199.241L 591.445 779.241L 41.4451 775.241L 35.4451 211.241L 75.4451 197.241z"/>
+<path style="stroke:#819CC9; stroke-width:6; fill:#BFCBE3" d="M 597.445 257.241C 543.445 245.241 491.445 239.241 459.445 239.241C 415.445 239.241 427.32 262.006 401.445 265.241C 369.445 269.241 359.445 259.241 351.445 257.241C 337.445 251.241 337.445 239.241 305.445 241.241C 277.216 243.005 267.445 257.241 255.445 257.241C 249.445 259.241 243.445 261.241 237.445 263.241C 223.445 265.241 235.445 249.241 205.445 249.241C 175.445 249.241 163.445 261.241 159.445 263.241C 141.445 265.241 125.445 253.241 107.445 257.241C 87.4451 263.241 91.4451 277.241 71.4451 273.241C 57.4451 271.241 51.4451 271.241 37.4451 271.241L 33.4451 785.241L 597.445 783.241L 597.445 257.241z"/>
+<path style="stroke:#819CC9; stroke-width:6; fill:#BFCBE3" d="M 594.133 407.241C 590.133 417.241 578.133 421.241 568.133 423.241C 530.133 433.241 510.133 429.241 480.133 405.241C 458.133 387.241 446.133 357.241 422.133 347.241C 408.133 341.241 392.133 343.241 378.133 347.241C 308.133 367.241 303.445 389.241 231.445 405.241C 221.445 407.241 167.445 401.241 159.445 393.241C 141.445 375.241 143.445 357.241 119.445 347.241C 109.445 341.241 99.4451 335.241 89.4451 339.241C 75.4451 345.241 55.4451 349.241 47.4451 365.241L 43.4451 793.241L 598.133 789.241L 594.133 407.241z"/>
+<path style="stroke:#819CC9; stroke-width:6; fill:#BFCBE3" d="M 583.445 547.241C 569.445 547.241 555.445 535.241 543.445 541.241C 523.445 551.241 485.445 567.241 465.445 571.241C 401.445 585.241 395.445 533.241 337.445 517.241C 323.445 513.241 307.445 511.241 295.445 519.241C 277.445 535.241 257.445 547.241 235.445 553.241C 219.445 557.241 201.445 559.241 185.445 551.241C 167.445 543.241 153.445 531.241 137.445 517.241C 119.445 499.241 91.4451 503.241 69.4451 511.241C 55.4451 515.241 37.4451 527.241 31.4451 545.241L 33.4451 785.241L 581.445 785.241L 583.445 547.241z"/>
+<path style="stroke:#819CC9; stroke-width:6; fill:#BFCBE3" d="M 39.4451 671.241C 63.4451 653.241 95.4451 659.241 121.445 663.241C 167.445 675.241 207.445 693.241 255.445 685.241C 291.445 679.241 321.445 657.241 355.445 643.241C 381.445 633.241 409.445 633.241 435.445 639.241C 473.445 649.241 505.445 675.241 543.445 685.241C 557.445 689.241 585.445 683.241 595.445 671.241L 593.445 791.241L 33.4451 785.241L 37.4451 677.241L 39.4451 671.241z"/>
+<path style="stroke:#819CC9; stroke-width:6; fill:#BFCBE3" d="M 587.445 767.241C 587.445 769.241 587.445 773.241 587.445 773.241C 579.445 775.241 569.445 775.241 567.445 767.241C 565.445 759.241 535.445 749.241 529.445 749.241C 461.445 739.241 435.445 785.241 369.445 787.241C 331.445 789.241 301.445 761.241 271.445 739.241C 229.445 737.241 187.445 737.241 151.445 763.241L 149.445 789.241L 593.445 791.241L 587.445 767.241z"/>
+</g>
+<g>
+<path style="stroke:none; fill:#ffffff" d="M 124.445 299.241C 124.445 299.241 162.445 281.241 249.445 273.241C 318.883 266.856 404.445 287.241 404.445 287.241C 404.445 287.241 459.445 302.241 470.445 318.241C 481.445 334.241 475.445 351.241 475.445 351.241C 475.445 351.241 473.445 407.241 451.445 441.241C 429.445 475.241 387.445 517.241 329.445 527.241C 309.543 530.672 227.445 543.241 161.445 495.241C 129.89 472.292 86.4451 396.241 89.4451 351.241C 92.4451 306.241 124.445 299.241 124.445 299.241z"/>
+<path style="stroke:none; fill:#bfbf7f" d="M 223.445 336.241C 223.445 336.241 252.445 327.241 284.445 329.241C 316.445 331.241 341.445 331.241 365.445 340.241C 389.445 349.241 418.445 365.241 418.445 365.241C 418.445 365.241 386.445 377.241 342.445 380.241C 298.445 383.241 264.445 383.241 230.445 379.241C 196.445 375.241 144.445 363.241 144.445 363.241C 144.445 363.241 157.445 353.241 172.445 347.241C 187.445 341.241 223.445 336.241 223.445 336.241z"/>
+<path style="stroke:none; fill:#ffffff" d="M 478.445 359.241C 478.445 359.241 485.445 356.241 512.445 360.241C 539.445 364.241 546.445 366.241 552.445 383.241C 558.445 400.241 569.445 409.241 551.445 426.241C 533.445 443.241 515.445 454.241 487.445 463.241C 459.445 472.241 425.445 474.241 425.445 474.241L 452.445 445.241L 467.445 447.241L 511.445 432.241L 534.445 409.241L 530.445 388.241C 530.445 388.241 520.445 378.241 502.445 377.241C 484.445 376.241 474.445 379.241 474.445 379.241L 478.445 359.241z"/>
+</g>
+<g>
+<path style="stroke:#000000; stroke-width:6; fill:none" d="M 108.842 332.745C 108.69 333.567 108.612 334.394 108.612 335.227C 108.612 361.863 187.55 383.456 284.922 383.456C 382.293 383.456 461.231 361.863 461.231 335.227C 461.231 334.981 461.224 334.735 461.211 334.49"/>
+<path style="stroke:#ffbfff; stroke-width:6; fill:none" d="M 461.211 334.49C 459.772 308.194 381.394 286.997 284.922 286.997C 190.593 286.997 113.564 307.262 108.842 332.745"/>
+<path style="stroke:#ffbfff; stroke-width:6; fill:none" d="M 94.8372 352.027C 116.563 379.146 192.654 399.171 283.184 399.171C 371.273 399.171 445.691 380.211 469.656 354.205"/>
+<path style="stroke:#000000; stroke-width:6; fill:none" d="M 469.656 354.205C 474.925 348.487 477.755 342.428 477.755 336.156C 477.755 301.354 390.641 273.141 283.184 273.141C 175.727 273.141 88.6132 301.354 88.6132 336.156C 88.6132 341.638 90.7749 346.956 94.8372 352.027"/>
+<path style="stroke:#000000; stroke-width:6; fill:none" d="M 89.7328 329.955C 89.1347 335.898 88.2759 342.25 88.2759 348.343C 88.2759 450.946 175.595 533.797 282.623 533.797C 389.652 533.797 477.158 452.695 477.158 350.092C 477.158 345.426 477.927 340.751 477.457 334.935"/>
+<path style="stroke:#000000; stroke-width:6; fill:none" d="M 477.756 358.837C 482.715 357.856 492.717 357.088 498.086 357.088C 525.432 357.088 558.372 375.054 558.372 406.931C 558.372 432.201 529.776 448.03 488.519 462.021C 490.222 461.444 454.436 474.264 423.942 474.264"/>
+<path style="stroke:#000000; stroke-width:6; fill:none" d="M 449.055 444.532C 466.415 449.61 472.684 447.984 487.921 441.618C 508.849 432.873 535.756 423.714 535.756 406.64C 535.756 389.565 520.52 376.326 493.9 376.326C 488.338 376.326 480.933 376.525 475.962 377.637"/>
+<path style="stroke:#000000; stroke-width:6; fill:none" d="M 412.969 361.746C 385.384 342.522 336.366 329.734 280.493 329.734C 227.63 329.734 180.902 341.181 152.659 358.697"/>
+<path style="stroke:#000000; stroke-width:6; fill:#ff0000" d="M 284.112 509.241C 301.112 488.741 304.78 491.053 325.78 485.053C 346.78 479.053 371.78 464.553 371.78 443.053C 371.78 421.553 351.78 412.553 325.78 415.053C 299.78 417.553 283.78 435.053 283.78 435.053L 283.32 435.178C 283.32 435.178 267.32 417.616 241.32 415.116C 215.32 412.616 195.32 421.616 195.32 443.116C 195.32 464.616 220.32 479.116 241.32 485.116C 262.32 491.116 267.112 488.741 284.112 509.241z"/>
+</g>
+</svg>
+
+       
+<!--
+    <path fill="black" stroke="none" opacity="0.5"
+            d="M374,40 h26 V230 q0,20 -20,20  h-6  z"/>
+    <text x="0" y="0" transform="rotate(-90) translate(-235,396)"
+            fill="white" stroke="none"
+            font-family="Even" font-size="24"
+            width="500">
+        ace of cups
+    </text>
+-->
+    <text x="0" y="0" transform="rotate(-90) translate(-540,20)"
+            fill="maroon" stroke="none"
+            font-family="Even" font-size="24">
+        ace of cups
+    </text>
+    <text x="20" y="36" fill="black" stroke="none"
+            font-family="arial, helvetica, sans-serif" font-size="16">
+	emotion, love, psychic powers
+    </text>
+    <text transform="rotate(180) translate(-380,-544)"
+            fill="black" stroke="none"
+            font-family="arial, helvetica, sans-serif" font-size="16">
+        sadness, lonliness, disappointment
+    </text>
+	
+
+
+<g transform="scale(2)">
+    <g id="text" opacity="0">
+	<rect x="5" y="5" width="190" height="240" rx="5" ty="5"
+		fill="#FFF" stroke="#000" opacity="0.75"/>
+	<g>
+	    <text font-size="10" font-family="garamond, baskerville, serif" 
+		   fill="#000" stroke="none">
+
+		<tspan x="10" y="25">Cups relate to the element of Water</tspan>
+		<tspan x="10" y="39">in an obvious way and are as</tspan>
+		<tspan x="10" y="53">feminine in shape in the same way</tspan>
+		<tspan x="10" y="67">swords and wands are phallic. The</tspan>
+		<tspan x="10" y="81">suit of Cups is largely associated</tspan>
+		<tspan x="10" y="95">with home life, domestic relations,</tspan>
+		<tspan x="10" y="109">love, sensitivity, and emotions,</tspan>
+		<tspan x="10" y="123">which I have alluded to by making my</tspan>
+		<tspan x="10" y="137">cup a tea cup with tea in it. Cups</tspan>
+		<tspan x="10" y="151">also represents artistic inspiration</tspan>
+		<tspan x="10" y="165">and the subconscious mind.</tspan>
+		<tspan x="10" y="193">The Ace of Cups often represents a</tspan>
+		<tspan x="250" y="25">warm, loving, empathetic person. The</tspan>
+		<tspan x="250" y="39">heart on the side also relates to</tspan>
+		<tspan x="250" y="53">this emotional sense, and also to</tspan>
+		<tspan x="250" y="67">the correspondence between Cups and</tspan>
+		<tspan x="250" y="81">the modern suit of Hearts.</tspan>
+	    </text>
+	    <path id="prev1" d="M265,225 l-15,7.5 15,7.5z"  stroke="#900" stroke-width="2" fill="#F90"/>
+	    <animateTransform attributeName="transform"  type="translate"  values="-240,0; 0,0"  fill="freeze" begin="prev1.click" dur="0.5s"/>
+	    <path id="next0"  d="M175,225 l15,7.5 -15,7.5z"  stroke="#900" stroke-width="2" fill="#F90"/>
+	    <animateTransform attributeName="transform"  type="translate"  values="0,0; -240,0"  fill="freeze" begin="next0.click" dur="0.5s"/>
+	</g>
+        <g id="hideTextBtn" transform="translate(180,2.5)"
+ 		  fill="#F90" stroke="#900" stroke-width="1">
+	    <rect x="0" y="0" width="7" height="7" />
+            <path d="M1.5,1.5 L5.5,5.5 M1.5,5.5 L5.5,1.5" 
+                    stroke="#C60">
+                <set attributeName="stroke" to="#600" 
+                        begin="hideTextBtn.mouseover"/>
+                <set attributeName="stroke" to="#C60"
+                        begin="hideTextBtn.mouseout"/>
+            </path>
+        </g>
+	<animate attributeName="opacity" values="0;1" 
+		begin="showTextBtn.click" dur="0.5" fill="freeze"/>
+	<animateTransform attributeName="transform" type="scale"
+		values="0.05;1"  additive="sum"
+		begin="showTextBtn.click" dur="0.5"/>
+	<animate attributeName="opacity" values="1;0" 
+		begin="hideTextBtn.click" dur="0.5" fill="freeze"/>
+	<animateTransform attributeName="transform" type="scale" 
+		values="1;0.05" additive="sum"
+		begin="hideTextBtn.click" dur="0.5"/>
+    </g>
+</g>
+    <rect id="showTextBtn" x="10" y="10" rx="1.5" ry="1.5" width="9" height="11"
+	    stroke="#900" stroke-width="1.5" fill="#F90">
+	<set attributeName="opacity" to="0" begin="showTextBtn.click"/>
+	<animate attributeName="opacity" to="1" fill="freeze"
+                begin="hideTextBtn.click" dur="0.75"/>
+    </rect>
+    <g id="showTextBtnHint" opacity="0"> 
+        <rect x="17" y="17" width="150" height="13" rx="1" ry="1"
+	        fill="#F8F8F0" stroke="#000" stroke-width="0.5"/>
+        <text x="20" y="26" fill="#009" stroke="none"
+	        font-family="arial, helvetica, sans-serif" font-size="12">
+    	    Click to show commentary
+    	</text>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="showTextBtn.mouseover" to="1"/>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="showTextBtn.mouseout" to="0"/>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="showTextBtn.click" to="0"/>
+    </g>
+
+</svg>
+

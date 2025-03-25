@@ -1,0 +1,545 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 400 580"
+	width="400" height="580">
+    <title>The Ten of Swords (Alleged Tarot 2002)</title>
+    <defs>
+ 	<font id="font-1" horiz-adv-x="12">
+	    <font-face
+		    font-family="Even" 
+		    font-weight="normal"
+		    font-style="normal"
+		    units-per-em="18"
+		    horiz-origin-x="1.5"
+	    	horiz-adv-x="10"
+		    cap-height="12"
+		    x-height="9"
+		    ascent="12"
+		    descent="0"
+		    alphabetic="0" mathematical="6"
+		    ideographic="6" hanging="6">
+	    </font-face>
+	    <missing-glyph horiz-adv-x="11"
+	    	    d="M1,0  v12  h9  v-12  z 
+	    	    M1.75,0.75  h7.5  v10.5  h-7.5 z"/>
+	    <glyph unicode=" " horiz-adv-x="6" d=""/>
+	    <glyph unicode="!" horiz-adv-x="3.5"
+	    	    d="M1,0  v1.5  h1.5  v-1.5  z 
+	    	    M1,3  v9  h1.5  v-9  z"/>
+	    <glyph unicode=":" horiz-adv-x="4"
+	            d="M1,0 h2 v2  h-2  z
+	            M1,6  h2 v2  h-2  z"/>
+	    <glyph unicode=";" horiz-adv-x="4"
+	            d="M1,2  h2  v-2  q0,-2 -2,-2  v1
+	            q1,0 1,0.5  0,0.5 -1,0.5  z
+	            M1,6  h2 v2  h-2  z"/>
+	    <glyph unicode="0" horiz-adv-x="11"
+	            d="M5.5,-0.25  Q10,-0.25 10,5.825
+	            Q10,12.25 5.5,12.25  Q1,12.25 1,5.825
+	            Q1,-0.25 5.5,-0.25  z
+	            M5.5,1.25  Q2.5,1.25 2.5,5.825
+	            Q2.5,10.75 5.5,10.75  Q8.5,10.75 8.5,5.825
+	            Q8.5,1.25 5.5,1.25  z
+	            "/>
+	    <glyph unicode="." horiz-adv-x="4"
+	            d="M1,0 h2 v2  h-2  z"/>
+	    <glyph unicode="," horiz-adv-x="4"
+	            d="M1,2  h2  v-2  q0,-2 -2,-2  v1
+	            q1,0 1,0.5  0,0.5 -1,0.5  z"/>
+	    <glyph unicode="a" horiz-adv-x="11"
+	            d="M5.5,8  q-4.5,0 -4.5,-4  t4.5,-4.25
+	            q3,0 3,1.75  v-1.5  h1.5  v7
+	            q0,5.25 -4.5,5.25
+	            q-2.5,0 -3.5,-1.5  v-1.5  q1,1.5 3.5,1.5
+	            q3,0  3,-3  z
+	            M8.5,6.25  v-3.25  q0,-1.75 -3,-1.75
+	            t-3,2.75 3,2.5 z"/>
+	    <glyph unicode="c" horiz-adv-x="12"
+	            d="M1,5.825
+	            Q1,12 6.5,12.25
+	            q3.5,0 4.5,-1.5  v-1.5  q-2,1.5 -4.5,1.5
+	            Q2.5,10.75 2.5,5.825  2.5,1.25 6.5,1.25
+	            q2.5,0 4.5,1.5  v-1.5   q-1,-1.5 -4.5,-1.5
+	            Q1,-0.25 1,5.825  z"/>
+	    <glyph unicode="d" horiz-adv-x="11.5"
+	            d="M1,0  H4.5
+	            Q11,0 11,5.825  11,12 4.5,12
+	            H1  z
+	            M2.5,1.5  V10.5  H4.5
+	            Q9.5,10.5  9.5,5.825  9.5,1.5 4.5,1.5
+	            z"/>
+	    <glyph unicode="e" horiz-adv-x="13"
+	            d="M12,5  q0,7 -5.5,7.25  t-5.5,-6.25 5.5,-6.25
+	            q3.5,0 4.5,1.5  v1.5  q-2,-1.5 -4.5,-1.5
+	    		q-4,0 -4,3.75  z
+	    		M2.5,6.5  q0,4.25 4,4.25 t4,-4.25  z"/>
+	    <glyph unicode="f" horiz-adv-x="8"
+	            d="M1,0  h1.5  v5  h4  v1.5  h-4  v4  h5  v1.5  h-6.5  z"/>
+	    <glyph unicode="g" horiz-adv-x="12"
+	            d="M1,5.825
+	            Q1,12 6.5,12.25
+	            q3.5,0 4.5,-1.5  v-1.5  q-2,1.5 -4.5,1.5
+	            Q2.5,10.75 2.5,5.825  2.5,1.25 6.5,1.25
+	            9,1.25 9.5,2.75
+	            V5  h-3  V6.5  h4.5  V1.25
+	            q-1,-1.5 -4.5,-1.5
+	            Q1,-0.25 1,5.825  z"/>	            
+	    <glyph unicode="h" horiz-adv-x="11"
+	    		d="M1,0  v12  h1.5  v-5.25  h6  v5.25  h1.5  v-12
+	    		h-1.5  v5.25  h-6  v-5.25  z"/>
+	    <glyph unicode="i" horiz-adv-x="4.5"
+	            d="M1.5,0  h1.5  v12  h-1.5  z"/>
+	    <glyph unicode="l" horiz-adv-x="8"
+	    		d="M1,0  v12  h1.5  v-10.5  h5.5  v-1.5  z"/>
+	    <glyph unicode="m" horiz-adv-x="18"
+	            d="M1,0  V12  h1.5  v-2
+	            Q3,12.25 5.325,12.25  9.75,12.25 9,6.75
+	            8.25,12.25 12.625,12.25   17,12.25 17,5.825
+	            V0  h-1.5  V5.85
+	            Q15.5,10.75 12.625,10.75  9.75,10.75 9.75,5.85
+	            V0  h-1.5  V5.85
+	            Q8.25,10.75 5.325,10.75  3,10.75 2.5,8
+	            V0  z"/>
+	    <glyph unicode="n" horiz-adv-x="11"
+	            d="M1,0  V12  h1.5  v-2
+	            Q3,12.25 5.5,12.25  10,12.25 10,5.825
+	            V0  h-1.5  V5.85
+	            Q8.5,10.75 5.5,10.75  3,10.75 2.5,8
+	            V0  z"/>
+	    <glyph unicode="o" horiz-adv-x="13"
+	            d="M6.5,-0.25  Q12,-0.25 12,5.825
+	            Q12,12.25 6.5,12.25  Q1,12.25 1,5.825
+	            Q1,-0.25 6.5,-0.25  z
+	            M6.5,1.25  Q2.5,1.25 2.5,5.825
+	            Q2.5,10.75 6.5,10.75  Q10.5,10.75 10.5,5.825
+	            Q10.5,1.25 6.5,1.25  z"/>
+	    <glyph unicode="p" horiz-adv-x="10.5"
+	            d="M1,0  H2.5  V4.5  H4.5
+	            Q10,4.5 10,8.25  10,12 4.5,12
+	            H1  z
+	            M2.5,6  V10.5  H4.5
+	            Q8.5,10.5  8.5,8.25  8.5,6 4.5,6
+	            z"/>
+	    <glyph unicode="r" horiz-adv-x="10"
+	            d="M1,0  V12  H2.5  V9.5
+	            Q4,12.25 9,12.25  V10.75
+	            Q4,10.75 2.5,7.5
+	            V0  z"/>
+        <glyph unicode="s" horiz-adv-x="11"
+        		d=" M9.27632,10.75 Q7.77632,12.25 5.25,12.25
+        		 Q0.75,12.25 0.75,8.9 Q0.75,5.55 5.25,5.55
+        		 Q8.5,5.55 8.5,3.4 Q8.5,1.25 5.25,1.25
+        		 Q2.5,1.25 1,2.75 V1.25 Q2.5,-0.25 5.25,-0.25
+        		 Q10,-0.25 10,3.4 Q10,7.05 5.25,7.05
+        		 Q2.25,7.05 2.25,8.9 Q2.25,10.75 5.25,10.75
+        		 Q7.77632,10.75 9.27632,9.25z"/>      
+	    <glyph unicode="t" horiz-adv-x="11"
+	            d="M6.25,0  V10.5  H10  V12  H1  V10.5  H4.75  V0  z"/>
+	    <glyph unicode="u" horiz-adv-x="12"
+	            d="M11,12  V0  h-1.5  v+1
+	            Q8,-0.25 5.5,-0.25  1,-0.25 1,5.825
+	            V12  h1.5  V5.85
+	            Q2.5,1.25 5.5,1.25  8,1.25 9.5,3
+	            V12  z"/>
+	            
+       	<glyph unicode="v" horiz-adv-x="12"
+       	        d=" M0.5,12 L5.5,0 H6.5 L11.5,12
+       	        H10.1154 L6,2.12308 L1.88462,12z"/>	            
+
+        <!-- slope = 0.375 -->
+        <!-- stroke horiz thickness = 1.6 -->
+        <!-- stroke thickness = 1.49813 -->
+        <!-- top vertex wd = 1.2 -->
+        <glyph unicode="w" horiz-adv-x="18"
+        		d="M0,12
+        		L4.5,0
+        		L5.5,0
+        		L9,9.33333
+        		L12.5,0
+        		L13.5,0
+        		L18,12
+        		L16.4,12
+        		L13,2.93333
+        		L9.6,12
+        		L8.4,12
+        		L5,2.93333
+        		L1.6,12
+        		z"/>
+# t = 1.33233979136
+# u = 1.6182885906
+# v = 6.24981371088
+<glyph unicode="x" horiz-adv-x="12"
+	d=" M0.5,0 L5.19086,6.24981 L0.875,12
+	 H2.49329 L6,7.32787 L9.50671,12
+	 H11.125 L6.80914,6.24981 L11.5,0
+	 H9.88171 L6,5.17176 L2.11829,0z"/>
+
+        <glyph unicode="O" horiz-adv-x="13"
+	            d="M5.5,-0.25  Q11,-0.25 11,5.825
+	            Q11,12.25 5.5,12.25  Q0,12.25 0,5.825
+	            Q0,-0.25 5.5,-0.25  z
+	            M5.5,1.25  Q1.5,1.25 1.5,5.825
+	            Q1.5,10.75 5.5,10.75  Q9.5,10.75 9.5,5.825
+	            Q9.5,1.25 5.5,1.25  z"/>
+	</font>
+    </defs>
+    <rect x="1" y="1" width="398" height="578" stroke-width="2" rx="20" ry="20"
+        fill="#F8F8F0" stroke="#666600"
+    />
+
+    <svg
+	viewBox="31.6 12.4 577 792"
+	width="360" height="500" x="20" y="40">
+<g id="scene">
+    <set attributeName="opacity" to="1" 
+		    fill="freeze" begin="btn1.click"/>
+    <set attributeName="opacity" to="0" 
+		    fill="freeze" begin="btn2.click"/>
+    <set attributeName="opacity" to="0" 
+		    fill="freeze" begin="scene.load"/>
+<g>
+<path fill="#054A5E" stroke="none" d="M 608.612 804.441L 608.612 12.4409L 31.6118 12.4409L 31.6118 804.441L 608.612 804.441z"/>
+</g>
+<g>
+<path fill="#01947F" stroke="none" d="M 31.6118 804.441L 31.6118 380.108L 608.612 216.441L 608.487 804.441L 31.6118 804.441z"/>
+<path fill="#9F352A" stroke-width="6" stroke="#800000" d="M 304.612 592.441C 284.612 590.441 264.612 592.441 246.612 600.441C 228.612 608.441 214.612 624.441 194.612 632.441C 186.612 634.441 176.612 630.441 168.612 632.441C 150.612 638.441 140.612 656.441 134.612 672.441C 130.612 678.441 130.612 692.441 138.612 690.441C 202.612 684.441 266.612 688.441 328.612 670.441C 328.612 670.441 328.612 666.441 328.612 664.441C 328.612 662.441 330.612 662.441 332.612 662.441C 334.612 650.441 328.612 636.441 340.612 626.441C 340.612 624.441 340.612 622.441 340.612 620.441C 346.612 618.441 348.612 612.441 354.612 610.441"/>
+</g>
+<g>
+<path  fill="#80976F" stroke-width="6" stroke="#416A40" d="M 504.612 610.441C 489.433 615.5 477.945 618.441 454.612 631.108C 431.278 643.774 387.278 695.108 422.612 704.441C 457.945 713.774 478.612 710.441 506.612 706.441C 532.612 700.441 552.612 682.441 567.278 668.441C 581.945 654.441 611.945 611.774 580.612 606.441C 549.278 601.108 510.612 608.441 504.612 610.441z"/>
+<path fill="none" stroke-width="6" stroke="#416A40" d="M 424.612 624.441C 414.612 624.441 464.612 632.441 456.612 632.441C 418.612 628.441 386.612 616.441 348.612 608.441C 270.612 592.441 188.612 555.108 188.612 555.108L 31.4451 545.108"/>
+<path fill="none" stroke-width="6" stroke="#416A40" d="M 185.174 704.691C 243.174 680.691 293.174 642.691 347.174 612.691"/>
+<path fill="none" stroke-width="6" stroke="#416A40" d="M 385.174 616.691C 387.174 616.691 389.174 618.691 391.174 618.691C 395.174 616.691 399.174 612.691 405.174 610.691C 459.174 596.691 509.174 582.691 561.174 570.691"/>
+<path fill="none" stroke-width="6" stroke="#416A40" d="M 194.612 558.441C 166.612 532.441 129.817 515.939 100.612 498.441C 75.1072 483.16 78.8245 475.433 63.3261 467.964"/>
+</g>
+<g>
+<g>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 310.677 412.823L 310.692 385.087L 299.221 385.08L 299.206 412.817"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 299.201 422.774L 299.116 579.236L 304.612 598.441L 310.587 579.242L 310.672 422.958"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 285.783 422.665L 324.181 422.685L 324.186 412.932L 285.789 412.911L 285.783 422.665z"/>
+</g>
+<g>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 281.513 408.83L 279.111 381.198L 267.683 382.191L 270.085 409.823"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 270.948 419.743L 284.498 575.615L 291.646 594.268L 295.925 574.622L 282.391 418.926"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 257.572 420.803L 295.825 417.478L 294.98 407.761L 256.727 411.087L 257.572 420.803z"/>
+</g>
+<g>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 249.011 404.488L 243.565 377.292L 232.317 379.544L 237.763 406.74"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 240.813 416.132L 264.971 570.714L 273.376 588.835L 276.304 568.943L 252.173 414.537"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 225.656 418.204L 263.641 412.597L 262.217 402.948L 224.232 408.556L 225.656 418.204z"/>
+</g>
+<g>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 216.496 398.436L 208.701 371.818L 197.693 375.042L 205.488 401.66"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 209.344 410.75L 246.881 562.637L 256.833 579.957L 258.016 559.885L 220.522 408.171"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 194.425 414.135L 231.777 405.239L 229.517 395.751L 192.166 404.647L 194.425 414.135z"/>
+</g>
+<g>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 182.471 396.514L 172.386 370.677L 161.701 374.848L 171.786 400.685"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 176.419 409.405L 227.049 557.441L 238.472 573.827L 237.902 553.729L 187.33 405.861"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 161.853 414.076L 198.287 401.959L 195.209 392.705L 158.775 404.822L 161.853 414.076z"/>
+</g>
+<g>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 337.368 419.474L 339.77 391.842L 351.197 392.835L 348.795 420.467"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 347.933 430.386L 334.383 586.259L 327.234 604.912L 322.955 585.265L 336.49 429.57"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 361.309 431.447L 323.056 428.122L 323.9 418.405L 362.153 421.73L 361.309 431.447z"/>
+</g>
+<g>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 374.706 424.35L 379.507 397.032L 390.804 399.018L 386.003 426.335"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 384.28 436.141L 357.198 590.238L 348.452 608.197L 345.901 588.253L 372.952 434.331"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 397.512 438.364L 359.695 431.717L 361.383 422.111L 399.2 428.758L 397.512 438.364z"/>
+</g>
+<g>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 405.713 429.981L 413.508 403.364L 424.516 406.587L 416.721 433.205"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 412.865 442.296L 375.327 594.183L 365.375 611.503L 364.192 591.431L 401.687 439.717"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 427.783 445.681L 390.431 436.785L 392.691 427.297L 430.043 436.193L 427.783 445.681z"/>
+</g>
+<g>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 437.98 438.37L 448.065 412.533L 458.75 416.704L 448.665 442.541"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 444.032 451.261L 393.402 599.297L 381.978 615.683L 382.549 595.585L 433.121 447.717"/>
+<path fill="none" stroke-width="4" stroke="#006F5F" d="M 458.598 455.932L 422.164 443.815L 425.242 434.561L 461.676 446.678L 458.598 455.932z"/>
+</g>
+    <g>
+        <path fill="none" stroke-width="4" stroke="#006F5F" d="M 472.62 450.601L 484.918 425.742L 495.199 430.828L 482.901 455.687"/>
+        <path fill="none" stroke-width="4" stroke="#006F5F" d="M 477.525 463.97L 414.188 607.03L 401.38 622.358L 403.7 602.386L 466.965 459.489"/>
+        <path fill="none" stroke-width="4" stroke="#006F5F" d="M 491.629 469.894L 456.39 454.648L 460.262 445.697L 495.501 460.943L 491.629 469.894z"/>
+    </g>
+</g>
+</g>
+<g>
+    <g>
+        <path fill="#9F352A" stroke-width="6" stroke="#000000" d="M 536.034 264.286L 575.28 225.082L 559.067 208.851L 519.821 248.055"/>
+        <path fill="#FFFFFF" stroke-width="6" stroke="#000000" d="M 505.732 262.128L 284.342 483.279L 264.953 518.211L 300.555 499.51L 521.694 278.611"/>
+        <path fill="#FC815F" stroke-width="6" stroke="#000000" d="M 486.911 242.999L 541.184 297.331L 554.985 283.545L 500.712 229.213L 486.911 242.999z"/>
+        <animateTransform attributeName="transform" type="scale" from="1 1" to=".5 .5"
+                begin="btn1.click +1" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 315" to="-30 120 315"
+                begin="btn1.click +1" dur="0.5" additive="sum" fill="freeze"/>
+        <animateMotion attributeName="transform" from="0 0" to="192 404"
+                begin="btn1.click +1" dur="0.5" additive="sum" fill="freeze"/>
+
+        <animateMotion attributeName="transform" from="0 0" to="-192 -404"
+                begin="btn2.click" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 240 315" to="-30 120 315"
+                begin="btn2.click" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="scale" to="1 1"
+                begin="btn2.click" dur="0.5" additive="sum" fill="freeze"/>
+    </g>
+    <g>
+        <path fill="#9F352A" stroke-width="6" stroke="#000000" d="M 89.277 383.08L 50.0305 422.284L 66.2437 438.515L 105.49 399.311"/>
+        <path fill="#FFFFFF" stroke-width="6" stroke="#000000" d="M 119.579 385.237L 340.969 164.087L 360.357 129.155L 324.756 147.856L 103.617 368.755"/>
+        <path fill="#FC815F" stroke-width="6" stroke="#000000" d="M 138.4 404.367L 84.1268 350.035L 70.326 363.821L 124.599 418.153L 138.4 404.367z"/>
+        <animateTransform attributeName="transform" type="scale" from="1 1" to=".5 .5"
+                begin="btn1.click +3" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 315" to="-215 120 315"
+                begin="btn1.click +3" dur="0.5" additive="sum" fill="freeze"/>
+        <animateMotion attributeName="transform" from="0 0" to="332 305"
+                begin="btn1.click +3" dur="0.5" additive="sum" fill="freeze"/>
+
+        <animateMotion attributeName="transform" from="0 0" to="-332 -305"
+                begin="btn2.click +0.1" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 315" to="475 120 315"
+                begin="btn2.click +0.2" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="scale" to="1 1"
+                begin="btn2.click +0.3" dur="0.5" additive="sum" fill="freeze"/>
+    </g>
+    <g>
+        <path fill="#9F352A" stroke-width="6" stroke="#000000" d="M 89.277 86.8799L 50.0305 47.6758L 66.2437 31.4451L 105.49 70.649"/>
+        <path fill="#FFFFFF" stroke-width="6" stroke="#000000" d="M 119.579 84.7222L 340.969 305.873L 360.357 340.805L 324.756 322.104L 103.617 101.204"/>
+        <path fill="#FC815F" stroke-width="6" stroke="#000000" d="M 138.4 65.5927L 84.1268 119.925L 70.326 106.139L 124.599 51.8069L 138.4 65.5927z"/>
+        <animateTransform attributeName="transform" type="scale" from="1 1" to=".5 .5"
+                begin="btn1.click +1.25" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 315" to="50 120 315"
+                begin="btn1.click +1.25" dur="0.5" additive="sum" fill="freeze"/>
+        <animateMotion attributeName="transform" from="0 0" to="200 347"
+                begin="btn1.click +1.25" dur="0.5" additive="sum" fill="freeze"/>
+                
+        <animateMotion attributeName="transform" from="0 0" to="-200 -347"
+                begin="btn2.click +0.2" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 315" to="410 120 315"
+                begin="btn2.click +0.3" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="scale" to="1 1"
+                begin="btn2.click +0.4" dur="0.5" additive="sum" fill="freeze"/>
+    </g>
+    <g>
+        <path fill="#9F352A" stroke-width="6" stroke="#000000" d="M 536.034 86.8799L 575.28 47.6758L 559.067 31.4451L 519.821 70.649"/>
+        <path fill="#FFFFFF" stroke-width="6" stroke="#000000" d="M 505.732 84.7222L 284.342 305.873L 264.953 340.805L 300.555 322.104L 521.694 101.204"/>
+        <path fill="#FC815F" stroke-width="6" stroke="#000000" d="M 486.911 65.5927L 541.184 119.925L 554.985 106.139L 500.712 51.8069L 486.911 65.5927z"/>
+        <animateTransform attributeName="transform" type="scale" from="1 1" to=".5 .5"
+                begin="btn1.click +2.75" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 315" to="-50 120 315"
+                begin="btn1.click +2.75" dur="0.5" additive="sum" fill="freeze"/>
+        <animateMotion attributeName="transform" from="0 0" to="175 485"
+                begin="btn1.click +2.75" dur="0.5" additive="sum" fill="freeze"/>
+
+        <animateMotion attributeName="transform" from="0 0" to="-175 -485"
+                begin="btn2.click +0.3" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 315" to="310 120 315"
+                begin="btn2.click +0.4" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="scale" to="1 1"
+                begin="btn2.click +0.5" dur="0.5" additive="sum" fill="freeze"/>
+    </g>
+    <g>
+        <path fill="#9F352A" stroke-width="6" stroke="#000000" d="M 536.034 559.049L 575.28 598.253L 559.067 614.483L 519.821 575.279"/>
+        <path fill="#FFFFFF" stroke-width="6" stroke="#000000" d="M 505.732 561.206L 284.342 340.055L 264.953 305.123L 300.555 323.825L 521.694 544.724"/>
+        <path fill="#FC815F" stroke-width="6" stroke="#000000" d="M 486.911 580.336L 541.184 526.004L 554.985 539.789L 500.712 594.121L 486.911 580.336z"/>
+        <animateTransform attributeName="transform" type="scale" from="1 1" to=".5 .5"
+                begin="btn1.click +1.5" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 315" to="-135 120 315"
+                begin="btn1.click +1.5" dur="0.5" additive="sum" fill="freeze"/>
+        <animateMotion attributeName="transform" from="0 0" to="300 490"
+                begin="btn1.click +1.5" dur="0.5" additive="sum" fill="freeze"/>
+                
+        <animateMotion attributeName="transform" from="0 0" to="-300 -490"
+                begin="btn2.click +0.4" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 315" to="495 120 315"
+                begin="btn2.click +0.5" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="scale" to="1 1"
+                begin="btn2.click +0.6" dur="0.5" additive="sum" fill="freeze"/>
+    </g>
+    <g>
+        <path fill="#9F352A" stroke-width="6" stroke="#000000" d="M 89.277 557.33L 50.0305 596.534L 66.2437 612.765L 105.49 573.561"/>
+        <path fill="#FFFFFF" stroke-width="6" stroke="#000000" d="M 119.579 559.487L 340.969 338.337L 360.357 303.405L 324.756 322.106L 103.617 543.005"/>
+        <path fill="#FC815F" stroke-width="6" stroke="#000000" d="M 138.4 578.617L 84.1268 524.285L 70.326 538.071L 124.599 592.403L 138.4 578.617z"/>
+        <animateTransform attributeName="transform" type="scale" from="1 1" to=".5 .5"
+                begin="btn1.click +3" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 315" to="125 120 315"
+                begin="btn1.click +3" dur="0.5" additive="sum" fill="freeze"/>
+        <animateMotion attributeName="transform" from="0 0" to="280 330"
+                begin="btn1.click +3" dur="0.5" additive="sum" fill="freeze"/>
+                
+        <animateMotion attributeName="transform" from="0 0" to="-280 -330"
+                begin="btn2.click +0.5" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 315" to="235 120 315"
+                begin="btn2.click +0.6" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="scale" to="1 1"
+                begin="btn2.click +0.7" dur="0.5" additive="sum" fill="freeze"/>
+    </g>
+    <path fill="white" stroke-width="6" stroke="#000000" d="M 315.112 312.441L 324.756 322.106L 360.357 340.805L 340.969 305.873L 331.278 296.108">
+        <set attributeName="opacity" to="0" begin="btn1.click +1"/>
+        <set attributeName="opacity" to="1" begin="btn2.click +1"/>
+    </path>
+    <g>
+        <path fill="#9F352A" stroke-width="6" stroke="#000000" d="M 89.277 263.286L 50.0305 224.082L 66.2437 207.851L 105.49 247.055"/>
+        <path fill="#FFFFFF" stroke-width="6" stroke="#000000" d="M 119.579 261.128L 340.969 482.279L 360.357 517.211L 324.756 498.51L 103.617 277.611"/>
+        <path fill="#FC815F" stroke-width="6" stroke="#000000" d="M 138.4 241.999L 84.1268 296.331L 70.326 282.545L 124.599 228.213L 138.4 241.999z"/>
+        <animateTransform attributeName="transform" type="scale" from="1 1" to=".5 .5"
+                begin="btn1.click +1.75" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 315" to="30 120 315"
+                begin="btn1.click +1.75" dur="0.5" additive="sum" fill="freeze"/>
+        <animateMotion attributeName="transform" from="0 0" to="144 280"
+                begin="btn1.click +1.75" dur="0.5" additive="sum" fill="freeze"/>
+                
+        <animateMotion attributeName="transform" from="0 0" to="-144 -280"
+                begin="btn2.click +0.6" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 315" to="330 120 315"
+                begin="btn2.click +0.7" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="scale" to="1 1"
+                begin="btn2.click +0.8" dur="0.5" additive="sum" fill="freeze"/>
+    </g>
+    <g>
+        <path fill="#FFFFFF" stroke="none" d="M 141.862 330.441L 157.362 347.441L 194.362 310.441L 176.862 295.441L 141.862 330.441z"/>
+        <path fill="none" stroke-width="6" stroke="#000000" d="M 140.278 332.108L 180.612 291.941"/>
+        <path fill="none" stroke-width="6" stroke="#000000" d="M 157.216 347.545L 197.549 307.378"/>
+        <path fill="#FFFFFF" stroke="none" d="M 292.487 474.733L 307.987 491.733L 344.987 454.733L 327.487 439.733L 292.487 474.733z"/>
+        <path fill="none" stroke-width="6" stroke="#000000" d="M 290.903 476.399L 331.237 436.233"/>
+        <path fill="none" stroke-width="6" stroke="#000000" d="M 307.841 491.837L 348.174 451.67"/>
+        <set attributeName="opacity" to="0" begin="btn1.click +1"/>
+        <set attributeName="opacity" to="1" begin="btn2.click +1"/>
+    </g>
+    <g>
+        <path fill="#9F352A" stroke-width="6" stroke="#000000" d="M 536.034 440.192L 575.28 400.988L 559.067 384.758L 519.821 423.961"/>
+        <path fill="#FFFFFF" stroke-width="6" stroke="#000000" d="M 505.732 438.035L 284.342 659.186L 264.953 694.118L 300.555 675.416L 521.694 454.517"/>
+        <path fill="#FC815F" stroke-width="6" stroke="#000000" d="M 486.911 418.905L 541.184 473.237L 554.985 459.451L 500.712 405.119L 486.911 418.905z"/>
+        <animateTransform attributeName="transform" type="scale" from="1 1" to=".5 .5"
+                begin="btn1.click +2.75" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 315" to="-25 120 315"
+                begin="btn1.click +2.75" dur="0.5" additive="sum" fill="freeze"/>
+        <animateMotion attributeName="transform" from="0 0" to="174 320"
+                begin="btn1.click +2.75" dur="0.5" additive="sum" fill="freeze"/>
+                
+        <animateMotion attributeName="transform" from="0 0" to="-174 -320"
+                begin="btn2.click +0.7" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 315" to="385 120 315"
+                begin="btn2.click +0.8" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="scale" to="1 1"
+                begin="btn2.click +0.9" dur="0.5" additive="sum" fill="freeze"/>
+    </g>
+    <g id="sword9" stroke-width="6" stroke="#000000">
+        <path fill="#9F352A" d="M 536.034 733.83L 575.28 773.034L 559.067 789.265L 519.821 750.061"/>
+        <path fill="#FFFFFF" d="M 505.732 735.987L 284.342 514.837L 264.953 479.905L 300.555 498.606L 521.694 719.505"/>
+        <path fill="#FC815F" d="M 486.911 755.117L 541.184 700.785L 554.985 714.571L 500.712 768.903L 486.911 755.117z"/>
+        <animateTransform attributeName="transform" type="scale" from="1 1" to=".5 .5"
+                begin="btn1.click +2" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 315" to="-110 120 315"
+                begin="btn1.click +2" dur="0.5" additive="sum" fill="freeze"/>
+        <animateMotion attributeName="transform" from="0 0" to="288 562"
+                begin="btn1.click +2" dur="0.5" additive="sum" fill="freeze"/>
+
+        <animateMotion attributeName="transform" from="0 0" to="-288 -562"
+                begin="btn2.click +0.8" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 315" to="470 120 315"
+                begin="btn2.click +0.9" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="scale" to="1 1"
+                begin="btn2.click +1" dur="0.5" additive="sum" fill="freeze"/>
+    </g>
+    <g stroke-width="6" stroke="#000000">
+        <path fill="#9F352A" d="M 89.277 733.83L 50.0305 773.034L 66.2437 789.265L 105.49 750.061"/>
+        <path fill="#FFFFFF" d="M 119.579 735.987L 340.969 514.837L 360.357 479.905L 324.756 498.606L 103.617 719.505"/>
+        <path fill="#FC815F" d="M 138.4 755.117L 84.1268 700.785L 70.326 714.571L 124.599 768.903L 138.4 755.117z"/>
+        <animateTransform attributeName="transform" type="scale" from="1 1" to=".5 .5"
+                begin="btn1.click +2.5" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 735" to="115 120 735"
+                begin="btn1.click +2.5" dur="0.5" additive="sum" fill="freeze"/>
+        <animateMotion attributeName="transform" from="0 0" to="114 46"
+                begin="btn1.click +2.5" dur="0.5" additive="sum" fill="freeze"/>
+                
+        <animateMotion attributeName="transform" from="0 0" to="-114 -46"
+                begin="btn2.click +0.9" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="rotate" from="0 120 735" to="245 120 735"
+                begin="btn2.click +1" dur="0.5" additive="sum" fill="freeze"/>
+        <animateTransform attributeName="transform" type="scale" to="1 1"
+                begin="btn2.click +1.1" dur="0.5" additive="sum" fill="freeze"/>
+    </g>
+    <path fill="#FFFFFF" stroke-width="6" stroke="#000000"
+            d="M 315.838 489.696L 325.482 499.361L 361.084 518.06L 341.695 483.128L 332.005 473.363">
+        <set attributeName="opacity" to="0" begin="btn1.click +1"/>
+        <set attributeName="opacity" to="1" begin="btn2.click +1"/>
+    </path>
+</g>
+</svg>
+
+    <g id="interp">       
+<!--
+    	<path fill="white" stroke="none" opacity="0.5"
+    		d="M380,40 H354 V310 q0,20 20,20  H380  z"/>
+    	<text x="0" y="0" transform="rotate(-90) translate(-310,375)"
+    		fill="black" stroke="none"
+    		font-family="Even" font-size="24"
+    		width="500">
+    	    the ten of swords
+    	</text>
+-->
+    	<text x="0" y="0" transform="rotate(-90) translate(-540,20)"
+    		fill="black" stroke="none"
+    		font-family="Even" font-size="24"
+    		width="500">
+    	    the ten of swords
+    	</text>
+    	<text x="20" y="36" fill="black" stroke="none"
+    		font-family="arial, helvetica, sans-serif" font-size="16">
+    	    crisis, ruin, unlucky group of people
+    	</text>
+    	<text transform="rotate(180) translate(-380,-544)"
+    		fill="black" stroke="none"
+    		font-family="arial, helvetica, sans-serif" font-size="16">
+    	    false hope, continuing misfortune, ruin
+    	</text>
+        <animate attributeName="opacity" to="1" 
+		        fill="freeze" begin="btn1.click" dur="1"/>
+        <animate attributeName="opacity" to="0" 
+		        fill="freeze" begin="btn2.click" dur="1"/>
+        <set attributeName="opacity" to="0" 
+		        fill="freeze" begin="interp.load"/>
+    </g>
+
+    <!--  User interface!  -->
+    
+    <rect id="btn1" x="190" y="565" width="20" height="8" rx="4" ry="4"
+            fill="#6699CC" stroke="#003399" stroke-width="1"/>
+    <rect id="btn2" x="190" y="565" width="20" height="8" rx="4" ry="4"
+            fill="none" stroke="none">   
+        <set attributeName="fill" to="#99CCFF" 
+		        fill="freeze" begin="btn1.click"/>
+        <set attributeName="fill" to="none" 
+		        fill="freeze" begin="btn2.click"/>
+    </rect>
+    <g id="btn1Hint" opacity="0"> 
+        <rect x="17" y="550" width="170" height="12" rx="2" ry="2"
+		        fill="#FFFFCC" stroke="#CCCC99" stroke-width="0.5"/>
+        <text x="20" y="560" fill="#003399"
+		        font-family="arial, helvetica, sans-serif" font-size="12">
+    	    click to show the interpretation.
+    	</text>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="btn1.mouseover" to="1"/>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="btn1.mouseout" to="0"/>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="btn1.click" to="0"/>
+    </g>
+    <g id="btn2Hint" opacity="0"> 
+        <rect x="17" y="550" width="165" height="12" rx="2" ry="2"
+	        fill="#FFFFCC" stroke="#CCCC99" stroke-width="0.5"/>
+        <text x="20" y="560" fill="#003399"
+	        font-family="arial, helvetica, sans-serif" font-size="12">
+    	    click to hide the interpretation.
+    	</text>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="btn2.mouseover" to="1"/>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="btn2.mouseout" to="0"/>
+    	<set attributeName="opacity" fill="freeze"
+    	        begin="btn2.click" to="0"/>
+    </g>
+</svg>
+
+
