@@ -108,6 +108,17 @@ const vec2 = Object.freeze({
 
 const orient = Object.freeze({
   /**
+   * @param {Orient} a
+   * @param {Orient} b
+   * @returns {Orient}
+   */
+  add(a, b) {
+    const [za, ya = 0, xa = 0] = orient.unpack(a);
+    const [zb, yb = 0, xb = 0] = orient.unpack(b);
+    return orient.packValues(za + zb, ya + yb, xa + xb);
+  },
+
+  /**
    * @param {Orient} o
    * @param {number} az
    * @param {number} [ay]
@@ -187,15 +198,44 @@ const orient = Object.freeze({
    */
   fromStyle(vars, style) {
     const [zVar, yVar, xVar] = vars;
-    const z = parseFloat(style.getPropertyValue(zVar));
-    const y = parseFloat(style.getPropertyValue(yVar));
-    const x = parseFloat(style.getPropertyValue(xVar));
+    const zv = style.getPropertyValue(zVar)
+    const yv = style.getPropertyValue(yVar)
+    const xv = style.getPropertyValue(xVar)
+    const z = zv ? parseFloat(zv) : 0;
+    const y = yv ? parseFloat(yv) : 0;
+    const x = xv ? parseFloat(xv) : 0;
     return orient.packValues(z, y, x);
   },
 
   // TODO convert to quaternion
 
 });
+
+/**
+ * @param {Vec2} at
+ * @param {Element|null} el
+ * @param {Element} [until]
+ */
+function subOffset(at, el, until) {
+  for (
+    let op = el;
+    op && op !== until && op instanceof HTMLElement;
+    op = op.offsetParent
+  ) at[0] -= op.offsetLeft, at[1] -= op.offsetTop;
+};
+
+/**
+ * @param {Vec2} at
+ * @param {Element|null} el
+ * @param {Element} [until]
+ */
+function addOffset(at, el, until) {
+  for (
+    let op = el;
+    op && op !== until && op instanceof HTMLElement;
+    op = op.offsetParent
+  ) at[0] += op.offsetLeft, at[1] += op.offsetTop;
+};
 
 //// END maths module
 
@@ -269,22 +309,14 @@ const isCardDef = raw =>
   typeof raw === 'object' && raw !== null &&
   'name' in raw && typeof raw.name === 'string';
 
+/** @param {any} raw @returns {raw is CardRef} */
+const isCardRef = raw =>
+  typeof raw === 'object' && raw !== null &&
+  'id' in raw && typeof raw.id === 'string';
+
 /** @typedef {object} CardRef
  * @property {string} id
  */
-
-/** @param {any} raw @returns {CardRef} */
-const toCardRef = raw => {
-  if (typeof raw === 'string') {
-    // TODO validate as "#id" under spec?
-    const id = raw.startsWith('#') ? raw.slice(1) : raw;
-    return { id };
-  }
-  if (typeof raw === 'object' && raw !== null &&
-    'id' in raw && typeof raw.id === 'string')
-    return /** @type {CardRef} */ (raw);
-  throw new Error('invalid card ref');
-};
 
 /** @typedef {(CardRef|CardDef) & ParticularCard} Card */
 
@@ -295,10 +327,23 @@ const toCardRef = raw => {
 
 /** @param {any} raw @returns {Card} */
 const toCard = raw => {
-  const card = isCardDef(raw) ? raw : toCardRef(raw);
-  if ('orient' in card && card['orient'] !== undefined && !orient.isInstance(card['orient']))
+  if (typeof raw === 'string') {
+    const match = /^(?:([^,]+)(?:,([^,]+)(?:,([^,]+))?)?)?#(.+)$/.exec(raw)
+    if (match) {
+      const [_, zv = '', yv = '', xv = '', id = ''] = match;
+      const z = zv ? parseFloat(zv) : 0;
+      const y = yv ? parseFloat(yv) : 0;
+      const x = xv ? parseFloat(xv) : 0;
+      const ot = orient.packValues(z, y, x);
+      return { id, orient: ot }
+    }
+    throw new Error('invalid card string');
+  }
+  if (!isCardDef(raw) && !isCardRef(raw))
+    throw new Error('invalid card ref');
+  if ('orient' in raw && raw['orient'] !== undefined && !orient.isInstance(raw['orient']))
     throw new Error('invalid card orientation');
-  return card;
+  return raw;
 }
 
 /** @param {any} raw @returns {Array<Card>} */
@@ -313,8 +358,11 @@ const parseCards = dat => dat ? toCards(JSON.parse(dat)) : [];
 /** @param {Card} card */
 const smudgeCard = card => {
   if ('id' in card) {
-    const keys = Object.keys(card);
-    if (keys.length === 1 && keys[0] === 'id') return `#${card.id}`;
+    const { id, orient: ot } = card;
+    const numKeys = Object.keys(card).length;
+    if (!ot && numKeys <= 2) return `#${id}`;
+    if (ot && numKeys === 2) return `${ot}#${id}`;
+    console.log('nop', card, numKeys, ot)
   }
   return card;
 };
@@ -358,7 +406,16 @@ const hasElCards = el => {
 /** @param {Event} ev */
 const evContext = ev => {
   const { target } = ev;
-  if (!(target instanceof HTMLElement)) return null;
+  if (!(target instanceof HTMLElement)) {
+    if (target instanceof Element) {
+      for (
+        let par = target.parentNode;
+        par && par instanceof Element;
+        par = par.parentNode
+      ) if (par instanceof HTMLElement) return elState(par);
+    }
+    return null;
+  }
   return elState(target);
 };
 
@@ -538,12 +595,87 @@ export default function init(spec) {
   }));
 }
 
+/** @typedef {object} FaceRenderOpts
+ * @prop {string} src
+ * @prop {number} [rotate]
+ */
+/** @param {HTMLElement} el
+ * @param {string | FaceRenderOpts} srcOrOpts
+ */
+const renderFace = (el, srcOrOpts) => {
+  const {
+    src,
+    rotate
+  } = typeof srcOrOpts === 'string' ? { src: srcOrOpts } : srcOrOpts;
+
+  if (!src.startsWith('#')) {
+    console.warn('unsupported face source', src);
+    return;
+  }
+
+  const srcEl = document.querySelector(src);
+  if (!srcEl) {
+    console.warn('face source not found', src);
+    return;
+  }
+
+  if (srcEl instanceof SVGSVGElement) {
+    const face = el.ownerDocument.createElementNS('http://www.w3.org/2000/svg', 'svg')
+    const viewBox = srcEl.getAttribute('viewBox');
+    if (viewBox) face.setAttribute('viewBox', viewBox);
+    face.setAttribute('width', `${el.clientWidth}`);
+    face.setAttribute('height', `${el.clientHeight}`);
+    face.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+    const ref = el.ownerDocument.createElementNS('http://www.w3.org/2000/svg', 'use')
+    ref.setAttribute('href', `#${srcEl.id}`);
+    face.appendChild(ref);
+    el.appendChild(face);
+
+    if (rotate)
+      console.warn('manual card reversal not implemented');
+
+    return;
+  }
+
+  console.warn('unsupported face source element', srcEl);
+};
+
+/** @param {HTMLElement} el
+ * @param {Card} card
+ */
+const renderCardFace = (el, card) => {
+  const elOt = orient.fromStyle(orientStyleVars, el.style);
+  const { orient: cardOt = 0 } = card;
+  const ot = orient.add(elOt, cardOt);
+
+  const isReversed = orient.yInversions(ot) % 2 == 1
+  if ('id' in card) el.classList.add(card.id);
+  if (isReversed) el.classList.add('reversed');
+
+  if (isReversed) {
+    if ('reversed' in card) {
+      renderFace(el, card['reversed']);
+      return;
+    } if ('upright' in card) {
+      renderFace(el, { src: card['upright'], rotate: 180 });
+      return;
+    }
+  }
+  if ('upright' in card) {
+    renderFace(el, card['upright']);
+    return;
+  }
+  console.warn('no face defined for', top, card);
+};
+
 /**
  * @param {Spec} spec
  */
 function makeWorld(spec) {
   // TODO freeze a copy of spec?
   // TODO save/restore state
+
+  const renderProps = new Set(['upright', 'reversed']);
 
   /**
    * @param {HTMLElement} el
@@ -569,41 +701,34 @@ function makeWorld(spec) {
     const st = el.style;
     const updatedVars = new Set();
 
+    el.innerHTML = '';
     if (!top) {
       el.className = 'void';
     } else {
       el.className = cards.length > 1 ? 'stack' : 'card';
-
       const oldDataKeys = new Set(Object.keys(el.dataset).filter(name => /^card[A-Z]/.test(name)));
-
       const { orient: ot = 0 } = top;
       if (orient.zInversions(ot) % 2 == 0) {
         el.classList.add('back');
       } else {
         el.classList.add('face');
-        if ('id' in top) el.classList.add(top.id);
-
-        const def = 'id' in top ? spec[top.id] : top;
+        const def = 'id' in top && { ...spec[top.id], ...top };
         if (def) {
           for (const [prop, val] of Object.entries(def)) {
-            const dataKey = `card${prop.slice(0, 1).toUpperCase()}${prop.slice(1)}`
-            el.dataset[dataKey] = val;
-            oldDataKeys.delete(dataKey);
-            const key = `--card-${prop}`;
-            st.setProperty(key, val);
-            updatedVars.add(key);
+            if (!renderProps.has(prop)) {
+              const dataKey = `card${prop.slice(0, 1).toUpperCase()}${prop.slice(1)}`
+              el.dataset[dataKey] = val;
+              oldDataKeys.delete(dataKey);
+              const key = `--card-${prop}`;
+              st.setProperty(key, val);
+              updatedVars.add(key);
+            }
           }
+          renderCardFace(el, def);
         }
-
-        // const card = 'id' in top ? spec[top.id] : top;
-        // if (card) TODO actually render face
-
       }
-      if (orient.yInversions(ot) % 2 == 1) el.classList.add('reversed');
-      orient.toStyle(orientStyleVars, el.style, ot);
       for (const v of orientStyleVars)
         updatedVars.add(v);
-
       for (const dataKey of oldDataKeys)
         delete el.dataset[dataKey];
     }
@@ -618,9 +743,9 @@ function makeWorld(spec) {
   /** @type {Vec2} */
   const takeBands = [
     /* take 1 ... */
-    0.1,
+    0.15,
     /* ... take N ... */
-    0.9,
+    0.85,
     /* ... take all */
   ];
 
@@ -643,27 +768,24 @@ function makeWorld(spec) {
 
       /** @param {ElState} ctx @param {MouseEvent} ev */
       const handleClick = (ctx, ev) => {
-        if (ev.buttons) {
-          console.log('in situ click', ev.button);
+        const { el } = ctx;
+        const { button, buttons } = ev;
+
+        if (buttons) {
+          console.log('in situ click', button);
           // TODO handle secondary clicks while other held
-        } else {
-
-          const cards = getElCards(ctx.el);
-          if (!cards) {
-            console.log('click?', ev.button, ctx.el);
-            return;
-          }
-
-          // TODO button 1 to reverse
-
-          if (cards.length) {
+        } else if (button === 0) {
+          const cards = getElCards(el);
+          if (cards && cards.length) {
             const [top, ...rest] = cards;
             if (!top) return;
             top.orient = orient.addValues(top.orient || 0, 0, 1);
-            world.render(ctx.el, [top, ...rest]);
-            console.log('flip click', cards[0], ctx.el);
+            world.render(el, [top, ...rest]);
           }
-
+        } else if (button === 2) {
+          orient.toStyle(orientStyleVars, el.style,
+            orient.addValues(orient.fromStyle(orientStyleVars, el.style), 1));
+          world.render(el);
         }
       };
 
@@ -677,6 +799,7 @@ function makeWorld(spec) {
 
         const at = vec2.fromString(getElData(startEl, 'moveAt'));
 
+        // TODO degenerate single card case: the take is the start, just use it
         const takeEl = ctx.domain.appendChild(ctx.el.ownerDocument.createElement('div'));
         const takeI = scal.clamp(
           Math.round(scal.remap2(
@@ -686,10 +809,12 @@ function makeWorld(spec) {
           ), 1, startCards.length);
         const takeCards = startCards.slice(0, takeI);
         const restCards = startCards.slice(takeI);
+        const ot = orient.fromStyle(orientStyleVars, startEl.style);
+        orient.toStyle(orientStyleVars, takeEl.style, ot);
+
         world.render(startEl, restCards); // TODO hide if empty? or does .void suffice?
         world.render(takeEl, takeCards);
-        orient.toStyle(orientStyleVars, takeEl.style,
-          orient.fromStyle(orientStyleVars, startEl.style));
+
         // takeEl.style.position = 'absolute';
         ctx.setDomData('dragTakeId', ctx.track(takeEl));
 
@@ -724,32 +849,6 @@ function makeWorld(spec) {
 
         // TODO (domain) places
         // TODO (avatar) hands
-      };
-
-      /**
-       * @param {Vec2} at
-       * @param {Element|null} el
-       * @param {Element} [until]
-       */
-      const subOffset = (at, el, until) => {
-        for (
-          let op = el;
-          op && op !== until && op instanceof HTMLElement;
-          op = op.offsetParent
-        ) at[0] -= op.offsetLeft, at[1] -= op.offsetTop;
-      };
-
-      /**
-       * @param {Vec2} at
-       * @param {Element|null} el
-       * @param {Element} [until]
-       */
-      const addOffset = (at, el, until) => {
-        for (
-          let op = el;
-          op && op !== until && op instanceof HTMLElement;
-          op = op.offsetParent
-        ) at[0] += op.offsetLeft, at[1] += op.offsetTop;
       };
 
       /** @param {ElState} ctx */
@@ -823,11 +922,14 @@ function makeWorld(spec) {
           if (!match) {
             console.warn('invalid stack action', dropAction);
           } else {
+            const takeOt = orient.fromStyle(orientStyleVars, takeEl.style);
             const stackI = parseInt(match[1] || '0');
             const dropCards = getElCards(dropEl) || [];
-            const takeCards = getElCards(takeEl);
-
-            if (takeCards) {
+            const elCards = getElCards(takeEl);
+            if (elCards) {
+              const takeCards = takeOt !== 0
+                ? elCards.map(card => ({ ...card, orient: takeOt }))
+                : elCards;
               const head = dropCards.slice(0, stackI);
               const tail = dropCards.slice(stackI);
               const newCards = head.concat(takeCards, tail);
@@ -954,14 +1056,7 @@ function makeWorld(spec) {
         }
       });
 
-      container.addEventListener('contextmenu', ev => {
-        const ctx = evContext(ev);
-        if (!ctx) return;
-        const st = ctx.getData('state');
-        console.log('ctx?', st);
-        // TODO display own based on cards / hand? only if not dragging?
-        ev.preventDefault();
-      });
+      container.addEventListener('contextmenu', ev => ev.preventDefault());
 
       // TODO touch event handling
 
