@@ -5,11 +5,11 @@
 - actions that should be possible:
   - [x] move card(s)
   - [~] take card(s)
-  - [ ] flip card
+  - [~] flip card
   - [ ] rotate card sideways ; also odd angles?
   - [ ] place card(s)
   - [ ] place part of stack
-  - [ ] cut stack ... short cut for take / place?
+  - [~] cut stack ... short cut for take / place?
   - [ ] rotate held stack ; nominal reverse
   - [ ] RNG shuffle 1 stack
   - [ ] shuffle 2 stacks: riffle ; other methods?
@@ -77,6 +77,9 @@
 - maybe drag should mostly move all by default, require drag on edge/border to cut stack?
 
 ## Done
+
+- got drag-to-cut and drop-to-stack working!
+- also with a basic click to flip top card for now
 
 # 2025-03-23
 

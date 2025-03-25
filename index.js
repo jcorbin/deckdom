@@ -107,6 +107,17 @@ const vec2 = Object.freeze({
  */
 
 const orient = Object.freeze({
+  /**
+   * @param {Orient} o
+   * @param {number} az
+   * @param {number} [ay]
+   * @param {number} [ax]
+   * @returns {Orient}
+   */
+  addValues(o, az, ay = 0, ax = 0) {
+    const [z, y = 0, x = 0] = orient.unpack(o);
+    return orient.packValues(z + az, y + ay, x + ax);
+  },
 
   /** @param {any} val @returns {val is Orient} */
   isInstance(val) {
@@ -120,6 +131,18 @@ const orient = Object.freeze({
   unpack(o) {
     const [z, y = 0, x = 0] = (typeof o === 'number') ? [o] : o;
     return [z, y, x];
+  },
+
+  /**
+   * @param {number} z
+   * @param {number} y
+   * @param {number} x
+   * @returns {Orient}
+   */
+  packValues(z, y, x) {
+    if (x !== 0 && !isNaN(x)) return [z, y, x];
+    if (y !== 0 && !isNaN(y)) return [z, y];
+    return z;
   },
 
   /** @param {Orient} o */
@@ -167,9 +190,7 @@ const orient = Object.freeze({
     const z = parseFloat(style.getPropertyValue(zVar));
     const y = parseFloat(style.getPropertyValue(yVar));
     const x = parseFloat(style.getPropertyValue(xVar));
-    if (x !== 0 && !isNaN(x)) return [z, y, x];
-    if (y !== 0 && !isNaN(y)) return [z, y];
-    return z;
+    return orient.packValues(z, y, x);
   },
 
   // TODO convert to quaternion
@@ -211,6 +232,19 @@ function ensureId(el, genId) {
       return { id, added: true };
     }
   throw new Error('must generate element id');
+}
+
+/**
+ * @param {HTMLElement} a
+ * @param {HTMLElement} b
+ */
+const isDescendedFrom = (a, b) => {
+  for (
+    let par = a.parentNode;
+    par;
+    par = par?.parentNode
+  ) if (par === b) return true;
+  return false;
 }
 
 /** @typedef {{ [name: string]: CardDef}} Spec */
@@ -285,7 +319,6 @@ const smudgeCard = card => {
   return card;
 };
 
-const dragDataType = 'application/x-webdeck+json';
 const cardDataKey = 'cards';
 const stateDataKey = 'cardsUi';
 
@@ -314,6 +347,14 @@ const getElCards = el => {
   return data ? parseCards(data) : null;
 };
 
+/** @param {HTMLElement} el */
+const hasElCards = el => {
+  const data = el.dataset[cardDataKey];
+  if (!data) return false;
+  const raw = JSON.parse(data);
+  return Array.isArray(raw) ? !!raw.length : true;
+};
+
 /** @param {Event} ev */
 const evContext = ev => {
   const { target } = ev;
@@ -339,7 +380,7 @@ const elState = ref => {
 
   const ctx = {
     get el() { return ref },
-    // TODO set el(el: HTMLElement)
+    set el(el) { ref = el },
 
     get domain() {
       let el = ref;
@@ -382,7 +423,7 @@ const elState = ref => {
       if (val)
         dom.dataset[dataKey] = val;
       else
-        delete ref.dataset[dataKey];
+        delete dom.dataset[dataKey];
     },
 
     /** @param {HTMLElement} el @param {string} kind */
@@ -533,28 +574,38 @@ function makeWorld(spec) {
     } else {
       el.className = cards.length > 1 ? 'stack' : 'card';
 
+      const oldDataKeys = new Set(Object.keys(el.dataset).filter(name => /^card[A-Z]/.test(name)));
+
       const { orient: ot = 0 } = top;
       if (orient.zInversions(ot) % 2 == 0) {
         el.classList.add('back');
       } else {
         el.classList.add('face');
         if ('id' in top) el.classList.add(top.id);
+
+        const def = 'id' in top ? spec[top.id] : top;
+        if (def) {
+          for (const [prop, val] of Object.entries(def)) {
+            const dataKey = `card${prop.slice(0, 1).toUpperCase()}${prop.slice(1)}`
+            el.dataset[dataKey] = val;
+            oldDataKeys.delete(dataKey);
+            const key = `--card-${prop}`;
+            st.setProperty(key, val);
+            updatedVars.add(key);
+          }
+        }
+
         // const card = 'id' in top ? spec[top.id] : top;
         // if (card) TODO actually render face
+
       }
-      if (orient.xInversions(ot) % 2 == 1) el.classList.add('reversed');
+      if (orient.yInversions(ot) % 2 == 1) el.classList.add('reversed');
       orient.toStyle(orientStyleVars, el.style, ot);
       for (const v of orientStyleVars)
         updatedVars.add(v);
 
-      const def = 'id' in top ? spec[top.id] : top;
-      if (def) {
-        for (const [prop, val] of Object.entries(def)) {
-          const key = `--card-${prop}`;
-          st.setProperty(key, val);
-          updatedVars.add(key);
-        }
-      }
+      for (const dataKey of oldDataKeys)
+        delete el.dataset[dataKey];
     }
 
     for (const key of Array.from(st))
@@ -567,9 +618,9 @@ function makeWorld(spec) {
   /** @type {Vec2} */
   const takeBands = [
     /* take 1 ... */
-    0.2,
+    0.1,
     /* ... take N ... */
-    0.8,
+    0.9,
     /* ... take all */
   ];
 
@@ -596,7 +647,23 @@ function makeWorld(spec) {
           console.log('in situ click', ev.button);
           // TODO handle secondary clicks while other held
         } else {
-          console.log('fin click', ev.button);
+
+          const cards = getElCards(ctx.el);
+          if (!cards) {
+            console.log('click?', ev.button, ctx.el);
+            return;
+          }
+
+          // TODO button 1 to reverse
+
+          if (cards.length) {
+            const [top, ...rest] = cards;
+            if (!top) return;
+            top.orient = orient.addValues(top.orient || 0, 0, 1);
+            world.render(ctx.el, [top, ...rest]);
+            console.log('flip click', cards[0], ctx.el);
+          }
+
         }
       };
 
@@ -608,12 +675,12 @@ function makeWorld(spec) {
 
         const startCards = startEl && getElCards(startEl) || [];
 
-        const [_offsetX, offsetY] = vec2.fromString(getElData(startEl, 'moveAt'));
+        const at = vec2.fromString(getElData(startEl, 'moveAt'));
 
         const takeEl = ctx.domain.appendChild(ctx.el.ownerDocument.createElement('div'));
         const takeI = scal.clamp(
           Math.round(scal.remap2(
-            offsetY,
+            at[1],
             vec2.scale(startEl.offsetHeight, takeBands),
             0, startCards.length)
           ), 1, startCards.length);
@@ -623,7 +690,7 @@ function makeWorld(spec) {
         world.render(takeEl, takeCards);
         orient.toStyle(orientStyleVars, takeEl.style,
           orient.fromStyle(orientStyleVars, startEl.style));
-        takeEl.style.position = 'absolute';
+        // takeEl.style.position = 'absolute';
         ctx.setDomData('dragTakeId', ctx.track(takeEl));
 
         // TODO gesture to pull & flip? based on overlay action regions?
@@ -631,50 +698,100 @@ function makeWorld(spec) {
 
       /** @param {ElState} ctx */
       const handleDragEnter = ctx => {
-        const id = ctx.track(ctx.el);
-        // const overId = ctx.getData('dragOverId');
-        // const takeId = ctx.getData('dragTakeId');
-        // const startId = ctx.getData('dragStartId');
+        const { el } = ctx;
 
-        console.log('dragenter', id);
-        // TODO show overlay
-        // TODO update effect indicator
-        // if (el === cev.startEl) {
-        //   // TODO present overlay ; TODO differ when re-enter as if other stack?
-        //   // TODO re-enter self should interact as if foreign stack? e.g. present actions like (stack under, ... cut into ..., stack over)
-        //   ev.preventDefault();
-        //   dt.dropEffect = 'none';
-        //   console.log('dragging over self');
-        //   cev.overEl = el;
-        //   return;
-        // }
+        // TODO else?
+        const dropId = ctx.getData('dragDropId');
+        const dropEl = dropId ? el.ownerDocument.getElementById(dropId) : null;
+        if (dropEl &&
+          isDescendedFrom(el, dropEl) &&
+          !dropEl.classList.contains('domain')) {
+          return;
+        }
 
+        if (el.classList.contains('domain')) {
+          ctx.setDomData('dragDropId', ctx.track(el));
+          ctx.setDomData('dragDropAction', 'place');
+          return;
+        }
+
+        if (hasElCards(el)) {
+          ctx.setDomData('dragDropId', ctx.track(el));
+          ctx.setDomData('dragDropAction', 'stack');
+          // TODO show overlay
+          return;
+        }
+
+        // TODO (domain) places
+        // TODO (avatar) hands
+      };
+
+      /**
+       * @param {Vec2} at
+       * @param {Element|null} el
+       * @param {Element} [until]
+       */
+      const subOffset = (at, el, until) => {
+        for (
+          let op = el;
+          op && op !== until && op instanceof HTMLElement;
+          op = op.offsetParent
+        ) at[0] -= op.offsetLeft, at[1] -= op.offsetTop;
+      };
+
+      /**
+       * @param {Vec2} at
+       * @param {Element|null} el
+       * @param {Element} [until]
+       */
+      const addOffset = (at, el, until) => {
+        for (
+          let op = el;
+          op && op !== until && op instanceof HTMLElement;
+          op = op.offsetParent
+        ) at[0] += op.offsetLeft, at[1] += op.offsetTop;
       };
 
       /** @param {ElState} ctx */
-      const handleDragOver = ctx => {
+      const handleDragOver = (ctx) => {
         const takeId = ctx.getData('dragTakeId');
         const takeEl = takeId ? ctx.el.ownerDocument.getElementById(takeId) : null;
         if (takeEl) {
           const at = vec2.fromString(ctx.getData('moveAtAbs'));
-          for (
-            let op = takeEl.offsetParent;
-            op && op instanceof HTMLElement;
-            op = op.offsetParent
-          ) at[0] -= op.offsetLeft, at[1] -= op.offsetTop;
+          subOffset(at, takeEl.offsetParent);
           vec2.toStyleTopLeft(vec2.add(at, dragImageOffset), takeEl.style);
         }
 
-        // TODO update overlay
-        // TODO update effect indicator based on overlay
+        const dropId = ctx.getData('dragDropId');
+        const dropEl = dropId ? ctx.el.ownerDocument.getElementById(dropId) : null;
+        const cards = dropEl && getElCards(dropEl) || [];
+        if (dropEl && cards.length) {
+          // TODO use overlay
+          const overId = ctx.getData('dragOverId');
+          const overEl = overId ? ctx.el.ownerDocument.getElementById(overId) : null;
+          const at = vec2.fromString(ctx.getData('moveAt')); // TODO adjust over ... drop
+          addOffset(at, overEl, dropEl);
+          const stackI = scal.clamp(
+            Math.round(scal.remap2(
+              at[1],
+              vec2.scale(dropEl.offsetHeight, takeBands),
+              0, cards.length)
+            ), 0, cards.length);
+          ctx.setDomData('dragDropAction', `stack_${stackI}`);
+
+          // TODO update overlay
+          return;
+        }
+
+        // TODO update subtlety of to-hand action
       };
 
       /** @param {ElState} ctx */
       const handleDragLeave = ctx => {
-        const overId = ctx.getData('dragOverId');
-        const overEl = overId ? ctx.el.ownerDocument.getElementById(overId) : null;
-        console.log('dragleave', overEl);
         // TODO hide any overlay
+        // const dropId = ctx.getData('dragDropId');
+        // const dropEl = dropId ? ctx.el.ownerDocument.getElementById(dropId) : null;
+        ctx.setDomData('dragDropId', '');
       };
 
       /** @param {ElState} ctx */
@@ -685,34 +802,49 @@ function makeWorld(spec) {
         const startEl = ctx.el.ownerDocument.getElementById(startId);
 
         const startCards = startEl && getElCards(startEl) || [];
-        const takeCards = takeEl && getElCards(takeEl) || [];
-        // TODO cancel ||= dropEffect === 'none'
+
+        const dropId = ctx.getData('dragDropId');
+        const dropEl = dropId ? ctx.el.ownerDocument.getElementById(dropId) : null;
+        const dropAction = ctx.getData('dragDropAction');
+        if (!dropEl || !dropAction) cancel = true;
 
         if (cancel) {
-
-          console.log('dragcancel', {
-            start: startEl,
-            take: takeEl,
-          });
-
-          if (startEl && takeEl) {
+          const takeCards = takeEl && getElCards(takeEl);
+          if (startEl && takeCards)
             world.render(startEl, startCards.concat(takeCards));
-            takeEl.parentNode?.removeChild(takeEl);
-          }
-        } else {
-          // TODO finalize take position, relativize into dropped parent
-          // TODO prime that data during dragenter/over proposition
-
-          console.log('dragend', {
-            start: startEl,
-            take: takeEl,
-            drop: ctx.el,
-            went: startEl !== ctx.el,
-          });
-
-          if (startEl && !startCards.length)
-            startEl.parentNode?.removeChild(startEl);
+          takeEl?.parentNode?.removeChild(takeEl);
+          return;
         }
+
+        if (!dropEl || !takeEl) return;
+
+        if (dropAction.startsWith('stack')) {
+          const match = /^stack(?:_(\d+))?$/.exec(dropAction);
+          if (!match) {
+            console.warn('invalid stack action', dropAction);
+          } else {
+            const stackI = parseInt(match[1] || '0');
+            const dropCards = getElCards(dropEl) || [];
+            const takeCards = getElCards(takeEl);
+
+            if (takeCards) {
+              const head = dropCards.slice(0, stackI);
+              const tail = dropCards.slice(stackI);
+              const newCards = head.concat(takeCards, tail);
+
+              world.render(dropEl, newCards);
+              takeEl.parentNode?.removeChild(takeEl);
+            }
+          }
+        } else if (dropAction === 'place') {
+          // TODO any finalizing? into placeholder?
+        } else {
+          console.warn('unknown drop action', dropAction);
+        }
+
+        if (startEl && !startCards.length)
+          startEl.parentNode?.removeChild(startEl);
+
       };
 
       container.addEventListener('mousedown', ev => {
@@ -749,7 +881,6 @@ function makeWorld(spec) {
             } else if (st === 'mousedrag') {
               handleDragEnd(ctx);
             } else {
-
               console.log('fin ???', st, button);
             }
             ctx.close();
@@ -775,8 +906,7 @@ function makeWorld(spec) {
 
         if (st === 'mousedown' && `${ev.buttons}` === buttons) {
           const { el } = ctx;
-          const cards = getElCards(el);
-          if (!cards?.length) return;
+          if (!hasElCards(el)) return;
           const id = ctx.track(ctx.el);
           ctx.setData('state', '');
           ctx.setData('buttons', '');
@@ -794,19 +924,32 @@ function makeWorld(spec) {
             return;
           }
 
-          const id = ctx.track(ctx.el);
-          const overId = ctx.getData('dragOverId');
           const takeId = ctx.getData('dragTakeId');
-          const startId = ctx.getData('dragStartId');
-          if (overId !== id) {
+          if (takeId && takeId === ctx.el.id) {
+            const { el: { parentNode: par } } = ctx;
+            if (!(par instanceof HTMLElement)) return;
+            ctx.el = par;
+          }
+
+          const overId = ctx.getData('dragOverId');
+          const overEl = overId ? ctx.el.ownerDocument.getElementById(overId) : null;
+          if (overEl !== ctx.el) {
+            const startId = ctx.getData('dragStartId');
             if (!takeId && overId == startId) {
               handleDragTake(ctx);
             } else {
-              handleDragLeave(ctx);
+              const dropId = ctx.getData('dragDropId');
+              const dropEl = dropId ? ctx.el.ownerDocument.getElementById(dropId) : null;
+              if (dropEl && !isDescendedFrom(ctx.el, dropEl)) {
+                handleDragLeave(ctx);
+              }
+
             }
-            ctx.setDomData('dragOverId', id);
+            ctx.setDomData('dragOverId', ctx.track(ctx.el));
             handleDragEnter(ctx);
           }
+
+          // TODO throttle?
           handleDragOver(ctx);
         }
       });

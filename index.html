@@ -24,7 +24,9 @@ html, body {
   --card-back-bg: #222;
   --card-back-bg2: #555;
   --card-back-border: #333;
-  --card-border-unit: 0.2em;
+  --card-face-bg: #999;
+  --card-face-fg: #353;
+  --card-border-unit: 0.05em;
 
   position: absolute;
   width: 8em;
@@ -59,6 +61,18 @@ html, body {
 		calc(3*var(--scale)/4) calc(3*var(--scale)/4)/var(--scale) var(--scale),
     linear-gradient( 45deg,#0000 calc(125%/3),var(--card-back-bg2) 0 calc(175%/3),#0000 0) 0 0/calc(2*var(--scale)) calc(2*var(--scale)),
     linear-gradient(-45deg,#0000 calc(125%/3),var(--card-back-bg2) 0 calc(175%/3),#0000 0) 0 0/calc(2*var(--scale)) calc(2*var(--scale)) var(--card-back-bg);
+}
+
+.face {
+  background-color: var(--card-face-bg);
+  color: var(--card-face-fg);
+}
+
+.face::after {
+  display: block;
+  font-weight: bolder;
+  font-size: 2em;
+  content: attr(data-card-name);
 }
 
 </style>
