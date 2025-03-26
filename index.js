@@ -626,12 +626,13 @@ export default function init(spec) {
           })();
 
           viewer.innerHTML = `
+          <button value="close" style="float: right">X</button>
           <fieldset><legend>
             <select>
             ${Object.keys(specData).map(id => {
-              const sel = id === cardId ? ' selected' : '';
-              return `<option${sel}>${id}</option>`
-            }).join('\n')}
+            const sel = id === cardId ? ' selected' : '';
+            return `<option${sel}>${id}</option>`
+          }).join('\n')}
             </select>
             <button value="next">Next</button>
           </legend>
@@ -650,9 +651,13 @@ export default function init(spec) {
           viewer.querySelector('button')?.addEventListener('click', ev => {
             const el = ev.target;
             if (el instanceof HTMLButtonElement) {
-              const ks = Object.keys(specData);
-              const i = (ks.indexOf(cardId) + 1) % ks.length;
-              self.selectIndex(i);
+              if (el.value === 'next') {
+                const ks = Object.keys(specData);
+                const i = (ks.indexOf(cardId) + 1) % ks.length;
+                self.selectIndex(i);
+              } else if (el.value === 'close') {
+                viewer.parentNode?.removeChild(viewer);
+              }
             }
           });
           for (const el of viewer.querySelectorAll('.card')) {

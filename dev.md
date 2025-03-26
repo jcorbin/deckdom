@@ -83,9 +83,10 @@
 ## Done
 
 - simplified card data string to include orientation without JSON: `3#id` is 3 z-flips, `3,1#id` is a reversed face-up card
-- did initial conversion of alleged fool art ; 1 done, 77 to go
+- converted alleged fool ; time mostly spent re-ramping up on how svg works
 - built out card face rendering routine, just svg for now
 - fixed event handling over child svg elements
+- converted alleged magician ; added modal for card book browsing
 
 ### Assets
 
