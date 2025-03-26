@@ -353,7 +353,11 @@ const toCards = raw => {
 };
 
 /** @param {string} dat */
-const parseCards = dat => dat ? toCards(JSON.parse(dat)) : [];
+const parseCards = dat => {
+  if (!dat) return [];
+  // try { return [toCard(dat)]; } catch { }
+  return toCards(JSON.parse(dat));
+}
 
 /** @param {Card} card */
 const smudgeCard = card => {
@@ -362,7 +366,6 @@ const smudgeCard = card => {
     const numKeys = Object.keys(card).length;
     if (!ot && numKeys <= 2) return `#${id}`;
     if (ot && numKeys === 2) return `${ot}#${id}`;
-    console.log('nop', card, numKeys, ot)
   }
   return card;
 };
@@ -399,6 +402,7 @@ const getElCards = el => {
 const hasElCards = el => {
   const data = el.dataset[cardDataKey];
   if (!data) return false;
+  // try { toCard(data); return true; } catch { }
   const raw = JSON.parse(data);
   return Array.isArray(raw) ? !!raw.length : true;
 };
@@ -551,6 +555,8 @@ const elState = ref => {
 export default function init(spec) {
   if (!(typeof spec === 'object' && spec instanceof Element))
     throw new Error('must provide spec element');
+  const document = spec.ownerDocument;
+
   if (
     spec.tagName.toLowerCase() !== 'script' ||
     spec.getAttribute('language') !== 'application/json'
@@ -593,6 +599,87 @@ export default function init(spec) {
     el.style.left = '10vw';
     world.render(el, world.allCardIds());
   }));
+
+  return Object.freeze({
+    makeViewer() {
+      const viewer = document.body.appendChild(h('div.modal.cardBook'));
+      viewer.addEventListener('mousedown', ev => ev.stopPropagation());
+      viewer.addEventListener('mousemove', ev => ev.stopPropagation());
+      viewer.addEventListener('mouseup', ev => ev.stopPropagation());
+
+      let cardId = '';
+
+      const self = Object.freeze({
+        update() {
+          const cardSpec = specData[cardId];
+          const explain = (() => {
+            if (!cardSpec) return '-- no card spec -- ';
+
+            const ex = cardSpec['explain'];
+            if (!ex) return '-- no explanation --';
+
+            if (!ex.startsWith('#')) return ex;
+            const el = document.querySelector(ex);
+            if (!el) return `-- no element for query ${ex} --`;
+
+            if (el instanceof Element) return el.textContent;
+          })();
+
+          viewer.innerHTML = `
+          <fieldset><legend>
+            <select>
+            ${Object.keys(specData).map(id => {
+              const sel = id === cardId ? ' selected' : '';
+              return `<option${sel}>${id}</option>`
+            }).join('\n')}
+            </select>
+            <button value="next">Next</button>
+          </legend>
+            <div style="float: left; margin-right: 1em" class="card" data-cards='["0,1#${cardId}"]'></div>
+            <div style="float: left" class="card" data-cards='["1,1#${cardId}"]'></div>
+            <br style="clear: both" />
+
+            <p style="white-space: pre-line">${explain}</p>
+          </fieldset>
+          `;
+          viewer.querySelector('select')?.addEventListener('change', ev => {
+            const el = ev.target;
+            if (el instanceof HTMLSelectElement)
+              self.select(el.value);
+          });
+          viewer.querySelector('button')?.addEventListener('click', ev => {
+            const el = ev.target;
+            if (el instanceof HTMLButtonElement) {
+              const ks = Object.keys(specData);
+              const i = (ks.indexOf(cardId) + 1) % ks.length;
+              self.selectIndex(i);
+            }
+          });
+          for (const el of viewer.querySelectorAll('.card')) {
+            if (el instanceof HTMLElement) {
+              world.render(el);
+            }
+          }
+        },
+
+        /** @param {number} i */
+        selectIndex(i) {
+          self.select(Object.keys(specData)[i] || '');
+        },
+
+        /** @param {string} id */
+        select(id) {
+          cardId = id;
+          self.update();
+        },
+
+      });
+
+      self.selectIndex(0);
+
+      return self;
+    },
+  });
 }
 
 /** @typedef {object} FaceRenderOpts
@@ -743,9 +830,9 @@ function makeWorld(spec) {
   /** @type {Vec2} */
   const takeBands = [
     /* take 1 ... */
-    0.15,
+    0.2,
     /* ... take N ... */
-    0.85,
+    0.8,
     /* ... take all */
   ];
 
