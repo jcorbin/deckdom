@@ -107,6 +107,18 @@ const vec2 = Object.freeze({
  */
 
 const orient = Object.freeze({
+  // NOTE toString is redundant since fromString will parse natural string value of number or array
+
+  /** @param {string} s @returns {Orient} */
+  fromString(s) {
+    const match = /^(?:([^,]+)(?:,([^,]+)(?:,([^,]+))?)?)?/.exec(s)
+    const [_, sz = '', sy = '', sx = ''] = match || [];
+    const z = sz ? parseFloat(sz) : 0;
+    const y = sz ? parseFloat(sy) : 0;
+    const x = sz ? parseFloat(sx) : 0;
+    return orient.packValues(z, y, x);
+  },
+
   /**
    * @param {Orient} a
    * @param {Orient} b
@@ -607,80 +619,125 @@ export default function init(spec) {
       viewer.addEventListener('mousemove', ev => ev.stopPropagation());
       viewer.addEventListener('mouseup', ev => ev.stopPropagation());
 
-      let cardId = '';
-
-      const self = Object.freeze({
-        update() {
-          const cardSpec = specData[cardId];
-          const explain = (() => {
-            if (!cardSpec) return '-- no card spec -- ';
-
-            const ex = cardSpec['explain'];
-            if (!ex) return '-- no explanation --';
-
-            if (!ex.startsWith('#')) return ex;
-            const el = document.querySelector(ex);
-            if (!el) return `-- no element for query ${ex} --`;
-
-            if (el instanceof Element) return el.textContent;
-          })();
-
-          viewer.innerHTML = `
+      viewer.innerHTML = `
           <button value="close" style="float: right">X</button>
           <fieldset><legend>
             <select>
-            ${Object.keys(specData).map(id => {
-            const sel = id === cardId ? ' selected' : '';
-            return `<option${sel}>${id}</option>`
-          }).join('\n')}
             </select>
-            <button value="next">Next</button>
+            <button value="prev">⬅️</button>
+            <button value="next">➡️</button>
           </legend>
-            <div style="float: left; margin-right: 1em" class="card" data-cards='["0,1#${cardId}"]'></div>
-            <div style="float: left" class="card" data-cards='["1,1#${cardId}"]'></div>
+            <div style="float: left; margin-right: 1em" class="card" data-orient="0,1"></div>
+            <div style="float: left" class="card" data-orient="1,1"></div>
             <br style="clear: both" />
 
-            <p style="white-space: pre-line">${explain}</p>
+            <p class="explain" style="white-space: pre-line"></p>
           </fieldset>
           `;
-          viewer.querySelector('select')?.addEventListener('change', ev => {
-            const el = ev.target;
-            if (el instanceof HTMLSelectElement)
-              self.select(el.value);
+
+      const select = viewer.querySelector('select');
+      if (!select) throw new Error('inconceivable');
+      const onchange = () => self.showCard({ id: select.value })
+      select.addEventListener('change', onchange);
+
+      for (const el of viewer.querySelectorAll('button'))
+        if (el.value === 'close')
+          el.addEventListener('click', () => viewer.parentNode?.removeChild(viewer));
+        else if (el.value === 'prev')
+          el.addEventListener('click', () => {
+            const n = select.options.length
+            select.selectedIndex = (select.selectedIndex + n - 1) % n;
+            onchange();
           });
-          viewer.querySelector('button')?.addEventListener('click', ev => {
-            const el = ev.target;
-            if (el instanceof HTMLButtonElement) {
-              if (el.value === 'next') {
-                const ks = Object.keys(specData);
-                const i = (ks.indexOf(cardId) + 1) % ks.length;
-                self.selectIndex(i);
-              } else if (el.value === 'close') {
-                viewer.parentNode?.removeChild(viewer);
-              }
-            }
+        else if (el.value === 'next')
+          el.addEventListener('click', () => {
+            select.selectedIndex = (select.selectedIndex + 1) % select.options.length;
+            onchange();
           });
-          for (const el of viewer.querySelectorAll('.card')) {
-            if (el instanceof HTMLElement) {
-              world.render(el);
+
+      const cardEls = Array
+        .from(viewer.querySelectorAll('.card'))
+        .filter(el => el instanceof HTMLElement);
+      const explain = viewer.querySelector('.explain');
+      if (!(explain instanceof HTMLElement)) throw new Error('inconceivable');
+
+      const self = Object.freeze({
+        get shownCardId() {
+          for (const el of cardEls) {
+            const cards = getElCards(el);
+            const top = cards && cards[0];
+            if (top && typeof top.id === 'string')
+              return top.id;
+          }
+          return '';
+        },
+
+        updateSelect() {
+          select.options.length = 0;
+          const specEntries = Object.entries(specData);
+          if (!specEntries.length) return;
+          const cardId = self.shownCardId;
+          for (const [id, { name }] of specEntries) {
+            const opt = document.createElement('option');
+            opt.value = id;
+            opt.selected = cardId ? cardId === id : false;
+            opt.innerText = `#${id} ${JSON.stringify(name)}`;
+            select.options.add(opt);
+          }
+          if (!cardId || cardId !== select.value)
+            self.showCard({ id: select.value });
+        },
+
+        /** @param {Card} card */
+        showCard(card) {
+          for (const el of cardEls) {
+            const ot = orient.fromString(el.dataset['orient'] || '');
+            world.render(el, [{ ...card, orient: ot }]);
+          }
+
+          const ex = (() => {
+            if ('explain' in card && typeof card['explain'] === 'string')
+              return card['explain'];
+
+            if (typeof card.id === 'string') {
+              const cardSpec = specData[card.id];
+              if (!cardSpec) return `-- undefined card #${card.id} --`;
+              return cardSpec['explain'];
             }
+
+            return '';
+          })();
+          if (ex) self.showExplanation(ex);
+          else explain.innerText = '-- no explanation --';
+        },
+
+        /** @param {string} ex */
+        showExplanation(ex) {
+          if (!ex.startsWith('#')) {
+            explain.innerHTML = ex;
+            return;
+          }
+
+          const el = document.querySelector(ex);
+          if (!el) {
+            explain.innerText = `-- no element for query ${ex} --`;
+            return;
+          }
+
+          if (el instanceof HTMLElement) {
+            explain.innerHTML = el.innerHTML;
+            return;
+          }
+
+          // TODO more specific element grafting logic
+          if (el instanceof Element) {
+            explain.innerText = el.textContent || '';
+            return;
           }
         },
-
-        /** @param {number} i */
-        selectIndex(i) {
-          self.select(Object.keys(specData)[i] || '');
-        },
-
-        /** @param {string} id */
-        select(id) {
-          cardId = id;
-          self.update();
-        },
-
       });
 
-      self.selectIndex(0);
+      self.updateSelect();
 
       return self;
     },
@@ -740,8 +797,9 @@ const renderCardFace = (el, card) => {
   const { orient: cardOt = 0 } = card;
   const ot = orient.add(elOt, cardOt);
 
+  const id = typeof card.id === 'string' && card.id || 'ø';
   const isReversed = orient.yInversions(ot) % 2 == 1
-  if ('id' in card) el.classList.add(card.id);
+  if (id) el.classList.add(id);
   if (isReversed) el.classList.add('reversed');
 
   if (isReversed) {
@@ -757,7 +815,8 @@ const renderCardFace = (el, card) => {
     renderFace(el, card['upright']);
     return;
   }
-  console.warn('no face defined for', top, card);
+
+  console.warn(`no face defined for #${id}`);
 };
 
 /**

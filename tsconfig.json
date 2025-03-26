@@ -17,5 +17,8 @@
     "noUnusedParameters": true
   },
 
+  "references": [
+    { "path": "./util" }
+  ],
   "exclude": []
 }

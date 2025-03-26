@@ -1,4 +1,4 @@
-# 2025-03-25
+# 2025-03-26
 
 ## TODO
 
@@ -81,6 +81,14 @@
 - TODO: generalize event parent seek, not just any html element, but certain preferred signposts
 
 ## Done
+
+- added an alleged tarot conversion utility
+- improved card book viewer
+  - simplified and mad selection logic/ux more robust
+  - decoupled internal card display from defined/id-entifed cards,
+    a nod to a potential future card editor UI
+
+# 2025-03-25
 
 - simplified card data string to include orientation without JSON: `3#id` is 3 z-flips, `3,1#id` is a reversed face-up card
 - converted alleged fool ; time mostly spent re-ramping up on how svg works
