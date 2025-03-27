@@ -190,14 +190,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-fool-label">
+        the fool
+    </text>
+
 <svg id="alleged-fool-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>fool: the fool</title>
+  <title>the fool: sponteneity, trust, taking a risk</title>
   <use href="#alleged-fool-face" />
   <use href="#alleged-fool-label" />
 </svg>
 
 <svg id="alleged-fool-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>fool reversed: sponteneity, trust, taking a risk</title>
+  <title>the fool reversed: recklessness, irresponsibility</title>
   <use href="#alleged-fool-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-fool-label" />
 </svg>
@@ -352,14 +356,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-magician-label">
+        the magician
+    </text>
+
 <svg id="alleged-magician-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>magician: the magician</title>
+  <title>the magician: skill, confidence, communication</title>
   <use href="#alleged-magician-face" />
   <use href="#alleged-magician-label" />
 </svg>
 
 <svg id="alleged-magician-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>magician reversed: skill, confidence, communication</title>
+  <title>the magician reversed: lack of confidence, bad communication</title>
   <use href="#alleged-magician-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-magician-label" />
 </svg>
@@ -578,14 +586,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-papess-label">
+        the papess
+    </text>
+
 <svg id="alleged-papess-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>papess: the papess</title>
+  <title>the papess: intuition, dreams, anima</title>
   <use href="#alleged-papess-face" />
   <use href="#alleged-papess-label" />
 </svg>
 
 <svg id="alleged-papess-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>papess reversed: intuition, dreams, anima</title>
+  <title>the papess reversed: suppressed feelings, unrecognized potential</title>
   <use href="#alleged-papess-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-papess-label" />
 </svg>
@@ -821,14 +833,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-empress-label">
+        the empress
+    </text>
+
 <svg id="alleged-empress-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>empress: the empress</title>
+  <title>the empress: security, well-being, motherhood</title>
   <use href="#alleged-empress-face" />
   <use href="#alleged-empress-label" />
 </svg>
 
 <svg id="alleged-empress-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>empress reversed: security, well-being, motherhood</title>
+  <title>the empress reversed: insecurity, domestic problems</title>
   <use href="#alleged-empress-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-empress-label" />
 </svg>
@@ -962,18 +978,21 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-emperor-label">
+        the emperor
+    </text>
+
 <svg id="alleged-emperor-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>emperor: the emperor</title>
+  <title>the emperor: authority, responsibility, promotion</title>
   <use href="#alleged-emperor-face" />
   <use href="#alleged-emperor-label" />
 </svg>
 
 <svg id="alleged-emperor-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>emperor reversed: authority, responsibility, promotion</title>
+  <title>the emperor reversed: inferiority, restriction by rules</title>
   <use href="#alleged-emperor-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-emperor-label" />
 </svg>
-<!-- FIXME missing emperor card explanation -->
 
 <!-- file: assets/alleged-tarot/v-pope-card3.svg -->
 <!-- alleged title: "pope" suit: major rank: 5 -->
@@ -1096,14 +1115,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-pope-label">
+        the pope
+    </text>
+
 <svg id="alleged-pope-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>pope: the pope</title>
+  <title>the pope: professional advice, learning, teaching</title>
   <use href="#alleged-pope-face" />
   <use href="#alleged-pope-label" />
 </svg>
 
 <svg id="alleged-pope-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>pope reversed: professional advice, learning, teaching</title>
+  <title>the pope reversed: bad advice, misinformation</title>
   <use href="#alleged-pope-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-pope-label" />
 </svg>
@@ -1248,14 +1271,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-lovers-label">
+        the lovers
+    </text>
+
 <svg id="alleged-lovers-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>lovers: the lovers</title>
+  <title>the lovers: choice, decision, commitment</title>
   <use href="#alleged-lovers-face" />
   <use href="#alleged-lovers-label" />
 </svg>
 
 <svg id="alleged-lovers-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>lovers reversed: choice, decision, commitment</title>
+  <title>the lovers reversed: indecision, bad decision</title>
   <use href="#alleged-lovers-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-lovers-label" />
 </svg>
@@ -1486,14 +1513,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-chariot-label">
+        the chariot
+    </text>
+
 <svg id="alleged-chariot-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>chariot: the chariot</title>
+  <title>the chariot: willpower, ambition</title>
   <use href="#alleged-chariot-face" />
   <use href="#alleged-chariot-label" />
 </svg>
 
 <svg id="alleged-chariot-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>chariot reversed: willpower, ambition</title>
+  <title>the chariot reversed: aimlessness, selfishness, inner conflict</title>
   <use href="#alleged-chariot-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-chariot-label" />
 </svg>
@@ -1600,14 +1631,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-justice-label">
+        justice
+    </text>
+
 <svg id="alleged-justice-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>justice: justice</title>
+  <title>justice: justice, reason, legal matters</title>
   <use href="#alleged-justice-face" />
   <use href="#alleged-justice-label" />
 </svg>
 
 <svg id="alleged-justice-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>justice reversed: justice, reason, legal matters</title>
+  <title>justice reversed: injustice, bias</title>
   <use href="#alleged-justice-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-justice-label" />
 </svg>
@@ -1717,18 +1752,21 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-hermit-label">
+        the hermit
+    </text>
+
 <svg id="alleged-hermit-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>hermit: the hermit</title>
+  <title>the hermit: independence, solitariness, inner search</title>
   <use href="#alleged-hermit-face" />
   <use href="#alleged-hermit-label" />
 </svg>
 
 <svg id="alleged-hermit-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>hermit reversed: independence, solitariness, inner search</title>
+  <title>the hermit reversed: loneliness, exclusion</title>
   <use href="#alleged-hermit-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-hermit-label" />
 </svg>
-<!-- FIXME missing hermit card explanation -->
 
 <path id="textPath" d="M141.244,413.068 A162.182,162.183 0.0 1 1 465.609,413.068      A162.182,162.183 0.0 1 1 141.244,413.068"/>
 
@@ -2018,18 +2056,21 @@
 
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-wheel-label">
+        the wheel of fortune
+    </text>
+
 <svg id="alleged-wheel-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>wheel: the wheel of fortune</title>
+  <title>the wheel of fortune: good luck, chance event</title>
   <use href="#alleged-wheel-face" />
   <use href="#alleged-wheel-label" />
 </svg>
 
 <svg id="alleged-wheel-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>wheel reversed: good luck, chance event</title>
+  <title>the wheel of fortune reversed: misfortune, pessimism</title>
   <use href="#alleged-wheel-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-wheel-label" />
 </svg>
-<!-- FIXME missing wheel card explanation -->
 
 <!-- file: assets/alleged-tarot/xi-strength-card3.svg -->
 <!-- alleged title: "strength" suit: major rank: 11 -->
@@ -2213,14 +2254,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-strength-label">
+        strength
+    </text>
+
 <svg id="alleged-strength-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>strength: strength</title>
+  <title>strength: moral strength, self-control</title>
   <use href="#alleged-strength-face" />
   <use href="#alleged-strength-label" />
 </svg>
 
 <svg id="alleged-strength-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>strength reversed: moral strength, self-control</title>
+  <title>strength reversed: helpless feelings, inhibition</title>
   <use href="#alleged-strength-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-strength-label" />
 </svg>
@@ -2539,18 +2584,21 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-hanged-label">
+        the hanged man
+    </text>
+
 <svg id="alleged-hanged-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>hanged: the hanged man</title>
+  <title>the hanged man: sacrifice, dedication</title>
   <use href="#alleged-hanged-face" />
   <use href="#alleged-hanged-label" />
 </svg>
 
 <svg id="alleged-hanged-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>hanged reversed: sacrifice, dedication</title>
+  <title>the hanged man reversed: dissatisfaction, apathy</title>
   <use href="#alleged-hanged-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-hanged-label" />
 </svg>
-<!-- FIXME missing hanged card explanation -->
 
 <!-- file: assets/alleged-tarot/xiii-death-card3.svg -->
 <!-- alleged title: "death" suit: major rank: 13 -->
@@ -2691,18 +2739,21 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-death-label">
+        death
+    </text>
+
 <svg id="alleged-death-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>death: death</title>
+  <title>death: change, ending, new life</title>
   <use href="#alleged-death-face" />
   <use href="#alleged-death-label" />
 </svg>
 
 <svg id="alleged-death-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>death reversed: change, ending, new life</title>
+  <title>death reversed: traumatic change, delayed change</title>
   <use href="#alleged-death-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-death-label" />
 </svg>
-<!-- FIXME missing death card explanation -->
 
 <!-- file: assets/alleged-tarot/xiiii-temperance-card3.svg -->
 <!-- alleged title: "temperance" suit: major rank: 14 -->
@@ -2957,14 +3008,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-temperance-label">
+        temperance
+    </text>
+
 <svg id="alleged-temperance-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>temperance: temperance</title>
+  <title>temperance: balanced personality, tactfulness</title>
   <use href="#alleged-temperance-face" />
   <use href="#alleged-temperance-label" />
 </svg>
 
 <svg id="alleged-temperance-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>temperance reversed: balanced personality, tactfulness</title>
+  <title>temperance reversed: moodiness, uncertainty</title>
   <use href="#alleged-temperance-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-temperance-label" />
 </svg>
@@ -3137,14 +3192,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-devil-label">
+        the devil
+    </text>
+
 <svg id="alleged-devil-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>devil: the devil</title>
+  <title>the devil: anger, oppressiveness, restriction</title>
   <use href="#alleged-devil-face" />
   <use href="#alleged-devil-label" />
 </svg>
 
 <svg id="alleged-devil-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>devil reversed: anger, oppressiveness, restriction</title>
+  <title>the devil reversed: intolerable situation, escape</title>
   <use href="#alleged-devil-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-devil-label" />
 </svg>
@@ -3278,18 +3337,21 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-tower-label">
+        the tower
+    </text>
+
 <svg id="alleged-tower-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>tower: the tower</title>
+  <title>the tower: shock, revelation, accident</title>
   <use href="#alleged-tower-face" />
   <use href="#alleged-tower-label" />
 </svg>
 
 <svg id="alleged-tower-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>tower reversed: shock, revelation, accident</title>
+  <title>the tower reversed: preventable misfortune, disappointing blow</title>
   <use href="#alleged-tower-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-tower-label" />
 </svg>
-<!-- FIXME missing tower card explanation -->
 
 <!-- file: assets/alleged-tarot/xvii-star-card3.svg -->
 <!-- alleged title: "star" suit: major rank: 17 -->
@@ -3502,18 +3564,21 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-star-label">
+        the star
+    </text>
+
 <svg id="alleged-star-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>star: the star</title>
+  <title>the star: peace, healing, rest</title>
   <use href="#alleged-star-face" />
   <use href="#alleged-star-label" />
 </svg>
 
 <svg id="alleged-star-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>star reversed: peace, healing, rest</title>
+  <title>the star reversed: hope, delayed fulfilment</title>
   <use href="#alleged-star-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-star-label" />
 </svg>
-<!-- FIXME missing star card explanation -->
 
 <!-- file: assets/alleged-tarot/xviii-moon-card3.svg -->
 <!-- alleged title: "moon" suit: major rank: 18 -->
@@ -3686,18 +3751,21 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-moon-label">
+        the moon
+    </text>
+
 <svg id="alleged-moon-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>moon: the moon</title>
+  <title>the moon: confusion, depression, deception</title>
   <use href="#alleged-moon-face" />
   <use href="#alleged-moon-label" />
 </svg>
 
 <svg id="alleged-moon-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>moon reversed: confusion, depression, deception</title>
+  <title>the moon reversed: fears, phobias, despair</title>
   <use href="#alleged-moon-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-moon-label" />
 </svg>
-<!-- FIXME missing moon card explanation -->
 
 <!-- file: assets/alleged-tarot/xviiii-sun-card3.svg -->
 <!-- alleged title: "sun" suit: major rank: 19 -->
@@ -4289,18 +4357,21 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-sun-label">
+        the sun
+    </text>
+
 <svg id="alleged-sun-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>sun: the sun</title>
+  <title>the sun: success, optimism, high ideals</title>
   <use href="#alleged-sun-face" />
   <use href="#alleged-sun-label" />
 </svg>
 
 <svg id="alleged-sun-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>sun reversed: success, optimism, high ideals</title>
+  <title>the sun reversed: daydreaming, disillusionment</title>
   <use href="#alleged-sun-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-sun-label" />
 </svg>
-<!-- FIXME missing sun card explanation -->
 
 <!-- file: assets/alleged-tarot/xx-judgement-card3.svg -->
 <!-- alleged title: "judgement" suit: major rank: 20 -->
@@ -4500,18 +4571,21 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-judgement-label">
+        judgement
+    </text>
+
 <svg id="alleged-judgement-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>judgement: judgement</title>
+  <title>judgement: assessment, satisfying outcome</title>
   <use href="#alleged-judgement-face" />
   <use href="#alleged-judgement-label" />
 </svg>
 
 <svg id="alleged-judgement-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>judgement reversed: assessment, satisfying outcome</title>
+  <title>judgement reversed: regret, remorse, unsatisfactory outcome</title>
   <use href="#alleged-judgement-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-judgement-label" />
 </svg>
-<!-- FIXME missing judgement card explanation -->
 
 <!-- file: assets/alleged-tarot/xxi-world-card3.svg -->
 <!-- alleged title: "world" suit: major rank: 21 -->
@@ -4856,18 +4930,21 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-world-label">
+        the world
+    </text>
+
 <svg id="alleged-world-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>world: the world</title>
+  <title>the world: completion, spiritual wholeness, freedom</title>
   <use href="#alleged-world-face" />
   <use href="#alleged-world-label" />
 </svg>
 
 <svg id="alleged-world-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>world reversed: completion, spiritual wholeness, freedom</title>
+  <title>the world reversed: recurring problems, delayed completion</title>
   <use href="#alleged-world-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-world-label" />
 </svg>
-<!-- FIXME missing world card explanation -->
 
 <!-- file: assets/alleged-tarot/coins-ace-card3.svg -->
 <!-- alleged title: "1 of coins" suit: coins rank: 1 -->
@@ -4948,14 +5025,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-coins-1-label">
+        ace of coins
+    </text>
+
 <svg id="alleged-coins-1-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>1 of coins: ace of coins</title>
+  <title>ace of coins: feelings, security, wealth</title>
   <use href="#alleged-coins-1-face" />
   <use href="#alleged-coins-1-label" />
 </svg>
 
 <svg id="alleged-coins-1-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>1 of coins reversed: feelings, security, wealth</title>
+  <title>ace of coins reversed: insecurity, materialism</title>
   <use href="#alleged-coins-1-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-coins-1-label" />
 </svg>
@@ -5050,14 +5131,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-coins-2-label">
+    	    the two of coins
+    	</text>
+
 <svg id="alleged-coins-2-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>2 of coins: the two of coins</title>
+  <title>the two of coins: practical ability, adapatability, harmonious change</title>
   <use href="#alleged-coins-2-face" />
   <use href="#alleged-coins-2-label" />
 </svg>
 
 <svg id="alleged-coins-2-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>2 of coins reversed: practical ability, adapatability, harmonious change</title>
+  <title>the two of coins reversed: moodiness, fluctuation, silliness</title>
   <use href="#alleged-coins-2-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-coins-2-label" />
 </svg>
@@ -5152,14 +5237,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-coins-3-label">
+    	    the three of coins
+    	</text>
+
 <svg id="alleged-coins-3-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>3 of coins: the three of coins</title>
+  <title>the three of coins: work, employment</title>
   <use href="#alleged-coins-3-face" />
   <use href="#alleged-coins-3-label" />
 </svg>
 
 <svg id="alleged-coins-3-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>3 of coins reversed: work, employment</title>
+  <title>the three of coins reversed: unrewarding work</title>
   <use href="#alleged-coins-3-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-coins-3-label" />
 </svg>
@@ -5281,14 +5370,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-coins-4-label">
+    	    the four of coins
+    	</text>
+
 <svg id="alleged-coins-4-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>4 of coins: the four of coins</title>
+  <title>the four of coins: stability, stifling security</title>
   <use href="#alleged-coins-4-face" />
   <use href="#alleged-coins-4-label" />
 </svg>
 
 <svg id="alleged-coins-4-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>4 of coins reversed: stability, stifling security</title>
+  <title>the four of coins reversed: posessiveness, miserliness</title>
   <use href="#alleged-coins-4-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-coins-4-label" />
 </svg>
@@ -5406,14 +5499,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-coins-5-label">
+    	    the five of coins
+    	</text>
+
 <svg id="alleged-coins-5-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>5 of coins: the five of coins</title>
+  <title>the five of coins: material trouble, poverty, worry</title>
   <use href="#alleged-coins-5-face" />
   <use href="#alleged-coins-5-label" />
 </svg>
 
 <svg id="alleged-coins-5-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>5 of coins reversed: material trouble, poverty, worry</title>
+  <title>the five of coins reversed: poverty, unemployment, destitution</title>
   <use href="#alleged-coins-5-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-coins-5-label" />
 </svg>
@@ -5536,14 +5633,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-coins-6-label">
+    	    the six of coins
+    	</text>
+
 <svg id="alleged-coins-6-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>6 of coins: the six of coins</title>
+  <title>the six of coins: gift, charity</title>
   <use href="#alleged-coins-6-face" />
   <use href="#alleged-coins-6-label" />
 </svg>
 
 <svg id="alleged-coins-6-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>6 of coins reversed: gift, charity</title>
+  <title>the six of coins reversed: theft, being cheated or used</title>
   <use href="#alleged-coins-6-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-coins-6-label" />
 </svg>
@@ -5626,14 +5727,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-coins-7-label">
+    	    the seven of coins
+    	</text>
+
 <svg id="alleged-coins-7-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>7 of coins: the seven of coins</title>
+  <title>the seven of coins: perseverance, discouraging circumstances</title>
   <use href="#alleged-coins-7-face" />
   <use href="#alleged-coins-7-label" />
 </svg>
 
 <svg id="alleged-coins-7-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>7 of coins reversed: perseverance, discouraging circumstances</title>
+  <title>the seven of coins reversed: despondency, failure, abandonment</title>
   <use href="#alleged-coins-7-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-coins-7-label" />
 </svg>
@@ -5785,14 +5890,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-coins-8-label">
+    	    the eight of coins
+    	</text>
+
 <svg id="alleged-coins-8-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>8 of coins: the eight of coins</title>
+  <title>the eight of coins: skilled work, crafts, self-employment</title>
   <use href="#alleged-coins-8-face" />
   <use href="#alleged-coins-8-label" />
 </svg>
 
 <svg id="alleged-coins-8-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>8 of coins reversed: skilled work, crafts, self-employment</title>
+  <title>the eight of coins reversed: short-term gains, expediency</title>
   <use href="#alleged-coins-8-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-coins-8-label" />
 </svg>
@@ -5969,14 +6078,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-coins-9-label">
+    	    the nine of coins
+    	</text>
+
 <svg id="alleged-coins-9-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>9 of coins: the nine of coins</title>
+  <title>the nine of coins: material gain, security achieved through effort</title>
   <use href="#alleged-coins-9-face" />
   <use href="#alleged-coins-9-label" />
 </svg>
 
 <svg id="alleged-coins-9-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>9 of coins reversed: material gain, security achieved through effort</title>
+  <title>the nine of coins reversed: illusory security, dependence</title>
   <use href="#alleged-coins-9-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-coins-9-label" />
 </svg>
@@ -6228,14 +6341,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-coins-10-label">
+    	    the ten of coins
+    	</text>
+
 <svg id="alleged-coins-10-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>10 of coins: the ten of coins</title>
+  <title>the ten of coins: family support, friends, inheritance</title>
   <use href="#alleged-coins-10-face" />
   <use href="#alleged-coins-10-label" />
 </svg>
 
 <svg id="alleged-coins-10-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>10 of coins reversed: family support, friends, inheritance</title>
+  <title>the ten of coins reversed: family problems, social responsibility</title>
   <use href="#alleged-coins-10-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-coins-10-label" />
 </svg>
@@ -6343,14 +6460,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-coins-11-label">
+        page of coins
+    </text>
+
 <svg id="alleged-coins-11-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>11 of coins: page of coins</title>
+  <title>page of coins: scholarship, good news, creativity</title>
   <use href="#alleged-coins-11-face" />
   <use href="#alleged-coins-11-label" />
 </svg>
 
 <svg id="alleged-coins-11-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>11 of coins reversed: scholarship, good news, creativity</title>
+  <title>page of coins reversed: idlensss, pettiness, money problems</title>
   <use href="#alleged-coins-11-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-coins-11-label" />
 </svg>
@@ -6591,14 +6712,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-coins-12-label">
+        knight of coins
+    </text>
+
 <svg id="alleged-coins-12-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>12 of coins: knight of coins</title>
+  <title>knight of coins: thoroughness, dependability, good news</title>
   <use href="#alleged-coins-12-face" />
   <use href="#alleged-coins-12-label" />
 </svg>
 
 <svg id="alleged-coins-12-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>12 of coins reversed: thoroughness, dependability, good news</title>
+  <title>knight of coins reversed: timid nature, stagnation, new approaches</title>
   <use href="#alleged-coins-12-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-coins-12-label" />
 </svg>
@@ -6954,14 +7079,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-coins-13-label">
+        queen of coins
+    </text>
+
 <svg id="alleged-coins-13-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>13 of coins: queen of coins</title>
+  <title>queen of coins: practicality, shrewdness, financial help</title>
   <use href="#alleged-coins-13-face" />
   <use href="#alleged-coins-13-label" />
 </svg>
 
 <svg id="alleged-coins-13-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>13 of coins reversed: practicality, shrewdness, financial help</title>
+  <title>queen of coins reversed: materialism, insecurity, conflict</title>
   <use href="#alleged-coins-13-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-coins-13-label" />
 </svg>
@@ -7359,14 +7488,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-coins-14-label">
+        king of coins
+    </text>
+
 <svg id="alleged-coins-14-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>14 of coins: king of coins</title>
+  <title>king of coins: reliability, success, security</title>
   <use href="#alleged-coins-14-face" />
   <use href="#alleged-coins-14-label" />
 </svg>
 
 <svg id="alleged-coins-14-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>14 of coins reversed: reliability, success, security</title>
+  <title>king of coins reversed: insensitive, overly materialistic</title>
   <use href="#alleged-coins-14-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-coins-14-label" />
 </svg>
@@ -7405,14 +7538,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-cups-1-label">
+        ace of cups
+    </text>
+
 <svg id="alleged-cups-1-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>1 of cups: ace of cups</title>
+  <title>ace of cups: emotion, love, psychic powers</title>
   <use href="#alleged-cups-1-face" />
   <use href="#alleged-cups-1-label" />
 </svg>
 
 <svg id="alleged-cups-1-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>1 of cups reversed: emotion, love, psychic powers</title>
+  <title>ace of cups reversed: sadness, lonliness, disappointment</title>
   <use href="#alleged-cups-1-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-cups-1-label" />
 </svg>
@@ -7480,14 +7617,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-cups-2-label">
+    	    the two of cups
+    	</text>
+
 <svg id="alleged-cups-2-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>2 of cups: the two of cups</title>
+  <title>the two of cups: love, friendship, marriage</title>
   <use href="#alleged-cups-2-face" />
   <use href="#alleged-cups-2-label" />
 </svg>
 
 <svg id="alleged-cups-2-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>2 of cups reversed: love, friendship, marriage</title>
+  <title>the two of cups reversed: quarrels, separation, divorce</title>
   <use href="#alleged-cups-2-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-cups-2-label" />
 </svg>
@@ -7596,14 +7737,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-cups-3-label">
+    	    the three of cups
+    	</text>
+
 <svg id="alleged-cups-3-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>3 of cups: the three of cups</title>
+  <title>the three of cups: growth, birth, marriange</title>
   <use href="#alleged-cups-3-face" />
   <use href="#alleged-cups-3-label" />
 </svg>
 
 <svg id="alleged-cups-3-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>3 of cups reversed: growth, birth, marriange</title>
+  <title>the three of cups reversed: selfishness, exploitation, domestic problems</title>
   <use href="#alleged-cups-3-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-cups-3-label" />
 </svg>
@@ -7724,14 +7869,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-cups-4-label">
+    	    the four of cups
+    	</text>
+
 <svg id="alleged-cups-4-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>4 of cups: the four of cups</title>
+  <title>the four of cups: apathy, boredom, excess</title>
   <use href="#alleged-cups-4-face" />
   <use href="#alleged-cups-4-label" />
 </svg>
 
 <svg id="alleged-cups-4-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>4 of cups reversed: apathy, boredom, excess</title>
+  <title>the four of cups reversed: self-indulgence, depression</title>
   <use href="#alleged-cups-4-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-cups-4-label" />
 </svg>
@@ -7846,14 +7995,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-cups-5-label">
+    	    the five of cups
+    	</text>
+
 <svg id="alleged-cups-5-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>5 of cups: the five of cups</title>
+  <title>the five of cups: partial loss, disapointment</title>
   <use href="#alleged-cups-5-face" />
   <use href="#alleged-cups-5-label" />
 </svg>
 
 <svg id="alleged-cups-5-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>5 of cups reversed: partial loss, disapointment</title>
+  <title>the five of cups reversed: loss, remorse, sadness</title>
   <use href="#alleged-cups-5-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-cups-5-label" />
 </svg>
@@ -7995,14 +8148,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-cups-6-label">
+    	    the six of cups
+    	</text>
+
 <svg id="alleged-cups-6-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>6 of cups: the six of cups</title>
+  <title>the six of cups: pleasant memories, old friends, childhood</title>
   <use href="#alleged-cups-6-face" />
   <use href="#alleged-cups-6-label" />
 </svg>
 
 <svg id="alleged-cups-6-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>6 of cups reversed: pleasant memories, old friends, childhood</title>
+  <title>the six of cups reversed: unhappy memories, nostalgia</title>
   <use href="#alleged-cups-6-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-cups-6-label" />
 </svg>
@@ -8258,14 +8415,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-cups-7-label">
+    	    the seven of cups
+    	</text>
+
 <svg id="alleged-cups-7-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>7 of cups: the seven of cups</title>
+  <title>the seven of cups: fantasy, illusion, choice</title>
   <use href="#alleged-cups-7-face" />
   <use href="#alleged-cups-7-label" />
 </svg>
 
 <svg id="alleged-cups-7-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>7 of cups reversed: fantasy, illusion, choice</title>
+  <title>the seven of cups reversed: delusion, fantasy, bewilderment</title>
   <use href="#alleged-cups-7-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-cups-7-label" />
 </svg>
@@ -8419,14 +8580,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-cups-8-label">
+    	    the eight of cups
+    	</text>
+
 <svg id="alleged-cups-8-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>8 of cups: the eight of cups</title>
+  <title>the eight of cups: moving on, personal; development, sacrifice</title>
   <use href="#alleged-cups-8-face" />
   <use href="#alleged-cups-8-label" />
 </svg>
 
 <svg id="alleged-cups-8-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>8 of cups reversed: moving on, personal; development, sacrifice</title>
+  <title>the eight of cups reversed: abandoned success</title>
   <use href="#alleged-cups-8-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-cups-8-label" />
 </svg>
@@ -8608,14 +8773,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-cups-9-label">
+    	    the nine of cups
+    	</text>
+
 <svg id="alleged-cups-9-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>9 of cups: the nine of cups</title>
+  <title>the nine of cups: happines, optimism, hospitality</title>
   <use href="#alleged-cups-9-face" />
   <use href="#alleged-cups-9-label" />
 </svg>
 
 <svg id="alleged-cups-9-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>9 of cups reversed: happines, optimism, hospitality</title>
+  <title>the nine of cups reversed: complacency, superficiality</title>
   <use href="#alleged-cups-9-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-cups-9-label" />
 </svg>
@@ -8867,14 +9036,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-cups-10-label">
+    	    the ten of cups
+    	</text>
+
 <svg id="alleged-cups-10-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>10 of cups: the ten of cups</title>
+  <title>the ten of cups: fulfilment, joy, happy family</title>
   <use href="#alleged-cups-10-face" />
   <use href="#alleged-cups-10-label" />
 </svg>
 
 <svg id="alleged-cups-10-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>10 of cups reversed: fulfilment, joy, happy family</title>
+  <title>the ten of cups reversed: disrupted happines, disgruntled individual</title>
   <use href="#alleged-cups-10-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-cups-10-label" />
 </svg>
@@ -8982,14 +9155,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-cups-11-label">
+        page of cups
+    </text>
+
 <svg id="alleged-cups-11-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>11 of cups: page of cups</title>
+  <title>page of cups: a young person, gentle, loving, artistic, insigntful</title>
   <use href="#alleged-cups-11-face" />
   <use href="#alleged-cups-11-label" />
 </svg>
 
 <svg id="alleged-cups-11-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>11 of cups reversed: a young person, gentle, loving, artistic, insigntful</title>
+  <title>page of cups reversed: a trivial and spoiled person; a manipulator</title>
   <use href="#alleged-cups-11-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-cups-11-label" />
 </svg>
@@ -9215,14 +9392,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-cups-12-label">
+        knight of cups
+    </text>
+
 <svg id="alleged-cups-12-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>12 of cups: knight of cups</title>
+  <title>knight of cups: a sensitive, idealistic, romantic young man</title>
   <use href="#alleged-cups-12-face" />
   <use href="#alleged-cups-12-label" />
 </svg>
 
 <svg id="alleged-cups-12-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>12 of cups reversed: a sensitive, idealistic, romantic young man</title>
+  <title>knight of cups reversed: an idle swindler, a false lover; a lover going away</title>
   <use href="#alleged-cups-12-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-cups-12-label" />
 </svg>
@@ -9442,14 +9623,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-cups-13-label">
+        queen of cups
+    </text>
+
 <svg id="alleged-cups-13-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>13 of cups: queen of cups</title>
+  <title>queen of cups: a warm, sympathetic and sociable woman</title>
   <use href="#alleged-cups-13-face" />
   <use href="#alleged-cups-13-label" />
 </svg>
 
 <svg id="alleged-cups-13-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>13 of cups reversed: a warm, sympathetic and sociable woman</title>
+  <title>queen of cups reversed: a vain and immoral woman, deceitful and peverse</title>
   <use href="#alleged-cups-13-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-cups-13-label" />
 </svg>
@@ -9736,14 +9921,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-cups-14-label">
+        king of cups
+    </text>
+
 <svg id="alleged-cups-14-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>14 of cups: king of cups</title>
+  <title>king of cups: a sociable, loving, sensuous man</title>
   <use href="#alleged-cups-14-face" />
   <use href="#alleged-cups-14-label" />
 </svg>
 
 <svg id="alleged-cups-14-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>14 of cups reversed: a sociable, loving, sensuous man</title>
+  <title>king of cups reversed: a crafty and hot-tempered man; mislead impression</title>
   <use href="#alleged-cups-14-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-cups-14-label" />
 </svg>
@@ -9787,14 +9976,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-swords-1-label">
+        ace of swords
+    </text>
+
 <svg id="alleged-swords-1-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>1 of swords: ace of swords</title>
+  <title>ace of swords: intellect, reason, justice</title>
   <use href="#alleged-swords-1-face" />
   <use href="#alleged-swords-1-label" />
 </svg>
 
 <svg id="alleged-swords-1-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>1 of swords reversed: intellect, reason, justice</title>
+  <title>ace of swords reversed: cruelty, injustice</title>
   <use href="#alleged-swords-1-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-swords-1-label" />
 </svg>
@@ -9891,14 +10084,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-swords-2-label">
+    	    the two of swords
+    	</text>
+
 <svg id="alleged-swords-2-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>2 of swords: the two of swords</title>
+  <title>the two of swords: balance, peace restored, truce</title>
   <use href="#alleged-swords-2-face" />
   <use href="#alleged-swords-2-label" />
 </svg>
 
 <svg id="alleged-swords-2-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>2 of swords reversed: balance, peace restored, truce</title>
+  <title>the two of swords reversed: conflict, difference of opinion</title>
   <use href="#alleged-swords-2-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-swords-2-label" />
 </svg>
@@ -10024,14 +10221,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-swords-3-label">
+    	    the three of swords
+    	</text>
+
 <svg id="alleged-swords-3-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>3 of swords: the three of swords</title>
+  <title>the three of swords: sorrow, destruction, strife</title>
   <use href="#alleged-swords-3-face" />
   <use href="#alleged-swords-3-label" />
 </svg>
 
 <svg id="alleged-swords-3-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>3 of swords reversed: sorrow, destruction, strife</title>
+  <title>the three of swords reversed: prolonged conflict, pain, destruction</title>
   <use href="#alleged-swords-3-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-swords-3-label" />
 </svg>
@@ -10161,14 +10362,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-swords-4-label">
+    	    the four of swords
+    	</text>
+
 <svg id="alleged-swords-4-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>4 of swords: the four of swords</title>
+  <title>the four of swords: rest from strife, recuperation</title>
   <use href="#alleged-swords-4-face" />
   <use href="#alleged-swords-4-label" />
 </svg>
 
 <svg id="alleged-swords-4-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>4 of swords reversed: rest from strife, recuperation</title>
+  <title>the four of swords reversed: banishment, rejection, escape</title>
   <use href="#alleged-swords-4-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-swords-4-label" />
 </svg>
@@ -10318,14 +10523,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-swords-5-label">
+    	    the five of swords
+    	</text>
+
 <svg id="alleged-swords-5-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>5 of swords: the five of swords</title>
+  <title>the five of swords: defeat, humiliation</title>
   <use href="#alleged-swords-5-face" />
   <use href="#alleged-swords-5-label" />
 </svg>
 
 <svg id="alleged-swords-5-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>5 of swords reversed: defeat, humiliation</title>
+  <title>the five of swords reversed: humiliation, bullying, deception</title>
   <use href="#alleged-swords-5-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-swords-5-label" />
 </svg>
@@ -10649,14 +10858,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-swords-6-label">
+    	    the six of swords
+    	</text>
+
 <svg id="alleged-swords-6-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>6 of swords: the six of swords</title>
+  <title>the six of swords: improvement, passage, journey</title>
   <use href="#alleged-swords-6-face" />
   <use href="#alleged-swords-6-label" />
 </svg>
 
 <svg id="alleged-swords-6-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>6 of swords reversed: improvement, passage, journey</title>
+  <title>the six of swords reversed: temporary improvement</title>
   <use href="#alleged-swords-6-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-swords-6-label" />
 </svg>
@@ -10919,14 +11132,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-swords-7-label">
+    	    the seven of swords
+    	</text>
+
 <svg id="alleged-swords-7-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>7 of swords: the seven of swords</title>
+  <title>the seven of swords: foresight, evasion, disarming the opposition</title>
   <use href="#alleged-swords-7-face" />
   <use href="#alleged-swords-7-label" />
 </svg>
 
 <svg id="alleged-swords-7-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>7 of swords reversed: foresight, evasion, disarming the opposition</title>
+  <title>the seven of swords reversed: timidity, conservative behaviour</title>
   <use href="#alleged-swords-7-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-swords-7-label" />
 </svg>
@@ -11098,14 +11315,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-swords-8-label">
+    	    the eight of swords
+    	</text>
+
 <svg id="alleged-swords-8-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>8 of swords: the eight of swords</title>
+  <title>the eight of swords: restriction, impediment</title>
   <use href="#alleged-swords-8-face" />
   <use href="#alleged-swords-8-label" />
 </svg>
 
 <svg id="alleged-swords-8-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>8 of swords reversed: restriction, impediment</title>
+  <title>the eight of swords reversed: great restriction, need for change</title>
   <use href="#alleged-swords-8-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-swords-8-label" />
 </svg>
@@ -11224,14 +11445,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-swords-9-label">
+    	    the nine of swords
+    	</text>
+
 <svg id="alleged-swords-9-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>9 of swords: the nine of swords</title>
+  <title>the nine of swords: despair, depression, mental anguish</title>
   <use href="#alleged-swords-9-face" />
   <use href="#alleged-swords-9-label" />
 </svg>
 
 <svg id="alleged-swords-9-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>9 of swords reversed: despair, depression, mental anguish</title>
+  <title>the nine of swords reversed: severe depression, cruelty, morbid fantasies</title>
   <use href="#alleged-swords-9-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-swords-9-label" />
 </svg>
@@ -11454,14 +11679,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-swords-10-label">
+    	    the ten of swords
+    	</text>
+
 <svg id="alleged-swords-10-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>10 of swords: the ten of swords</title>
+  <title>the ten of swords: crisis, ruin, unlucky group of people</title>
   <use href="#alleged-swords-10-face" />
   <use href="#alleged-swords-10-label" />
 </svg>
 
 <svg id="alleged-swords-10-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>10 of swords reversed: crisis, ruin, unlucky group of people</title>
+  <title>the ten of swords reversed: false hope, continuing misfortune, ruin</title>
   <use href="#alleged-swords-10-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-swords-10-label" />
 </svg>
@@ -11596,14 +11825,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-swords-11-label">
+        page of swords
+    </text>
+
 <svg id="alleged-swords-11-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>11 of swords: page of swords</title>
+  <title>page of swords: sharp intelligence, change, vigilance</title>
   <use href="#alleged-swords-11-face" />
   <use href="#alleged-swords-11-label" />
 </svg>
 
 <svg id="alleged-swords-11-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>11 of swords reversed: sharp intelligence, change, vigilance</title>
+  <title>page of swords reversed: cunning, underhand dealings</title>
   <use href="#alleged-swords-11-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-swords-11-label" />
 </svg>
@@ -11832,14 +12065,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-swords-12-label">
+        knight of swords
+    </text>
+
 <svg id="alleged-swords-12-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>12 of swords: knight of swords</title>
+  <title>knight of swords: strong personality, domineering, conflict</title>
   <use href="#alleged-swords-12-face" />
   <use href="#alleged-swords-12-label" />
 </svg>
 
 <svg id="alleged-swords-12-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>12 of swords reversed: strong personality, domineering, conflict</title>
+  <title>knight of swords reversed: aggression, blundering, impersonal force</title>
   <use href="#alleged-swords-12-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-swords-12-label" />
 </svg>
@@ -12080,14 +12317,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-swords-13-label">
+        queen of swords
+    </text>
+
 <svg id="alleged-swords-13-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>13 of swords: queen of swords</title>
+  <title>queen of swords: a mature woman, keen perception, independent</title>
   <use href="#alleged-swords-13-face" />
   <use href="#alleged-swords-13-label" />
 </svg>
 
 <svg id="alleged-swords-13-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>13 of swords reversed: a mature woman, keen perception, independent</title>
+  <title>queen of swords reversed: misanthrope, hypercritical, malicious</title>
   <use href="#alleged-swords-13-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-swords-13-label" />
 </svg>
@@ -12322,14 +12563,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-swords-14-label">
+        king of swords
+    </text>
+
 <svg id="alleged-swords-14-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>14 of swords: king of swords</title>
+  <title>king of swords: a mature man, authoratative, assertive</title>
   <use href="#alleged-swords-14-face" />
   <use href="#alleged-swords-14-label" />
 </svg>
 
 <svg id="alleged-swords-14-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>14 of swords reversed: a mature man, authoratative, assertive</title>
+  <title>king of swords reversed: bully, exploitation, confrontation</title>
   <use href="#alleged-swords-14-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-swords-14-label" />
 </svg>
@@ -12402,14 +12647,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-wands-1-label">
+        ace of wands
+    </text>
+
 <svg id="alleged-wands-1-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>1 of wands: ace of wands</title>
+  <title>ace of wands: inspiration, enthusiasm, ambition</title>
   <use href="#alleged-wands-1-face" />
   <use href="#alleged-wands-1-label" />
 </svg>
 
 <svg id="alleged-wands-1-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>1 of wands reversed: inspiration, enthusiasm, ambition</title>
+  <title>ace of wands reversed: wasted energy</title>
   <use href="#alleged-wands-1-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-wands-1-label" />
 </svg>
@@ -12474,14 +12723,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-wands-2-label">
+    	    the two of wands
+    	</text>
+
 <svg id="alleged-wands-2-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>2 of wands: the two of wands</title>
+  <title>the two of wands: decision, initial success, self-doubt</title>
   <use href="#alleged-wands-2-face" />
   <use href="#alleged-wands-2-label" />
 </svg>
 
 <svg id="alleged-wands-2-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>2 of wands reversed: decision, initial success, self-doubt</title>
+  <title>the two of wands reversed: indecision, disillusionment, anticlimax</title>
   <use href="#alleged-wands-2-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-wands-2-label" />
 </svg>
@@ -12554,14 +12807,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-wands-3-label">
+    	    the three of wands
+    	</text>
+
 <svg id="alleged-wands-3-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>3 of wands: the three of wands</title>
+  <title>the three of wands: creative ideas, laying plans, luck</title>
   <use href="#alleged-wands-3-face" />
   <use href="#alleged-wands-3-label" />
 </svg>
 
 <svg id="alleged-wands-3-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>3 of wands reversed: creative ideas, laying plans, luck</title>
+  <title>the three of wands reversed: procrastination, missed opportunities, unrealistic desires</title>
   <use href="#alleged-wands-3-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-wands-3-label" />
 </svg>
@@ -12811,14 +13068,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-wands-4-label">
+    	    the four of wands
+    	</text>
+
 <svg id="alleged-wands-4-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>4 of wands: the four of wands</title>
+  <title>the four of wands: free expression, creative work, holiday</title>
   <use href="#alleged-wands-4-face" />
   <use href="#alleged-wands-4-label" />
 </svg>
 
 <svg id="alleged-wands-4-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>4 of wands reversed: free expression, creative work, holiday</title>
+  <title>the four of wands reversed: restriction, regulations</title>
   <use href="#alleged-wands-4-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-wands-4-label" />
 </svg>
@@ -13009,14 +13270,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-wands-5-label">
+    	    the five of wands
+    	</text>
+
 <svg id="alleged-wands-5-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>5 of wands: the five of wands</title>
+  <title>the five of wands: minor problems, struggle</title>
   <use href="#alleged-wands-5-face" />
   <use href="#alleged-wands-5-label" />
 </svg>
 
 <svg id="alleged-wands-5-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>5 of wands reversed: minor problems, struggle</title>
+  <title>the five of wands reversed: rivalry, squabbling, disruption</title>
   <use href="#alleged-wands-5-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-wands-5-label" />
 </svg>
@@ -13129,14 +13394,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-wands-6-label">
+    	    the six of wands
+    	</text>
+
 <svg id="alleged-wands-6-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>6 of wands: the six of wands</title>
+  <title>the six of wands: victory, triumph</title>
   <use href="#alleged-wands-6-face" />
   <use href="#alleged-wands-6-label" />
 </svg>
 
 <svg id="alleged-wands-6-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>6 of wands reversed: victory, triumph</title>
+  <title>the six of wands reversed: anticlimax, delayed success</title>
   <use href="#alleged-wands-6-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-wands-6-label" />
 </svg>
@@ -13345,14 +13614,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-wands-7-label">
+    	    the seven of wands
+    	</text>
+
 <svg id="alleged-wands-7-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>7 of wands: the seven of wands</title>
+  <title>the seven of wands: challenge, test, valour</title>
   <use href="#alleged-wands-7-face" />
   <use href="#alleged-wands-7-label" />
 </svg>
 
 <svg id="alleged-wands-7-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>7 of wands reversed: challenge, test, valour</title>
+  <title>the seven of wands reversed: failure to meet a challenge, lacking confidence</title>
   <use href="#alleged-wands-7-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-wands-7-label" />
 </svg>
@@ -13406,14 +13679,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-wands-8-label">
+    	    the eight of wands
+    	</text>
+
 <svg id="alleged-wands-8-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>8 of wands: the eight of wands</title>
+  <title>the eight of wands: swiftness, activity, rapid conclusion</title>
   <use href="#alleged-wands-8-face" />
   <use href="#alleged-wands-8-label" />
 </svg>
 
 <svg id="alleged-wands-8-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>8 of wands reversed: swiftness, activity, rapid conclusion</title>
+  <title>the eight of wands reversed: haste, disorganization, exhaustion</title>
   <use href="#alleged-wands-8-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-wands-8-label" />
 </svg>
@@ -13510,14 +13787,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-wands-9-label">
+    	    the nine of wands
+    	</text>
+
 <svg id="alleged-wands-9-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>9 of wands: the nine of wands</title>
+  <title>the nine of wands: strength, courageous persistence</title>
   <use href="#alleged-wands-9-face" />
   <use href="#alleged-wands-9-label" />
 </svg>
 
 <svg id="alleged-wands-9-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>9 of wands reversed: strength, courageous persistence</title>
+  <title>the nine of wands reversed: obstinancy, futile persistence</title>
   <use href="#alleged-wands-9-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-wands-9-label" />
 </svg>
@@ -13712,14 +13993,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="black" stroke="none" font-family="Even" font-size="24" width="500" id="alleged-wands-10-label">
+    	    the ten of wands
+    	</text>
+
 <svg id="alleged-wands-10-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>10 of wands: the ten of wands</title>
+  <title>the ten of wands: burden of responsibility, too many commitments</title>
   <use href="#alleged-wands-10-face" />
   <use href="#alleged-wands-10-label" />
 </svg>
 
 <svg id="alleged-wands-10-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>10 of wands reversed: burden of responsibility, too many commitments</title>
+  <title>the ten of wands reversed: oppresive burden, overwork</title>
   <use href="#alleged-wands-10-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-wands-10-label" />
 </svg>
@@ -13837,14 +14122,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-wands-11-label">
+        page of wands
+    </text>
+
 <svg id="alleged-wands-11-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>11 of wands: page of wands</title>
+  <title>page of wands: a traveller, enthusiastic, impulsive</title>
   <use href="#alleged-wands-11-face" />
   <use href="#alleged-wands-11-label" />
 </svg>
 
 <svg id="alleged-wands-11-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>11 of wands reversed: a traveller, enthusiastic, impulsive</title>
+  <title>page of wands reversed: a complainer; a faithless lover; bad news</title>
   <use href="#alleged-wands-11-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-wands-11-label" />
 </svg>
@@ -14001,14 +14290,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-wands-12-label">
+        knight of wands
+    </text>
+
 <svg id="alleged-wands-12-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>12 of wands: knight of wands</title>
+  <title>knight of wands: a warrior, generous, hasty</title>
   <use href="#alleged-wands-12-face" />
   <use href="#alleged-wands-12-label" />
 </svg>
 
 <svg id="alleged-wands-12-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>12 of wands reversed: a warrior, generous, hasty</title>
+  <title>knight of wands reversed: a jealous person, argumentative, aggressive</title>
   <use href="#alleged-wands-12-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-wands-12-label" />
 </svg>
@@ -14177,14 +14470,18 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-wands-13-label">
+        queen of wands
+    </text>
+
 <svg id="alleged-wands-13-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>13 of wands: queen of wands</title>
+  <title>queen of wands: a practical organizer; lively, active, creative</title>
   <use href="#alleged-wands-13-face" />
   <use href="#alleged-wands-13-label" />
 </svg>
 
 <svg id="alleged-wands-13-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>13 of wands reversed: a practical organizer; lively, active, creative</title>
+  <title>queen of wands reversed: a possessive woman; bad-tempered, dictatorial</title>
   <use href="#alleged-wands-13-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-wands-13-label" />
 </svg>
@@ -14402,81 +14699,68 @@
 </g>
 </svg>
 
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-wands-14-label">
+        king of wands
+    </text>
+
 <svg id="alleged-wands-14-upright" viewBox="0 0 360 500" width="360" height="500">
-  <title>14 of wands: king of wands</title>
+  <title>king of wands: an athletic man, just, kind, and generous</title>
   <use href="#alleged-wands-14-face" />
   <use href="#alleged-wands-14-label" />
 </svg>
 
 <svg id="alleged-wands-14-reversed" viewBox="0 0 360 500" width="360" height="500">
-  <title>14 of wands reversed: an athletic man, just, kind, and generous</title>
+  <title>king of wands reversed: an intolerant, bigoted man; violent, bad advice</title>
   <use href="#alleged-wands-14-face" transform="rotate(180, 180, 250)" />
   <use href="#alleged-wands-14-label" />
 </svg>
 
 </defs>
 
-</svg>
-
-<!-- Problems encountered:
-   - assets/alleged-tarot/iiii-emperor-card3.svg: missing emperor card explanation
-   - assets/alleged-tarot/viiii-hermit-card3.svg: missing hermit card explanation
-   - assets/alleged-tarot/x-wheel-card3.svg: missing wheel card explanation
-   - assets/alleged-tarot/xii-hanged-card3.svg: missing hanged card explanation
-   - assets/alleged-tarot/xiii-death-card3.svg: missing death card explanation
-   - assets/alleged-tarot/xvi-tower-card3.svg: missing tower card explanation
-   - assets/alleged-tarot/xvii-star-card3.svg: missing star card explanation
-   - assets/alleged-tarot/xviii-moon-card3.svg: missing moon card explanation
-   - assets/alleged-tarot/xviiii-sun-card3.svg: missing sun card explanation
-   - assets/alleged-tarot/xx-judgement-card3.svg: missing judgement card explanation
-   - assets/alleged-tarot/xxi-world-card3.svg: missing world card explanation
-
--->
-
-<script type="application/json" id="book">{
+<script type="application/json">{
   "alleged-fool": {
-    "name": "fool",
+    "name": "the fool",
     "upright": "#alleged-fool-upright",
     "reversed": "#alleged-fool-reversed",
     "explain": "The Fool represents a lucky chancer—happy to take things as they come, and not afraid to trust to his fate. The Fool would rather smell the roses than worry too much about the wild animals that he wanders amongst or the cliff at his feet or the little dog who is trying to warn him to pay attention. But that’s OK, at least up to a point. When the Major Arcana are viewed as a journey from ignorance to wisdom, the Fool represents the start of the journey (or of a new journey, or a new cycle). The pack can be interpreted as spiritual baggage (or past karma) of which the Fool is not consciously aware. The jester’s hat stands in for motley (which does not show up very will in stick figures!). The Fool is sometimes drawn as a beggar—both of these occupations are ones where you own little and have no responsibilities. The Fool is the only Major Arcana card to survive to the modern playing-card deck."
   },
   "alleged-magician": {
-    "name": "magician",
+    "name": "the magician",
     "upright": "#alleged-magician-upright",
     "reversed": "#alleged-magician-reversed",
     "explain": "If the Fool represents blissful ignorance, the Magician (or Conjourer) represents skill and cleverness. In modern decks he is shown with an ‘infinity’ halo and the objects of the table before him are the four suits (representing mastery over the four elements). I have followed this tradition but given him both a pointy wizards’s hat (referring to the magical interpretation) and a rabbit and top hat (referring to the conjourer interpretation). The rabbit-from-the-hat trick also stands for showy skills that are not actually particularly useful—cleverness as opposed to wisdom. After all, the Magician is more skilled than the Fool, but has not advanced all that much through the journey of the Arcana."
   },
   "alleged-papess": {
-    "name": "papess",
+    "name": "the papess",
     "upright": "#alleged-papess-upright",
     "reversed": "#alleged-papess-reversed",
     "explain": "Old Italian tarot decks had a Pope and Papess (female Pope) rather than Hierophant and High Priestess, and I have followed suit. To mediaeval Italians, the Pope represented religious authority, and if representing the Pope in a deck of cards is cheeky, the Papess is downright subersive—a definite dig at the Establishment. This is consitent with the origin of the Tarot deck as a gambling or gaming deck. Nowadays we think of the Pope (Hierophant) as representing an advisor, not necessarily on spiritual and religious matters; the Papess can be read as standing for going outside regular channels, following one’s intuition, finding one’s own spiritual path. The High Priestess represents the same idea, but within the System rather than subverting it. This is a reflection of the idea that mystery and the hidden are an essential part of life, rather than an exception to the rule. In this aspect the card is also known as Juno (the most powerful of the Roman godesses, governing marriage, and identified with the Greek goddess Hera). The connection is with the Women’s Mysteries of the classical world. The Papess sits between two pillars I have labelled Alpha and Omega (sometimes Cabalistically called Boaz and Jachin after the two pillars in front of Solomon’s temple in the Bible). They are coloured black and white representing female and male principles, the same colours used in the Chinese Yin-Yang symbol. The Alpha and Omega suggest that everything (or all personalities) combines these masculine and feminine traits. Or perhaps the Omega is there to allude to a biological analogy between the white male pillar and phallus..."
   },
   "alleged-empress": {
-    "name": "empress",
+    "name": "the empress",
     "upright": "#alleged-empress-upright",
     "reversed": "#alleged-empress-reversed",
     "explain": "The Empress is here associated with Demeter or Ceres (goddess of fertility and the seasons). The bounty of nature is represented through civilized symbols: the grain and fruit she carries and the cow in the background represent cultivation and animal husbandry; the rolling hills are the result of agriculture rather than erosion. To a mediaeval person, surrounded by dangerous forests and barren mountains, a tilled field is more attractive than a natural wilderness: enjoying the scenery is a luxury reserved for people who are no longer threatened by it. Where the Papess represents female spirituality (which the ancients saw as mysterious and scary), the Empress stands for a feminine aspect of temporal authority—and in mediaeval times, women were in charge of food, hearth and home—and not much else. In magical tradition, the Empress is also the first authority figure in the body–mind–spirit ensemble. It is a little hard to see this in 2D, but my Empress’s crown has 12 red stones (five of them are on side of her head you can’t see) and four of those round stones in the pointy bits (one of them is hidden). Together with the Zodiac symbols on her dress, these symbolize the annual cycle of the seasons. Red flowers and the red in her dress traditionally represent menstrual blood; the waterfall and the blue in her dress are another symbol of fertility."
   },
   "alleged-emperor": {
-    "name": "emperor",
+    "name": "the emperor",
     "upright": "#alleged-emperor-upright",
     "reversed": "#alleged-emperor-reversed"
   },
   "alleged-pope": {
-    "name": "pope",
+    "name": "the pope",
     "upright": "#alleged-pope-upright",
     "reversed": "#alleged-pope-reversed",
     "explain": "At the time the tarot decks were first devised (Italy around the 14th or 15th century), the Pope was a fact of life and a figure of religious and social authority—in those days religion defined society in a way we cannot really imagine today. This card stands for the institutions and authorities of society. It also symbolizes spiritual or religious teaching or advice, or, more loosely, professional advice in general (such as from your soliciter). In modern decks this card has been renamed The Hieriphant, a reference to a professional religious advisor in classical times. In magical tradition, the Pope is also the third authority figure in the body–mind–spirit ensemble. In my Alleged Tarot I have used the older names for some of the cards. The reason for this is that my original Pebble Tarot was based on the tarot deck I had at the time—the 1JJ Swiss tarot, and that uses the old card names. My Pope was the most popular card amongst my friends, and if I wanted to retain the Pope it followed I would be using the old names for the other cards too. You can tell he’s the Pope because he has a fancy hat and a kissable ring. He is also making the mystic hand signal which means ‘as above (in the spirit world), so below (in the material world)’. The Hierophant is often decorated with a pentacle; I have alluded to that in the five-pointed star on his Pope hat."
   },
   "alleged-lovers": {
-    "name": "lovers",
+    "name": "the lovers",
     "upright": "#alleged-lovers-upright",
     "reversed": "#alleged-lovers-reversed",
     "explain": "In modern decks, this card shows a couple embracing. I have followed an older tradition showing suitor apparently choosing between two women. This card represents choice, the sort of choice where both alternatives are attractive and one must be abandoned forever. This reflects a reality of mediaeval life, which is that your choice of lover is significant (think doweries and family alliances) and irrevocable in a way it is not in modern times. To emphasize the choice aspect I show the two women standing on different branches of a forked path. The vaguely Victorian clothing is the result of my whimsical decision around the time I was drawing the Magician that the trumps would all be wearing hats of some sort. When it came to dressing a suitor, a top hat just seemed appropriate."
   },
   "alleged-chariot": {
-    "name": "chariot",
+    "name": "the chariot",
     "upright": "#alleged-chariot-upright",
     "reversed": "#alleged-chariot-reversed",
     "explain": "The chariot card shows a chariot drawn by two horses (or fabulous beasts if you prefer a more magical look). The person in the chariot is often shown armoured and without reins—the beasts are controlled by the will. Like the pillars in the picture of the Papess, the beasts are coloured black and white to represent the mysterious female principle and the transparent male principle. The figure in the chariot represents our sense of self or will, which must guide the course of the chariot no matter how the much the two horses want to take over and gallop off in random directions. Apparently this illustration of the will versus our baser natures goes all the way back to Plato. It can also be interpreted in terms of Freud’s model (the superego controlling the id and ego, or however it is supposed to work). The helmet my charioteer is wearing is not from any particular historical period, although the chariot itself looks reasonably Roman or Greek. For no particular reason I have identified the chariot with Apollo’s (if the giant sun background is anything to go by). Since Apollo is god of reason and self-discipline, perhaps this is appropriate."
@@ -14488,12 +14772,12 @@
     "explain": "You may have expected trump card number VIII to be Strength, because in the Rider–Waite these two cards were transposed to make the order better suit the zodiac signs attributed to the cards by the Golden Dawn. Their reordering of the trumps is not as arbitrary as it might sound at first; the oldest known tarot decks used unnumbered cards (the order of the trumps was either self-evident or irrelevant), and it is not too much of a stretch to claim that when the numbered decks were first printed, slight errors were made. On the other hand, my virtual deck tends whimsically to be modelled on the older decks, and so I have followed the older numbering. Justice and other abstract concepts have been depicted as women since Classical times because in Greek abstract nouns have the feminine gender. My depiction of Justice sans blindfold is also a self-conscious archaism: the blindfold is a relatively recent addition to the traditional props of the personification of Justice. I stood her on a roof-top because I was thinking of the famous statue of Justice standing atop the Old Bailey in London. This also allows my version of justice to search out wrong-doers and take a long view unobstructed by personal bias."
   },
   "alleged-hermit": {
-    "name": "hermit",
+    "name": "the hermit",
     "upright": "#alleged-hermit-upright",
     "reversed": "#alleged-hermit-reversed"
   },
   "alleged-wheel": {
-    "name": "wheel",
+    "name": "the wheel of fortune",
     "upright": "#alleged-wheel-upright",
     "reversed": "#alleged-wheel-reversed"
   },
@@ -14504,7 +14788,7 @@
     "explain": "In some decks this is card VIII—a modification designed to make the tarot deck better match the order of the signs of the zodiac (since Leo preceeds Libra in the zodiac). If you see the trumps as a progression through life, then it is nice that strength of mind preceeds the application of justice. Of course the oldest known tarot decks use unnumbered cards; for their owners the order of the trumps was either self-evident or irrelevant. Having reverted to an older ordering, I did not use the older name, Fortitude, even though this might better suggest the significance of the card, which relates to strength of will or moral strength, rather than physical strength. The woman holding the jaws of a lion is the traditional personification of Fortitude (one of Plato’s cardinal virtues); the lion is her traditional prop just as the scales are Justice’s and wings and two jars are of Temperance. (The fourth cardinal virtue, Prudence, is not represented in the tarot deck.) The lion can be seen as representing powerful emotional or physical feelings that one must direct to creative ends; both complete suppression and a free rein lead to bad outcomes."
   },
   "alleged-hanged": {
-    "name": "hanged",
+    "name": "the hanged man",
     "upright": "#alleged-hanged-upright",
     "reversed": "#alleged-hanged-reversed"
   },
@@ -14520,28 +14804,28 @@
     "explain": "Temperance is one of the four Cardinal Virtues of Plato, together with Strength (Fortitude), Justice and Prudence (the last of which does not have a Tarot card). It means the combination of elements to make a stronger, more balanced whole—as in wine tempered with water (standard practice in Classical times), or phrases like justice tempered with mercy. So this card is about finding balance, and giving everything its measure. Abstract nouns are personified as women, a tradition that goes back to ancient Greece (since abstract nouns happen to have the feminine gender in that language). The wings are also traditional, even though Temperance is not intended to be seen as an angel in the Christian sense. The vessels she is holding are often coloured gold (suggesting the sun) and silver (suggesting the moon), an allusion to the idea that a healthy psyche is a mixture of feminine and masculine traits—or to the mystical theory that all reality is defined by feminine and masculine principles. I have alluded to the latter interpretation by incorporating a monad (yin-yang symbol) in to the face of my sketchy temple. It is further represented by the inclusion of children playing on a seesaw in the background."
   },
   "alleged-devil": {
-    "name": "devil",
+    "name": "the devil",
     "upright": "#alleged-devil-upright",
     "reversed": "#alleged-devil-reversed",
     "explain": "Naturally the trumps includes a card for the Devil—like the Pope and Death, for the mediaeval European, the Devil was a fact of life, and the recurring villain in any number of folk tales and hearthside stories. Nevertheless the depiction of devils makes some people nervous. In more modern decks, this card is sometimes replaced with a picture of the Horned Man, a pagan god of fertility and nature—even though the interpretation of the card remains broadly the same. The Devil card represents anger and resentment, and being trapped in a bad situation that you cannot escape (like the figures chained to the Devil’s plinth). In my version of the card I omitted the plinth, so the chains of the the two figures at the bottom of the card are held by the devil himself."
   },
   "alleged-tower": {
-    "name": "tower",
+    "name": "the tower",
     "upright": "#alleged-tower-upright",
     "reversed": "#alleged-tower-reversed"
   },
   "alleged-star": {
-    "name": "star",
+    "name": "the star",
     "upright": "#alleged-star-upright",
     "reversed": "#alleged-star-reversed"
   },
   "alleged-moon": {
-    "name": "moon",
+    "name": "the moon",
     "upright": "#alleged-moon-upright",
     "reversed": "#alleged-moon-reversed"
   },
   "alleged-sun": {
-    "name": "sun",
+    "name": "the sun",
     "upright": "#alleged-sun-upright",
     "reversed": "#alleged-sun-reversed"
   },
@@ -14551,310 +14835,310 @@
     "reversed": "#alleged-judgement-reversed"
   },
   "alleged-world": {
-    "name": "world",
+    "name": "the world",
     "upright": "#alleged-world-upright",
     "reversed": "#alleged-world-reversed"
   },
   "alleged-coins-1": {
-    "name": "1 of coins",
+    "name": "ace of coins",
     "upright": "#alleged-coins-1-upright",
     "reversed": "#alleged-coins-1-reversed",
     "explain": "Coins stand for the financial and commercial side of life (that is, money). Coins also stands for the element of Earth, symbolizing physical feelings, practical skills, fertility and solidity. The Ace of Coins represents security, both finanical and in the sense of feeling secure and healthy. It also alludes to enjoying physical pleasures such as eating. My coin is decorated with a Diamond shape to remind us of its corresponding suit in modern playing cards."
   },
   "alleged-coins-2": {
-    "name": "2 of coins",
+    "name": "the two of coins",
     "upright": "#alleged-coins-2-upright",
     "reversed": "#alleged-coins-2-reversed"
   },
   "alleged-coins-3": {
-    "name": "3 of coins",
+    "name": "the three of coins",
     "upright": "#alleged-coins-3-upright",
     "reversed": "#alleged-coins-3-reversed"
   },
   "alleged-coins-4": {
-    "name": "4 of coins",
+    "name": "the four of coins",
     "upright": "#alleged-coins-4-upright",
     "reversed": "#alleged-coins-4-reversed"
   },
   "alleged-coins-5": {
-    "name": "5 of coins",
+    "name": "the five of coins",
     "upright": "#alleged-coins-5-upright",
     "reversed": "#alleged-coins-5-reversed"
   },
   "alleged-coins-6": {
-    "name": "6 of coins",
+    "name": "the six of coins",
     "upright": "#alleged-coins-6-upright",
     "reversed": "#alleged-coins-6-reversed"
   },
   "alleged-coins-7": {
-    "name": "7 of coins",
+    "name": "the seven of coins",
     "upright": "#alleged-coins-7-upright",
     "reversed": "#alleged-coins-7-reversed"
   },
   "alleged-coins-8": {
-    "name": "8 of coins",
+    "name": "the eight of coins",
     "upright": "#alleged-coins-8-upright",
     "reversed": "#alleged-coins-8-reversed"
   },
   "alleged-coins-9": {
-    "name": "9 of coins",
+    "name": "the nine of coins",
     "upright": "#alleged-coins-9-upright",
     "reversed": "#alleged-coins-9-reversed"
   },
   "alleged-coins-10": {
-    "name": "10 of coins",
+    "name": "the ten of coins",
     "upright": "#alleged-coins-10-upright",
     "reversed": "#alleged-coins-10-reversed"
   },
   "alleged-coins-11": {
-    "name": "11 of coins",
+    "name": "page of coins",
     "upright": "#alleged-coins-11-upright",
     "reversed": "#alleged-coins-11-reversed"
   },
   "alleged-coins-12": {
-    "name": "12 of coins",
+    "name": "knight of coins",
     "upright": "#alleged-coins-12-upright",
     "reversed": "#alleged-coins-12-reversed"
   },
   "alleged-coins-13": {
-    "name": "13 of coins",
+    "name": "queen of coins",
     "upright": "#alleged-coins-13-upright",
     "reversed": "#alleged-coins-13-reversed",
     "explain": "The queen’s chair here is based on the Womb chair, model 70, designed by Eero Saarinen in 1947–48. I was looking for something broad in shape (suggesting the solidity of the element of earth), organic and enclosing in shape (though not as cup-like as the Queen of Cups’s Globe)."
   },
   "alleged-coins-14": {
-    "name": "14 of coins",
+    "name": "king of coins",
     "upright": "#alleged-coins-14-upright",
     "reversed": "#alleged-coins-14-reversed",
     "explain": "The king’s chair is the Grand Confort, Model Nº LC2, designed in 1928 by LeCorbusier, Pierre Jenneret, and Charlotte Perriand. I chose it largely because of its shape—square, almost cubical, which suggests the element of earth."
   },
   "alleged-cups-1": {
-    "name": "1 of cups",
+    "name": "ace of cups",
     "upright": "#alleged-cups-1-upright",
     "reversed": "#alleged-cups-1-reversed",
     "explain": "Cups relate to the element of Water in an obvious way and are as feminine in shape in the same way swords and wands are phallic. The suit of Cups is largely associated with home life, domestic relations, love, sensitivity, and emotions, which I have alluded to by making my cup a tea cup with tea in it. Cups also represents artistic inspiration and the subconscious mind. The Ace of Cups often represents a warm, loving, empathetic person. The heart on the side also relates to this emotional sense, and also to the correspondence between Cups and the modern suit of Hearts."
   },
   "alleged-cups-2": {
-    "name": "2 of cups",
+    "name": "the two of cups",
     "upright": "#alleged-cups-2-upright",
     "reversed": "#alleged-cups-2-reversed",
     "explain": "The suit of Cups relates to life, domestic relations, love, and emotion. The Two of Cups thus represents a relationship between two people—this might be friendship, an affair or marriage. It does not have to be literally a love affair—it might relate to a business partnership or other collaboration, with trust and support on both sides. In drawing the Twos cards I used a single figure for Coins and Wands, female for Coins and male for Wands (their triaditional gender associations). For Cups and Swords I used two figures, because these suits are the the more archetypically feminine and masculine. Thus this card shows two women who are apparently embarking on a domestic arrangement of some sort—symbolized by looking at cups in a shop window."
   },
   "alleged-cups-3": {
-    "name": "3 of cups",
+    "name": "the three of cups",
     "upright": "#alleged-cups-3-upright",
     "reversed": "#alleged-cups-3-reversed",
     "explain": "The number 3 represents creativity and creation, and combined with the watery, emotional suit of cups, this means a birth, literal or figurative (as in emotional or creative growth). Three is a lucky number, and so this card also suggests a happy family life and good fourtune in matters of the heart. My glowing baby stick-figure is supposed to evoke Keith Haring’s glowing baby pictures."
   },
   "alleged-cups-4": {
-    "name": "4 of cups",
+    "name": "the four of cups",
     "upright": "#alleged-cups-4-upright",
     "reversed": "#alleged-cups-4-reversed",
     "explain": "The number 4 represents stability and solidity. Combined with the suit of cups (traditionally considered to be feminine and therefore traditionally considered passive), this leads to an overplus of stability, veering in to stagnation and boredom. All my Cups cards have a blue aspect (suggesting water), and in this one it dominates to give the whole picture a static look. At one point I considered adding props in the foreground to suggest carnal satiation but in the end a paper dart and some discarded magazines sufficed."
   },
   "alleged-cups-5": {
-    "name": "5 of cups",
+    "name": "the five of cups",
     "upright": "#alleged-cups-5-upright",
     "reversed": "#alleged-cups-5-reversed"
   },
   "alleged-cups-6": {
-    "name": "6 of cups",
+    "name": "the six of cups",
     "upright": "#alleged-cups-6-upright",
     "reversed": "#alleged-cups-6-reversed"
   },
   "alleged-cups-7": {
-    "name": "7 of cups",
+    "name": "the seven of cups",
     "upright": "#alleged-cups-7-upright",
     "reversed": "#alleged-cups-7-reversed"
   },
   "alleged-cups-8": {
-    "name": "8 of cups",
+    "name": "the eight of cups",
     "upright": "#alleged-cups-8-upright",
     "reversed": "#alleged-cups-8-reversed"
   },
   "alleged-cups-9": {
-    "name": "9 of cups",
+    "name": "the nine of cups",
     "upright": "#alleged-cups-9-upright",
     "reversed": "#alleged-cups-9-reversed"
   },
   "alleged-cups-10": {
-    "name": "10 of cups",
+    "name": "the ten of cups",
     "upright": "#alleged-cups-10-upright",
     "reversed": "#alleged-cups-10-reversed"
   },
   "alleged-cups-11": {
-    "name": "11 of cups",
+    "name": "page of cups",
     "upright": "#alleged-cups-11-upright",
     "reversed": "#alleged-cups-11-reversed"
   },
   "alleged-cups-12": {
-    "name": "12 of cups",
+    "name": "knight of cups",
     "upright": "#alleged-cups-12-upright",
     "reversed": "#alleged-cups-12-reversed"
   },
   "alleged-cups-13": {
-    "name": "13 of cups",
+    "name": "queen of cups",
     "upright": "#alleged-cups-13-upright",
     "reversed": "#alleged-cups-13-reversed",
     "explain": "The chair is the Ball (or Globe) chair, designed by Eero Aarnio around 1963–65. I chose it because of its shape—it is one of the most cup-like famous chair designs, so particularly appropriate to this, the most feminine of Cups cards (the Queens and the suit of Cups both being the associated with the feminine element of water)."
   },
   "alleged-cups-14": {
-    "name": "14 of cups",
+    "name": "king of cups",
     "upright": "#alleged-cups-14-upright",
     "reversed": "#alleged-cups-14-reversed",
     "explain": "The chair I have give the King of Cups is (based on) the Egg chair, designed by Arne Jacobsen for the SAS Hotel in 1957–58. It seemed appropriate given its organic shape, which is cup-like but taller and less padded than the Globe (which I used for the Queen), which suits the King. The Egg chair was also used by Dr No in the James Bond film of the same name."
   },
   "alleged-swords-1": {
-    "name": "1 of swords",
+    "name": "ace of swords",
     "upright": "#alleged-swords-1-upright",
     "reversed": "#alleged-swords-1-reversed",
     "explain": "Nowadays the literally martial aspect of our lives is, happily, less important for many of us than it was in mediaeval times, so the meaning of the suit of Swords is interpreted more broadly. Swords straightforwardly represent strife, conflict and destruction. Justice and the courts were functions of the milita, so Swords represents justice and judicial proceedings. Warfare required strategy and analysis, so Swords also represents abstract thought and rationality, especially in a reductionist sense. The background reminds us that the suit of Swords is associated with the element of Air. I have shown the symbol of the modern suit of Spades engraved on the blade."
   },
   "alleged-swords-2": {
-    "name": "2 of swords",
+    "name": "the two of swords",
     "upright": "#alleged-swords-2-upright",
     "reversed": "#alleged-swords-2-reversed",
     "explain": "Swords represent military matters: strife, judicial matters, strategy and abstract thought. Twos represent combination of or balance between two forces. So the Two of Swords often represents opposing forces that have met in a (temporary) stalemate, truce, or impass. These can be internal states, like the knowledge that something must be done, versus reluctance to actually do it. It can also mean two forces or people in conflict that could work together given the right insight."
   },
   "alleged-swords-3": {
-    "name": "3 of swords",
+    "name": "the three of swords",
     "upright": "#alleged-swords-3-upright",
     "reversed": "#alleged-swords-3-reversed"
   },
   "alleged-swords-4": {
-    "name": "4 of swords",
+    "name": "the four of swords",
     "upright": "#alleged-swords-4-upright",
     "reversed": "#alleged-swords-4-reversed"
   },
   "alleged-swords-5": {
-    "name": "5 of swords",
+    "name": "the five of swords",
     "upright": "#alleged-swords-5-upright",
     "reversed": "#alleged-swords-5-reversed"
   },
   "alleged-swords-6": {
-    "name": "6 of swords",
+    "name": "the six of swords",
     "upright": "#alleged-swords-6-upright",
     "reversed": "#alleged-swords-6-reversed"
   },
   "alleged-swords-7": {
-    "name": "7 of swords",
+    "name": "the seven of swords",
     "upright": "#alleged-swords-7-upright",
     "reversed": "#alleged-swords-7-reversed"
   },
   "alleged-swords-8": {
-    "name": "8 of swords",
+    "name": "the eight of swords",
     "upright": "#alleged-swords-8-upright",
     "reversed": "#alleged-swords-8-reversed"
   },
   "alleged-swords-9": {
-    "name": "9 of swords",
+    "name": "the nine of swords",
     "upright": "#alleged-swords-9-upright",
     "reversed": "#alleged-swords-9-reversed"
   },
   "alleged-swords-10": {
-    "name": "10 of swords",
+    "name": "the ten of swords",
     "upright": "#alleged-swords-10-upright",
     "reversed": "#alleged-swords-10-reversed"
   },
   "alleged-swords-11": {
-    "name": "11 of swords",
+    "name": "page of swords",
     "upright": "#alleged-swords-11-upright",
     "reversed": "#alleged-swords-11-reversed"
   },
   "alleged-swords-12": {
-    "name": "12 of swords",
+    "name": "knight of swords",
     "upright": "#alleged-swords-12-upright",
     "reversed": "#alleged-swords-12-reversed"
   },
   "alleged-swords-13": {
-    "name": "13 of swords",
+    "name": "queen of swords",
     "upright": "#alleged-swords-13-upright",
     "reversed": "#alleged-swords-13-reversed",
     "explain": "The scales, water jug and photograph are supposed to symbolize the three zodiac signs associated with the suit of Swords (Libra, Aquarius, and Gemini). Why exactly Aquarius is an air sign is beyond me. The book represents knowlege and intellectual pursuits. Her crown is decorated with the symbol of the suit of spades, the modern equivalent of the tarot suit of swords. The chair is based on one designed by Otto Wagner for the ‘Die Zeit’ telegraph office, 1902."
   },
   "alleged-swords-14": {
-    "name": "14 of swords",
+    "name": "king of swords",
     "upright": "#alleged-swords-14-upright",
     "reversed": "#alleged-swords-14-reversed",
     "explain": "The symbols in the background are of course those of the three zodiac signs associated with this suit. The King’s chair is a stick-figure version of the Aeron, designed by Donald Chadwick and William Stumpf in 1992. As well as having a name suggestive of air, the Aristotlian element associated the suit of Swords, the Aeron was one of the potent symbols of the information-technology boom of the late 1990s (and the sale of Aerons on E-bay was one of the potent symbols of the dot-com collapse in the early 2000s)—and the suit of Swords governs intellectual activity."
   },
   "alleged-wands-1": {
-    "name": "1 of wands",
+    "name": "ace of wands",
     "upright": "#alleged-wands-1-upright",
     "reversed": "#alleged-wands-1-reversed",
     "explain": "Wands stand for work in the sense of enthusiasm, creative labour and organization. This made sense to me when I thought of wands as suggesting various sorts of tool. The Ace of Wands often represents beginnings and new enterprises. The suit of Wands is also associated with the element of fire, which is why I have given this card a fiery background. The little sprig of leaves at the bottom of the wand serves two purposes: it symbolizes new beginnings (as this is an Ace), and it reminds us of the suit of Clubs in modern playing cards. (Older decks tend to draw the Wands as more literally club-like.)"
   },
   "alleged-wands-2": {
-    "name": "2 of wands",
+    "name": "the two of wands",
     "upright": "#alleged-wands-2-upright",
     "reversed": "#alleged-wands-2-reversed",
     "explain": "The Ace of Wands symbolizes the beginning of a new enterprise; the Two can mean you are thinking about how to take the next step—a time for assessing the progress so far and deciding which path to take to success. The suit often refers to one’s work or career, so the next ‘step’ might be a promotion, perhaps with an element of self-doubt as you consider whether you can cope with the new responsibilities. It can also symbolize other personal aims and ambitions. I have symbolized the decision as a fork in the road. The path behind the figure shows the progress made already. The early-morning sky shows that the journey has just started."
   },
   "alleged-wands-3": {
-    "name": "3 of wands",
+    "name": "the three of wands",
     "upright": "#alleged-wands-3-upright",
     "reversed": "#alleged-wands-3-reversed",
     "explain": "The number three symbolizes creation (think 2 parents plus one child), divinity (think of the Christian Trinity, Burton’s Triple Goddess, the Fates, the Norns) and luck. It also represents a progression beyond the ideas symbolized by the number two, especially in the suit of Wands, which often represents career progression, creative energy and your personal journey through life. The Three of Wands therefore can mean the successful start of a project (the sequel to the Two), or making plans for a grand project (the creativity sense of the number 3), and waiting to see how they turn out (with some optimisim, because 3 is lucky)."
   },
   "alleged-wands-4": {
-    "name": "4 of wands",
+    "name": "the four of wands",
     "upright": "#alleged-wands-4-upright",
     "reversed": "#alleged-wands-4-reversed",
     "explain": "The number 4 represents stability and completion—think of the four elements, the four corners of the earth, the four seasons. It thus stands for stability (as in ‘foursquare’). Combined with the creative intellectual energy of the suit of Wands, this gives a calm and creative environment where inspiration may be freely expressed. It may represent an actual place, or an event (like a holiday). Four wands standing in a square define a room, so I have illustrated this card with an artist’s studio. The fire-place shows it is cozy and comfortable—and links us to the element of fire (associated with this tarot suit). The fours usually indicate a an ORDERED environment; in a studio this order is often invisible to the casual observer, who sees the clutter of brushes, tubes of paint, and pictures piled around as chaotic, and does not understand the organization that the owner of the studio does."
   },
   "alleged-wands-5": {
-    "name": "5 of wands",
+    "name": "the five of wands",
     "upright": "#alleged-wands-5-upright",
     "reversed": "#alleged-wands-5-reversed",
     "explain": "After the stability of 4, the number 5 represents disruption and discord; to Discordians, it is Eris’s own number. The fives are generaly inauspicious cards in tarot, but when balanced against with the positive, creative energy of the suit of Wands, the 5 isn’t as bad as all that. It represents a problem or set-back, but nothing beyond what one’s resourcefulness cannot deal with. In fact, it may even be welcomed as break from the norm, or chance to demonstrate one’s mastery of the situation. I have illustrated this card with a cyclist repairing a puncture—thus while his journey is interrupted, the interruption is short-lived, because he as the tools he needs to repair the damage."
   },
   "alleged-wands-6": {
-    "name": "6 of wands",
+    "name": "the six of wands",
     "upright": "#alleged-wands-6-upright",
     "reversed": "#alleged-wands-6-reversed"
   },
   "alleged-wands-7": {
-    "name": "7 of wands",
+    "name": "the seven of wands",
     "upright": "#alleged-wands-7-upright",
     "reversed": "#alleged-wands-7-reversed"
   },
   "alleged-wands-8": {
-    "name": "8 of wands",
+    "name": "the eight of wands",
     "upright": "#alleged-wands-8-upright",
     "reversed": "#alleged-wands-8-reversed"
   },
   "alleged-wands-9": {
-    "name": "9 of wands",
+    "name": "the nine of wands",
     "upright": "#alleged-wands-9-upright",
     "reversed": "#alleged-wands-9-reversed"
   },
   "alleged-wands-10": {
-    "name": "10 of wands",
+    "name": "the ten of wands",
     "upright": "#alleged-wands-10-upright",
     "reversed": "#alleged-wands-10-reversed"
   },
   "alleged-wands-11": {
-    "name": "11 of wands",
+    "name": "page of wands",
     "upright": "#alleged-wands-11-upright",
     "reversed": "#alleged-wands-11-reversed"
   },
   "alleged-wands-12": {
-    "name": "12 of wands",
+    "name": "knight of wands",
     "upright": "#alleged-wands-12-upright",
     "reversed": "#alleged-wands-12-reversed"
   },
   "alleged-wands-13": {
-    "name": "13 of wands",
+    "name": "queen of wands",
     "upright": "#alleged-wands-13-upright",
     "reversed": "#alleged-wands-13-reversed",
     "explain": "The chair is based on Charles Rennie Mackintosh’s chair design for the Argyle Street Tea Rooms, 1897. I chose it because its tall and narrow shape and oak construction suggests the suit of Wands to me. The shape of the headrest makes it slightly more ‘feminine’ in shape than the one I gave to the King. I have exaggerated its size to make it ore like a throne than a normal chair."
   },
   "alleged-wands-14": {
-    "name": "14 of wands",
+    "name": "king of wands",
     "upright": "#alleged-wands-14-upright",
     "reversed": "#alleged-wands-14-reversed",
     "explain": "The chair is another Charles Rennie Mackintosh design from the early years of the twentieth century, listed as House for an Art Lover Carver Chair. (I dont’t have the exact date because I found it in a modern furniture catalogue!)"
   }
 }</script>
 
-<svg>
+</svg>

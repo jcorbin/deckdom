@@ -290,7 +290,7 @@ for await (const {
 
   {
     const interp = svg.querySelector('#interp') || svg;
-    let faceTitle = allegedTitle;
+    let faceTitle = '';
     let uprightMeaning = '';
     let reversedMeaning = '';
     for (const textEl of interp.querySelectorAll(':scope > text')) {
@@ -315,7 +315,7 @@ for await (const {
         `interp: ${firstTag(interp.outerHTML)} -->\n`);
     }
 
-    if (faceTitle) cardDef.name = faceTitle;
+    cardDef.name = faceTitle || allegedTitle;
 
     if (faceTitle || foundFace) {
       await writeOuts(function*() {
@@ -353,21 +353,19 @@ for await (const {
     if (s) {
       explain = s.split(/\n/).map(ss => ss.trim()).join(' ');
     }
-    if (!explain) {
-      const isMinor = [
-        'coins',
-        'cups',
-        'swords',
-        'wands',
-      ].some(minor => allegedName.startsWith(`${minor}-`))
-
-      // NOTE buddy only bothered to commentate on some of me majors, plus some artist notes on a few minors... does not make for a full "little white book" experience
-      // TODO evolve data scheme so that we can just call these out as artist notes?
-      if (!isMinor)
-        await note(`missing ${allegedName} card explanation`);
-    } else {
-      cardDef['explain'] = explain;
-    }
+    if (explain) cardDef['explain'] = explain;
+    // else {
+    //   // NOTE buddy only bothered to commentate on some of me majors, plus some artist notes on a few minors... does not make for a full "little white book" experience
+    //   // TODO evolve data scheme so that we can just call these out as artist notes?
+    //   const isMinor = [
+    //     'coins',
+    //     'cups',
+    //     'swords',
+    //     'wands',
+    //   ].some(minor => allegedName.startsWith(`${minor}-`))
+    //   if (!isMinor)
+    //     await note(`missing ${allegedName} card explanation`);
+    // }
   }
 
   if (notes.length) {
@@ -386,7 +384,7 @@ for await (const {
   logOut.write(`done.\n`);
 }
 
-await toState();
+await toState('svg');
 
 if (problems.length) {
   await writeOut(`\n<!-- Problems encountered:\n`);
@@ -396,6 +394,6 @@ if (problems.length) {
 }
 
 // TODO evolve data scheme so that we can just annotate svg elements above
-await writeOut(`\n<script type="application/json" id="book">${JSON.stringify(index, null, 2)}</script>\n`);
+await writeOut(`\n<script type="application/json">${JSON.stringify(index, null, 2)}</script>\n`);
 
-await toState('svg');
+await toState();

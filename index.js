@@ -563,22 +563,56 @@ const elState = ref => {
 
 /** @typedef {ReturnType<typeof elState>} ElState */
 
-/** @param {any} spec */
-export default function init(spec) {
-  if (!(typeof spec === 'object' && spec instanceof Element))
+/** @param {any} arg */
+async function loadSpec(arg) {
+  if (typeof arg === 'string') {
+    const res = await fetch(arg);
+    const text = await res.text();
+    document.body.insertAdjacentHTML('afterbegin', text);
+    const el = document.body.querySelector(`:scope > svg:first-child`);
+    if (!(el instanceof SVGSVGElement))
+      throw new Error('cannot find fetched spec svg');
+    el.id = '';
+    el.width.baseVal.value = 0;
+    el.height.baseVal.value = 0;
+    arg = el;
+  }
+
+  if (!(arg instanceof Element))
     throw new Error('must provide spec element');
-  const document = spec.ownerDocument;
+
+  // TODO support SVG element directly
 
   if (
-    spec.tagName.toLowerCase() !== 'script' ||
-    spec.getAttribute('language') !== 'application/json'
-  ) throw new Error('spec must be a JSON script element');
-  const rawText = spec.textContent || '';
-  const specData = JSON.parse(rawText);
-  if (!isSpec(specData))
-    throw new Error('invalid spec data');
+    arg.tagName.toLowerCase() !== 'script' ||
+    arg.getAttribute('language') !== 'application/json'
+  ) {
+    const el = arg.querySelector('script[type="application/json"]');
+    if (!el)
+      throw new Error('spec must be a JSON script element');
+    arg = el;
+  }
 
-  const world = makeWorld(specData);
+  const rawText = arg.textContent || '';
+  const spec = JSON.parse(rawText);
+
+  if (isSpec(spec))
+    return spec;
+
+  throw new Error('invalid spec data');
+}
+
+/** @param {any} arg */
+export default async function init(arg) {
+  // TODO support options object arg
+
+  const spec = await loadSpec(arg);
+
+  // TODO provide option
+  const document =
+    arg instanceof Element
+      ? arg.ownerDocument
+      : window.document;
 
   /**
    * @param {string} sel
@@ -594,6 +628,8 @@ export default function init(spec) {
     if (init) init(el);
     return el;
   };
+
+  const world = makeWorld(spec);
 
   // TODO option to pass table and/or other domains
   const table = document.body.appendChild(h('.domain.table'));
@@ -612,134 +648,93 @@ export default function init(spec) {
     world.render(el, world.allCardIds());
   }));
 
+  /**
+   * @param {HTMLElement} explain
+   * @param {Card} card
+   */
+  const renderExplain = (explain, card) => {
+    if ('id' in card) {
+      const { id } = card;
+      const cardSpec = spec[id];
+      if (!cardSpec) {
+        explain.innerText = `-- undefined card #${id} --`;
+        return;
+      }
+      return renderExplain(explain, cardSpec);
+    }
+
+    const ex = card['explain'];
+    if (typeof ex !== 'string') {
+      // TODO other
+      return;
+    }
+
+    if (!ex.startsWith('#')) {
+      explain.innerHTML = ex;
+      return;
+    }
+
+    const el = document.querySelector(ex);
+    if (!el) {
+      explain.innerText = `-- no element for query ${ex} --`;
+      return;
+    }
+
+    if (el instanceof HTMLElement) {
+      explain.innerHTML = el.innerHTML;
+      return;
+    }
+
+    // TODO more specific element grafting logic
+    if (el instanceof Element) {
+      explain.innerText = el.textContent || '';
+      return;
+    }
+  };
+
   return Object.freeze({
     makeViewer() {
       const viewer = document.body.appendChild(h('div.modal.cardBook'));
+
+      // TODO obsolete this workaround
       viewer.addEventListener('mousedown', ev => ev.stopPropagation());
       viewer.addEventListener('mousemove', ev => ev.stopPropagation());
       viewer.addEventListener('mouseup', ev => ev.stopPropagation());
 
-      viewer.innerHTML = `
-          <button value="close" style="float: right">X</button>
-          <fieldset><legend>
-            <select>
-            </select>
-            <button value="prev">⬅️</button>
-            <button value="next">➡️</button>
-          </legend>
+      viewer.insertAdjacentHTML('afterbegin',
+        `<button value="close" style="float: right">X</button>`);
+
+      {
+        const el = viewer.querySelector('button[value="close"]');
+        if (el && el instanceof HTMLElement)
+          el.addEventListener('click', () => viewer.parentNode?.removeChild(viewer));
+      }
+
+      for (const [id, { name }] of Object.entries(spec)) {
+        const cardSpec = spec[id];
+
+        viewer.insertAdjacentHTML('beforeend', `
+          <fieldset class="page"><legend>${JSON.stringify(name)}</legend>
             <div style="float: left; margin-right: 1em" class="card" data-orient="0,1"></div>
             <div style="float: left" class="card" data-orient="1,1"></div>
             <br style="clear: both" />
-
             <p class="explain" style="white-space: pre-line"></p>
           </fieldset>
-          `;
+          `);
 
-      const select = viewer.querySelector('select');
-      if (!select) throw new Error('inconceivable');
-      const onchange = () => self.showCard({ id: select.value })
-      select.addEventListener('change', onchange);
+        for (const el of viewer.querySelectorAll(':scope > :last-child .card')) {
+          if (!(el instanceof HTMLElement)) continue;
+          const ot = orient.fromString(el.dataset['orient'] || '');
+          world.render(el, [{ id, orient: ot }]);
+        }
 
-      for (const el of viewer.querySelectorAll('button'))
-        if (el.value === 'close')
-          el.addEventListener('click', () => viewer.parentNode?.removeChild(viewer));
-        else if (el.value === 'prev')
-          el.addEventListener('click', () => {
-            const n = select.options.length
-            select.selectedIndex = (select.selectedIndex + n - 1) % n;
-            onchange();
-          });
-        else if (el.value === 'next')
-          el.addEventListener('click', () => {
-            select.selectedIndex = (select.selectedIndex + 1) % select.options.length;
-            onchange();
-          });
+        if (cardSpec) {
+          const explain = viewer.querySelector(':scope > :last-child .explain');
+          if (explain instanceof HTMLElement)
+            renderExplain(explain, cardSpec);
+        }
+      }
 
-      const cardEls = Array
-        .from(viewer.querySelectorAll('.card'))
-        .filter(el => el instanceof HTMLElement);
-      const explain = viewer.querySelector('.explain');
-      if (!(explain instanceof HTMLElement)) throw new Error('inconceivable');
-
-      const self = Object.freeze({
-        get shownCardId() {
-          for (const el of cardEls) {
-            const cards = getElCards(el);
-            const top = cards && cards[0];
-            if (top && typeof top.id === 'string')
-              return top.id;
-          }
-          return '';
-        },
-
-        updateSelect() {
-          select.options.length = 0;
-          const specEntries = Object.entries(specData);
-          if (!specEntries.length) return;
-          const cardId = self.shownCardId;
-          for (const [id, { name }] of specEntries) {
-            const opt = document.createElement('option');
-            opt.value = id;
-            opt.selected = cardId ? cardId === id : false;
-            opt.innerText = `#${id} ${JSON.stringify(name)}`;
-            select.options.add(opt);
-          }
-          if (!cardId || cardId !== select.value)
-            self.showCard({ id: select.value });
-        },
-
-        /** @param {Card} card */
-        showCard(card) {
-          for (const el of cardEls) {
-            const ot = orient.fromString(el.dataset['orient'] || '');
-            world.render(el, [{ ...card, orient: ot }]);
-          }
-
-          const ex = (() => {
-            if ('explain' in card && typeof card['explain'] === 'string')
-              return card['explain'];
-
-            if (typeof card.id === 'string') {
-              const cardSpec = specData[card.id];
-              if (!cardSpec) return `-- undefined card #${card.id} --`;
-              return cardSpec['explain'];
-            }
-
-            return '';
-          })();
-          if (ex) self.showExplanation(ex);
-          else explain.innerText = '-- no explanation --';
-        },
-
-        /** @param {string} ex */
-        showExplanation(ex) {
-          if (!ex.startsWith('#')) {
-            explain.innerHTML = ex;
-            return;
-          }
-
-          const el = document.querySelector(ex);
-          if (!el) {
-            explain.innerText = `-- no element for query ${ex} --`;
-            return;
-          }
-
-          if (el instanceof HTMLElement) {
-            explain.innerHTML = el.innerHTML;
-            return;
-          }
-
-          // TODO more specific element grafting logic
-          if (el instanceof Element) {
-            explain.innerText = el.textContent || '';
-            return;
-          }
-        },
-      });
-
-      self.updateSelect();
-
-      return self;
     },
   });
 }
