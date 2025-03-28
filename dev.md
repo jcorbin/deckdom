@@ -77,16 +77,6 @@
 
 - maybe drag should mostly move all by default, require drag on edge/border to cut stack?
 
-- improve event handling
-  - [ ] filter domain event handling ( and esp. default prevention ) from
-    applying to sibling descended element that happen to overlap; obviates need
-    for workaround stopPropagation in modal like the book viewer TODO:
-    generalize event parent seek, not just any html element, but certain
-    preferred signposts
-  - [ ] evaluate utility of adding stopPropagation call to domain handling, so
-    that handled mouse events stop at the level where a click/drag/dwell/etc
-    has been identified.
-
 - improve drag pre-take feedback: an overlay and/or just start taking on
   mousedown, only finalizing take stack on first leave
 
@@ -94,13 +84,25 @@
 
 - acquire tarot asset set:
   - [x] alleged deck conversion
-  - [ ] use of external svg asset ; iterate on toplevel api
-  - [ ] alleged quality check ; start deck editor ui for this
+  - [x] use of external svg asset
+  - [x] alleged quality check - g2g but for label placement
+  - [ ] deck editing to fix alleged label placement
   - [ ] svg playing cards
   - [ ] colman-smith raster images
   - [ ] ascii-tarot
+- toplevel api iteration
+  - [ ] pass multiple decks
+  - [ ] pass or spec more domains
+  - [ ] show library
+  - [ ] show books
+  - [ ] action/drag to instantiate book
 
 ## Done
+
+- fixed initial run of alleged tarot conversion
+- support loading spec from external file
+- reworked card book viewer to be continuous scroll
+- limited controller event handling to only withing domain elements
 
 # 2025-03-26
 
@@ -246,7 +248,6 @@ Chased down some assets from <http://freeware.esoterica.free.fr/html/freecards.h
 > Author/artist comments:
 > " I looked all over the Web for a cool-looking free printable deck of tarot cards and couldn't find a good one. So I made my own. It has taken me 2 years to finally complete all 78 cards...although I still don't consider the deck to be "finished". I hope you have as much fun using these as I did making them!" 
 
-  	
 ### Catharinas Tarot Trumps.
 
 <http://catharinaweb.nl/>
@@ -272,7 +273,6 @@ Chased down some assets from <http://freeware.esoterica.free.fr/html/freecards.h
 > Visit website for colouring info (important), & for viewing or downloading the cards individually.
 > Card size: 244 x 220. ......NOTE: I believe it may only be Free for personal use.
 
-  	
 ### The Colman-Smith Tarot
 
 <http://www.m31.de/colman-smith/index.html>
@@ -288,7 +288,6 @@ Chased down some assets from <http://freeware.esoterica.free.fr/html/freecards.h
 > 
 > Alternatively; A monotone deck of the Colman-Smith Tarot (no cardback) with smaller sized cards can be downloaded from here.
 > Licence, GPL. Card size:Approx. 112 x 176 pixels. Format: gifs
-
   	
 ### Inner World Tarot
 

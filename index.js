@@ -287,15 +287,16 @@ function ensureId(el, genId) {
 }
 
 /**
- * @param {HTMLElement} a
- * @param {HTMLElement} b
+ * @param {Element} a
+ * @param {ParentNode|((el: ParentNode) => boolean)} b
  */
 const isDescendedFrom = (a, b) => {
+  if (typeof b === 'function' && b(a)) return true;
   for (
     let par = a.parentNode;
     par;
     par = par?.parentNode
-  ) if (par === b) return true;
+  ) if (typeof b === 'function' ? b(par) : par === b) return true;
   return false;
 }
 
@@ -422,16 +423,22 @@ const hasElCards = el => {
 /** @param {Event} ev */
 const evContext = ev => {
   const { target } = ev;
+  if (!(target instanceof Element)) return null;
+
+  if (!isDescendedFrom(
+    target,
+    par => par instanceof HTMLElement && par.classList.contains('domain')))
+    return null;
+
   if (!(target instanceof HTMLElement)) {
-    if (target instanceof Element) {
-      for (
-        let par = target.parentNode;
-        par && par instanceof Element;
-        par = par.parentNode
-      ) if (par instanceof HTMLElement) return elState(par);
-    }
+    for (
+      let par = target.parentNode;
+      par && par instanceof Element;
+      par = par.parentNode
+    ) if (par instanceof HTMLElement) return elState(par);
     return null;
   }
+
   return elState(target);
 };
 
@@ -569,19 +576,21 @@ async function loadSpec(arg) {
     const res = await fetch(arg);
     const text = await res.text();
     document.body.insertAdjacentHTML('afterbegin', text);
-    const el = document.body.querySelector(`:scope > svg:first-child`);
-    if (!(el instanceof SVGSVGElement))
-      throw new Error('cannot find fetched spec svg');
+    const el = document.body.querySelector(`:scope > :first-child`);
+    if (!(el instanceof Element))
+      throw new Error('cannot find fetched spec element');
     el.id = '';
-    el.width.baseVal.value = 0;
-    el.height.baseVal.value = 0;
+    if (el instanceof SVGSVGElement) {
+      el.width.baseVal.value = 0;
+      el.height.baseVal.value = 0;
+    }
     arg = el;
   }
 
   if (!(arg instanceof Element))
     throw new Error('must provide spec element');
 
-  // TODO support SVG element directly
+  // TODO support SVG element directly sans json index
 
   if (
     arg.tagName.toLowerCase() !== 'script' ||
@@ -695,11 +704,6 @@ export default async function init(arg) {
   return Object.freeze({
     makeViewer() {
       const viewer = document.body.appendChild(h('div.modal.cardBook'));
-
-      // TODO obsolete this workaround
-      viewer.addEventListener('mousedown', ev => ev.stopPropagation());
-      viewer.addEventListener('mousemove', ev => ev.stopPropagation());
-      viewer.addEventListener('mouseup', ev => ev.stopPropagation());
 
       viewer.insertAdjacentHTML('afterbegin',
         `<button value="close" style="float: right">X</button>`);
@@ -1099,6 +1103,7 @@ function makeWorld(spec) {
         const ctx = evContext(ev);
         if (!ctx) return;
         ev.preventDefault();
+        ev.stopPropagation();
 
         const { button, buttons, offsetX, offsetY } = ev;
         if (!ctx.getData('state')) {
@@ -1116,6 +1121,7 @@ function makeWorld(spec) {
         const ctx = evContext(ev);
         if (!ctx) return;
         ev.preventDefault();
+        ev.stopPropagation();
 
         const st = ctx.getData('state');
         if (st.startsWith('mouse')) {
@@ -1140,6 +1146,7 @@ function makeWorld(spec) {
         const ctx = evContext(ev);
         if (!ctx) return;
         ev.preventDefault();
+        ev.stopPropagation();
 
         // TODO hover/dwell tracking
 
@@ -1202,7 +1209,14 @@ function makeWorld(spec) {
         }
       });
 
-      container.addEventListener('contextmenu', ev => ev.preventDefault());
+      container.addEventListener('contextmenu', ev => {
+        const ctx = evContext(ev);
+        if (!ctx) return;
+        ev.preventDefault()
+        ev.stopPropagation();
+
+        // TODO show something?
+      });
 
       // TODO touch event handling
 
