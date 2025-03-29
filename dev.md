@@ -99,6 +99,8 @@
 
 ## Done
 
+- got book viewer index navigation working
+
 # 2025-03-28
 
 - minor work on book viewer, didn't quite get getting loop working yet

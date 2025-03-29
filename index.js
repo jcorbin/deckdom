@@ -383,12 +383,18 @@ const smudgeCard = card => {
   return card;
 };
 
+/** @param {string[]} parts */
+const titleJoin = (...parts) => parts
+  .map((part, i) => i == 0 ? part
+    : `${part.slice(0, 1).toUpperCase()}${part.slice(1)}`)
+  .join('');
+
 const cardDataKey = 'cards';
 const stateDataKey = 'cardsUi';
 
 /** @param {HTMLElement} el @param {string} key */
 const getElData = (el, key) => {
-  const dataKey = `${stateDataKey}${key.slice(0, 1).toUpperCase()}${key.slice(1)}`;
+  const dataKey = titleJoin(stateDataKey, key);
   return dataKey in el.dataset && el.dataset[dataKey] || '';
 };
 
@@ -478,7 +484,7 @@ const elState = ref => {
 
     /** @param {string} key */
     getData(key) {
-      const dataKey = `${stateDataKey}${key.slice(0, 1).toUpperCase()}${key.slice(1)}`;
+      const dataKey = titleJoin(stateDataKey, key);
       for (const el of walk())
         if (dataKey in el.dataset)
           return el.dataset[dataKey] || '';
@@ -487,7 +493,7 @@ const elState = ref => {
 
     /** @param {string} key @param {string} val */
     setData(key, val) {
-      const dataKey = `${stateDataKey}${key.slice(0, 1).toUpperCase()}${key.slice(1)}`;
+      const dataKey = titleJoin(stateDataKey, key);
       if (val)
         ref.dataset[dataKey] = val;
       else if (Array.from(walk()).some(el => el !== ref && dataKey in el))
@@ -498,7 +504,7 @@ const elState = ref => {
 
     /** @param {string} key @param {string} val */
     setDomData(key, val) {
-      const dataKey = `${stateDataKey}${key.slice(0, 1).toUpperCase()}${key.slice(1)}`;
+      const dataKey = titleJoin(stateDataKey, key);
       const dom = ctx.domain;
       if (val)
         dom.dataset[dataKey] = val;
@@ -516,8 +522,8 @@ const elState = ref => {
 
     /** @param {string} key @param {string} val */
     appendData(key, val) {
-      const dataKey = `${stateDataKey}${key.slice(0, 1).toUpperCase()}${key.slice(1)}`;
       if (val) {
+        const dataKey = titleJoin(stateDataKey, key);
         const prior = ref.dataset[dataKey];
         const raw = prior ? JSON.parse(prior) : null;
         ref.dataset[dataKey] = JSON.stringify(Array.isArray(raw) ? [...raw, val] : [val]);
@@ -526,8 +532,8 @@ const elState = ref => {
 
     /** @param {string} key @param {string} val */
     appendDomData(key, val) {
-      const dataKey = `${stateDataKey}${key.slice(0, 1).toUpperCase()}${key.slice(1)}`;
       if (val) {
+        const dataKey = titleJoin(stateDataKey, key);
         const dom = ctx.domain;
         const prior = dom.dataset[dataKey];
         const raw = prior ? JSON.parse(prior) : null;
@@ -537,7 +543,7 @@ const elState = ref => {
 
     /** @param {string} key */
     *iterData(key) {
-      const dataKey = `${stateDataKey}${key.slice(0, 1).toUpperCase()}${key.slice(1)}`;
+      const dataKey = titleJoin(stateDataKey, key);
       for (const el of walk()) {
         if (dataKey in el.dataset) {
           const val = el.dataset[dataKey];
@@ -701,40 +707,53 @@ export default async function init(arg) {
     }
   };
 
+  const cardBookId = 'unknown'; // TODO evolve Spec to provide
+
   return Object.freeze({
     makeViewer() {
-      const viewer = document.body.appendChild(h('div.modal.cardBook'));
-
-      viewer.insertAdjacentHTML('afterbegin',
+      const cardBook = document.body.appendChild(h('div.modal.cardBook'));
+      cardBook.insertAdjacentHTML('afterbegin',
         `<header>` +
-        `<h1>-- Untitled --</h1>` +
         `<button value="close" style="float: right">X</button>` +
-        `<details class="index" style="float: right"><summary>☰</summary><menu></menu></details>` +
-        `<br style="clear: both" />` +
-        `</header>`
+        `<h1>-- Untitled --</h1>` +
+        `</header>` +
+        `<nav><menu></menu></nav>` +
+        `<main></main>`
       );
 
       {
-        const el = viewer.querySelector('button[value="close"]');
+        const el = cardBook.querySelector('button[value="close"]');
         if (el && el instanceof HTMLElement)
-          el.addEventListener('click', () => viewer.parentNode?.removeChild(viewer));
+          el.addEventListener('click', () => cardBook.parentNode?.removeChild(cardBook));
       }
 
       {
-        const el = viewer.querySelector('menu');
+        const el = cardBook.querySelector('menu');
         if (el && el instanceof HTMLElement)
-          for (const [id, { name }] of Object.entries(spec)) {
-            // TODO link to page anchor
-            el.insertAdjacentHTML('beforeend', `<li>${name}</li>`);
-          }
+          for (const [id, { name }] of Object.entries(spec))
+            el.insertAdjacentHTML('beforeend', `<li><a href="#${titleJoin(cardBookId, id)}">${name}</a></li>`);
       }
+
+      const viewer = cardBook.querySelector('main');
+      if (!viewer) throw new Error('missing cardBook main element');
+
+      cardBook.querySelector('menu')?.addEventListener('click', ev => {
+        const { target } = ev;
+        if (!(target instanceof HTMLAnchorElement)) return;
+        if (window.location.href.replace(/#.*$/, '') !== target.href.replace(/#.*$/, '')) return;
+        const hashId = target.hash.slice(1);
+        const buddy = hashId ? viewer.querySelector(`a[name=${hashId}]`) : null;
+        if (!buddy) return;
+        buddy.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        ev.preventDefault();
+      });
 
       for (const [id, { name }] of Object.entries(spec)) {
         const cardSpec = spec[id];
 
         // TODO provide page anchor
         viewer.insertAdjacentHTML('beforeend', `
-          <fieldset class="page"><legend>${JSON.stringify(name)}</legend>
+          <fieldset class="page"><legend><a name="${titleJoin(cardBookId, id)}">${name}</a></legend>
             <div class="card" data-orient="0,1"></div>
             <div class="card" data-orient="1,1"></div>
             <br style="clear: both" />
@@ -755,6 +774,37 @@ export default async function init(arg) {
         }
       }
 
+      const updateScroll = () => {
+        const { scrollTop, clientHeight } = viewer;
+        const scrollBottom = scrollTop + clientHeight;
+        const pages = Array
+          .from(viewer.querySelectorAll(':scope > .page'))
+          .filter(el => el instanceof HTMLElement)
+          .filter(({ offsetTop }) => offsetTop < scrollBottom);
+        const page =
+          pages.filter(({ offsetTop }) => offsetTop >= scrollTop)[0] ||
+          pages[pages.length - 1];
+        const linkName = page?.querySelector('a[name]')?.getAttribute('name');
+        const link = linkName ? cardBook.querySelector(`nav a[href="#${linkName}"]`) : null;
+        const priors = Array
+          .from(cardBook.querySelectorAll('nav a.current, .page.current'))
+          .filter(prior => prior instanceof HTMLElement);
+        if ((page && !page.classList.contains('current')) ||
+          (link && !link.classList.contains('current'))) {
+          link?.classList.add('current')
+          page?.classList.add('current');
+          for (const prior of priors)
+            prior.classList.remove('current');
+        }
+        link?.scrollIntoView({
+          behavior: 'instant',
+          block: 'nearest'
+        });
+      };
+
+      updateScroll();
+      viewer.addEventListener('scroll', () => updateScroll());
+      viewer.addEventListener('scrollend', () => updateScroll());
     },
   });
 }
@@ -882,7 +932,7 @@ function makeWorld(spec) {
         if (def) {
           for (const [prop, val] of Object.entries(def)) {
             if (!renderProps.has(prop)) {
-              const dataKey = `card${prop.slice(0, 1).toUpperCase()}${prop.slice(1)}`
+              const dataKey = titleJoin('card', prop);
               el.dataset[dataKey] = val;
               oldDataKeys.delete(dataKey);
               const key = `--card-${prop}`;
@@ -923,6 +973,7 @@ function makeWorld(spec) {
     allCardIds() {
       return Array.from(Object.keys(spec).map(id => `#${id}`));
     },
+
 
     render,
 

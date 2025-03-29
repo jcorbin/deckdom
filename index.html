@@ -15,7 +15,10 @@
     height: 100%;
   }
 
-  input, select, textarea, button {
+  input,
+  select,
+  textarea,
+  button {
     background-color: #444;
     border-color: #666;
     color: #bbb;
@@ -24,10 +27,10 @@
   .modal {
     position: absolute;
     top: 5%;
-    left: 20%;
-    width: 60%;
+    left: 15%;
+    width: 70%;
     height: 90%;
-    overflow: auto;
+    overflow: hidden;
 
     background-color: #222;
     border: 0.2em solid #333;
@@ -41,15 +44,53 @@
     position: relative;
   }
 
+  .cardBook {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-template-areas:
+      "header header"
+      "content nav";
+  }
+
+  .cardBook header {
+    grid-area: header;
+  }
+
+  .cardBook nav {
+    grid-area: nav;
+    overflow: auto;
+  }
+
+  .cardBook main {
+    grid-area: content;
+    overflow: auto;
+  }
+
   .cardBook h1 {
     margin: 0;
     padding: 0;
     text-align: center;
   }
 
+  .cardBook menu {
+    list-style: square;
+  }
+
+  .cardBook nav a,
+  .cardBook nav a:visited { color: #99c; }
+  .cardBook nav a:hover,
+  .cardBook nav a.current { color: #9cc; }
+
+  .cardBook nav a { text-decoration: none; }
+  .cardBook nav a.current { text-decoration: underline; }
+
   .cardBook .page {
     border: 0.5em solid #333;
     border-radius: 0.5em;
+  }
+
+  .cardBook .page.current {
+    border-color: #366;
   }
 
   .cardBook .page .card {
