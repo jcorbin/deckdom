@@ -706,7 +706,13 @@ export default async function init(arg) {
       const viewer = document.body.appendChild(h('div.modal.cardBook'));
 
       viewer.insertAdjacentHTML('afterbegin',
-        `<button value="close" style="float: right">X</button>`);
+        `<header>` +
+        `<h1>-- Untitled --</h1>` +
+        `<button value="close" style="float: right">X</button>` +
+        `<details class="index" style="float: right"><summary>☰</summary><menu></menu></details>` +
+        `<br style="clear: both" />` +
+        `</header>`
+      );
 
       {
         const el = viewer.querySelector('button[value="close"]');
@@ -714,13 +720,23 @@ export default async function init(arg) {
           el.addEventListener('click', () => viewer.parentNode?.removeChild(viewer));
       }
 
+      {
+        const el = viewer.querySelector('menu');
+        if (el && el instanceof HTMLElement)
+          for (const [id, { name }] of Object.entries(spec)) {
+            // TODO link to page anchor
+            el.insertAdjacentHTML('beforeend', `<li>${name}</li>`);
+          }
+      }
+
       for (const [id, { name }] of Object.entries(spec)) {
         const cardSpec = spec[id];
 
+        // TODO provide page anchor
         viewer.insertAdjacentHTML('beforeend', `
           <fieldset class="page"><legend>${JSON.stringify(name)}</legend>
-            <div style="float: left; margin-right: 1em" class="card" data-orient="0,1"></div>
-            <div style="float: left" class="card" data-orient="1,1"></div>
+            <div class="card" data-orient="0,1"></div>
+            <div class="card" data-orient="1,1"></div>
             <br style="clear: both" />
             <p class="explain" style="white-space: pre-line"></p>
           </fieldset>
@@ -771,8 +787,8 @@ const renderFace = (el, srcOrOpts) => {
     const face = el.ownerDocument.createElementNS('http://www.w3.org/2000/svg', 'svg')
     const viewBox = srcEl.getAttribute('viewBox');
     if (viewBox) face.setAttribute('viewBox', viewBox);
-    face.setAttribute('width', `${el.clientWidth}`);
-    face.setAttribute('height', `${el.clientHeight}`);
+    face.setAttribute('width', '100%');
+    face.setAttribute('height', '100%');
     face.setAttribute('preserveAspectRatio', 'xMidYMid slice');
     const ref = el.ownerDocument.createElementNS('http://www.w3.org/2000/svg', 'use')
     ref.setAttribute('href', `#${srcEl.id}`);

@@ -41,10 +41,22 @@
     position: relative;
   }
 
-  .cardBook .card {
-    --card-back-border: #33c;
-    width: 360px;
-    height: 500px;
+  .cardBook h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .cardBook .page {
+    border: 0.5em solid #333;
+    border-radius: 0.5em;
+  }
+
+  .cardBook .page .card {
+    width: 48%;
+    height: auto;
+    aspect-ratio: 360 / 500;
+    float: left;
   }
 
   .domain .card,
@@ -140,9 +152,6 @@
 
 <script type="module">
   import init from './index.js';
-  const book = await init(
-    './alleged-tarot.svg'
-    // document.querySelector('#book')
-  );
+  const book = await init('./alleged-tarot.svg');
   book.makeViewer();
 </script>

@@ -1,4 +1,4 @@
-# 2025-03-27
+# 2025-03-29
 
 ## Design Muse
 
@@ -98,6 +98,12 @@
   - [ ] action/drag to instantiate book
 
 ## Done
+
+# 2025-03-28
+
+- minor work on book viewer, didn't quite get getting loop working yet
+
+# 2025-03-27
 
 - fixed initial run of alleged tarot conversion
 - support loading spec from external file

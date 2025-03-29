@@ -190,7 +190,7 @@
 </g>
 </svg>
 
-<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-540,20)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-fool-label">
+<text xmlns="http://www.w3.org/2000/svg" x="0" y="0" transform="rotate(-90) translate(-180,30)" fill="maroon" stroke="none" font-family="Even" font-size="24" id="alleged-fool-label">
         the fool
     </text>
 
@@ -203,7 +203,7 @@
 <svg id="alleged-fool-reversed" viewBox="0 0 360 500" width="360" height="500">
   <title>the fool reversed: recklessness, irresponsibility</title>
   <use href="#alleged-fool-face" transform="rotate(180, 180, 250)" />
-  <use href="#alleged-fool-label" />
+  <use href="#alleged-fool-label" transform="translate(320, 0)" />
 </svg>
 
 <!-- file: assets/alleged-tarot/i-magician-card3.svg -->
