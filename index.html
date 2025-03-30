@@ -15,6 +15,22 @@
     height: 100%;
   }
 
+  a {
+    color: #99c;
+  }
+
+  a:active {
+    color: #cc9;
+  }
+
+  a:visited {
+    color: #c9c;
+  }
+
+  a:hover {
+    color: #9cc;
+  }
+
   input,
   select,
   textarea,
@@ -76,13 +92,44 @@
     list-style: square;
   }
 
-  .cardBook nav a,
-  .cardBook nav a:visited { color: #99c; }
-  .cardBook nav a:hover,
-  .cardBook nav a.current { color: #9cc; }
+  summary {
+    list-style: none;
+  }
 
-  .cardBook nav a { text-decoration: none; }
-  .cardBook nav a.current { text-decoration: underline; }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary {
+    color: #99c;
+    cursor: s-resize;
+  }
+
+  details:open > summary {
+    color: #cc9;
+    cursor: n-resize;
+  }
+
+  summary:hover,
+  details:open > summary:hover {
+    color: #9cc;
+  }
+
+  .cardBook nav a:visited {
+    color: #99c;
+  }
+
+  .cardBook nav a.current {
+    color: #9cc;
+  }
+
+  .cardBook nav a {
+    text-decoration: none;
+  }
+
+  .cardBook nav a.current {
+    text-decoration: underline;
+  }
 
   .cardBook .page {
     border: 0.5em solid #333;
@@ -162,34 +209,6 @@
     content: attr(data-card-name);
   }
 </style>
-
-<!--
-
-  <svg id="alleged-fool-upright" viewBox="0 0 360 500" width="360" height="500">
-    <title>the fool: sponteneity, trust, taking a risk</title>
-    <use href="#alleged-fool-face" />
-    <use href="#alleged-fool-title" />
-  </svg>
-
-  <svg id="alleged-fool-reversed" viewBox="0 0 360 500" width="360" height="500">
-    <title>the fool reversed: recklessness, irresponsibility</title>
-    <use href="#alleged-fool-face" transform="rotate(180, 180, 250)" />
-    <use href="#alleged-fool-title" transform="translate(330, -400)" />
-  </svg>
-
-  <svg id="alleged-magician-upright" viewBox="0 0 360 500" width="360" height="500">
-    <title>the magician: skill, confidence, communication</title>
-    <use href="#alleged-magician-face" />
-    <use href="#alleged-magician-title" transform="translate(330, -360)" />
-  </svg>
-
-  <svg id="alleged-magician-reversed" viewBox="0 0 360 500" width="360" height="500">
-    <title>the magician reversed: lack of confidence, bad communication</title>
-    <use href="#alleged-magician-face" transform="rotate(180, 180, 250)" / />
-    <use href="#alleged-magician-title" transform="translate(10, -80)"  />
-  </svg>
-
--->
 
 <script type="module">
   import init from './index.js';

@@ -300,22 +300,26 @@ const isDescendedFrom = (a, b) => {
   return false;
 }
 
-/** @typedef {{ [name: string]: CardDef}} Spec */
-
-/** @typedef {{name: string} & {[prop: string]: any}} CardDef */
-
 /**
- * @param {any} spec
- * @returns {spec is Spec}
+ * @template T
+ * @template {keyof T} K
+ * @typedef {Required<Pick<T, K>> & Omit<T, K>} Nominate
  */
-function isSpec(spec) {
-  if (typeof spec !== 'object') return false;
-  if (spec === null) return false;
-  for (const val of Object.values(spec)) {
-    if (!isCardDef(val)) return false;
-  }
-  return true;
-}
+
+/** @typedef {object} CardData
+ * @prop {string} [name]
+ * @prop {string} [title]
+ * @prop {string} [desc]
+ * @prop {string} [face]
+ * @prop {boolean} [isReversed]
+ * @prop {DeckCard} [other] -- reversed/upright linkage
+ */
+
+/** @typedef {Nominate<CardData, "name">} CardDef */
+
+/** @typedef {{id: string}} CardRef */
+
+/** @typedef {CardRef & CardDef} DeckCard */
 
 /** @param {any} raw @returns {raw is CardDef} */
 const isCardDef = raw =>
@@ -327,31 +331,25 @@ const isCardRef = raw =>
   typeof raw === 'object' && raw !== null &&
   'id' in raw && typeof raw.id === 'string';
 
-/** @typedef {object} CardRef
- * @property {string} id
- */
+/** @typedef {{orient?: Orient} & (CardRef | CardDef)} OrientedCard */
 
-/** @typedef {(CardRef|CardDef) & ParticularCard} Card */
-
-// τurn and fliπ
-/** @typedef {object} ParticularCard
- * @property {Orient} [orient] -- default to 0, aka face down
- */
-
-/** @param {any} raw @returns {Card} */
-const toCard = raw => {
-  if (typeof raw === 'string') {
-    const match = /^(?:([^,]+)(?:,([^,]+)(?:,([^,]+))?)?)?#(.+)$/.exec(raw)
-    if (match) {
-      const [_, zv = '', yv = '', xv = '', id = ''] = match;
-      const z = zv ? parseFloat(zv) : 0;
-      const y = yv ? parseFloat(yv) : 0;
-      const x = xv ? parseFloat(xv) : 0;
-      const ot = orient.packValues(z, y, x);
-      return { id, orient: ot }
-    }
-    throw new Error('invalid card string');
+/** @param {string} str @returns {OrientedCard} */
+const parseCard = str => {
+  const match = /^(?:([^,]+)(?:,([^,]+)(?:,([^,]+))?)?)?#(.+)$/.exec(str);
+  if (match) {
+    const [_, zv = '', yv = '', xv = '', id = ''] = match;
+    const z = zv ? parseFloat(zv) : 0;
+    const y = yv ? parseFloat(yv) : 0;
+    const x = xv ? parseFloat(xv) : 0;
+    const ot = orient.packValues(z, y, x);
+    return { id, orient: ot }
   }
+  throw new Error('invalid card string');
+};
+
+/** @param {any} raw @returns {OrientedCard} */
+const toCard = raw => {
+  if (typeof raw === 'string') return parseCard(raw);
   if (!isCardDef(raw) && !isCardRef(raw))
     throw new Error('invalid card ref');
   if ('orient' in raw && raw['orient'] !== undefined && !orient.isInstance(raw['orient']))
@@ -359,7 +357,7 @@ const toCard = raw => {
   return raw;
 }
 
-/** @param {any} raw @returns {Array<Card>} */
+/** @param {any} raw @returns {Array<OrientedCard>} */
 const toCards = raw => {
   if (Array.isArray(raw)) return raw.map(toCard);
   return [toCard(raw)];
@@ -372,7 +370,7 @@ const parseCards = dat => {
   return toCards(JSON.parse(dat));
 }
 
-/** @param {Card} card */
+/** @param {OrientedCard} card */
 const smudgeCard = card => {
   if ('id' in card) {
     const { id, orient: ot } = card;
@@ -403,7 +401,7 @@ const orientStyleVars = ['--card-z-flips', '--card-y-flips', '--card-x-flips'];
 
 /**
  * @param {HTMLElement} el
- * @param {Array<string|Card>|null} cards
+ * @param {Array<string|OrientedCard>|null} cards
  */
 const setElCards = (el, cards) => {
   if (!cards) delete el.dataset[cardDataKey];
@@ -577,7 +575,7 @@ const elState = ref => {
 /** @typedef {ReturnType<typeof elState>} ElState */
 
 /** @param {any} arg */
-async function loadSpec(arg) {
+async function loadCardDeck(arg) {
   if (typeof arg === 'string') {
     const res = await fetch(arg);
     const text = await res.text();
@@ -590,38 +588,164 @@ async function loadSpec(arg) {
       el.width.baseVal.value = 0;
       el.height.baseVal.value = 0;
     }
-    arg = el;
+    return loadCardDeckFrom(el);
   }
 
-  if (!(arg instanceof Element))
-    throw new Error('must provide spec element');
-
-  // TODO support SVG element directly sans json index
-
-  if (
-    arg.tagName.toLowerCase() !== 'script' ||
-    arg.getAttribute('language') !== 'application/json'
-  ) {
-    const el = arg.querySelector('script[type="application/json"]');
-    if (!el)
-      throw new Error('spec must be a JSON script element');
-    arg = el;
-  }
-
-  const rawText = arg.textContent || '';
-  const spec = JSON.parse(rawText);
-
-  if (isSpec(spec))
-    return spec;
-
-  throw new Error('invalid spec data');
+  return arg instanceof Element
+    ? loadCardDeckFrom(arg)
+    : loadCardDeckData(arg);
 }
+
+/** @param {Element} el */
+function loadCardDeckFrom(el) {
+  const tagName = el.tagName.toLowerCase();
+  let nom = tagName;
+  if (el.id) nom = `${nom}#${el.id}`;
+
+  switch (tagName) {
+
+    case 'script':
+      const lang = el.getAttribute('language');
+      if (lang !== 'application/json')
+        throw new Error(`unsupported card deck element: ${nom}[lang=${lang}]`);
+      const { textContent } = el;
+      const data = JSON.parse(textContent || '');
+      return loadCardDeckData(data);
+
+    case 'svg':
+      if (!(el instanceof SVGSVGElement))
+        throw new Error('invalid SVG root element instance');
+      return loadCardDeckSVG(el);
+
+    default:
+      const child = el.querySelector(`${nom}[type="application/json"]`);
+      if (child) return loadCardDeckFrom(child);
+
+  }
+  throw new Error(`unsupported card deck element: ${tagName}`);
+}
+
+/** @typedef {object} Deck
+ * @prop {string} [name]
+ * @prop {string} [title]
+ * @prop {string} [about]
+ * @prop {(id: string) => DeckCard|undefined} getCardById
+ * @prop {() => Iterable<DeckCard>} allCards
+ */
+
+/** @param {SVGSVGElement} svg @returns {Deck} */
+function loadCardDeckSVG(svg) {
+
+  /** @param {SVGElement} el @returns {DeckCard} */
+  const ref = el => {
+    const { id } = el;
+
+    const isReversed = !!el.dataset['upgrightId'];
+    const otherId = el.dataset[isReversed ? 'upgrightId' : 'reversedId']
+
+    const getOtherEl = () => {
+      const other = otherId ? svg.getElementById(otherId) : undefined;
+      return other instanceof SVGElement ? other : undefined;
+    };
+
+    return {
+      get id() { return id },
+      get isReversed() { return isReversed },
+      get name() {
+        const myName = el.dataset['cardName'];
+        if (myName) return myName;
+        const otherName = getOtherEl()?.dataset['cardName'];
+        if (otherName) return otherName;
+        return 'unknown';
+      },
+
+      get other() {
+        const oel = getOtherEl();
+        return oel ? ref(oel) : undefined;
+      },
+
+      get title() {
+        return el.querySelector('title')?.textContent || '';
+      },
+
+      get desc() {
+        return el.querySelector('desc')?.textContent || '';
+      },
+
+      get face() { return `#${id}` },
+
+      // TODO additional data fields like suit/rank:
+      //   data-card-suit="major"
+      //   data-card-rank="0"
+
+    };
+  };
+
+  return {
+    get name() {
+      return svg.dataset['deckName'];
+    },
+
+    get title() {
+      return svg.querySelector('title')?.textContent || undefined;
+    },
+
+    get about() {
+      return svg.querySelector('metadata')?.innerHTML || '';
+    },
+
+    // TODO <metadata>
+    //   <h1>Alleged Tarot 2002</h1>
+    //   <h2>Damian Cugley</h2>
+    //   <link rel="author" href="https://alleged.org.uk/pdc/tarot/" />
+    // </metadata>
+
+    getCardById(id) {
+      const el = svg.getElementById(id);
+      if (!(el instanceof SVGElement)) return undefined;
+      return ref(el);
+    },
+
+    *allCards() {
+      for (const el of svg.querySelectorAll('defs > svg[data-card-name]'))
+        if (el instanceof SVGElement)
+          yield ref(el);
+    },
+  };
+}
+
+/** @param {any} data @returns {Deck} */
+function loadCardDeckData(data) {
+  // TODO look for array of cards or { cards, ...deckInfo }
+
+  const defs = new Map(
+    Object.entries(data)
+      .filter(/** @returns {ent is [string, CardDef]} */ ent => isCardDef(ent[1]))
+      .map(([id, def]) => Object.freeze({ ...def, id }))
+      .map(def => [def.id, def]));
+
+  if (!defs.size)
+    throw new Error('invalid card deck spec: no card defs');
+
+  return {
+    getCardById(id) {
+      const def = defs.get(id)
+      return def ? { ...def, id } : undefined;
+    },
+
+    *allCards() {
+      yield* defs.values()
+    },
+  };
+}
+
+/** @typedef {{ [id: string]: CardDef}} Spec */
 
 /** @param {any} arg */
 export default async function init(arg) {
   // TODO support options object arg
 
-  const spec = await loadSpec(arg);
+  const deck = await loadCardDeck(arg);
 
   // TODO provide option
   const document =
@@ -644,7 +768,7 @@ export default async function init(arg) {
     return el;
   };
 
-  const world = makeWorld(spec);
+  const world = makeWorld(deck);
 
   // TODO option to pass table and/or other domains
   const table = document.body.appendChild(h('.domain.table'));
@@ -665,24 +789,11 @@ export default async function init(arg) {
 
   /**
    * @param {HTMLElement} explain
-   * @param {Card} card
+   * @param {DeckCard} card
    */
   const renderExplain = (explain, card) => {
-    if ('id' in card) {
-      const { id } = card;
-      const cardSpec = spec[id];
-      if (!cardSpec) {
-        explain.innerText = `-- undefined card #${id} --`;
-        return;
-      }
-      return renderExplain(explain, cardSpec);
-    }
-
-    const ex = card['explain'];
-    if (typeof ex !== 'string') {
-      // TODO other
-      return;
-    }
+    const { desc: ex } = card;
+    if (!ex) return;
 
     if (!ex.startsWith('#')) {
       explain.innerHTML = ex;
@@ -707,7 +818,7 @@ export default async function init(arg) {
     }
   };
 
-  const cardBookId = 'unknown'; // TODO evolve Spec to provide
+  const cardBookId = deck.name || 'unknown';
 
   return Object.freeze({
     makeViewer() {
@@ -715,11 +826,19 @@ export default async function init(arg) {
       cardBook.insertAdjacentHTML('afterbegin',
         `<header>` +
         `<button value="close" style="float: right">X</button>` +
-        `<h1>-- Untitled --</h1>` +
+        (() => {
+          const { title, about } = deck;
+          const head = `<h1>${title || '-- Untitled --'}</h1>`;
+          return about
+            ? `<details><summary>${head}</summary>${about}</details>`
+            : head;
+        })() +
+
         `</header>` +
         `<nav><menu></menu></nav>` +
         `<main></main>`
       );
+      // TODO present more deck metadata as available
 
       {
         const el = cardBook.querySelector('button[value="close"]');
@@ -730,8 +849,8 @@ export default async function init(arg) {
       {
         const el = cardBook.querySelector('menu');
         if (el && el instanceof HTMLElement)
-          for (const [id, { name }] of Object.entries(spec))
-            el.insertAdjacentHTML('beforeend', `<li><a href="#${titleJoin(cardBookId, id)}">${name}</a></li>`);
+          for (const { id, name } of deck.allCards())
+            el.insertAdjacentHTML('beforeend', `<li><a href="#${cardBookId}-${id}">${name}</a></li>`);
       }
 
       const viewer = cardBook.querySelector('main');
@@ -748,12 +867,12 @@ export default async function init(arg) {
         ev.preventDefault();
       });
 
-      for (const [id, { name }] of Object.entries(spec)) {
-        const cardSpec = spec[id];
+      for (const card of deck.allCards()) {
+        const { id, name } = card;
 
         // TODO provide page anchor
         viewer.insertAdjacentHTML('beforeend', `
-          <fieldset class="page"><legend><a name="${titleJoin(cardBookId, id)}">${name}</a></legend>
+          <fieldset class="page"><legend><a name="${cardBookId}-${id}">${name}</a></legend>
             <div class="card" data-orient="0,1"></div>
             <div class="card" data-orient="1,1"></div>
             <br style="clear: both" />
@@ -767,11 +886,9 @@ export default async function init(arg) {
           world.render(el, [{ id, orient: ot }]);
         }
 
-        if (cardSpec) {
-          const explain = viewer.querySelector(':scope > :last-child .explain');
-          if (explain instanceof HTMLElement)
-            renderExplain(explain, cardSpec);
-        }
+        const explain = viewer.querySelector(':scope > :last-child .explain');
+        if (explain instanceof HTMLElement)
+          renderExplain(explain, card);
       }
 
       const updateScroll = () => {
@@ -809,18 +926,21 @@ export default async function init(arg) {
   });
 }
 
-/** @typedef {object} FaceRenderOpts
- * @prop {string} src
- * @prop {number} [rotate]
+/**
+ * @param {HTMLElement} el
+ * @param {object} opts
+ * @param {CardData} opts.def
+ * @param {number} [opts.rotate]
  */
-/** @param {HTMLElement} el
- * @param {string | FaceRenderOpts} srcOrOpts
- */
-const renderFace = (el, srcOrOpts) => {
-  const {
-    src,
-    rotate
-  } = typeof srcOrOpts === 'string' ? { src: srcOrOpts } : srcOrOpts;
+const renderFace = (el, opts) => {
+  const { def: { face: src }, rotate } = opts;
+
+  // TODO support for dataset / css vars
+
+  if (!src) {
+    console.warn('no face source');
+    return;
+  }
 
   if (!src.startsWith('#')) {
     console.warn('unsupported face source', src);
@@ -840,13 +960,19 @@ const renderFace = (el, srcOrOpts) => {
     face.setAttribute('width', '100%');
     face.setAttribute('height', '100%');
     face.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+
     const ref = el.ownerDocument.createElementNS('http://www.w3.org/2000/svg', 'use')
     ref.setAttribute('href', `#${srcEl.id}`);
     face.appendChild(ref);
     el.appendChild(face);
 
-    if (rotate)
-      console.warn('manual card reversal not implemented');
+    if (rotate) {
+      const {
+        width: { baseVal: { value: width } },
+        height: { baseVal: { value: height } },
+      } = srcEl;
+      ref.setAttribute('transform', `rotate(180, ${width / 2}, ${height / 2})`);
+    }
 
     return;
   }
@@ -855,47 +981,37 @@ const renderFace = (el, srcOrOpts) => {
 };
 
 /** @param {HTMLElement} el
- * @param {Card} card
+ * @param {Orient} cardOt
+ * @param {CardDef} def
  */
-const renderCardFace = (el, card) => {
+const renderCardFace = (el, cardOt, def) => {
   const elOt = orient.fromStyle(orientStyleVars, el.style);
-  const { orient: cardOt = 0 } = card;
   const ot = orient.add(elOt, cardOt);
-
-  const id = typeof card.id === 'string' && card.id || 'ø';
   const isReversed = orient.yInversions(ot) % 2 == 1
-  if (id) el.classList.add(id);
-  if (isReversed) el.classList.add('reversed');
-
   if (isReversed) {
-    if ('reversed' in card) {
-      renderFace(el, card['reversed']);
-      return;
-    } if ('upright' in card) {
-      renderFace(el, { src: card['upright'], rotate: 180 });
-      return;
-    }
+    el.classList.add('reversed');
+    const { other } = def;
+    if (other) def = other;
   }
-  if ('upright' in card) {
-    renderFace(el, card['upright']);
-    return;
+  const { isReversed: defReversed = false, other } = def;
+  if (isReversed === defReversed && def.face) {
+    renderFace(el, { def });
+  } else if (other?.face) {
+    renderFace(el, { def: other, rotate: 180 });
+  } else {
+    console.warn('unable to render card face', { el, card: { ...def }, isReversed });
   }
-
-  console.warn(`no face defined for #${id}`);
 };
 
 /**
- * @param {Spec} spec
+ * @param {Deck} deck
  */
-function makeWorld(spec) {
-  // TODO freeze a copy of spec?
+function makeWorld(deck) {
   // TODO save/restore state
-
-  const renderProps = new Set(['upright', 'reversed']);
 
   /**
    * @param {HTMLElement} el
-   * @param {Array<string|Card>} [givenCards]
+   * @param {Array<string|OrientedCard>} [givenCards]
    */
   const render = (el, givenCards) => {
     const cards = (() => {
@@ -914,46 +1030,23 @@ function makeWorld(spec) {
 
     const top = cards[0] || null; // cards.length > 1 ? cards[0] : null;
 
-    const st = el.style;
-    const updatedVars = new Set();
-
     el.innerHTML = '';
     if (!top) {
       el.className = 'void';
+      // TODO clear any facial dataset / css vars
     } else {
       el.className = cards.length > 1 ? 'stack' : 'card';
-      const oldDataKeys = new Set(Object.keys(el.dataset).filter(name => /^card[A-Z]/.test(name)));
-      const { orient: ot = 0 } = top;
+      const { orient: ot = 0, ...topCard } = top;
       if (orient.zInversions(ot) % 2 == 0) {
         el.classList.add('back');
       } else {
         el.classList.add('face');
-        const def = 'id' in top && { ...spec[top.id], ...top };
-        if (def) {
-          for (const [prop, val] of Object.entries(def)) {
-            if (!renderProps.has(prop)) {
-              const dataKey = titleJoin('card', prop);
-              el.dataset[dataKey] = val;
-              oldDataKeys.delete(dataKey);
-              const key = `--card-${prop}`;
-              st.setProperty(key, val);
-              updatedVars.add(key);
-            }
-          }
-          renderCardFace(el, def);
-        }
+        const def = 'id' in topCard ? deck.getCardById(topCard.id) : topCard;
+        if (def) renderCardFace(el, ot, def);
       }
-      for (const v of orientStyleVars)
-        updatedVars.add(v);
-      for (const dataKey of oldDataKeys)
-        delete el.dataset[dataKey];
     }
 
-    for (const key of Array.from(st))
-      if (key.startsWith('--card-') && !updatedVars.has(key))
-        st.removeProperty(key);
-
-    st.setProperty('--stack-depth', `${cards.length}`);
+    el.style.setProperty('--stack-depth', `${cards.length}`);
   };
 
   /** @type {Vec2} */
@@ -967,11 +1060,11 @@ function makeWorld(spec) {
 
   const world = {
     get spec() {
-      return spec
+      return deck
     },
 
     allCardIds() {
-      return Array.from(Object.keys(spec).map(id => `#${id}`));
+      return Array.from(Object.keys(deck).map(id => `#${id}`));
     },
 
 

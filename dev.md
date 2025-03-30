@@ -1,4 +1,4 @@
-# 2025-03-29
+# 2025-03-30
 
 ## Design Muse
 
@@ -90,6 +90,11 @@
   - [ ] svg playing cards
   - [ ] colman-smith raster images
   - [ ] ascii-tarot
+- evolve data schema
+  - [x] naturalize svg document
+  - [ ] html document
+  - [~] rework json document
+  - [ ] markdown document ... t(e)xt document
 - toplevel api iteration
   - [ ] pass multiple decks
   - [ ] pass or spec more domains
@@ -98,6 +103,15 @@
   - [ ] action/drag to instantiate book
 
 ## Done
+
+- revamped card and deck data type definitions and especially deck definition/loading
+  - card data type is now independent of document representation form
+  - deck data type is now first class, and implementation hides document representation
+  - provide deck title, name, metadata ; now used in the book viewer
+- updated alleged convert utility to include fixup transforms, and drop the
+  json index in lieu of svg native data annotations, metadata, and id reference
+
+# 2025-03-29
 
 - got book viewer index navigation working
 
