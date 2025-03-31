@@ -1,4 +1,4 @@
-# 2025-03-30
+# 2025-04-01
 
 ## Design Muse
 
@@ -80,9 +80,14 @@
 - improve drag pre-take feedback: an overlay and/or just start taking on
   mousedown, only finalizing take stack on first leave
 
+- revist stack abstraction
+  - what if cards were literal child elements, rather than json data array
+  - allow mismatched bounding boxes
+  - allow 2.5d not-quite fan spread, maybe base cut ui off this instead of simulating it with Y range mapping
+
 ## WIP
 
-- acquire tarot asset set:
+- starter assets:
   - [x] alleged deck conversion
   - [x] use of external svg asset
   - [x] alleged quality check - g2g but for label placement
@@ -90,19 +95,43 @@
   - [ ] svg playing cards
   - [ ] colman-smith raster images
   - [ ] ascii-tarot
-- evolve data schema
+
+- deck data loading
   - [x] naturalize svg document
+  - [x] rework json document
+  - [ ] raster images
+  - [ ] zip document
   - [ ] html document
-  - [~] rework json document
   - [ ] markdown document ... t(e)xt document
-- toplevel api iteration
-  - [ ] pass multiple decks
-  - [ ] pass or spec more domains
-  - [ ] show library
-  - [ ] show books
-  - [ ] action/drag to instantiate book
+
+- domain
+  - [ ] drop of files ; drop of links
+  - [ ] trash drop target
+  - [ ] rework custom drag/drop controller
+  - [ ] unroll card stacks; could stacks just be a constrained sub-domain?
+
+- library 
+  - [x] hookup book viewer ; revamp to dialog
+  - [ ] try an inline dialog / accordion stack
+  - [ ] delete deck / drag to trash?
+  - [ ] download/copy/drag-export deck: current form (as imported / edited) vs orginal
+  - [ ] collect all extant cards
 
 ## Done
+
+- got deck viewer hooked back up, ready to edit; also it's now a proper `<dialog>`
+- added hash var state handling so that deck editor dialog state can easily persist
+
+# 2025-03-31
+
+- revamped toplevel surface:
+  - decks are now discovered by link/a-tag search
+  - add an optional toplevel library element, where deck are loaded
+  - the library may be, recommended to be, a list element; dl, menu, ol, or ul at present
+  - deck load failure feedback can then be naturally shown in the library
+  - decks can be dragged from library to table to instantiate a card stack
+
+# 2025-03-30
 
 - revamped card and deck data type definitions and especially deck definition/loading
   - card data type is now independent of document representation form

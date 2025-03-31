@@ -40,24 +40,77 @@
     color: #bbb;
   }
 
-  .modal {
-    position: absolute;
-    top: 5%;
-    left: 15%;
+  dialog {
     width: 70%;
     height: 90%;
-    overflow: hidden;
-
+    overflow: auto;
     background-color: #222;
+    color: #bbb;
     border: 0.2em solid #333;
     padding: 0.2em;
     border-radius: 0.5em;
   }
 
+  body {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-template-areas:
+      /* "header header" */
+      "table library";
+  }
+
+  body>.table {
+    grid-area: table;
+    overflow: auto;
+  }
+
+  body>.library {
+    grid-area: library;
+    overflow: auto;
+  }
+
+  .library {
+    margin: 0.5em 0 border: 0.2em solid #212;
+    border-radius: 1em 0 0 1em;
+    padding: 0.5em;
+    background-color: #323;
+    list-style: none;
+  }
+
+  .library>li {
+    list-style: none;
+    padding: 0;
+    margin: 0.5em 0;
+  }
+
+  .library li>button {
+    background-color: #434;
+    border: 0.5em solid #545;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    cursor: grab;
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+
   .domain {
-    width: 100%;
-    height: 100%;
     position: relative;
+  }
+
+  .domain.dragover {
+    border: 0.5em solid #663;
+    border-radius: 0.5em;
+  }
+
+  .domain.dragover.mayDrop {
+    border-color: #366;
+  }
+
+  .cardBook,
+  dialog:has(.cardBook) form {
+    height: 100%;
+    width: 100%;
+    overflow: clip;
   }
 
   .cardBook {
@@ -105,13 +158,13 @@
     cursor: s-resize;
   }
 
-  details:open > summary {
+  details[open]>summary {
     color: #cc9;
     cursor: n-resize;
   }
 
   summary:hover,
-  details:open > summary:hover {
+  details[open]>summary:hover {
     color: #9cc;
   }
 
@@ -143,8 +196,11 @@
   .cardBook .page .card {
     width: 48%;
     height: auto;
-    aspect-ratio: 360 / 500;
     float: left;
+
+    /* TODO alleged dimensions ; leave this up to deck data */
+    max-width: 360px;
+    aspect-ratio: 360 / 500;
   }
 
   .domain .card,
@@ -166,16 +222,17 @@
     overflow: clip;
     border-radius: 0.5em;
 
+    border-style: solid;
+    border-color: var(--card-back-border);
+    border-width: var(--card-border-unit);
+
+    /* TODO alleged dimensions ; leave this up to deck data */
     /* 360 : 500 */
     /* 180 : 250 */
     /* 90 : 125 */
     /* 18 : 25 */
     width: 9em;
     height: 12.5em;
-
-    border-style: solid;
-    border-color: var(--card-back-border);
-    border-width: var(--card-border-unit);
   }
 
   .stack {
@@ -210,8 +267,64 @@
   }
 </style>
 
+<div class="domain table"></div>
+
+<ul class="library">
+  <li>
+    <button style="cursor: pointer" onclick="document.getElementById('readme').showModal()">Read Me</button>
+    <dialog id="readme" style="height: 60%; overflow: auto">
+      <button onclick="document.getElementById('readme').close()">Close</button>
+
+      <h1>Hello there...</h1>
+
+      <p>Beware, this is an early demo:
+      <ol>
+        <li>Click the deck button below to view its book</li>
+        <li>Drag it onto the blank space to the left to get a stack of cards</li>
+        <li>From there, you can drag cards around in the main area</li>
+        <li><b>NOTE:</b> the drag-and-drop UI is quite janky right now, and will change substantially; for now:
+          <ul>
+            <li>drag start is delayed until the mouse <b>leaves</b> the card, not on mouse down</li>
+            <li>relative-Y value matters both when starting a drag, and when dropping onto a stack of cards</li>
+            <li>Left click to turn a card over</li>
+            <li>Right click to flip a card into reversed orientation<br />
+              <b>NOTE:</b> firefox users may hold <cite>Shift</cite> for native context menu
+            </li>
+          </ul>
+        </li>
+      </ol>
+      </p>
+
+      <p>Coming Soon:
+      <ol>
+        <li>Revamped card stack and drag/drop UX</li>
+        <li>Shuffling: riffle 2 stacks, auto RNG shuffle, etc</li>
+        <li>First class touch event support for tablets and phones</li>
+        <li><i>Hands</i> at least 2 of them for holding cards</li>
+        <li>Defined places on the table: denote a given card or stack as a named place on the table
+          <ul>
+            <li>e.g. "this stack is the discard pile"</li>
+            <li>e.g. "this card represents the Past, this one the Present, this one the Future"</li>
+            <li>places will persist even after any cards there are removed, and will serve as a UX anchor for "maybe but
+              card(s) here"</li>
+          </ul>
+        <li>Manipulation of held cards: fan them, turn them, etc</li>
+        <li>More decks, and ability to import arbitrary image assets as new cards, decks, etc</li>
+        <li>Deck editing</li>
+        <li>Persistence of table state</li>
+      </ol>
+      </p>
+
+    </dialog>
+  </li>
+  <a href="./alleged-tarot.svg">alleged-tarot</a>
+  <!-- <a href="./assets/rwpop1910.zip">rwpop1910</a> -->
+</ul>
+<!-- <dl class="library"> </dl> -->
+<!-- <menu class="library"> </menu> -->
+<!-- <div class="library"> </div> -->
+
 <script type="module">
   import init from './index.js';
-  const book = await init('./alleged-tarot.svg');
-  book.makeViewer();
+  /* const { deck } = */ await init();
 </script>
