@@ -1,35 +1,4 @@
-# 2025-04-01
-
-## Design Muse
-
-- "natural" user actions:
-  - pickup 1 card ... N cards ... whole stack ; merges with any prior held card/stack
-  - place 1 card ... N cards ... whole held stack
-  - nominate place
-    1. "this is the 'draw pile'"
-    2. "this is the 'discard pile'"
-    3. "this is the 'query'"
-  - swap to off hand
-  - rotate card or stack:
-    - Z is free rotation, maybe snapped to 45 or 90 degree increments
-    - X and Y are flips of the held card ...
-    - ... maybe valid to flip a stack on edge tho, so 90 degree increments, but only when held, not when on table
-  - riffle held stack to placed stack
-  - riffle 2 held stacks
-  - bridge held riffle
-  - settle riffle
-  - fan held stack
-  - split held stack ( holding 2 stack, basically a gap pointer )
-  - swap N cards into split gap
-  - spread stack on table ; creates chain of cards?
-
-- "artificial" user actions:
-  - sort stack ; restore original order
-  - RNG shuffle stack ; auto prng vs user entropy provided by wiggle/shake
-  - gather all cards to nominated place
-  - scatter all cards from stack across board ; avoid nominated places?
-
-## TODO
+# TODO
 
 - actions that should be possible:
   - [x] move card(s)
@@ -75,17 +44,9 @@
   - [ ] basic click events
   - [ ] touch events ; pointer events
 
-- maybe drag should mostly move all by default, require drag on edge/border to cut stack?
+# 2025-04-02
 
-- improve drag pre-take feedback: an overlay and/or just start taking on
-  mousedown, only finalizing take stack on first leave
-
-- revist stack abstraction
-  - what if cards were literal child elements, rather than json data array
-  - allow mismatched bounding boxes
-  - allow 2.5d not-quite fan spread, maybe base cut ui off this instead of simulating it with Y range mapping
-
-## WIP
+## TODO
 
 - starter assets:
   - [x] alleged deck conversion
@@ -104,10 +65,11 @@
   - [ ] html document
   - [ ] markdown document ... t(e)xt document
 
-- domain
+- domain aka "The Table"
   - [ ] drop of files ; drop of links
   - [ ] trash drop target
   - [ ] rework custom drag/drop controller
+  - [ ] hands are special domains sibling to table
   - [ ] unroll card stacks; could stacks just be a constrained sub-domain?
 
 - library 
@@ -117,10 +79,29 @@
   - [ ] download/copy/drag-export deck: current form (as imported / edited) vs orginal
   - [ ] collect all extant cards
 
+## WIP
+
+- revamp drag/drop semantics
+  - maybe should mostly move all by default, require drag on edge/border to cut stack?
+  - improve drag pre-take feedback: an overlay and/or just start taking on
+    mousedown, only finalizing take stack on first leave
+
+- reprise stack abstraction ; rework how cards work
+  - what if cards were literal child elements, rather than json data array
+  - allow mismatched bounding boxes
+  - allow 2.5d not-quite fan spread, maybe base cut ui off this instead of simulating it with Y range mapping
+
+- [ ] fix chrome
+- [ ] switch to main branch as github pages deploy
+
 ## Done
+
+# 2025-04-01
 
 - got deck viewer hooked back up, ready to edit; also it's now a proper `<dialog>`
 - added hash var state handling so that deck editor dialog state can easily persist
+- pushed dev branch to gh-pages
+  - BUG: doesn't work in chrome, let alone mobile
 
 # 2025-03-31
 
@@ -217,7 +198,7 @@
 
 - started dev log, musing on (inter)action space
 
-## Tarot Decks
+# Tarot Decks
 
 Chased down some assets from <http://freeware.esoterica.free.fr/html/freecards.html>
 
@@ -374,3 +355,32 @@ Chased down some assets from <http://freeware.esoterica.free.fr/html/freecards.h
 > Size:150 x 262 pixels. Format: jpgs.
 > 
 > Illustrations of this deck are public domain.
+
+# Design Muse
+
+- "natural" user actions:
+  - pickup 1 card ... N cards ... whole stack ; merges with any prior held card/stack
+  - place 1 card ... N cards ... whole held stack
+  - nominate place
+    1. "this is the 'draw pile'"
+    2. "this is the 'discard pile'"
+    3. "this is the 'query'"
+  - swap to off hand
+  - rotate card or stack:
+    - Z is free rotation, maybe snapped to 45 or 90 degree increments
+    - X and Y are flips of the held card ...
+    - ... maybe valid to flip a stack on edge tho, so 90 degree increments, but only when held, not when on table
+  - riffle held stack to placed stack
+  - riffle 2 held stacks
+  - bridge held riffle
+  - settle riffle
+  - fan held stack
+  - split held stack ( holding 2 stack, basically a gap pointer )
+  - swap N cards into split gap
+  - spread stack on table ; creates chain of cards?
+
+- "artificial" user actions:
+  - sort stack ; restore original order
+  - RNG shuffle stack ; auto prng vs user entropy provided by wiggle/shake
+  - gather all cards to nominated place
+  - scatter all cards from stack across board ; avoid nominated places?
