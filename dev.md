@@ -1,85 +1,61 @@
+# Hello There...
+
+Beware, this is an early demo:
+
+1. The purple area on the right is called *the library*
+2. Click a deck button to it; this readme is also notionally in *the library*
+3. Library buttons that represent card decks may be drug onto *the table*; that is, the main dark area beside the library.
+4. Card and stack interaction on the table is rudimentary at present:
+  - start dragging a stack, but the drag only really *starts* once you mouse cursor *exits* a card or stack
+  - dragging from a stack cuts it: you take a number of cards proportional to the cursor Y value when it exited the stack
+  - dropping onto a stack places onto / under / cut-into it: depending again on the mouse cursor Y value when the drop finishes
+  - left click to turn a card over
+  - right click to reverse a stack of cards
+
+So at present, the only way to shuffle goes like this:
+1. drag a deck to the table to instantiate a deck
+2. drag-drop it any number of times to create 2 or more cut stacks
+3. maybe right click one of them to introduce reversals
+4. drop-drop back and forth between these stacks some number of times; maybe also mix in right clicks to reverse stacks
+5. finally combine all the stack back into one: as you'll learn above, drag from the *bottom* of a stack to take the whole thing
+
+To pull a single card from a stack, simply drag from the *top* of its box.
+These *top* and *bottom* regions are 20% of the card's vertical space,
+leaving the inner 60% to define a cut point.
+
+**NOTE:** firefox users may hold <cite>Shift</cite> for native context menu
+
 # TODO
 
-- actions that should be possible:
-  - [x] move card(s)
-  - [~] take card(s)
-  - [~] flip card
-  - [ ] rotate card sideways ; also odd angles?
-  - [ ] place card(s)
-  - [ ] place part of stack
-  - [~] cut stack ... short cut for take / place?
-  - [ ] rotate held stack ; nominal reverse
-  - [ ] RNG shuffle 1 stack
-  - [ ] shuffle 2 stacks: riffle ; other methods?
-  - [ ] nominate stack ; define place
-  - [ ] place actions: gather all ; shuffle in place via RNG
-  - [ ] fan stack in hand ; spread stack on table
-  - [ ] ripple/wave flip spread stack
-  - [ ] destructive gimmicks like shred/tear/burn
-  - [ ] creative gimmicks like annotate / draw / text / tally
-  - [ ] artifact gimmicks like counters, tokens, dice
+Primary is to complete and improve card/stack UX:
+- revamp the current janky drag-drop affair until it works better
+- allow cards to be manipulated much more naturally
+- add more shuffling modes, particularly "riffle together 2 stacks" and "let RNG take the wheel"
+- after we get it working well on desktop, mobile/tablet touch is a primary concern
 
-- basic interaction
-  - [x] drag start picks N based on card-offset cursor Y value, within a 60% inner active band
-    - ... drag progression can then adjust N, finalizing amount when drag exits source element
-  - [x] drop on domain seems straight forward
-  - [ ] drop on extant stack, probably presents interaction zones
-    - top: stack over
-    - main: riffle with by swiping?
-    - main: cut into by dwell (to settle/cancel riffle) then release?
-    - bottom: stack under
-  - [ ] play with secondary buttons clicks while dragging
-  - [~] main hand / off hand is ( the only? an? ) initial place?
-  - ... mh is bound to mouse events ; first touch point
-  - ... oh responds to second touch point ; maybe mouse events initiated by secondary button? modifier key?
-  - [ ] display left/right hand, make them drop zones?
-    - for mouse interaction, clicking a hand could select it as the mouse hand?
-    - for touch, tapping a hand could toggle primacy?
-  - [ ] how does drag start evolve when hand not empty?
-    - hand starts empty
-    - ... pickup 3 cards: hand now holds a 3-stack, oriented however was
-    - ... pickup 2 cards: hand now holds a 2-stack and a 3-stack, rendered as a slight radial fan
-    - ... pickup 1 card: hand now holds a car and a 5-stack, rendered as a slight 2-element fan ; the prior 2/3 fan was auto collapsed
-    - i.e. force user to fan out hand if that's what they want, but auto collapse on subsequent pickup
-  - [ ] basic click events
-  - [ ] touch events ; pointer events
+Secondary is places on the table, and fancy table art like backdrops, spreads, etc:
+- defining a *place* will be a fundamental action; i.e. tap a card and say
+  - e.g. "this stack is the discard pile"
+  - e.g. "this card represents the Past, this one the Present, this one the Future"
+- places will persist even after any cards there are removed, and will serve as a UX anchor for "maybe put card(s) here"
+- of primary import will be supporting crossed placement as seen frequently in tarot spreads
+
+Tertiary are *Hands*, as in you've got 2 of them for holding cards off the table.
+Should be able to do things like fan held cards, manipulated held stack,
+pick more up, put some down, etc.
+An eventual stretch dream here may be 3d manipulation of a stack,
+but that's probably difficult to get a natural UX for without a VR controller of 6dof mouse.
+
+Along the way, we need moar decks, the ability to edit deck interactively,
+import deck assets, export decks, and so on.
 
 # 2025-04-02
 
-## TODO
-
-- starter assets:
-  - [x] alleged deck conversion
-  - [x] use of external svg asset
-  - [x] alleged quality check - g2g but for label placement
-  - [ ] deck editing to fix alleged label placement
-  - [ ] svg playing cards
-  - [ ] colman-smith raster images
-  - [ ] ascii-tarot
-
-- deck data loading
-  - [x] naturalize svg document
-  - [x] rework json document
-  - [ ] raster images
-  - [ ] zip document
-  - [ ] html document
-  - [ ] markdown document ... t(e)xt document
-
-- domain aka "The Table"
-  - [ ] drop of files ; drop of links
-  - [ ] trash drop target
-  - [ ] rework custom drag/drop controller
-  - [ ] hands are special domains sibling to table
-  - [ ] unroll card stacks; could stacks just be a constrained sub-domain?
-
-- library 
-  - [x] hookup book viewer ; revamp to dialog
-  - [ ] try an inline dialog / accordion stack
-  - [ ] delete deck / drag to trash?
-  - [ ] download/copy/drag-export deck: current form (as imported / edited) vs orginal
-  - [ ] collect all extant cards
-
 ## WIP
+
+- [ ] fix chrome
+
+## TODO
 
 - revamp drag/drop semantics
   - maybe should mostly move all by default, require drag on edge/border to cut stack?
@@ -91,10 +67,12 @@
   - allow mismatched bounding boxes
   - allow 2.5d not-quite fan spread, maybe base cut ui off this instead of simulating it with Y range mapping
 
-- [ ] fix chrome
-- [ ] switch to main branch as github pages deploy
+- reprise [Archived TODO state] content after we get through above rework
 
 ## Done
+
+- switched github pages deploy to main branch, keeping less held back in dev branch
+- reworked readme dialog, integrating it directly with this dev log
 
 # 2025-04-01
 
@@ -355,6 +333,83 @@ Chased down some assets from <http://freeware.esoterica.free.fr/html/freecards.h
 > Size:150 x 262 pixels. Format: jpgs.
 > 
 > Illustrations of this deck are public domain.
+
+# Archived TODO state
+
+- starter assets:
+  - [x] alleged deck conversion
+  - [x] use of external svg asset
+  - [x] alleged quality check - g2g but for label placement
+  - [ ] deck editing to fix alleged label placement
+  - [ ] svg playing cards
+  - [ ] colman-smith raster images
+  - [ ] ascii-tarot
+
+- deck data loading
+  - [x] naturalize svg document
+  - [x] rework json document
+  - [ ] raster images
+  - [ ] zip document
+  - [ ] html document
+  - [ ] markdown document ... t(e)xt document
+
+- domain aka "The Table"
+  - [ ] drop of files ; drop of links
+  - [ ] trash drop target
+  - [ ] rework custom drag/drop controller
+  - [ ] hands are special domains sibling to table
+  - [ ] unroll card stacks; could stacks just be a constrained sub-domain?
+
+- library 
+  - [x] hookup book viewer ; revamp to dialog
+  - [ ] try an inline dialog / accordion stack
+  - [ ] delete deck / drag to trash?
+  - [ ] download/copy/drag-export deck: current form (as imported / edited) vs orginal
+  - [ ] collect all extant cards
+
+- actions that should be possible:
+  - [x] move card(s)
+  - [~] take card(s)
+  - [~] flip card
+  - [ ] rotate card sideways ; also odd angles?
+  - [ ] place card(s)
+  - [ ] place part of stack
+  - [~] cut stack ... short cut for take / place?
+  - [ ] rotate held stack ; nominal reverse
+  - [ ] RNG shuffle 1 stack
+  - [ ] shuffle 2 stacks: riffle ; other methods?
+  - [ ] nominate stack ; define place
+  - [ ] place actions: gather all ; shuffle in place via RNG
+  - [ ] fan stack in hand ; spread stack on table
+  - [ ] ripple/wave flip spread stack
+  - [ ] destructive gimmicks like shred/tear/burn
+  - [ ] creative gimmicks like annotate / draw / text / tally
+  - [ ] artifact gimmicks like counters, tokens, dice
+
+- basic interaction
+  - [x] drag start picks N based on card-offset cursor Y value, within a 60% inner active band
+    - ... drag progression can then adjust N, finalizing amount when drag exits source element
+  - [x] drop on domain seems straight forward
+  - [ ] drop on extant stack, probably presents interaction zones
+    - top: stack over
+    - main: riffle with by swiping?
+    - main: cut into by dwell (to settle/cancel riffle) then release?
+    - bottom: stack under
+  - [ ] play with secondary buttons clicks while dragging
+  - [~] main hand / off hand is ( the only? an? ) initial place?
+  - ... mh is bound to mouse events ; first touch point
+  - ... oh responds to second touch point ; maybe mouse events initiated by secondary button? modifier key?
+  - [ ] display left/right hand, make them drop zones?
+    - for mouse interaction, clicking a hand could select it as the mouse hand?
+    - for touch, tapping a hand could toggle primacy?
+  - [ ] how does drag start evolve when hand not empty?
+    - hand starts empty
+    - ... pickup 3 cards: hand now holds a 3-stack, oriented however was
+    - ... pickup 2 cards: hand now holds a 2-stack and a 3-stack, rendered as a slight radial fan
+    - ... pickup 1 card: hand now holds a car and a 5-stack, rendered as a slight 2-element fan ; the prior 2/3 fan was auto collapsed
+    - i.e. force user to fan out hand if that's what they want, but auto collapse on subsequent pickup
+  - [ ] basic click events
+  - [ ] touch events ; pointer events
 
 # Design Muse
 
