@@ -293,10 +293,10 @@ function makeId(name, kind, doc = window.document) {
     : generateId(kind, doc);
 }
 
-const HashVar = Object.freeze({
+export const HashVar = Object.freeze({
   /** @param {Location} loc */
   *split(loc) {
-    const { hash } = loc;
+    const { hash = '' } = loc;
     for (const match of hash.matchAll(/(?:^#([^#;&]+)|[#;&]([^#;&]+))/g)) {
       const part = match[1] || match[2];
       if (!part) continue;

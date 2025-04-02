@@ -295,21 +295,22 @@
 <!-- <div class="library"> </div> -->
 
 <script type="module">
+  import { HashVar } from './index.js';
   (async () => {
     // @ts-check
 
     const readme = document.getElementById('readme');
-    readme.show();
-
-    // const htmlStatus = await fetch('./dev.html');
-    // if (htmlStatus.status === 200) {
-    //   console.error('TODO html status from', htmlStatus);
-    // }
-    // if (htmlStatus.status !== 404) return;
+    if (!HashVar.get(window.location, 'dialog')) readme.show();
 
     const mdStatus = await fetch('./dev.md');
+    if (mdStatus.status !== 200) {
+      throw new Error(`HTTP ${mdStatus.status} ${mdStatus.statusText}`);
+      return;
+    }
+
     const mdText = await mdStatus.text();
     readme.insertAdjacentHTML('beforeend', Array.from(function* () {
+
       yield* function* () {
         /** @type {[{H: number, title: number}]} */
         const section = [];
@@ -326,7 +327,6 @@
               const title = match[2];
               while (section.length) {
                 const last = section[section.length - 1];
-                console.log('exit', last);
                 if (last.H > 1 && last.title === 'Done') return;
                 section.pop();
               }
