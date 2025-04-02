@@ -213,19 +213,17 @@ const toState = async (...path) => {
 await toState('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-deck-name="alleged-tarot">');
 
 await toState('svg');
-
 await writeOuts([
   `\n<title>Alleged Tarot</title>\n`,
-  `<metadata>\n`,
-  `  <dl>\n`,
-  `    <dt>Author</dt>\n`,
-  `    <dd>Damian Cugley</dd>\n`,
-  `    <dt>Published</dt>\n`,
-  `    <dd>2002</dd>\n`,
-  `    <dt>Source</dt>\n`,
-  `    <dd><a href="https://alleged.org.uk/pdc/tarot/">alleged.org.uk/pdc/tarot</a></dd>\n`,
-  `  </dl>\n`,
-  `</metadata>\n`,
+]);
+
+await toState('svg', 'defs');
+await writeOuts([
+  `\n<text id="alleged-about" data-deck-about="alleged">\n`,
+  `- Author: Damian Cugley\n`,
+  `- Published: 2002\n`,
+  `- Source: &lt;https://alleged.org.uk/pdc/tarot&gt;\n`,
+  `</text>\n`,
 ]);
 
 for await (const {

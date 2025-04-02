@@ -53,8 +53,6 @@ import deck assets, export decks, and so on.
 
 ## WIP
 
-- [ ] fix chrome
-
 ## TODO
 
 - revamp drag/drop semantics
@@ -73,6 +71,12 @@ import deck assets, export decks, and so on.
 
 - switched github pages deploy to main branch, keeping less held back in dev branch
 - reworked readme dialog, integrating it directly with this dev log
+- fixed chrome
+  - turns out that chrome disallows `html` content inside an `svg metadata` even if you use `xmlns="http://www.w3.org/1999/xhtml"`
+  - its failure mode is to hoist what should be `svg metadata ...` child nodes up several levels in the containing DOM
+  - but it doesn't stop there, it also hoists all subsequent `svg` elements, like the `defs`, which cause an explosion of surprise content
+  - it's like the html parser is bailing on "this is svg content" and breaking back out to sibling space
+  - may be avoidable if we can shift to some kind of more DOM native SVG/XML tree grating, rather than `innerHTML` splatting
 
 # 2025-04-01
 

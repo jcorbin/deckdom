@@ -2,18 +2,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-deck-name="alleged-tarot">
 
 <title>Alleged Tarot</title>
-<metadata>
-  <dl>
-    <dt>Author</dt>
-    <dd>Damian Cugley</dd>
-    <dt>Published</dt>
-    <dd>2002</dd>
-    <dt>Source</dt>
-    <dd><a href="https://alleged.org.uk/pdc/tarot/">alleged.org.uk/pdc/tarot</a></dd>
-  </dl>
-</metadata>
 
 <defs>
+
+<text id="alleged-about" data-deck-about="alleged">
+- Author: Damian Cugley
+- Published: 2002
+- Source: &lt;https://alleged.org.uk/pdc/tarot&gt;
+</text>
 
 <font id="font-1" horiz-adv-x="12">
 	    <font-face font-family="Even" font-weight="normal" font-style="normal" units-per-em="18" horiz-origin-x="1.5" horiz-adv-x="10" cap-height="12" x-height="9" ascent="12" descent="0" alphabetic="0" mathematical="6" ideographic="6" hanging="6">

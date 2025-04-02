@@ -1060,7 +1060,23 @@ function deckFromSVG(svg, opts) {
     },
 
     get about() {
-      return svg.querySelector('metadata')?.innerHTML || undefined;
+      return Array
+        .from(svg.querySelectorAll('defs > [data-deck-about]'))
+        .map(el => {
+          switch (el.tagName.toLowerCase()) {
+            case 'text':
+              const text = el.textContent
+                ?.trim()
+                ?.replaceAll(/</g, '&lt;')
+                ?.replaceAll(/>/g, '&gt;');
+              return `<pre>${text}</pre>`;
+
+            default:
+              // TODO do a <use /> ref like we do for card faces
+              return `<!-- unsupported svg ${el.tagName.toLowerCase()} -->`;
+          }
+        })
+        .join('\n');
     },
 
     /** @param {string} id */
