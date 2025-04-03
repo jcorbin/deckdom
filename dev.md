@@ -69,9 +69,13 @@ import deck assets, export decks, and so on.
 
 ## Done
 
-<https://css-pattern.com/>
-<https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/>
-<https://thefoolstarot.com/gallery/>
+- cleaned up index dev log integration, made the readme dialog auto-show only
+  once-per-content-hash, as a good excuse to start a small storage module
+- dumping links from browser tabs
+  <https://css-pattern.com/>
+  <https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/>
+  <https://thefoolstarot.com/gallery/>
+  <https://github.com/lawreka/ascii-tarot>
 
 # 2025-04-02
 

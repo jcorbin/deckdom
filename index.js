@@ -293,105 +293,7 @@ function makeId(name, kind, doc = window.document) {
     : generateId(kind, doc);
 }
 
-export const HashVar = Object.freeze({
-  /** @param {Location} loc */
-  *split(loc) {
-    const { hash = '' } = loc;
-    for (const match of hash.matchAll(/(?:^#([^#;&]+)|[#;&]([^#;&]+))/g)) {
-      const part = match[1] || match[2];
-      if (!part) continue;
-      yield part;
-    }
-  },
-
-  /** @param {Location} loc */
-  *parse(loc) {
-    for (const part of HashVar.split(loc)) {
-      const eqi = part.indexOf('=');
-      if (eqi < 0) yield [part, ''];
-      else yield [part.slice(0, eqi), part.slice(eqi + 1)]
-    }
-  },
-
-  /**
-   * @param {Location} loc
-   * @param {Iterable<string>} parts
-   */
-  update(loc, parts) {
-    const aParts = Array.from(parts);
-    loc.hash = aParts.length ? `#${aParts.join('&')}` : '';
-  },
-
-  /**
-   * @param {Location} loc
-   * @param {string} name
-   */
-  *getAll(loc, name) {
-    for (const [key, val] of HashVar.parse(loc))
-      if (key === name) yield val;
-  },
-
-  /**
-   * @param {Location} loc
-   * @param {string} name
-   */
-  get(loc, name) {
-    for (const [key, val] of HashVar.parse(loc))
-      if (key === name) return val;
-    return undefined;
-  },
-
-  /**
-   * @param {Location} loc
-   * @param {string} name
-   * @param {string|undefined} value
-   */
-  set(loc, name, value) {
-    HashVar.update(loc, function*() {
-      const pre = `${name}=`;
-      for (const part of HashVar.split(loc))
-        if (part !== name && !part.startsWith(pre)) yield part;
-      if (value !== undefined)
-        yield `${pre}${value}`;
-    }());
-  },
-
-  /**
-   * @param {Location} loc
-   * @param {string} name
-   * @param {string|undefined} value
-   */
-  push(loc, name, value) {
-    HashVar.update(loc, function*() {
-      yield* HashVar.split(loc);
-      yield `${name}=${value}`;
-    }());
-  },
-
-  /**
-   * @param {Location} loc
-   * @param {string} name
-   * @param {string|undefined} value
-   */
-  delete(loc, name, value) {
-    HashVar.update(loc, function*() {
-      const pre = `${name}=`;
-      for (const part of HashVar.split(loc)) {
-        if (part.startsWith(pre) && part.slice(pre.length) === value) continue;
-        yield part;
-      }
-    }());
-  },
-
-  /**
-   * @param {Location} loc
-   * @param {string} name
-   */
-  deleteAll(loc, name) {
-    HashVar.set(loc, name, undefined);
-  },
-
-});
+import * as HashVar from './hashvar.js';
 
 /**
  * @param {HTMLElement} el
@@ -886,7 +788,7 @@ function hookupLibraryDeck({
   });
   if (window) {
     editor.addEventListener('close', () => {
-      if (window) HashVar.delete(window.location, 'dialog', editor.id)
+      if (window) HashVar.remove(window.location, 'dialog', editor.id)
     });
     if (new Set(
       HashVar.getAll(window.location, 'dialog')
@@ -1874,7 +1776,7 @@ function makeDeckEditor(opts) {
     const loc = document.defaultView?.location;
     if (loc) {
       const { id } = diag;
-      diag.addEventListener('close', () => HashVar.deleteAll(loc, id));
+      diag.addEventListener('close', () => HashVar.removeAll(loc, id));
       const linkName = HashVar.get(loc, id);
       const buddy = linkName && viewer.querySelector(`a[name=${linkName}]`);
       if (buddy) {

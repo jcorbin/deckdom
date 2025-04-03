@@ -285,6 +285,9 @@
     <button style="cursor: pointer" onclick="document.getElementById('readme').showModal()">Read Me</button>
     <dialog id="readme" style="height: 60%; overflow: auto">
       <button onclick="document.getElementById('readme').close()">Close</button>
+      <div>
+        <a href="./dev.md">Dev Log</a>
+      </div>
     </dialog>
   </li>
   <a href="./alleged-tarot.svg">alleged-tarot</a>
@@ -295,68 +298,19 @@
 <!-- <div class="library"> </div> -->
 
 <script type="module">
-  import { HashVar } from './index.js';
-  (async () => {
-    // @ts-check
+  // @ts-check
 
-    const readme = document.getElementById('readme');
-    if (!HashVar.get(window.location, 'dialog')) readme.show();
+  import {makeSubStorage} from './storage.js';
+  const storage = makeSubStorage('deckdom:', localStorage);
 
-    const mdStatus = await fetch('./dev.md');
-    if (mdStatus.status !== 200) {
-      throw new Error(`HTTP ${mdStatus.status} ${mdStatus.statusText}`);
-      return;
-    }
+  import devLog from './dev.js';
+  const readme = document.getElementById('readme');
+  devLog({
+    storage,
+    dialog: readme,
+    content: readme.querySelector(':scope > div'),
+  });
 
-    const mdText = await mdStatus.text();
-    readme.insertAdjacentHTML('beforeend', Array.from(function* () {
-
-      yield* function* () {
-        /** @type {[{H: number, title: number}]} */
-        const section = [];
-
-        /** @type {[string]} */
-        const htmlState = [];
-
-        for (const line of mdText.split(/\n/g)) {
-
-          {
-            const match = /^(#+)\s+(.+)$/.exec(line);
-            if (match) {
-              const H = match[1].length;
-              const title = match[2];
-              while (section.length) {
-                const last = section[section.length - 1];
-                if (last.H > 1 && last.title === 'Done') return;
-                section.pop();
-              }
-              while (htmlState.length) yield `</${htmlState.pop()}>`;
-              yield `<h${H}>${title}</h${H}>`;
-              section.push({H, title});
-              continue;
-            }
-          }
-
-          // TODO actual markdown rendering
-          if (!htmlState.length && !line) continue;
-          if (htmlState[htmlState.length - 1] !== 'pre') {
-            htmlState.push('pre');
-            yield `<pre>`;
-          }
-          yield line;
-
-        }
-
-        while (htmlState.length) yield `</${htmlState.pop()}>`;
-      }();
-
-      yield `<a href="${mdStatus.url}">Full Dev Log</a>`;
-    }()).join('\n'));
-
-  })()
-</script>
-
-<script type="module">
   import init from './index.js';
-  /* const { deck } = */ await init();
+  init();
 </script>
