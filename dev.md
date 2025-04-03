@@ -49,7 +49,7 @@ but that's probably difficult to get a natural UX for without a VR controller of
 Along the way, we need moar decks, the ability to edit deck interactively,
 import deck assets, export decks, and so on.
 
-# 2025-04-02
+# 2025-04-03
 
 ## WIP
 
@@ -68,6 +68,12 @@ import deck assets, export decks, and so on.
 - reprise [Archived TODO state] content after we get through above rework
 
 ## Done
+
+<https://css-pattern.com/>
+<https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/>
+<https://thefoolstarot.com/gallery/>
+
+# 2025-04-02
 
 - switched github pages deploy to main branch, keeping less held back in dev branch
 - reworked readme dialog, integrating it directly with this dev log
